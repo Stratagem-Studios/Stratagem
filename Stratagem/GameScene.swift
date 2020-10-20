@@ -13,12 +13,16 @@ class GameScene: SKScene {
     // These vars will be used to refrence labels
     var metalCount: SKLabelNode?
     
+    // This var keeps track of the most recent frame's time
+    private var lastUpdateTime : TimeInterval = 0
     
     // PlayerVars instantiates the Variables class which holds the variables
     var playerVars = Variables()
     
     // Runs when scene loaded, used to init things
     override func sceneDidLoad() {
+        
+        // Sets timer to 0
         
         // Sets label vars to respective labels
         self.metalCount = self.childNode(withName: "//metalCountLabel") as? SKLabelNode
@@ -27,7 +31,7 @@ class GameScene: SKScene {
     
     
     func touchDown(atPoint pos : CGPoint) {
-        playerVars.gameResources.metal += 1
+        // playerVars.gameResources.metal += 1
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -54,7 +58,28 @@ class GameScene: SKScene {
     
     // Called before each frame is rendered
     override func update(_ currentTime: TimeInterval) {
+        
+        // Initialize _lastUpdateTime if it has not already been
+        if (self.lastUpdateTime == 0) {
+            self.lastUpdateTime = currentTime
+        }
+        
+        // Calculate time since last update & set lastUpdateTime for next frame
+        let dt = currentTime - self.lastUpdateTime
+        self.lastUpdateTime = currentTime
+        
+        // Update resources
+        updateResources(deltaTime: dt)
+        
         // Seting all labels to refelect var values
-        metalCount?.text = "Metal: " + String(playerVars.gameResources.metal)
+        metalCount?.text = "Metal: " + String((playerVars.gameResources.metal))
+    }
+    
+    func updateResources(deltaTime: Double)  {
+        playerVars.gameRescourceTimersLive.metal -= deltaTime
+        if playerVars.gameRescourceTimersLive.metal < 0 {
+            playerVars.gameRescourceTimersLive.metal = playerVars.gameResourceTimers.metal
+            playerVars.gameResources.metal += 1
+        }
     }
 }

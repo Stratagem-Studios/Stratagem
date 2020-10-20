@@ -11,11 +11,26 @@
 
 import Foundation
 
+
 class Variables {
-    var gameResources = inGameResources()
+
+    var gameResources = GameResources()
+    var gameResourceTimers = GameResourceTimers()
+    var gameRescourceTimersLive = GameRescourceTimersLive()
 }
 
-struct inGameResources {
+struct GameResources {
     var metal = 0
     var gold = 0
 }
+
+struct GameResourceTimers {
+    var metal = 2.0
+    var gold = 4.0
+}
+
+struct GameRescourceTimersLive {
+    var metal = 2.0
+    var gold = 4.0
+}
+
