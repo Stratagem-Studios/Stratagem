@@ -7,11 +7,13 @@
 
 import SpriteKit
 import GameplayKit
+import UIKit
 
 class GameScene: SKScene {
 
     // These vars will be used to refrence labels
     var metalCount: SKLabelNode?
+    var goldCount: SKLabelNode?
     
     // This var keeps track of the most recent frame's time
     private var lastUpdateTime : TimeInterval = 0
@@ -25,13 +27,15 @@ class GameScene: SKScene {
         // Sets timer to 0
         
         // Sets label vars to respective labels
-        self.metalCount = self.childNode(withName: "//metalCountLabel") as? SKLabelNode
+        self.metalCount = self.childNode(withName: "//" + "metalCountLabel") as? SKLabelNode
+        self.goldCount = self.childNode(withName: "//goldCountLabel") as? SKLabelNode
         
     }
     
     
     func touchDown(atPoint pos : CGPoint) {
         // playerVars.gameResources.metal += 1
+        
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -72,14 +76,23 @@ class GameScene: SKScene {
         updateResources(deltaTime: dt)
         
         // Seting all labels to refelect var values
-        metalCount?.text = "Metal: " + String((playerVars.gameResources.metal))
+        metalCount?.text = "Metal: " + String(playerVars.gameResources[0].materialQuantity)
+        goldCount?.text = "Gold: " + String(playerVars.gameResources[1].materialQuantity)
+    }
+        
+        
+    func updateResources(deltaTime: Double)  {
+        playerVars.gameResources[0].materialLiveTimer? -= deltaTime
+        if (playerVars.gameResources[0].materialLiveTimer)! < 0 {
+            playerVars.gameResources[0].materialLiveTimer? = 2.0
+            playerVars.gameResources[0].materialQuantity += 1
+        }
+        playerVars.gameResources[1].materialLiveTimer? -= deltaTime
+        if (playerVars.gameResources[1].materialLiveTimer)! < 0 {
+            playerVars.gameResources[1].materialLiveTimer? = 7.0
+            playerVars.gameResources[1].materialQuantity += 1
+        }
+
     }
     
-    func updateResources(deltaTime: Double)  {
-        playerVars.gameRescourceTimersLive.metal -= deltaTime
-        if playerVars.gameRescourceTimersLive.metal < 0 {
-            playerVars.gameRescourceTimersLive.metal = playerVars.gameResourceTimers.metal
-            playerVars.gameResources.metal += 1
-        }
-    }
 }

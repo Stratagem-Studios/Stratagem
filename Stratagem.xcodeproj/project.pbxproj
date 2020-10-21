@@ -17,6 +17,9 @@
 		CE755819253F47690083AA87 /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE755818253F47690083AA87 /* Variables.swift */; };
 		CE75581D253F4FAA0083AA87 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75581C253F4FAA0083AA87 /* MenuScene.swift */; };
 		CE755829253F50580083AA87 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE755828253F50580083AA87 /* MenuScene.sks */; };
+		CE755852254086C50083AA87 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE755851254086C50083AA87 /* CloudKit.framework */; };
+		CE75585C25408FCB0083AA87 /* GameBoardStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75585B25408FCB0083AA87 /* GameBoardStruct.swift */; };
+		CE755860254095010083AA87 /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75585F254095010083AA87 /* SceneManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,10 @@
 		CE755818253F47690083AA87 /* Variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
 		CE75581C253F4FAA0083AA87 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		CE755828253F50580083AA87 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
+		CE75584E254086BF0083AA87 /* Stratagem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stratagem.entitlements; sourceTree = "<group>"; };
+		CE755851254086C50083AA87 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		CE75585B25408FCB0083AA87 /* GameBoardStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardStruct.swift; sourceTree = "<group>"; };
+		CE75585F254095010083AA87 /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE755852254086C50083AA87 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +58,7 @@
 			children = (
 				CE7557D9253F323A0083AA87 /* Stratagem */,
 				CE7557D8253F323A0083AA87 /* Products */,
+				CE755850254086C50083AA87 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +73,7 @@
 		CE7557D9253F323A0083AA87 /* Stratagem */ = {
 			isa = PBXGroup;
 			children = (
+				CE75584E254086BF0083AA87 /* Stratagem.entitlements */,
 				CE7557DE253F323A0083AA87 /* Actions.sks */,
 				CE7557DA253F323A0083AA87 /* AppDelegate.swift */,
 				CE7557E2253F323A0083AA87 /* GameViewController.swift */,
@@ -72,11 +82,21 @@
 				CE755828253F50580083AA87 /* MenuScene.sks */,
 				CE75581C253F4FAA0083AA87 /* MenuScene.swift */,
 				CE755818253F47690083AA87 /* Variables.swift */,
+				CE75585B25408FCB0083AA87 /* GameBoardStruct.swift */,
+				CE75585F254095010083AA87 /* SceneManager.swift */,
 				CE7557E4253F323A0083AA87 /* Main.storyboard */,
 				CE7557E7253F323B0083AA87 /* Assets.xcassets */,
 				CE7557E9253F323B0083AA87 /* Info.plist */,
 			);
 			path = Stratagem;
+			sourceTree = "<group>";
+		};
+		CE755850254086C50083AA87 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE755851254086C50083AA87 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,8 +174,10 @@
 				CE7557E1253F323A0083AA87 /* GameScene.swift in Sources */,
 				CE7557E3253F323A0083AA87 /* GameViewController.swift in Sources */,
 				CE75581D253F4FAA0083AA87 /* MenuScene.swift in Sources */,
+				CE755860254095010083AA87 /* SceneManager.swift in Sources */,
 				CE7557DB253F323A0083AA87 /* AppDelegate.swift in Sources */,
 				CE755819253F47690083AA87 /* Variables.swift in Sources */,
+				CE75585C25408FCB0083AA87 /* GameBoardStruct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +316,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Stratagem/Stratagem.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 883DK65VTV;
 				INFOPLIST_FILE = Stratagem/Info.plist;
@@ -313,6 +336,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Stratagem/Stratagem.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 883DK65VTV;
 				INFOPLIST_FILE = Stratagem/Info.plist;

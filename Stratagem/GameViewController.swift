@@ -32,7 +32,7 @@ class GameViewController: UIViewController {
         return true
     }
     
-    func gameWindowOpen(isTrue: Bool){
+    public func gameWindowOpen(isTrue: Bool){
         if isTrue{
             // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
             if let scene = GKScene(fileNamed: "GameScene") {

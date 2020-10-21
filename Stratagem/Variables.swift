@@ -11,26 +11,37 @@
 
 import Foundation
 
+// enum keeps track of all possible materials
+// Not sure if nessasary
+enum materialTypes {
+    case metal, gold
+}
+
+// Materials follow this pattern
+// [enum, cooldownMax, timerLive, actual count]
+var materialDefaultStats = [
+    [materialTypes.metal, 2.0, 2.0, 0],
+    [materialTypes.gold, 7.0, 7.0, 0]
+]
 
 class Variables {
-
-    var gameResources = GameResources()
-    var gameResourceTimers = GameResourceTimers()
-    var gameRescourceTimersLive = GameRescourceTimersLive()
+    
+    
+    // Sets up the gameResourceList to contain all resource values
+    var gameResources: [resourceStatsList] = []
+    init() {
+        for a in materialDefaultStats {
+            gameResources.append(resourceStatsList(materialType: a[0] as? materialTypes, materialCooldown: a[1] as! Double, materialLiveTimer: a[2] as? Double))
+        }
+    }
 }
 
-struct GameResources {
-    var metal = 0
-    var gold = 0
-}
+struct resourceStatsList {
+    var materialType: materialTypes?
+    var materialCooldown: Double
+    var materialLiveTimer: Double?
+    var materialQuantity = 0
+    
 
-struct GameResourceTimers {
-    var metal = 2.0
-    var gold = 4.0
-}
-
-struct GameRescourceTimersLive {
-    var metal = 2.0
-    var gold = 4.0
 }
 
