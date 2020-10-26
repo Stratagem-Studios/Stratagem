@@ -19,23 +19,23 @@ class GameScene: SKScene {
     private var lastUpdateTime : TimeInterval = 0
     
     // PlayerVars instantiates the Variables class which holds the variables
+    // Materials follow this pattern
+    // [enum, cooldownMax, timerLive, actual count]
     var playerVars = Variables()
     
     // Runs when scene loaded, used to init things
     override func sceneDidLoad() {
         
-        // Sets timer to 0
-        
-        // Sets label vars to respective labels
+        // Sets label vars to respective labels and puts them in an array
         self.metalCount = self.childNode(withName: "//" + "metalCountLabel") as? SKLabelNode
         self.goldCount = self.childNode(withName: "//goldCountLabel") as? SKLabelNode
+        let labelArray = [metalCount, goldCount]
+        
         
     }
     
     
     func touchDown(atPoint pos : CGPoint) {
-        // playerVars.gameResources.metal += 1
-        
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -76,23 +76,24 @@ class GameScene: SKScene {
         updateResources(deltaTime: dt)
         
         // Seting all labels to refelect var values
-        metalCount?.text = "Metal: " + String(playerVars.gameResources[0].materialQuantity)
-        goldCount?.text = "Gold: " + String(playerVars.gameResources[1].materialQuantity)
+        metalCount?.text = "Metal: " + String(playerVars.gameResources[0].resourceQuantity)
+        goldCount?.text = "Gold: " + String(playerVars.gameResources[1].resourceQuantity)
     }
         
         
     func updateResources(deltaTime: Double)  {
-        playerVars.gameResources[0].materialLiveTimer? -= deltaTime
-        if (playerVars.gameResources[0].materialLiveTimer)! < 0 {
-            playerVars.gameResources[0].materialLiveTimer? = 2.0
-            playerVars.gameResources[0].materialQuantity += 1
-        }
-        playerVars.gameResources[1].materialLiveTimer? -= deltaTime
-        if (playerVars.gameResources[1].materialLiveTimer)! < 0 {
-            playerVars.gameResources[1].materialLiveTimer? = 7.0
-            playerVars.gameResources[1].materialQuantity += 1
+        for i in 0...1 {
+            let currentMaxTimer = playerVars.gameResources[i].resourceMaxTimer
+            playerVars.gameResources[i].resourceLiveTimer -= deltaTime
+            if playerVars.gameResources[i].resourceLiveTimer < 0 {
+                playerVars.gameResources[i].resourceLiveTimer = currentMaxTimer
+                playerVars.gameResources[i].resourceQuantity += 1
+            }
         }
 
     }
     
 }
+
+
+

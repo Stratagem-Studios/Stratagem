@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE6C46232545605600BD2A68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6C46222545605600BD2A68 /* LaunchScreen.storyboard */; };
+		CE6C462C2545FA9600BD2A68 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C462B2545FA9600BD2A68 /* LaunchScreen.swift */; };
 		CE7557DB253F323A0083AA87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7557DA253F323A0083AA87 /* AppDelegate.swift */; };
 		CE7557DD253F323A0083AA87 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE7557DC253F323A0083AA87 /* GameScene.sks */; };
 		CE7557DF253F323A0083AA87 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE7557DE253F323A0083AA87 /* Actions.sks */; };
@@ -19,10 +21,11 @@
 		CE755829253F50580083AA87 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE755828253F50580083AA87 /* MenuScene.sks */; };
 		CE755852254086C50083AA87 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE755851254086C50083AA87 /* CloudKit.framework */; };
 		CE75585C25408FCB0083AA87 /* GameBoardStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75585B25408FCB0083AA87 /* GameBoardStruct.swift */; };
-		CE755860254095010083AA87 /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75585F254095010083AA87 /* SceneManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE6C46222545605600BD2A68 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CE6C462B2545FA9600BD2A68 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		CE7557D7253F323A0083AA87 /* Stratagem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stratagem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7557DA253F323A0083AA87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE7557DC253F323A0083AA87 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -38,7 +41,6 @@
 		CE75584E254086BF0083AA87 /* Stratagem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stratagem.entitlements; sourceTree = "<group>"; };
 		CE755851254086C50083AA87 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		CE75585B25408FCB0083AA87 /* GameBoardStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardStruct.swift; sourceTree = "<group>"; };
-		CE75585F254095010083AA87 /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE6C462E2545FAA200BD2A68 /* Stroyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CE7557E4253F323A0083AA87 /* Main.storyboard */,
+				CE7557E2253F323A0083AA87 /* GameViewController.swift */,
+				CE6C46222545605600BD2A68 /* LaunchScreen.storyboard */,
+				CE6C462B2545FA9600BD2A68 /* LaunchScreen.swift */,
+			);
+			path = Stroyboards;
+			sourceTree = "<group>";
+		};
 		CE7557CE253F323A0083AA87 = {
 			isa = PBXGroup;
 			children = (
@@ -76,15 +89,13 @@
 				CE75584E254086BF0083AA87 /* Stratagem.entitlements */,
 				CE7557DE253F323A0083AA87 /* Actions.sks */,
 				CE7557DA253F323A0083AA87 /* AppDelegate.swift */,
-				CE7557E2253F323A0083AA87 /* GameViewController.swift */,
 				CE7557DC253F323A0083AA87 /* GameScene.sks */,
 				CE7557E0253F323A0083AA87 /* GameScene.swift */,
 				CE755828253F50580083AA87 /* MenuScene.sks */,
 				CE75581C253F4FAA0083AA87 /* MenuScene.swift */,
 				CE755818253F47690083AA87 /* Variables.swift */,
 				CE75585B25408FCB0083AA87 /* GameBoardStruct.swift */,
-				CE75585F254095010083AA87 /* SceneManager.swift */,
-				CE7557E4253F323A0083AA87 /* Main.storyboard */,
+				CE6C462E2545FAA200BD2A68 /* Stroyboards */,
 				CE7557E7253F323B0083AA87 /* Assets.xcassets */,
 				CE7557E9253F323B0083AA87 /* Info.plist */,
 			);
@@ -159,6 +170,7 @@
 				CE7557E6253F323A0083AA87 /* Main.storyboard in Resources */,
 				CE7557DD253F323A0083AA87 /* GameScene.sks in Resources */,
 				CE7557E8253F323B0083AA87 /* Assets.xcassets in Resources */,
+				CE6C46232545605600BD2A68 /* LaunchScreen.storyboard in Resources */,
 				CE755829253F50580083AA87 /* MenuScene.sks in Resources */,
 				CE7557DF253F323A0083AA87 /* Actions.sks in Resources */,
 			);
@@ -171,10 +183,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6C462C2545FA9600BD2A68 /* LaunchScreen.swift in Sources */,
 				CE7557E1253F323A0083AA87 /* GameScene.swift in Sources */,
 				CE7557E3253F323A0083AA87 /* GameViewController.swift in Sources */,
 				CE75581D253F4FAA0083AA87 /* MenuScene.swift in Sources */,
-				CE755860254095010083AA87 /* SceneManager.swift in Sources */,
 				CE7557DB253F323A0083AA87 /* AppDelegate.swift in Sources */,
 				CE755819253F47690083AA87 /* Variables.swift in Sources */,
 				CE75585C25408FCB0083AA87 /* GameBoardStruct.swift in Sources */,
@@ -324,7 +336,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ep2020.Stratagem;
+				PRODUCT_BUNDLE_IDENTIFIER = "stratagem---edu.stratagem";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -344,7 +356,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ep2020.Stratagem;
+				PRODUCT_BUNDLE_IDENTIFIER = "stratagem---edu.stratagem";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
