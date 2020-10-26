@@ -5,11 +5,10 @@
 //  Created by 90306997 on 10/20/20.
 //
 
-// This file contains all the game variables locally
-// Should consist of mostly structs
-// Needs to be implemented
+// This file contains all the game variables that will be held in the cloud for the duration of a game
 
 import Foundation
+import Combine
 
 // enum keeps track of all possible materials
 // Not sure if nessasary
@@ -24,7 +23,7 @@ var resourceDefaultStats = [
     [resourceTypes.gold, 7.0, 7.0, 0]
 ]
 
-class Variables {
+class GameVariables: ObservableObject {
     
     
     // Sets up the gameResourceList to contain all resource values

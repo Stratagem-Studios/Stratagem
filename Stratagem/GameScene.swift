@@ -8,6 +8,7 @@
 import SpriteKit
 import GameplayKit
 import UIKit
+import CloudKit
 
 class GameScene: SKScene {
 
@@ -21,10 +22,13 @@ class GameScene: SKScene {
     // PlayerVars instantiates the Variables class which holds the variables
     // Materials follow this pattern
     // [enum, cooldownMax, timerLive, actual count]
-    var playerVars = Variables()
+    var playerVars = GameVariables()
     
     // Runs when scene loaded, used to init things
     override func sceneDidLoad() {
+        
+        // Sets up initial user data
+        dataPull()
         
         // Sets label vars to respective labels and puts them in an array
         self.metalCount = self.childNode(withName: "//" + "metalCountLabel") as? SKLabelNode
@@ -90,7 +94,59 @@ class GameScene: SKScene {
                 playerVars.gameResources[i].resourceQuantity += 1
             }
         }
+    }
+    
+    
+    
+    
+    
+    // Cloud Data function
+    
+    // Eventually will direct data func flow
+    func dataPull(){
+        setInitialUserData()
+    }
+    
+    // Called at the begening of app load, will read preset user data
+    func setInitialUserData() {
+        // This sets the predicate to only show results that exist (hence true)
+        let pred = NSPredicate(value: true)
+        
+        // Sets up descriptor to arrange the data
+        let sort = NSSortDescriptor(key: "testIndex", ascending: true)
+        
+        // Defines the container to pull from using pred restrictions
+        let query = CKQuery(recordType: "PermanentUserData", predicate: pred)
+        
+        // Sets up a sorter to sort through the data
+        query.sortDescriptors = [sort]
 
+        // Pulls data from container
+        let operation = CKQueryOperation(query: query)
+        
+        // Sets up a few more restrictions on which data will be pulled
+        operation.desiredKeys = ["username"]
+        operation.resultsLimit = 50
+
+        // Records pulled data into local data
+        operation.recordFetchedBlock = { record in
+            print (record.recordID)
+            print (record["username"]!)
+         }
+
+        // Closes the query, alerts us if any errors
+         operation.queryCompletionBlock = {(cursor, error) in
+            DispatchQueue.main.async {
+            if error == nil {
+            } else {
+                    print(error!.localizedDescription)
+                }
+            }
+         }
+        
+        // Actually triggers the operation we have setup
+        CKContainer(identifier: "iCloud.stratagem").publicCloudDatabase.add(operation)
+        
     }
     
 }
