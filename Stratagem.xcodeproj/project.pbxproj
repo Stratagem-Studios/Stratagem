@@ -16,7 +16,8 @@
 		FF078BE8254F404B00E9FA7C /* BasicScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BE7254F404B00E9FA7C /* BasicScene.swift */; };
 		FF8C4E52254FB11800522756 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8C4E51254FB11800522756 /* CloudKit.framework */; };
 		FF8C4E5A254FB2CF00522756 /* GameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8C4E59254FB2CF00522756 /* GameVariables.swift */; };
-		FF8C4E62254FB32B00522756 /* SaveData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF8C4E60254FB32B00522756 /* SaveData.xcdatamodeld */; };
+		FF8C4E67254FBAFB00522756 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FF8C4E66254FBAFB00522756 /* .gitignore */; };
+		FF8C4E6C254FBCBD00522756 /* SaveData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF8C4E6A254FBCBD00522756 /* SaveData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +33,8 @@
 		FF8C4E4E254FB0A200522756 /* Stratagem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stratagem.entitlements; sourceTree = "<group>"; };
 		FF8C4E51254FB11800522756 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		FF8C4E59254FB2CF00522756 /* GameVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVariables.swift; sourceTree = "<group>"; };
-		FF8C4E61254FB32B00522756 /* SaveData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SaveData.xcdatamodel; sourceTree = "<group>"; };
+		FF8C4E66254FBAFB00522756 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		FF8C4E6B254FBCBD00522756 /* SaveData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SaveData.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 		FF078BBE254F3F8300E9FA7C = {
 			isa = PBXGroup;
 			children = (
+				FF8C4E66254FBAFB00522756 /* .gitignore */,
 				FF078BC9254F3F8300E9FA7C /* Stratagem */,
 				FF078BC8254F3F8300E9FA7C /* Products */,
 				FF8C4E50254FB11800522756 /* Frameworks */,
@@ -93,7 +96,7 @@
 		FF8C4E4D254FB04200522756 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				FF8C4E60254FB32B00522756 /* SaveData.xcdatamodeld */,
+				FF8C4E6A254FBCBD00522756 /* SaveData.xcdatamodeld */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF8C4E67254FBAFB00522756 /* .gitignore in Resources */,
 				FF078BD2254F3F8800E9FA7C /* Preview Assets.xcassets in Resources */,
 				FF078BE2254F3FFE00E9FA7C /* GameScene.sks in Resources */,
 				FF078BCF254F3F8800E9FA7C /* Assets.xcassets in Resources */,
@@ -176,11 +180,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF8C4E6C254FBCBD00522756 /* SaveData.xcdatamodeld in Sources */,
 				FF8C4E5A254FB2CF00522756 /* GameVariables.swift in Sources */,
 				FF078BE8254F404B00E9FA7C /* BasicScene.swift in Sources */,
 				FF078BDB254F3FBE00E9FA7C /* GameScene.swift in Sources */,
 				FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */,
-				FF8C4E62254FB32B00522756 /* SaveData.xcdatamodeld in Sources */,
 				FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,12 +378,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		FF8C4E60254FB32B00522756 /* SaveData.xcdatamodeld */ = {
+		FF8C4E6A254FBCBD00522756 /* SaveData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				FF8C4E61254FB32B00522756 /* SaveData.xcdatamodel */,
+				FF8C4E6B254FBCBD00522756 /* SaveData.xcdatamodel */,
 			);
-			currentVersion = FF8C4E61254FB32B00522756 /* SaveData.xcdatamodel */;
+			currentVersion = FF8C4E6B254FBCBD00522756 /* SaveData.xcdatamodel */;
 			path = SaveData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
