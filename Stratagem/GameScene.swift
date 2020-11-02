@@ -1,3 +1,10 @@
+//
+//  GameScene.swift
+//  Stratagem
+//
+//  Created by 90306997 on 10/20/20.
+//
+
 import SpriteKit
 import GameplayKit
 import UIKit
@@ -7,7 +14,7 @@ import CoreData
 class GameScene: SKScene {
     
     // Refrences the viewcontroller
-    //var viewController = GameViewController()
+    var viewController = GameViewController()
     
     // Popup used to get username
     let alert = UIAlertController(title: "Alert Title", message: "Alert Message", preferredStyle: .alert)
@@ -131,7 +138,9 @@ class GameScene: SKScene {
         setInitialUserData()
     }
     
-
+    
+    
+    
     
     
     // Called at the begening of app load, will read preset user data
@@ -181,3 +190,6 @@ class GameScene: SKScene {
         
     }
 }
+
+
+

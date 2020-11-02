@@ -6,8 +6,8 @@ struct ContentView: View {
         let scene = GameScene(fileNamed: "GameScene")
         //let scene = BasicScene()
         if let scene = scene {
-            scene.size = CGSize(width: 896, height: 414)
-            //scene.scaleMode = .fill
+            scene.size = CGSize(width: 300, height: 300)
+            scene.scaleMode = .fill
             return scene
         }
         return SKScene()
@@ -16,8 +16,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             SpriteView(scene: scene)
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                .edgesIgnoringSafeArea(.all)
+                .frame(width: 300, height: 300)
             Button(action: {
                 print("pressed button")
             }) {

@@ -1,7 +1,8 @@
-// This file contains all the game variables that will be held in the cloud for the duration of a game
+// This file contains all the game variables locally
+// Should consist of mostly structs
+// Needs to be implemented
 
 import Foundation
-import Combine
 
 // enum keeps track of all possible materials
 // Not sure if nessasary
@@ -16,7 +17,7 @@ var resourceDefaultStats = [
     [resourceTypes.gold, 7.0, 7.0, 0]
 ]
 
-class GameVariables: ObservableObject {
+class Variables {
     
     
     // Sets up the gameResourceList to contain all resource values
@@ -34,5 +35,4 @@ struct resourceStatsList {
     var resourceLiveTimer: Double
     var resourceQuantity = 0
     
-
 }
