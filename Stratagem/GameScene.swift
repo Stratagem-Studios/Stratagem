@@ -9,17 +9,26 @@ import SpriteKit
 import GameplayKit
 import UIKit
 import CloudKit
+import CoreData
 
 class GameScene: SKScene {
+    
+    // Refrences the viewcontroller
+    var viewController = GameViewController()
+    
+    // Popup used to get username
+    let alert = UIAlertController(title: "Alert Title", message: "Alert Message", preferredStyle: .alert)
 
     // These vars will be used to refrence labels
-    var metalCount: SKLabelNode?
-    var goldCount: SKLabelNode?
+    var metalCountLabel: SKLabelNode?
+    var goldCountLabel: SKLabelNode?
+    var usernameLabel: SKLabelNode?
     
     // This var keeps track of the most recent frame's time
     private var lastUpdateTime : TimeInterval = 0
     
-    // PlayerVars instantiates the Variables class which holds the variables
+    
+    // PlayerVars instantiates the GameVariables class which holds the variables for in-game use
     // Materials follow this pattern
     // [enum, cooldownMax, timerLive, actual count]
     var playerVars = GameVariables()
@@ -31,15 +40,32 @@ class GameScene: SKScene {
         dataPull()
         
         // Sets label vars to respective labels and puts them in an array
-        self.metalCount = self.childNode(withName: "//" + "metalCountLabel") as? SKLabelNode
-        self.goldCount = self.childNode(withName: "//goldCountLabel") as? SKLabelNode
-        let labelArray = [metalCount, goldCount]
-        
+        self.metalCountLabel = self.childNode(withName: "//" + "metalCountLabel") as? SKLabelNode
+        self.goldCountLabel = self.childNode(withName: "//goldCountLabel") as? SKLabelNode
+        self.usernameLabel = self.childNode(withName: "//usernameLabel") as? SKLabelNode
+        let labelArray = [metalCountLabel, goldCountLabel]
         
     }
-    
-    
     func touchDown(atPoint pos : CGPoint) {
+        
+        
+        // Sets up alert
+        let alert = UIAlertController(title: "Input Username", message: "do it", preferredStyle: UIAlertController.Style.alert)
+        alert.addTextField()
+        
+        // Sets up alert action
+        let action = UIAlertAction(title: "Ok", style: .default) { action in
+            // Handle when button is clicked
+            print(alert.textFields![0].text!)
+            NSUbiquitousKeyValueStore.default.set(alert.textFields![0].text!, forKey: "username")
+            NSUbiquitousKeyValueStore.default.synchronize()
+        }
+        alert.addAction(action)
+        
+        // Runs alert
+        if let vc = self.scene?.view?.window?.rootViewController {
+            vc.present(alert, animated: true, completion: nil)
+        }
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -80,8 +106,8 @@ class GameScene: SKScene {
         updateResources(deltaTime: dt)
         
         // Seting all labels to refelect var values
-        metalCount?.text = "Metal: " + String(playerVars.gameResources[0].resourceQuantity)
-        goldCount?.text = "Gold: " + String(playerVars.gameResources[1].resourceQuantity)
+        metalCountLabel?.text = "Metal: " + String(playerVars.gameResources[0].resourceQuantity)
+        goldCountLabel?.text = "Gold: " + String(playerVars.gameResources[1].resourceQuantity)
     }
         
         
@@ -99,16 +125,27 @@ class GameScene: SKScene {
     
     
     
+    // =========================================================================================
+    // Cloud Data code
     
-    // Cloud Data function
+    // Cloud data containers
+    let publicDatabase = CKContainer(identifier: "iCloud.stratagem").publicCloudDatabase;
+    let privateDatabase = CKContainer(identifier: "iCloud.stratagem").privateCloudDatabase;
+
     
     // Eventually will direct data func flow
     func dataPull(){
         setInitialUserData()
     }
     
+    
+    
+    
+    
+    
     // Called at the begening of app load, will read preset user data
     func setInitialUserData() {
+        // Cloud data serach parameters
         // This sets the predicate to only show results that exist (hence true)
         let pred = NSPredicate(value: true)
         
@@ -126,10 +163,12 @@ class GameScene: SKScene {
         
         // Sets up a few more restrictions on which data will be pulled
         operation.desiredKeys = ["username"]
-        operation.resultsLimit = 50
 
         // Records pulled data into local data
         operation.recordFetchedBlock = { record in
+            if record.isEqual("Changed Later") {
+                print("empty")
+            }
             print (record.recordID)
             print (record["username"]!)
          }
@@ -144,11 +183,12 @@ class GameScene: SKScene {
             }
          }
         
-        // Actually triggers the operation we have setup
-        CKContainer(identifier: "iCloud.stratagem").publicCloudDatabase.add(operation)
+        // Actually triggers the operation that was setup
+        privateDatabase.add(operation)
+        
+        
         
     }
-    
 }
 
 

@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import Foundation
+import CloudKit
+import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,6 +38,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
-
+    lazy var persistentContainer: NSPersistentCloudKitContainer = {
+        
+            let container = NSPersistentCloudKitContainer(name: "SaveData")
+            container.loadPersistentStores(completionHandler: {(storeDescription, error) in
+                if let error = error as NSError? {
+                    fatalError("Unresolved error \(error), \(error.userInfo)")
+                }
+            })
+            return container
+        }()
+    
+    // these staic vars make accessing persistent containers much simpler
+    static var persistentContainer: NSPersistentContainer {
+    return (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+    }
+    static var viewContext: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
+    
 }
 

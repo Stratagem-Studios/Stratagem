@@ -10,8 +10,22 @@
 
 import CloudKit
 import Foundation
+import CoreData
 
 
-class UserData: NSObject {
-    var PlayerName: String!
+class UserData: NSManagedObject {
+    static func fetchAll(viewContext: NSManagedObjectContext = AppDelegate.viewContext) -> [UserData] {
+        let request : NSFetchRequest<UserData> = UserData.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: “username”, ascending: true)]
+        guard let tasks = try? AppDelegate.viewContext.fetch(request) else {
+            return []
+        }
+        return tasks
+    }
+    
+    static func deleteAll(viewContext: NSManagedObjectContext = AppDelegate.viewContext) {
+        UserData.fetchAll(viewContext: viewContext).forEach({ viewContext.delete($0) })
+        try? viewContext.save()
+    }
+    
 }
