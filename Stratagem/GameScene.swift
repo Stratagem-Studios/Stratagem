@@ -1,17 +1,10 @@
-//
-//  GameScene.swift
-//  Stratagem
-//
-//  Created by 90306997 on 10/20/20.
-//
-
 import SpriteKit
 import GameplayKit
 import UIKit
 
 class GameScene: SKScene {
 
-    // These vars will be used to refrence labels
+    // These vars will be used to reference labels
     var metalCount: SKLabelNode?
     var goldCount: SKLabelNode?
     
@@ -27,7 +20,7 @@ class GameScene: SKScene {
     override func sceneDidLoad() {
         
         // Sets label vars to respective labels and puts them in an array
-        self.metalCount = self.childNode(withName: "//" + "metalCountLabel") as? SKLabelNode
+        self.metalCount = self.childNode(withName: "//metalCountLabel") as? SKLabelNode
         self.goldCount = self.childNode(withName: "//goldCountLabel") as? SKLabelNode
         let labelArray = [metalCount, goldCount]
         
@@ -94,6 +87,3 @@ class GameScene: SKScene {
     }
     
 }
-
-
-
