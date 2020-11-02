@@ -7,119 +7,90 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE6C46232545605600BD2A68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6C46222545605600BD2A68 /* LaunchScreen.storyboard */; };
-		CE6C462C2545FA9600BD2A68 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C462B2545FA9600BD2A68 /* LaunchScreen.swift */; };
-		CE7557DB253F323A0083AA87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7557DA253F323A0083AA87 /* AppDelegate.swift */; };
-		CE7557DD253F323A0083AA87 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE7557DC253F323A0083AA87 /* GameScene.sks */; };
-		CE7557DF253F323A0083AA87 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE7557DE253F323A0083AA87 /* Actions.sks */; };
-		CE7557E1253F323A0083AA87 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7557E0253F323A0083AA87 /* GameScene.swift */; };
-		CE7557E3253F323A0083AA87 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7557E2253F323A0083AA87 /* GameViewController.swift */; };
-		CE7557E6253F323A0083AA87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7557E4253F323A0083AA87 /* Main.storyboard */; };
-		CE7557E8253F323B0083AA87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7557E7253F323B0083AA87 /* Assets.xcassets */; };
-		CE755819253F47690083AA87 /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE755818253F47690083AA87 /* Variables.swift */; };
-		CE75581D253F4FAA0083AA87 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75581C253F4FAA0083AA87 /* MenuScene.swift */; };
-		CE755829253F50580083AA87 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE755828253F50580083AA87 /* MenuScene.sks */; };
-		CE755852254086C50083AA87 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE755851254086C50083AA87 /* CloudKit.framework */; };
-		CE75585C25408FCB0083AA87 /* GameBoardStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75585B25408FCB0083AA87 /* GameBoardStruct.swift */; };
+		FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */; };
+		FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BCC254F3F8300E9FA7C /* ContentView.swift */; };
+		FF078BCF254F3F8800E9FA7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF078BCE254F3F8800E9FA7C /* Assets.xcassets */; };
+		FF078BD2254F3F8800E9FA7C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF078BD1254F3F8800E9FA7C /* Preview Assets.xcassets */; };
+		FF078BDB254F3FBE00E9FA7C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BDA254F3FBE00E9FA7C /* GameScene.swift */; };
+		FF078BE2254F3FFE00E9FA7C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF078BE1254F3FFE00E9FA7C /* GameScene.sks */; };
+		FF078BE5254F403800E9FA7C /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BE4254F403800E9FA7C /* Variables.swift */; };
+		FF078BE8254F404B00E9FA7C /* BasicScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BE7254F404B00E9FA7C /* BasicScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE6C46222545605600BD2A68 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		CE6C462B2545FA9600BD2A68 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
-		CE7557D7253F323A0083AA87 /* Stratagem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stratagem.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE7557DA253F323A0083AA87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE7557DC253F323A0083AA87 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		CE7557DE253F323A0083AA87 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		CE7557E0253F323A0083AA87 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		CE7557E2253F323A0083AA87 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		CE7557E5253F323A0083AA87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CE7557E7253F323B0083AA87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CE7557E9253F323B0083AA87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE755818253F47690083AA87 /* Variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
-		CE75581C253F4FAA0083AA87 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
-		CE755828253F50580083AA87 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
-		CE75584E254086BF0083AA87 /* Stratagem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stratagem.entitlements; sourceTree = "<group>"; };
-		CE755851254086C50083AA87 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		CE75585B25408FCB0083AA87 /* GameBoardStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardStruct.swift; sourceTree = "<group>"; };
+		FF078BC7254F3F8300E9FA7C /* Stratagem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stratagem.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StratagemApp.swift; sourceTree = "<group>"; };
+		FF078BCC254F3F8300E9FA7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FF078BCE254F3F8800E9FA7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FF078BD1254F3F8800E9FA7C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FF078BD3254F3F8800E9FA7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF078BDA254F3FBE00E9FA7C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		FF078BE1254F3FFE00E9FA7C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		FF078BE4254F403800E9FA7C /* Variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
+		FF078BE7254F404B00E9FA7C /* BasicScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CE7557D4253F323A0083AA87 /* Frameworks */ = {
+		FF078BC4254F3F8300E9FA7C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE755852254086C50083AA87 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CE6C462E2545FAA200BD2A68 /* Stroyboards */ = {
+		FF078BBE254F3F8300E9FA7C = {
 			isa = PBXGroup;
 			children = (
-				CE7557E4253F323A0083AA87 /* Main.storyboard */,
-				CE7557E2253F323A0083AA87 /* GameViewController.swift */,
-				CE6C46222545605600BD2A68 /* LaunchScreen.storyboard */,
-				CE6C462B2545FA9600BD2A68 /* LaunchScreen.swift */,
-			);
-			path = Stroyboards;
-			sourceTree = "<group>";
-		};
-		CE7557CE253F323A0083AA87 = {
-			isa = PBXGroup;
-			children = (
-				CE7557D9253F323A0083AA87 /* Stratagem */,
-				CE7557D8253F323A0083AA87 /* Products */,
-				CE755850254086C50083AA87 /* Frameworks */,
+				FF078BC9254F3F8300E9FA7C /* Stratagem */,
+				FF078BC8254F3F8300E9FA7C /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		CE7557D8253F323A0083AA87 /* Products */ = {
+		FF078BC8254F3F8300E9FA7C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CE7557D7253F323A0083AA87 /* Stratagem.app */,
+				FF078BC7254F3F8300E9FA7C /* Stratagem.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CE7557D9253F323A0083AA87 /* Stratagem */ = {
+		FF078BC9254F3F8300E9FA7C /* Stratagem */ = {
 			isa = PBXGroup;
 			children = (
-				CE75584E254086BF0083AA87 /* Stratagem.entitlements */,
-				CE7557DE253F323A0083AA87 /* Actions.sks */,
-				CE7557DA253F323A0083AA87 /* AppDelegate.swift */,
-				CE7557DC253F323A0083AA87 /* GameScene.sks */,
-				CE7557E0253F323A0083AA87 /* GameScene.swift */,
-				CE755828253F50580083AA87 /* MenuScene.sks */,
-				CE75581C253F4FAA0083AA87 /* MenuScene.swift */,
-				CE755818253F47690083AA87 /* Variables.swift */,
-				CE75585B25408FCB0083AA87 /* GameBoardStruct.swift */,
-				CE6C462E2545FAA200BD2A68 /* Stroyboards */,
-				CE7557E7253F323B0083AA87 /* Assets.xcassets */,
-				CE7557E9253F323B0083AA87 /* Info.plist */,
+				FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */,
+				FF078BCC254F3F8300E9FA7C /* ContentView.swift */,
+				FF078BCE254F3F8800E9FA7C /* Assets.xcassets */,
+				FF078BD3254F3F8800E9FA7C /* Info.plist */,
+				FF078BD0254F3F8800E9FA7C /* Preview Content */,
+				FF078BDA254F3FBE00E9FA7C /* GameScene.swift */,
+				FF078BE1254F3FFE00E9FA7C /* GameScene.sks */,
+				FF078BE4254F403800E9FA7C /* Variables.swift */,
+				FF078BE7254F404B00E9FA7C /* BasicScene.swift */,
 			);
 			path = Stratagem;
 			sourceTree = "<group>";
 		};
-		CE755850254086C50083AA87 /* Frameworks */ = {
+		FF078BD0254F3F8800E9FA7C /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				CE755851254086C50083AA87 /* CloudKit.framework */,
+				FF078BD1254F3F8800E9FA7C /* Preview Assets.xcassets */,
 			);
-			name = Frameworks;
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CE7557D6253F323A0083AA87 /* Stratagem */ = {
+		FF078BC6254F3F8300E9FA7C /* Stratagem */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CE7557EC253F323B0083AA87 /* Build configuration list for PBXNativeTarget "Stratagem" */;
+			buildConfigurationList = FF078BD6254F3F8800E9FA7C /* Build configuration list for PBXNativeTarget "Stratagem" */;
 			buildPhases = (
-				CE7557D3253F323A0083AA87 /* Sources */,
-				CE7557D4253F323A0083AA87 /* Frameworks */,
-				CE7557D5253F323A0083AA87 /* Resources */,
+				FF078BC3254F3F8300E9FA7C /* Sources */,
+				FF078BC4254F3F8300E9FA7C /* Frameworks */,
+				FF078BC5254F3F8300E9FA7C /* Resources */,
 			);
 			buildRules = (
 			);
@@ -127,24 +98,24 @@
 			);
 			name = Stratagem;
 			productName = Stratagem;
-			productReference = CE7557D7253F323A0083AA87 /* Stratagem.app */;
+			productReference = FF078BC7254F3F8300E9FA7C /* Stratagem.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		CE7557CF253F323A0083AA87 /* Project object */ = {
+		FF078BBF254F3F8300E9FA7C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
-					CE7557D6253F323A0083AA87 = {
+					FF078BC6254F3F8300E9FA7C = {
 						CreatedOnToolsVersion = 12.0;
 					};
 				};
 			};
-			buildConfigurationList = CE7557D2253F323A0083AA87 /* Build configuration list for PBXProject "Stratagem" */;
+			buildConfigurationList = FF078BC2254F3F8300E9FA7C /* Build configuration list for PBXProject "Stratagem" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -152,62 +123,46 @@
 				en,
 				Base,
 			);
-			mainGroup = CE7557CE253F323A0083AA87;
-			productRefGroup = CE7557D8253F323A0083AA87 /* Products */;
+			mainGroup = FF078BBE254F3F8300E9FA7C;
+			productRefGroup = FF078BC8254F3F8300E9FA7C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CE7557D6253F323A0083AA87 /* Stratagem */,
+				FF078BC6254F3F8300E9FA7C /* Stratagem */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CE7557D5253F323A0083AA87 /* Resources */ = {
+		FF078BC5254F3F8300E9FA7C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE7557E6253F323A0083AA87 /* Main.storyboard in Resources */,
-				CE7557DD253F323A0083AA87 /* GameScene.sks in Resources */,
-				CE7557E8253F323B0083AA87 /* Assets.xcassets in Resources */,
-				CE6C46232545605600BD2A68 /* LaunchScreen.storyboard in Resources */,
-				CE755829253F50580083AA87 /* MenuScene.sks in Resources */,
-				CE7557DF253F323A0083AA87 /* Actions.sks in Resources */,
+				FF078BD2254F3F8800E9FA7C /* Preview Assets.xcassets in Resources */,
+				FF078BE2254F3FFE00E9FA7C /* GameScene.sks in Resources */,
+				FF078BCF254F3F8800E9FA7C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CE7557D3253F323A0083AA87 /* Sources */ = {
+		FF078BC3254F3F8300E9FA7C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE6C462C2545FA9600BD2A68 /* LaunchScreen.swift in Sources */,
-				CE7557E1253F323A0083AA87 /* GameScene.swift in Sources */,
-				CE7557E3253F323A0083AA87 /* GameViewController.swift in Sources */,
-				CE75581D253F4FAA0083AA87 /* MenuScene.swift in Sources */,
-				CE7557DB253F323A0083AA87 /* AppDelegate.swift in Sources */,
-				CE755819253F47690083AA87 /* Variables.swift in Sources */,
-				CE75585C25408FCB0083AA87 /* GameBoardStruct.swift in Sources */,
+				FF078BE8254F404B00E9FA7C /* BasicScene.swift in Sources */,
+				FF078BDB254F3FBE00E9FA7C /* GameScene.swift in Sources */,
+				FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */,
+				FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */,
+				FF078BE5254F403800E9FA7C /* Variables.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		CE7557E4253F323A0083AA87 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CE7557E5253F323A0083AA87 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		CE7557EA253F323B0083AA87 /* Debug */ = {
+		FF078BD4254F3F8800E9FA7C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -268,7 +223,7 @@
 			};
 			name = Debug;
 		};
-		CE7557EB253F323B0083AA87 /* Release */ = {
+		FF078BD5254F3F8800E9FA7C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -323,40 +278,44 @@
 			};
 			name = Release;
 		};
-		CE7557ED253F323B0083AA87 /* Debug */ = {
+		FF078BD7254F3F8800E9FA7C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Stratagem/Stratagem.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 883DK65VTV;
+				DEVELOPMENT_ASSET_PATHS = "\"Stratagem/Preview Content\"";
+				DEVELOPMENT_TEAM = SM67NNK6C4;
+				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Stratagem/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "stratagem---edu.stratagem";
+				PRODUCT_BUNDLE_IDENTIFIER = ep64004080.Stratagem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		CE7557EE253F323B0083AA87 /* Release */ = {
+		FF078BD8254F3F8800E9FA7C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Stratagem/Stratagem.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 883DK65VTV;
+				DEVELOPMENT_ASSET_PATHS = "\"Stratagem/Preview Content\"";
+				DEVELOPMENT_TEAM = SM67NNK6C4;
+				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Stratagem/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "stratagem---edu.stratagem";
+				PRODUCT_BUNDLE_IDENTIFIER = ep64004080.Stratagem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -366,25 +325,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CE7557D2253F323A0083AA87 /* Build configuration list for PBXProject "Stratagem" */ = {
+		FF078BC2254F3F8300E9FA7C /* Build configuration list for PBXProject "Stratagem" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CE7557EA253F323B0083AA87 /* Debug */,
-				CE7557EB253F323B0083AA87 /* Release */,
+				FF078BD4254F3F8800E9FA7C /* Debug */,
+				FF078BD5254F3F8800E9FA7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE7557EC253F323B0083AA87 /* Build configuration list for PBXNativeTarget "Stratagem" */ = {
+		FF078BD6254F3F8800E9FA7C /* Build configuration list for PBXNativeTarget "Stratagem" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CE7557ED253F323B0083AA87 /* Debug */,
-				CE7557EE253F323B0083AA87 /* Release */,
+				FF078BD7254F3F8800E9FA7C /* Debug */,
+				FF078BD8254F3F8800E9FA7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = CE7557CF253F323A0083AA87 /* Project object */;
+	rootObject = FF078BBF254F3F8300E9FA7C /* Project object */;
 }
