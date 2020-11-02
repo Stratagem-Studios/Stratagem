@@ -13,8 +13,11 @@
 		FF078BD2254F3F8800E9FA7C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF078BD1254F3F8800E9FA7C /* Preview Assets.xcassets */; };
 		FF078BDB254F3FBE00E9FA7C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BDA254F3FBE00E9FA7C /* GameScene.swift */; };
 		FF078BE2254F3FFE00E9FA7C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF078BE1254F3FFE00E9FA7C /* GameScene.sks */; };
-		FF078BE5254F403800E9FA7C /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BE4254F403800E9FA7C /* Variables.swift */; };
 		FF078BE8254F404B00E9FA7C /* BasicScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BE7254F404B00E9FA7C /* BasicScene.swift */; };
+		FF8C4E52254FB11800522756 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8C4E51254FB11800522756 /* CloudKit.framework */; };
+		FF8C4E5A254FB2CF00522756 /* GameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8C4E59254FB2CF00522756 /* GameVariables.swift */; };
+		FF8C4E67254FBAFB00522756 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FF8C4E66254FBAFB00522756 /* .gitignore */; };
+		FF8C4E6C254FBCBD00522756 /* SaveData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF8C4E6A254FBCBD00522756 /* SaveData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +29,12 @@
 		FF078BD3254F3F8800E9FA7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF078BDA254F3FBE00E9FA7C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		FF078BE1254F3FFE00E9FA7C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		FF078BE4254F403800E9FA7C /* Variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
 		FF078BE7254F404B00E9FA7C /* BasicScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicScene.swift; sourceTree = "<group>"; };
+		FF8C4E4E254FB0A200522756 /* Stratagem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stratagem.entitlements; sourceTree = "<group>"; };
+		FF8C4E51254FB11800522756 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		FF8C4E59254FB2CF00522756 /* GameVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVariables.swift; sourceTree = "<group>"; };
+		FF8C4E66254FBAFB00522756 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		FF8C4E6B254FBCBD00522756 /* SaveData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SaveData.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF8C4E52254FB11800522756 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,8 +52,10 @@
 		FF078BBE254F3F8300E9FA7C = {
 			isa = PBXGroup;
 			children = (
-				FF078BC8254F3F8300E9FA7C /* Products */,
+				FF8C4E66254FBAFB00522756 /* .gitignore */,
 				FF078BC9254F3F8300E9FA7C /* Stratagem */,
+				FF078BC8254F3F8300E9FA7C /* Products */,
+				FF8C4E50254FB11800522756 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,15 +70,17 @@
 		FF078BC9254F3F8300E9FA7C /* Stratagem */ = {
 			isa = PBXGroup;
 			children = (
-				FF078BD0254F3F8800E9FA7C /* Preview Content */,
-				FF078BCE254F3F8800E9FA7C /* Assets.xcassets */,
-				FF078BE7254F404B00E9FA7C /* BasicScene.swift */,
-				FF078BCC254F3F8300E9FA7C /* ContentView.swift */,
+				FF8C4E4E254FB0A200522756 /* Stratagem.entitlements */,
 				FF078BE1254F3FFE00E9FA7C /* GameScene.sks */,
 				FF078BDA254F3FBE00E9FA7C /* GameScene.swift */,
-				FF078BD3254F3F8800E9FA7C /* Info.plist */,
+				FF8C4E59254FB2CF00522756 /* GameVariables.swift */,
+				FF8C4E4D254FB04200522756 /* Core Data */,
 				FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */,
-				FF078BE4254F403800E9FA7C /* Variables.swift */,
+				FF078BCC254F3F8300E9FA7C /* ContentView.swift */,
+				FF078BCE254F3F8800E9FA7C /* Assets.xcassets */,
+				FF078BD0254F3F8800E9FA7C /* Preview Content */,
+				FF078BE7254F404B00E9FA7C /* BasicScene.swift */,
+				FF078BD3254F3F8800E9FA7C /* Info.plist */,
 			);
 			path = Stratagem;
 			sourceTree = "<group>";
@@ -79,6 +91,22 @@
 				FF078BD1254F3F8800E9FA7C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FF8C4E4D254FB04200522756 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				FF8C4E6A254FBCBD00522756 /* SaveData.xcdatamodeld */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		FF8C4E50254FB11800522756 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FF8C4E51254FB11800522756 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,7 +143,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FF078BC2254F3F8300E9FA7C /* Build configuration list for PBXProject "stratagem" */;
+			buildConfigurationList = FF078BC2254F3F8300E9FA7C /* Build configuration list for PBXProject "Stratagem" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -138,6 +166,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF8C4E67254FBAFB00522756 /* .gitignore in Resources */,
 				FF078BD2254F3F8800E9FA7C /* Preview Assets.xcassets in Resources */,
 				FF078BE2254F3FFE00E9FA7C /* GameScene.sks in Resources */,
 				FF078BCF254F3F8800E9FA7C /* Assets.xcassets in Resources */,
@@ -151,11 +180,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF8C4E6C254FBCBD00522756 /* SaveData.xcdatamodeld in Sources */,
+				FF8C4E5A254FB2CF00522756 /* GameVariables.swift in Sources */,
 				FF078BE8254F404B00E9FA7C /* BasicScene.swift in Sources */,
 				FF078BDB254F3FBE00E9FA7C /* GameScene.swift in Sources */,
 				FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */,
 				FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */,
-				FF078BE5254F403800E9FA7C /* Variables.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,9 +313,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Stratagem/Stratagem.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Stratagem/Preview Content\"";
-				DEVELOPMENT_TEAM = SM67NNK6C4;
+				DEVELOPMENT_TEAM = 883DK65VTV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Stratagem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -293,7 +324,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Stratagem-Root";
+				PRODUCT_BUNDLE_IDENTIFIER = "stratagem---edu.stratagem";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -305,9 +336,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Stratagem/Stratagem.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Stratagem/Preview Content\"";
-				DEVELOPMENT_TEAM = SM67NNK6C4;
+				DEVELOPMENT_TEAM = 883DK65VTV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Stratagem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -315,7 +347,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Stratagem-Root";
+				PRODUCT_BUNDLE_IDENTIFIER = "stratagem---edu.stratagem";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -325,7 +357,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FF078BC2254F3F8300E9FA7C /* Build configuration list for PBXProject "stratagem" */ = {
+		FF078BC2254F3F8300E9FA7C /* Build configuration list for PBXProject "Stratagem" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF078BD4254F3F8800E9FA7C /* Debug */,
@@ -344,6 +376,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FF8C4E6A254FBCBD00522756 /* SaveData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FF8C4E6B254FBCBD00522756 /* SaveData.xcdatamodel */,
+			);
+			currentVersion = FF8C4E6B254FBCBD00522756 /* SaveData.xcdatamodel */;
+			path = SaveData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FF078BBF254F3F8300E9FA7C /* Project object */;
 }
