@@ -25,3 +25,15 @@ public struct BasicButtonStyle: ButtonStyle {
         //.scaleEffect(configuration.isPressed ? 1.3 : 1.0)
     }
 }
+
+struct ButtonStyles_Previews: PreviewProvider {
+    static var previews: some View {
+        Button(action: {
+            print("pressed button")
+        }) {
+            Text("PLAY")
+        }.buttonStyle(BasicButtonStyle())
+        .previewLayout(PreviewLayout.sizeThatFits)
+        .padding()
+    }
+}

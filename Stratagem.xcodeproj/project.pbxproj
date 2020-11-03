@@ -111,18 +111,14 @@
 		FF078BC9254F3F8300E9FA7C /* Stratagem */ = {
 			isa = PBXGroup;
 			children = (
+				FF8C4E4E254FB0A200522756 /* Stratagem.entitlements */,
+				FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */,
+				FF8C4E59254FB2CF00522756 /* GameVariables.swift */,
+				FFE1000B2551B7F500DD6608 /* Game Scenes */,
 				FF0857472550D8F200F0F220 /* UI Element Styles */,
 				FF0857412550D7AE00F0F220 /* UI Views */,
-				FF8C4E4E254FB0A200522756 /* Stratagem.entitlements */,
-				FF078BE1254F3FFE00E9FA7C /* GameScene.sks */,
-				FF078BDA254F3FBE00E9FA7C /* GameScene.swift */,
-				FF8C4E59254FB2CF00522756 /* GameVariables.swift */,
 				FF8C4E4D254FB04200522756 /* Core Data */,
-				FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */,
-				FF078BCC254F3F8300E9FA7C /* ContentView.swift */,
-				FF078BCE254F3F8800E9FA7C /* Assets.xcassets */,
 				FF078BD0254F3F8800E9FA7C /* Preview Content */,
-				FF078BE7254F404B00E9FA7C /* BasicScene.swift */,
 				FF078BD3254F3F8800E9FA7C /* Info.plist */,
 			);
 			path = Stratagem;
@@ -139,6 +135,7 @@
 		FF0857412550D7AE00F0F220 /* UI Views */ = {
 			isa = PBXGroup;
 			children = (
+				FF078BCC254F3F8300E9FA7C /* ContentView.swift */,
 			);
 			path = "UI Views";
 			sourceTree = "<group>";
@@ -180,6 +177,7 @@
 		FF8C4E4D254FB04200522756 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				FF078BCE254F3F8800E9FA7C /* Assets.xcassets */,
 				FF8C4E6A254FBCBD00522756 /* SaveData.xcdatamodeld */,
 			);
 			path = "Core Data";
@@ -191,6 +189,16 @@
 				FF8C4E51254FB11800522756 /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FFE1000B2551B7F500DD6608 /* Game Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				FF078BE7254F404B00E9FA7C /* BasicScene.swift */,
+				FF078BE1254F3FFE00E9FA7C /* GameScene.sks */,
+				FF078BDA254F3FBE00E9FA7C /* GameScene.swift */,
+			);
+			path = "Game Scenes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

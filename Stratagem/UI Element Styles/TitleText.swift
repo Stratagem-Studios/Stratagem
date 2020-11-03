@@ -26,3 +26,11 @@ public struct TitleText: View {
             .foregroundColor(.white)
     }
 }
+
+struct TitleText_Previews: PreviewProvider {
+    static var previews: some View {
+        TitleText("Hello, World!")
+        .previewLayout(PreviewLayout.sizeThatFits)
+        .padding()
+    }
+}
