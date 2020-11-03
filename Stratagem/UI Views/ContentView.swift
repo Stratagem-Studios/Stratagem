@@ -18,10 +18,13 @@ struct ContentView: View {
             SpriteView(scene: scene)
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                 .edgesIgnoringSafeArea(.all)
-            Button(action: {
-                print("pressed button")
-            }) {
-                Text("SwiftUI Button")
+            VStack {
+                TitleText("STRATAGEM")
+                Button(action: {
+                    print("pressed button")
+                }) {
+                    Text("PLAY")
+                }.buttonStyle(BasicButtonStyle())
             }
         }.statusBar(hidden: true)
     }
