@@ -92,9 +92,9 @@
 		FF078BBE254F3F8300E9FA7C = {
 			isa = PBXGroup;
 			children = (
-				FF08575A2550FC1700F0F220 /* Fonts */,
 				FF8C4E66254FBAFB00522756 /* .gitignore */,
 				FF078BC9254F3F8300E9FA7C /* Stratagem */,
+				FF08575A2550FC1700F0F220 /* Fonts */,
 				FF078BC8254F3F8300E9FA7C /* Products */,
 				FF8C4E50254FB11800522756 /* Frameworks */,
 			);
