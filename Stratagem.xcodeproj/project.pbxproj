@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF012D3B2551B0420017E288 /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF012D3A2551B0420017E288 /* TitleText.swift */; };
 		FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */; };
 		FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BCC254F3F8300E9FA7C /* ContentView.swift */; };
 		FF078BCF254F3F8800E9FA7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF078BCE254F3F8800E9FA7C /* Assets.xcassets */; };
@@ -14,6 +15,25 @@
 		FF078BDB254F3FBE00E9FA7C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BDA254F3FBE00E9FA7C /* GameScene.swift */; };
 		FF078BE2254F3FFE00E9FA7C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF078BE1254F3FFE00E9FA7C /* GameScene.sks */; };
 		FF078BE8254F404B00E9FA7C /* BasicScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BE7254F404B00E9FA7C /* BasicScene.swift */; };
+		FF0857492550F39300F0F220 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0857482550F39300F0F220 /* ButtonStyles.swift */; };
+		FF08576D2550FC5100F0F220 /* Montserrat-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08575B2550FC4E00F0F220 /* Montserrat-ExtraLightItalic.ttf */; };
+		FF08576E2550FC5100F0F220 /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08575C2550FC4E00F0F220 /* Montserrat-ExtraLight.ttf */; };
+		FF08576F2550FC5100F0F220 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08575D2550FC4E00F0F220 /* Montserrat-ExtraBold.ttf */; };
+		FF0857702550FC5100F0F220 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08575E2550FC4E00F0F220 /* Montserrat-Bold.ttf */; };
+		FF0857712550FC5100F0F220 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08575F2550FC4E00F0F220 /* Montserrat-SemiBold.ttf */; };
+		FF0857722550FC5100F0F220 /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF0857602550FC4E00F0F220 /* Montserrat-LightItalic.ttf */; };
+		FF0857732550FC5100F0F220 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF0857612550FC4F00F0F220 /* Montserrat-ExtraBoldItalic.ttf */; };
+		FF0857742550FC5100F0F220 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF0857622550FC4F00F0F220 /* Montserrat-Medium.ttf */; };
+		FF0857752550FC5100F0F220 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF0857632550FC4F00F0F220 /* Montserrat-SemiBoldItalic.ttf */; };
+		FF0857762550FC5100F0F220 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF0857642550FC4F00F0F220 /* Montserrat-Thin.ttf */; };
+		FF0857772550FC5100F0F220 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF0857652550FC4F00F0F220 /* Montserrat-Black.ttf */; };
+		FF0857782550FC5100F0F220 /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF0857662550FC4F00F0F220 /* Montserrat-BoldItalic.ttf */; };
+		FF0857792550FC5100F0F220 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF0857672550FC5000F0F220 /* Montserrat-ThinItalic.ttf */; };
+		FF08577A2550FC5100F0F220 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF0857682550FC5000F0F220 /* Montserrat-Light.ttf */; };
+		FF08577B2550FC5100F0F220 /* Montserrat-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF0857692550FC5000F0F220 /* Montserrat-MediumItalic.ttf */; };
+		FF08577C2550FC5100F0F220 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08576A2550FC5000F0F220 /* Montserrat-Regular.ttf */; };
+		FF08577D2550FC5100F0F220 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08576B2550FC5100F0F220 /* Montserrat-BlackItalic.ttf */; };
+		FF08577E2550FC5100F0F220 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08576C2550FC5100F0F220 /* Montserrat-Italic.ttf */; };
 		FF8C4E52254FB11800522756 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8C4E51254FB11800522756 /* CloudKit.framework */; };
 		FF8C4E5A254FB2CF00522756 /* GameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8C4E59254FB2CF00522756 /* GameVariables.swift */; };
 		FF8C4E67254FBAFB00522756 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FF8C4E66254FBAFB00522756 /* .gitignore */; };
@@ -21,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF012D3A2551B0420017E288 /* TitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
 		FF078BC7254F3F8300E9FA7C /* Stratagem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stratagem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StratagemApp.swift; sourceTree = "<group>"; };
 		FF078BCC254F3F8300E9FA7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -30,6 +51,25 @@
 		FF078BDA254F3FBE00E9FA7C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		FF078BE1254F3FFE00E9FA7C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		FF078BE7254F404B00E9FA7C /* BasicScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicScene.swift; sourceTree = "<group>"; };
+		FF0857482550F39300F0F220 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		FF08575B2550FC4E00F0F220 /* Montserrat-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		FF08575C2550FC4E00F0F220 /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
+		FF08575D2550FC4E00F0F220 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
+		FF08575E2550FC4E00F0F220 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		FF08575F2550FC4E00F0F220 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		FF0857602550FC4E00F0F220 /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
+		FF0857612550FC4F00F0F220 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		FF0857622550FC4F00F0F220 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		FF0857632550FC4F00F0F220 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		FF0857642550FC4F00F0F220 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
+		FF0857652550FC4F00F0F220 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
+		FF0857662550FC4F00F0F220 /* Montserrat-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BoldItalic.ttf"; sourceTree = "<group>"; };
+		FF0857672550FC5000F0F220 /* Montserrat-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ThinItalic.ttf"; sourceTree = "<group>"; };
+		FF0857682550FC5000F0F220 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		FF0857692550FC5000F0F220 /* Montserrat-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-MediumItalic.ttf"; sourceTree = "<group>"; };
+		FF08576A2550FC5000F0F220 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		FF08576B2550FC5100F0F220 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BlackItalic.ttf"; sourceTree = "<group>"; };
+		FF08576C2550FC5100F0F220 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		FF8C4E4E254FB0A200522756 /* Stratagem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stratagem.entitlements; sourceTree = "<group>"; };
 		FF8C4E51254FB11800522756 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		FF8C4E59254FB2CF00522756 /* GameVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVariables.swift; sourceTree = "<group>"; };
@@ -52,6 +92,7 @@
 		FF078BBE254F3F8300E9FA7C = {
 			isa = PBXGroup;
 			children = (
+				FF08575A2550FC1700F0F220 /* Fonts */,
 				FF8C4E66254FBAFB00522756 /* .gitignore */,
 				FF078BC9254F3F8300E9FA7C /* Stratagem */,
 				FF078BC8254F3F8300E9FA7C /* Products */,
@@ -70,6 +111,8 @@
 		FF078BC9254F3F8300E9FA7C /* Stratagem */ = {
 			isa = PBXGroup;
 			children = (
+				FF0857472550D8F200F0F220 /* UI Element Styles */,
+				FF0857412550D7AE00F0F220 /* UI Views */,
 				FF8C4E4E254FB0A200522756 /* Stratagem.entitlements */,
 				FF078BE1254F3FFE00E9FA7C /* GameScene.sks */,
 				FF078BDA254F3FBE00E9FA7C /* GameScene.swift */,
@@ -91,6 +134,47 @@
 				FF078BD1254F3F8800E9FA7C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FF0857412550D7AE00F0F220 /* UI Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "UI Views";
+			sourceTree = "<group>";
+		};
+		FF0857472550D8F200F0F220 /* UI Element Styles */ = {
+			isa = PBXGroup;
+			children = (
+				FF0857482550F39300F0F220 /* ButtonStyles.swift */,
+				FF012D3A2551B0420017E288 /* TitleText.swift */,
+			);
+			path = "UI Element Styles";
+			sourceTree = "<group>";
+		};
+		FF08575A2550FC1700F0F220 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FF0857652550FC4F00F0F220 /* Montserrat-Black.ttf */,
+				FF08576B2550FC5100F0F220 /* Montserrat-BlackItalic.ttf */,
+				FF08575E2550FC4E00F0F220 /* Montserrat-Bold.ttf */,
+				FF0857662550FC4F00F0F220 /* Montserrat-BoldItalic.ttf */,
+				FF08575D2550FC4E00F0F220 /* Montserrat-ExtraBold.ttf */,
+				FF0857612550FC4F00F0F220 /* Montserrat-ExtraBoldItalic.ttf */,
+				FF08575C2550FC4E00F0F220 /* Montserrat-ExtraLight.ttf */,
+				FF08575B2550FC4E00F0F220 /* Montserrat-ExtraLightItalic.ttf */,
+				FF08576C2550FC5100F0F220 /* Montserrat-Italic.ttf */,
+				FF0857682550FC5000F0F220 /* Montserrat-Light.ttf */,
+				FF0857602550FC4E00F0F220 /* Montserrat-LightItalic.ttf */,
+				FF0857622550FC4F00F0F220 /* Montserrat-Medium.ttf */,
+				FF0857692550FC5000F0F220 /* Montserrat-MediumItalic.ttf */,
+				FF08576A2550FC5000F0F220 /* Montserrat-Regular.ttf */,
+				FF08575F2550FC4E00F0F220 /* Montserrat-SemiBold.ttf */,
+				FF0857632550FC4F00F0F220 /* Montserrat-SemiBoldItalic.ttf */,
+				FF0857642550FC4F00F0F220 /* Montserrat-Thin.ttf */,
+				FF0857672550FC5000F0F220 /* Montserrat-ThinItalic.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		FF8C4E4D254FB04200522756 /* Core Data */ = {
@@ -166,10 +250,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF08577B2550FC5100F0F220 /* Montserrat-MediumItalic.ttf in Resources */,
 				FF8C4E67254FBAFB00522756 /* .gitignore in Resources */,
+				FF08576E2550FC5100F0F220 /* Montserrat-ExtraLight.ttf in Resources */,
 				FF078BD2254F3F8800E9FA7C /* Preview Assets.xcassets in Resources */,
+				FF08576D2550FC5100F0F220 /* Montserrat-ExtraLightItalic.ttf in Resources */,
+				FF0857702550FC5100F0F220 /* Montserrat-Bold.ttf in Resources */,
 				FF078BE2254F3FFE00E9FA7C /* GameScene.sks in Resources */,
+				FF0857762550FC5100F0F220 /* Montserrat-Thin.ttf in Resources */,
+				FF08577C2550FC5100F0F220 /* Montserrat-Regular.ttf in Resources */,
+				FF0857752550FC5100F0F220 /* Montserrat-SemiBoldItalic.ttf in Resources */,
+				FF0857782550FC5100F0F220 /* Montserrat-BoldItalic.ttf in Resources */,
+				FF0857792550FC5100F0F220 /* Montserrat-ThinItalic.ttf in Resources */,
+				FF0857712550FC5100F0F220 /* Montserrat-SemiBold.ttf in Resources */,
+				FF08577E2550FC5100F0F220 /* Montserrat-Italic.ttf in Resources */,
+				FF08576F2550FC5100F0F220 /* Montserrat-ExtraBold.ttf in Resources */,
+				FF08577A2550FC5100F0F220 /* Montserrat-Light.ttf in Resources */,
+				FF08577D2550FC5100F0F220 /* Montserrat-BlackItalic.ttf in Resources */,
+				FF0857722550FC5100F0F220 /* Montserrat-LightItalic.ttf in Resources */,
+				FF0857772550FC5100F0F220 /* Montserrat-Black.ttf in Resources */,
 				FF078BCF254F3F8800E9FA7C /* Assets.xcassets in Resources */,
+				FF0857742550FC5100F0F220 /* Montserrat-Medium.ttf in Resources */,
+				FF0857732550FC5100F0F220 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,9 +283,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF8C4E6C254FBCBD00522756 /* SaveData.xcdatamodeld in Sources */,
+				FF012D3B2551B0420017E288 /* TitleText.swift in Sources */,
 				FF8C4E5A254FB2CF00522756 /* GameVariables.swift in Sources */,
 				FF078BE8254F404B00E9FA7C /* BasicScene.swift in Sources */,
 				FF078BDB254F3FBE00E9FA7C /* GameScene.swift in Sources */,
+				FF0857492550F39300F0F220 /* ButtonStyles.swift in Sources */,
 				FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */,
 				FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */,
 			);
