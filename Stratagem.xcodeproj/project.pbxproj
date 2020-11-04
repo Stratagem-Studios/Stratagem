@@ -36,6 +36,7 @@
 		FF08577D2550FC5100F0F220 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08576B2550FC5100F0F220 /* Montserrat-BlackItalic.ttf */; };
 		FF08577E2550FC5100F0F220 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08576C2550FC5100F0F220 /* Montserrat-Italic.ttf */; };
 		FF57238F2551BFD900872457 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = FF57238E2551BFD900872457 /* .gitattributes */; };
+		FF64B6C825530268006A9F38 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FF64B6C725530268006A9F38 /* README.md */; };
 		FF8C4E52254FB11800522756 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8C4E51254FB11800522756 /* CloudKit.framework */; };
 		FF8C4E5A254FB2CF00522756 /* GameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8C4E59254FB2CF00522756 /* GameVariables.swift */; };
 		FF8C4E67254FBAFB00522756 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FF8C4E66254FBAFB00522756 /* .gitignore */; };
@@ -74,6 +75,7 @@
 		FF08576B2550FC5100F0F220 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BlackItalic.ttf"; sourceTree = "<group>"; };
 		FF08576C2550FC5100F0F220 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		FF57238E2551BFD900872457 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
+		FF64B6C725530268006A9F38 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FF8C4E4E254FB0A200522756 /* Stratagem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stratagem.entitlements; sourceTree = "<group>"; };
 		FF8C4E51254FB11800522756 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		FF8C4E59254FB2CF00522756 /* GameVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVariables.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		FF078BBE254F3F8300E9FA7C = {
 			isa = PBXGroup;
 			children = (
+				FF64B6C725530268006A9F38 /* README.md */,
 				FF57238E2551BFD900872457 /* .gitattributes */,
 				FF8C4E66254FBAFB00522756 /* .gitignore */,
 				FF078BC9254F3F8300E9FA7C /* Stratagem */,
@@ -270,6 +273,7 @@
 				FF57238F2551BFD900872457 /* .gitattributes in Resources */,
 				FF078BD2254F3F8800E9FA7C /* Preview Assets.xcassets in Resources */,
 				FF08576D2550FC5100F0F220 /* Montserrat-ExtraLightItalic.ttf in Resources */,
+				FF64B6C825530268006A9F38 /* README.md in Resources */,
 				FF0857702550FC5100F0F220 /* Montserrat-Bold.ttf in Resources */,
 				FF078BE2254F3FFE00E9FA7C /* GameScene.sks in Resources */,
 				FF0857762550FC5100F0F220 /* Montserrat-Thin.ttf in Resources */,
