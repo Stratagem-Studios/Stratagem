@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE28F1DE25530C94008C9771 /* PeanutButter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28F1DD25530C94008C9771 /* PeanutButter.swift */; };
 		FF012D3B2551B0420017E288 /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF012D3A2551B0420017E288 /* TitleText.swift */; };
 		FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */; };
 		FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BCC254F3F8300E9FA7C /* ContentView.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE28F1DD25530C94008C9771 /* PeanutButter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeanutButter.swift; sourceTree = "<group>"; };
 		FF012D3A2551B0420017E288 /* TitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
 		FF078BC7254F3F8300E9FA7C /* Stratagem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stratagem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StratagemApp.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		FF078BC9254F3F8300E9FA7C /* Stratagem */ = {
 			isa = PBXGroup;
 			children = (
+				CE28F1DD25530C94008C9771 /* PeanutButter.swift */,
 				FF8C4E4E254FB0A200522756 /* Stratagem.entitlements */,
 				FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */,
 				FF8C4E59254FB2CF00522756 /* GameVariables.swift */,
@@ -303,6 +306,7 @@
 				FF8C4E5A254FB2CF00522756 /* GameVariables.swift in Sources */,
 				FF078BE8254F404B00E9FA7C /* BasicScene.swift in Sources */,
 				FF078BDB254F3FBE00E9FA7C /* GameScene.swift in Sources */,
+				CE28F1DE25530C94008C9771 /* PeanutButter.swift in Sources */,
 				FF0857492550F39300F0F220 /* ButtonStyles.swift in Sources */,
 				FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */,
 				FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */,
