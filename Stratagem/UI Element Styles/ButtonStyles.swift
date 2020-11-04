@@ -35,5 +35,7 @@ struct ButtonStyles_Previews: PreviewProvider {
         }.buttonStyle(BasicButtonStyle())
         .previewLayout(PreviewLayout.sizeThatFits)
         .padding()
+        .background(Color.gray)
+        .previewDisplayName("Basic Button")
     }
 }
