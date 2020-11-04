@@ -26,6 +26,9 @@ class GameScene: SKScene {
     // [enum, cooldownMax, timerLive, actual count]
     var playerVars = GameVariables()
     
+    // This var holds a refrence to the content view
+    var contentView: ContentView?
+    
     // Runs when scene loaded, used to init things
     override func sceneDidLoad() {
         
@@ -115,7 +118,9 @@ class GameScene: SKScene {
         }
     }
     
-    
+    func setContentView(tempContentView: ContentView){
+        contentView = tempContentView
+    }
     
     
     // =========================================================================================
