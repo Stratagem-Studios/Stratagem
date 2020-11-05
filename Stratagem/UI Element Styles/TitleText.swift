@@ -8,34 +8,28 @@
 import SwiftUI
 
 public struct TitleText: View {
-    private let text: String
-
-    init(_ text: String) {
-        self.text = text
-    }
+    let text: String
+    var backgroundColor: Color = Color("TitleBackground")
 
     public var body: some View {
         Text(text)
             .font(.custom("Montserrat-Bold", size: 20))
-            .background(Color("TitleBackground"))
+            .background(backgroundColor)
             .foregroundColor(Color.white)
             .padding()
             .frame(height: 40)
-            .background(Color("TitleBackground"))
+            .background(backgroundColor)
             .cornerRadius(5)
             .foregroundColor(.white)
     }
 }
 
 public struct TitleTextWithBorder: View {
-    private let text: String
-
-    init(_ text: String) {
-        self.text = text
-    }
+    let text: String
+    var backgroundColor: Color = Color("TitleBackground")
 
     public var body: some View {
-        TitleText(text)
+        TitleText(text: text, backgroundColor: backgroundColor)
             .overlay(RoundedRectangle(cornerRadius: 5)
             .stroke(Color.white, lineWidth: 1)
         )
@@ -43,11 +37,7 @@ public struct TitleTextWithBorder: View {
 }
 
 public struct SmallTitleText: View {
-    private let text: String
-
-    init(_ text: String) {
-        self.text = text
-    }
+    let text: String
 
     public var body: some View {
         Text(text)
@@ -63,14 +53,10 @@ public struct SmallTitleText: View {
 }
 
 public struct SmallTitleTextWithBorder: View {
-    private let text: String
-
-    init(_ text: String) {
-        self.text = text
-    }
+    let text: String
 
     public var body: some View {
-        SmallTitleText(text)
+        SmallTitleText(text: text)
             .overlay(RoundedRectangle(cornerRadius: 5)
             .stroke(Color.white, lineWidth: 1)
         )
@@ -80,25 +66,31 @@ public struct SmallTitleTextWithBorder: View {
 struct TitleText_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            TitleText("Hello, World!")
+            TitleText(text: "Hello, World!")
                 .previewLayout(PreviewLayout.sizeThatFits)
                 .padding()
                 .background(Color.gray)
                 .previewDisplayName("Title Text")
             
-            TitleTextWithBorder("Hello, World!")
+            TitleTextWithBorder(text: "Hello, World!")
                 .previewLayout(PreviewLayout.sizeThatFits)
                 .padding()
                 .background(Color.gray)
                 .previewDisplayName("Title Text with Border")
             
-            SmallTitleText("Hello, World!")
+            TitleTextWithBorder(text: "Hello, World!", backgroundColor: Color("ErrorColor"))
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .padding()
+                .background(Color.gray)
+                .previewDisplayName("Title Text with Border Error")
+            
+            SmallTitleText(text: "Hello, World!")
                 .previewLayout(PreviewLayout.sizeThatFits)
                 .padding()
                 .background(Color.gray)
                 .previewDisplayName("Small Title Text")
             
-            SmallTitleTextWithBorder("Hello, World!")
+            SmallTitleTextWithBorder(text: "Hello, World!")
                 .previewLayout(PreviewLayout.sizeThatFits)
                 .padding()
                 .background(Color.gray)
