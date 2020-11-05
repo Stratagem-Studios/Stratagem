@@ -126,6 +126,7 @@
 				FFE1000B2551B7F500DD6608 /* Game Scenes */,
 				FF0857472550D8F200F0F220 /* UI Element Styles */,
 				FF0857412550D7AE00F0F220 /* UI Views */,
+				FF078BCE254F3F8800E9FA7C /* Assets.xcassets */,
 				FF8C4E4D254FB04200522756 /* Core Data */,
 				FF078BD0254F3F8800E9FA7C /* Preview Content */,
 				FF078BD3254F3F8800E9FA7C /* Info.plist */,
@@ -186,7 +187,6 @@
 		FF8C4E4D254FB04200522756 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				FF078BCE254F3F8800E9FA7C /* Assets.xcassets */,
 				FF8C4E6A254FBCBD00522756 /* SaveData.xcdatamodeld */,
 			);
 			path = "Core Data";
