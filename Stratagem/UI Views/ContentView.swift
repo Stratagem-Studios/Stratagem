@@ -19,7 +19,7 @@ struct ContentView: View {
         if !gameStarted {
             ZStack {
                 VStack {
-                    TitleText("STRATAGEM")
+                    TitleText(text: "STRATAGEM")
                     Button(action: {
                         gameStarted = true
                     }) {
