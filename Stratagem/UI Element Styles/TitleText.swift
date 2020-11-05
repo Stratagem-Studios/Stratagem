@@ -10,12 +10,20 @@ import SwiftUI
 public struct TitleText: View {
     let text: String
     var backgroundColor: Color = Color("TitleBackground")
+    var iconName: String? = nil
 
     public var body: some View {
-        Text(text)
-            .font(.custom("Montserrat-Bold", size: 20))
-            .background(backgroundColor)
-            .foregroundColor(Color.white)
+        HStack {
+            if let iconName = iconName {
+                Image(iconName)
+                    .resizable()
+                    .frame(width: 32, height: 32)
+            }
+            Text(text)
+                .font(.custom("Montserrat-Bold", size: 20))
+                .background(backgroundColor)
+                .foregroundColor(Color.white)
+        }
             .padding()
             .frame(height: 40)
             .background(backgroundColor)
@@ -27,9 +35,10 @@ public struct TitleText: View {
 public struct TitleTextWithBorder: View {
     let text: String
     var backgroundColor: Color = Color("TitleBackground")
+    var iconName: String? = nil
 
     public var body: some View {
-        TitleText(text: text, backgroundColor: backgroundColor)
+        TitleText(text: text, backgroundColor: backgroundColor, iconName: iconName)
             .overlay(RoundedRectangle(cornerRadius: 5)
             .stroke(Color.white, lineWidth: 1)
         )
@@ -38,25 +47,34 @@ public struct TitleTextWithBorder: View {
 
 public struct SmallTitleText: View {
     let text: String
+    var iconName: String? = nil
 
     public var body: some View {
-        Text(text)
-            .font(.custom("Montserrat-Bold", size: 15))
-            .background(Color("TitleBackground"))
-            .foregroundColor(Color.white)
-            .padding()
-            .frame(height: 25)
-            .background(Color("TitleBackground"))
-            .cornerRadius(5)
-            .foregroundColor(.white)
+        HStack {
+            if let iconName = iconName {
+                Image(iconName)
+                    .resizable()
+                    .frame(width: 24, height: 24)
+            }
+            Text(text)
+                .font(.custom("Montserrat-Bold", size: 15))
+                .background(Color("TitleBackground"))
+                .foregroundColor(Color.white)
+        }
+        .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
+        .frame(height: 25)
+        .background(Color("TitleBackground"))
+        .cornerRadius(5)
+        .foregroundColor(.white)
     }
 }
 
 public struct SmallTitleTextWithBorder: View {
     let text: String
+    var iconName: String? = nil
 
     public var body: some View {
-        SmallTitleText(text: text)
+        SmallTitleText(text: text, iconName: iconName)
             .overlay(RoundedRectangle(cornerRadius: 5)
             .stroke(Color.white, lineWidth: 1)
         )
@@ -71,6 +89,12 @@ struct TitleText_Previews: PreviewProvider {
                 .padding()
                 .background(Color.gray)
                 .previewDisplayName("Title Text")
+            
+            TitleText(text: "Hello, World!", iconName: "Galaxy")
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .padding()
+                .background(Color.gray)
+                .previewDisplayName("Title Text with Icon")
             
             TitleTextWithBorder(text: "Hello, World!")
                 .previewLayout(PreviewLayout.sizeThatFits)
@@ -95,6 +119,12 @@ struct TitleText_Previews: PreviewProvider {
                 .padding()
                 .background(Color.gray)
                 .previewDisplayName("Small Title Text with Border")
+            
+            SmallTitleTextWithBorder(text: "Hello, World!", iconName: "Galaxy")
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .padding()
+                .background(Color.gray)
+                .previewDisplayName("Small Title Text with Border and Icon")
         }
     }
 }
