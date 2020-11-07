@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "galaxy.svg",
+      "filename" : "copy.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "galaxy-1.svg",
+      "filename" : "copy-1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "galaxy-2.svg",
+      "filename" : "copy-2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }

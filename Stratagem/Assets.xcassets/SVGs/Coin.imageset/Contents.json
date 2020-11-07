@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "galaxy.svg",
+      "filename" : "coin.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "galaxy-1.svg",
+      "filename" : "coin-1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "galaxy-2.svg",
+      "filename" : "coin-2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }
