@@ -11,7 +11,7 @@ struct JoinGameView: View {
             Spacer()
             
             Button(action: {
-                //gameStarted = true
+                self.gameVariables.currentView = "CityView"
             }) {
                 Text("PLAY")
             }.buttonStyle(BasicButtonStyle())
