@@ -36,6 +36,9 @@
 		FF08577C2550FC5100F0F220 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08576A2550FC5000F0F220 /* Montserrat-Regular.ttf */; };
 		FF08577D2550FC5100F0F220 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08576B2550FC5100F0F220 /* Montserrat-BlackItalic.ttf */; };
 		FF08577E2550FC5100F0F220 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08576C2550FC5100F0F220 /* Montserrat-Italic.ttf */; };
+		FF33849325599EB9000EF945 /* JoinGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33849225599EB9000EF945 /* JoinGameView.swift */; };
+		FF33849F2559A751000EF945 /* TitleScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33849E2559A751000EF945 /* TitleScreenView.swift */; };
+		FF40F4712559CF310036E4C7 /* CityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF40F4702559CF310036E4C7 /* CityView.swift */; };
 		FF57238F2551BFD900872457 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = FF57238E2551BFD900872457 /* .gitattributes */; };
 		FF64B6C825530268006A9F38 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FF64B6C725530268006A9F38 /* README.md */; };
 		FF8C4E52254FB11800522756 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8C4E51254FB11800522756 /* CloudKit.framework */; };
@@ -76,6 +79,9 @@
 		FF08576A2550FC5000F0F220 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		FF08576B2550FC5100F0F220 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BlackItalic.ttf"; sourceTree = "<group>"; };
 		FF08576C2550FC5100F0F220 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
+		FF33849225599EB9000EF945 /* JoinGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameView.swift; sourceTree = "<group>"; };
+		FF33849E2559A751000EF945 /* TitleScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScreenView.swift; sourceTree = "<group>"; };
+		FF40F4702559CF310036E4C7 /* CityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityView.swift; sourceTree = "<group>"; };
 		FF57238E2551BFD900872457 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
 		FF64B6C725530268006A9F38 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FF8C4E4E254FB0A200522756 /* Stratagem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stratagem.entitlements; sourceTree = "<group>"; };
@@ -148,6 +154,9 @@
 			isa = PBXGroup;
 			children = (
 				FF078BCC254F3F8300E9FA7C /* ContentView.swift */,
+				FF33849E2559A751000EF945 /* TitleScreenView.swift */,
+				FF33849225599EB9000EF945 /* JoinGameView.swift */,
+				FF40F4702559CF310036E4C7 /* CityView.swift */,
 			);
 			path = "UI Views";
 			sourceTree = "<group>";
@@ -308,11 +317,14 @@
 			files = (
 				FF8C4E6C254FBCBD00522756 /* SaveData.xcdatamodeld in Sources */,
 				FF012D3B2551B0420017E288 /* TitleText.swift in Sources */,
+				FF33849F2559A751000EF945 /* TitleScreenView.swift in Sources */,
 				FF8C4E5A254FB2CF00522756 /* GameVariables.swift in Sources */,
 				FF078BE8254F404B00E9FA7C /* BasicScene.swift in Sources */,
+				FF40F4712559CF310036E4C7 /* CityView.swift in Sources */,
 				FF078BDB254F3FBE00E9FA7C /* GameScene.swift in Sources */,
 				FF0857492550F39300F0F220 /* ButtonStyles.swift in Sources */,
 				FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */,
+				FF33849325599EB9000EF945 /* JoinGameView.swift in Sources */,
 				FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
