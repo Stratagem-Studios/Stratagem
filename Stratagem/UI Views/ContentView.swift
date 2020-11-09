@@ -10,6 +10,8 @@ struct ContentView: View {
             TitleScreenView()
         case "JoinGameView":
             JoinGameView()
+        case "CityView":
+            CityView()
         default:
             EmptyView()
         }
