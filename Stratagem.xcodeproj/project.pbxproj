@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CECDA8FD25599DBC0010DB0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECDA8FC25599DBC0010DB0C /* LaunchScreen.storyboard */; };
+		CECDA90225599E450010DB0C /* Tiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = CECDA90025599E450010DB0C /* Tiles.sks */; };
 		FF012D3B2551B0420017E288 /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF012D3A2551B0420017E288 /* TitleText.swift */; };
 		FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */; };
 		FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BCC254F3F8300E9FA7C /* ContentView.swift */; };
@@ -43,6 +45,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CECDA8FC25599DBC0010DB0C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CECDA90025599E450010DB0C /* Tiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Tiles.sks; sourceTree = "<group>"; };
 		FF012D3A2551B0420017E288 /* TitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
 		FF078BC7254F3F8300E9FA7C /* Stratagem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stratagem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StratagemApp.swift; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 		FF078BC9254F3F8300E9FA7C /* Stratagem */ = {
 			isa = PBXGroup;
 			children = (
+				CECDA8FC25599DBC0010DB0C /* LaunchScreen.storyboard */,
 				FF8C4E4E254FB0A200522756 /* Stratagem.entitlements */,
 				FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */,
 				FF8C4E59254FB2CF00522756 /* GameVariables.swift */,
@@ -200,6 +205,7 @@
 		FFE1000B2551B7F500DD6608 /* Game Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				CECDA90025599E450010DB0C /* Tiles.sks */,
 				FF078BE7254F404B00E9FA7C /* BasicScene.swift */,
 				FF078BE1254F3FFE00E9FA7C /* GameScene.sks */,
 				FF078BDA254F3FBE00E9FA7C /* GameScene.swift */,
@@ -272,8 +278,10 @@
 				FF08576D2550FC5100F0F220 /* Montserrat-ExtraLightItalic.ttf in Resources */,
 				FF64B6C825530268006A9F38 /* README.md in Resources */,
 				FF0857702550FC5100F0F220 /* Montserrat-Bold.ttf in Resources */,
+				CECDA8FD25599DBC0010DB0C /* LaunchScreen.storyboard in Resources */,
 				FF078BE2254F3FFE00E9FA7C /* GameScene.sks in Resources */,
 				FF0857762550FC5100F0F220 /* Montserrat-Thin.ttf in Resources */,
+				CECDA90225599E450010DB0C /* Tiles.sks in Resources */,
 				FF08577C2550FC5100F0F220 /* Montserrat-Regular.ttf in Resources */,
 				FF0857752550FC5100F0F220 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				FF0857782550FC5100F0F220 /* Montserrat-BoldItalic.ttf in Resources */,

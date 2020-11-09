@@ -18,6 +18,8 @@ var resourceDefaultStats = [
 
 class GameVariables: ObservableObject {
     
+    // Holds the username
+    var username: String?
     
     // Sets up the gameResourceList to contain all resource values
     var gameResources: [resourceStatsList] = []

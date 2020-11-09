@@ -12,7 +12,9 @@ class GameScene: SKScene {
     // Popup used to get username
     let alert = UIAlertController(title: "Alert Title", message: "Alert Message", preferredStyle: .alert)
 
-    // These vars will be used to refrence labels
+    // Refernces the TileMapNode
+    var playerGameMap: SKTileMapNode?
+    // These vars will be used to reference labels
     var metalCountLabel: SKLabelNode?
     var goldCountLabel: SKLabelNode?
     var usernameLabel: SKLabelNode?
@@ -32,11 +34,11 @@ class GameScene: SKScene {
     // Runs when scene loaded, used to init things
     override func sceneDidLoad() {
         
-        // Sets up initial user data
-        dataPull()
+        // References the TileNode
+        self.playerGameMap = self.childNode(withName: "//gameMap") as? SKTileMapNode
         
         // Sets label vars to respective labels and puts them in an array
-        self.metalCountLabel = self.childNode(withName: "//" + "metalCountLabel") as? SKLabelNode
+        self.metalCountLabel = self.childNode(withName: "//metalCountLabel") as? SKLabelNode
         self.goldCountLabel = self.childNode(withName: "//goldCountLabel") as? SKLabelNode
         self.usernameLabel = self.childNode(withName: "//usernameLabel") as? SKLabelNode
         let labelArray = [metalCountLabel, goldCountLabel]
@@ -45,23 +47,22 @@ class GameScene: SKScene {
     func touchDown(atPoint pos : CGPoint) {
         
         
-        // Sets up alert
-        let alert = UIAlertController(title: "Input Username", message: "do it", preferredStyle: UIAlertController.Style.alert)
-        alert.addTextField()
-        
-        // Sets up alert action
-        let action = UIAlertAction(title: "Ok", style: .default) { action in
-            // Handle when button is clicked
-            print(alert.textFields![0].text!)
-            NSUbiquitousKeyValueStore.default.set(alert.textFields![0].text!, forKey: "username")
-            NSUbiquitousKeyValueStore.default.synchronize()
-        }
-        alert.addAction(action)
-        
-        // Runs alert
-        if let vc = self.scene?.view?.window?.rootViewController {
-            vc.present(alert, animated: true, completion: nil)
-        }
+//        // Sets up alert
+//        let alert = UIAlertController(title: "Input Username", message: "do it", preferredStyle: UIAlertController.Style.alert)
+//        alert.addTextField()
+//
+//        // Sets up alert action
+//        let action = UIAlertAction(title: "Ok", style: .default) { action in
+//            // Handle when button is clicked
+//            self.playerVars.username = alert.textFields![0].text!
+//            self.usernameLabel?.text = self.playerVars.username
+//        }
+//        alert.addAction(action)
+//
+//        // Runs alert
+//        if let vc = self.scene?.view?.window?.rootViewController {
+//            vc.present(alert, animated: true, completion: nil)
+//        }
     }
     
     func touchMoved(toPoint pos : CGPoint) {
