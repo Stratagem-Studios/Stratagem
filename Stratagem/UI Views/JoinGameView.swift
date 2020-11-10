@@ -7,7 +7,8 @@ struct JoinGameView: View {
     var body: some View {
         VStack {
             TitleText(text: "STRATAGEM")
-            
+                .padding(.top, 10)
+
             Spacer()
             
             Button(action: {
@@ -28,8 +29,8 @@ struct JoinGameView: View {
             }) {
                 Text("BACK")
             }.buttonStyle(BasicButtonStyle())
+            .padding(.bottom, 10)
         }.statusBar(hidden: true)
-            //.navigate(to: JoinGameView(), when: $clickedJoin)
     }
 }
 
