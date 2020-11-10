@@ -43,6 +43,7 @@
 		FF8C4E5A254FB2CF00522756 /* GameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8C4E59254FB2CF00522756 /* GameVariables.swift */; };
 		FF8C4E67254FBAFB00522756 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FF8C4E66254FBAFB00522756 /* .gitignore */; };
 		FF8C4E6C254FBCBD00522756 /* SaveData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF8C4E6A254FBCBD00522756 /* SaveData.xcdatamodeld */; };
+		FFAD01DE255AE84600BA2907 /* CreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD01DD255AE84600BA2907 /* CreateGameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		FF8C4E59254FB2CF00522756 /* GameVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVariables.swift; sourceTree = "<group>"; };
 		FF8C4E66254FBAFB00522756 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FF8C4E6B254FBCBD00522756 /* SaveData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SaveData.xcdatamodel; sourceTree = "<group>"; };
+		FFAD01DD255AE84600BA2907 /* CreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			children = (
 				FF078BCC254F3F8300E9FA7C /* ContentView.swift */,
 				FF33849E2559A751000EF945 /* TitleScreenView.swift */,
+				FFAD01DD255AE84600BA2907 /* CreateGameView.swift */,
 				FF33849225599EB9000EF945 /* JoinGameView.swift */,
 				FF40F4702559CF310036E4C7 /* CityView.swift */,
 			);
@@ -307,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFAD01DE255AE84600BA2907 /* CreateGameView.swift in Sources */,
 				FF8C4E6C254FBCBD00522756 /* SaveData.xcdatamodeld in Sources */,
 				FF012D3B2551B0420017E288 /* TitleText.swift in Sources */,
 				FF33849F2559A751000EF945 /* TitleScreenView.swift in Sources */,
