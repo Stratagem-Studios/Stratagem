@@ -21,11 +21,24 @@ struct CreateGameView: View {
                 
                 Spacer()
                 
-                Button(action: {
-                }) {
+                HStack {
                     Text("CODE")
-                }.buttonStyle(BasicButtonStyle())
-                .padding(.bottom, 10)
+                        .font(.custom("Montserrat-Bold", size: 20))
+                        .background(Color("TitleBackground"))
+                        .foregroundColor(Color.white)
+                    Button(action: {
+                        UIPasteboard.general.string = "CODE"
+                    }) {
+                        Image("Copy")
+                    }
+                    .padding(.leading, 5)
+                }
+                    .padding()
+                    .frame(height: 40)
+                    .background(Color("TitleBackground"))
+                    .cornerRadius(5)
+                    .foregroundColor(.white)
+                    .padding(.bottom, 10)
                 
                 Spacer()
                 
