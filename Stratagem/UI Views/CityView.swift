@@ -15,7 +15,7 @@ struct CityView: View {
         let scene = GameScene(fileNamed: "GameScene")
         //let scene = BasicScene()
         if let scene = scene {
-            scene.size = CGSize(width: 896, height: 414)
+            scene.size = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
             //scene.scaleMode = .fill
             //scene.setContentView(tempContentView: self)
             return scene

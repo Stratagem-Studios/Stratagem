@@ -1,41 +1,48 @@
 import SwiftUI
+import SpriteKit
 
-struct TitleScreenView: View {
+struct CreateGameView: View {
     @EnvironmentObject var gameVariables: GameVariables
 
     var body: some View {
-            VStack {
-                TitleText(text: "STRATAGEM")
-                    .padding(.top, 10)
+        VStack {
+            TitleText(text: "OPTIONS")
+                .padding(.top, 10)
+            
+            Spacer()
+            
+            HStack {
+                Button(action: {
+                    self.gameVariables.currentView = "TitleScreenView"
+                }) {
+                    Text("BACK")
+                }.buttonStyle(BasicButtonStyle())
+                .padding(.bottom, 10)
                 
                 Spacer()
                 
                 Button(action: {
-                    gameVariables.currentView = "CreateGameView"
+                }) {
+                    Text("CODE")
+                }.buttonStyle(BasicButtonStyle())
+                .padding(.bottom, 10)
+                
+                Spacer()
+                
+                Button(action: {
+                        self.gameVariables.currentView = "CityView"
                 }) {
                     Text("PLAY")
                 }.buttonStyle(BasicButtonStyle())
                 .padding(.bottom, 10)
-                
-                Button(action: {
-                    gameVariables.currentView = "JoinGameView"
-                }) {
-                    Text("JOIN")
-                }.buttonStyle(BasicButtonStyle())
-                .padding(.bottom, 10)
-                
-                Button(action: {
-                }) {
-                    Text("LEARN")
-                }.buttonStyle(BasicButtonStyle())
-                .padding(.bottom, 10)
-            }.statusBar(hidden: true)
+            }
+        }.statusBar(hidden: true)
     }
 }
 
-struct TitleScreenView_Previews: PreviewProvider {
+struct CreateGameView_Preview: PreviewProvider {
     static var previews: some View {
-        TitleScreenView()
+        CreateGameView()
             .environmentObject(GameVariables())
             .previewLayout(.fixed(width: 896, height: 414))
     }
