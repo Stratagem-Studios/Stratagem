@@ -8,10 +8,12 @@ struct ContentView: View {
         switch gameVariables.currentView {
         case "TitleScreenView":
             TitleScreenView()
-        case "JoinGameView":
-            JoinGameView()
         case "CreateGameView":
             CreateGameView()
+        case "JoinGameView":
+            JoinGameView()
+        case "GameLobbyView":
+            GameLobbyView()
         case "CityView":
             CityView()
         default:
