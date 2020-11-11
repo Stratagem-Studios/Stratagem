@@ -43,7 +43,8 @@ struct CreateGameView: View {
                 Spacer()
                 
                 Button(action: {
-                        self.gameVariables.currentView = "CityView"
+                    var createdGame = GameManager().createGame()
+                    self.gameVariables.currentView = "CityView"
                 }) {
                     Text("PLAY")
                 }.buttonStyle(BasicButtonStyle())

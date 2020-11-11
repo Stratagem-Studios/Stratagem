@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E10A050010A84F42517D3F9 /* Pods_Stratagem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500AA38F10AA677CBCF94516 /* Pods_Stratagem.framework */; };
 		FF012D3B2551B0420017E288 /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF012D3A2551B0420017E288 /* TitleText.swift */; };
 		FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */; };
 		FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BCC254F3F8300E9FA7C /* ContentView.swift */; };
@@ -44,9 +45,16 @@
 		FF8C4E67254FBAFB00522756 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FF8C4E66254FBAFB00522756 /* .gitignore */; };
 		FF8C4E6C254FBCBD00522756 /* SaveData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF8C4E6A254FBCBD00522756 /* SaveData.xcdatamodeld */; };
 		FFAD01DE255AE84600BA2907 /* CreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD01DD255AE84600BA2907 /* CreateGameView.swift */; };
+		FFD9693E255B0505005A1BC7 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = FFD9693D255B0505005A1BC7 /* Podfile */; };
+		FFFCFAB9255B296400D03284 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAB8255B296400D03284 /* AppDelegate.swift */; };
+		FFFCFABE255B366700D03284 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFFCFABD255B366700D03284 /* GoogleService-Info.plist */; };
+		FFFCFAC3255B62B300D03284 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAC2255B62B300D03284 /* GameManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		500AA38F10AA677CBCF94516 /* Pods_Stratagem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stratagem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5397A0390D7C1A2EC8CCF6F0 /* Pods-Stratagem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stratagem.debug.xcconfig"; path = "Target Support Files/Pods-Stratagem/Pods-Stratagem.debug.xcconfig"; sourceTree = "<group>"; };
+		E54BF43E273D93EB0EDE54FC /* Pods-Stratagem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stratagem.release.xcconfig"; path = "Target Support Files/Pods-Stratagem/Pods-Stratagem.release.xcconfig"; sourceTree = "<group>"; };
 		FF012D3A2551B0420017E288 /* TitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
 		FF078BC7254F3F8300E9FA7C /* Stratagem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stratagem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StratagemApp.swift; sourceTree = "<group>"; };
@@ -87,6 +95,10 @@
 		FF8C4E66254FBAFB00522756 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FF8C4E6B254FBCBD00522756 /* SaveData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SaveData.xcdatamodel; sourceTree = "<group>"; };
 		FFAD01DD255AE84600BA2907 /* CreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameView.swift; sourceTree = "<group>"; };
+		FFD9693D255B0505005A1BC7 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		FFFCFAB8255B296400D03284 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FFFCFABD255B366700D03284 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FFFCFAC2255B62B300D03284 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,22 +107,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF8C4E52254FB11800522756 /* CloudKit.framework in Frameworks */,
+				1E10A050010A84F42517D3F9 /* Pods_Stratagem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		59B0506723D59354ED7DAD04 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5397A0390D7C1A2EC8CCF6F0 /* Pods-Stratagem.debug.xcconfig */,
+				E54BF43E273D93EB0EDE54FC /* Pods-Stratagem.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FF078BBE254F3F8300E9FA7C = {
 			isa = PBXGroup;
 			children = (
 				FF64B6C725530268006A9F38 /* README.md */,
 				FF57238E2551BFD900872457 /* .gitattributes */,
 				FF8C4E66254FBAFB00522756 /* .gitignore */,
+				FFD9693D255B0505005A1BC7 /* Podfile */,
 				FF078BC9254F3F8300E9FA7C /* Stratagem */,
 				FF08575A2550FC1700F0F220 /* Fonts */,
 				FF078BC8254F3F8300E9FA7C /* Products */,
 				FF8C4E50254FB11800522756 /* Frameworks */,
+				59B0506723D59354ED7DAD04 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +149,7 @@
 		FF078BC9254F3F8300E9FA7C /* Stratagem */ = {
 			isa = PBXGroup;
 			children = (
+				FFFCFAB8255B296400D03284 /* AppDelegate.swift */,
 				FF8C4E4E254FB0A200522756 /* Stratagem.entitlements */,
 				FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */,
 				FF8C4E59254FB2CF00522756 /* GameVariables.swift */,
@@ -132,9 +157,11 @@
 				FF0857472550D8F200F0F220 /* UI Element Styles */,
 				FF0857412550D7AE00F0F220 /* UI Views */,
 				FF078BCE254F3F8800E9FA7C /* Assets.xcassets */,
+				FFFCFAC1255B629700D03284 /* Firebase */,
 				FF8C4E4D254FB04200522756 /* Core Data */,
 				FF078BD0254F3F8800E9FA7C /* Preview Content */,
 				FF078BD3254F3F8800E9FA7C /* Info.plist */,
+				FFFCFABD255B366700D03284 /* GoogleService-Info.plist */,
 			);
 			path = Stratagem;
 			sourceTree = "<group>";
@@ -205,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				FF8C4E51254FB11800522756 /* CloudKit.framework */,
+				500AA38F10AA677CBCF94516 /* Pods_Stratagem.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -219,6 +247,14 @@
 			path = "Game Scenes";
 			sourceTree = "<group>";
 		};
+		FFFCFAC1255B629700D03284 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				FFFCFAC2255B62B300D03284 /* GameManager.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -226,9 +262,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF078BD6254F3F8800E9FA7C /* Build configuration list for PBXNativeTarget "Stratagem" */;
 			buildPhases = (
+				0676AD30B3BC9A9FFD7E244E /* [CP] Check Pods Manifest.lock */,
 				FF078BC3254F3F8300E9FA7C /* Sources */,
 				FF078BC4254F3F8300E9FA7C /* Frameworks */,
 				FF078BC5254F3F8300E9FA7C /* Resources */,
+				096D843C7868507D5B2BABF3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -286,8 +324,10 @@
 				FF0857702550FC5100F0F220 /* Montserrat-Bold.ttf in Resources */,
 				FF078BE2254F3FFE00E9FA7C /* GameScene.sks in Resources */,
 				FF0857762550FC5100F0F220 /* Montserrat-Thin.ttf in Resources */,
+				FFD9693E255B0505005A1BC7 /* Podfile in Resources */,
 				FF08577C2550FC5100F0F220 /* Montserrat-Regular.ttf in Resources */,
 				FF0857752550FC5100F0F220 /* Montserrat-SemiBoldItalic.ttf in Resources */,
+				FFFCFABE255B366700D03284 /* GoogleService-Info.plist in Resources */,
 				FF0857782550FC5100F0F220 /* Montserrat-BoldItalic.ttf in Resources */,
 				FF0857792550FC5100F0F220 /* Montserrat-ThinItalic.ttf in Resources */,
 				FF0857712550FC5100F0F220 /* Montserrat-SemiBold.ttf in Resources */,
@@ -305,6 +345,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0676AD30B3BC9A9FFD7E244E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Stratagem-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		096D843C7868507D5B2BABF3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Stratagem/Pods-Stratagem-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Stratagem/Pods-Stratagem-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Stratagem/Pods-Stratagem-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FF078BC3254F3F8300E9FA7C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -313,11 +395,13 @@
 				FFAD01DE255AE84600BA2907 /* CreateGameView.swift in Sources */,
 				FF8C4E6C254FBCBD00522756 /* SaveData.xcdatamodeld in Sources */,
 				FF012D3B2551B0420017E288 /* TitleText.swift in Sources */,
+				FFFCFAC3255B62B300D03284 /* GameManager.swift in Sources */,
 				FF33849F2559A751000EF945 /* TitleScreenView.swift in Sources */,
 				FF8C4E5A254FB2CF00522756 /* GameVariables.swift in Sources */,
 				FF078BE8254F404B00E9FA7C /* BasicScene.swift in Sources */,
 				FF40F4712559CF310036E4C7 /* CityView.swift in Sources */,
 				FF078BDB254F3FBE00E9FA7C /* GameScene.swift in Sources */,
+				FFFCFAB9255B296400D03284 /* AppDelegate.swift in Sources */,
 				FF0857492550F39300F0F220 /* ButtonStyles.swift in Sources */,
 				FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */,
 				FF33849325599EB9000EF945 /* JoinGameView.swift in Sources */,
@@ -446,6 +530,7 @@
 		};
 		FF078BD7254F3F8800E9FA7C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5397A0390D7C1A2EC8CCF6F0 /* Pods-Stratagem.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -460,7 +545,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "stratagem---edu.stratagem";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stratagem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -469,6 +554,7 @@
 		};
 		FF078BD8254F3F8800E9FA7C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E54BF43E273D93EB0EDE54FC /* Pods-Stratagem.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -483,7 +569,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "stratagem---edu.stratagem";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stratagem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
