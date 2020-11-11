@@ -1,9 +1,9 @@
 import SwiftUI
 
-struct TitleScreenView: View {
+public struct TitleScreenView: View {
     @EnvironmentObject var gameVariables: GameVariables
 
-    var body: some View {
+    public var body: some View {
             VStack {
                 TitleText(text: "STRATAGEM")
                     .padding(.top, 10)

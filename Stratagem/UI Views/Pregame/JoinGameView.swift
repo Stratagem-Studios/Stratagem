@@ -1,11 +1,11 @@
 import SwiftUI
 import SpriteKit
 
-struct JoinGameView: View {
+public struct JoinGameView: View {
     @EnvironmentObject var gameVariables: GameVariables
     @State var enteredCode: String = ""
 
-    var body: some View {
+    public var body: some View {
         VStack() {
             TitleText(text: "STRATAGEM")
                 .padding(.top, 10)

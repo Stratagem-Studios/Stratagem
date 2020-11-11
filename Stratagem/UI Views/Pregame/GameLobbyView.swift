@@ -1,12 +1,12 @@
 import SwiftUI
 import SpriteKit
 
-struct CreateGameView: View {
+public struct GameLobbyView: View {
     @EnvironmentObject var gameVariables: GameVariables
 
-    var body: some View {
+    public var body: some View {
         VStack {
-            TitleText(text: "OPTIONS")
+            TitleText(text: "LOBBY")
                 .padding(.top, 10)
             
             Spacer()
@@ -22,7 +22,7 @@ struct CreateGameView: View {
                 Spacer()
                 
                 HStack {
-                    Text("CODE")
+                    Text(gameVariables.gameCode)
                         .font(.custom("Montserrat-Bold", size: 20))
                         .background(Color("TitleBackground"))
                         .foregroundColor(Color.white)
@@ -43,10 +43,15 @@ struct CreateGameView: View {
                 Spacer()
                 
                 Button(action: {
-                    var createdGame = GameManager().createGame()
-                    self.gameVariables.currentView = "CityView"
+                    let createdGame = GameManager().createGameWithCode(code: gameVariables.gameCode)
+                    
+                    if createdGame {
+                        self.gameVariables.currentView = "CityView"
+                    } else {
+                        // inform failure
+                    }
                 }) {
-                    Text("PLAY")
+                    Text("START")
                 }.buttonStyle(BasicButtonStyle())
                 .padding(.bottom, 10)
             }
@@ -54,10 +59,11 @@ struct CreateGameView: View {
     }
 }
 
-struct CreateGameView_Preview: PreviewProvider {
+struct GameLobbyView_Preview: PreviewProvider {
     static var previews: some View {
-        CreateGameView()
+        GameLobbyView()
             .environmentObject(GameVariables())
             .previewLayout(.fixed(width: 896, height: 414))
     }
 }
+

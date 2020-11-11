@@ -9,6 +9,10 @@ enum resourceTypes {
     case metal, gold
 }
 
+enum gameStates {
+    case NA, PRE_LOBBY, LOBBY, GAME
+}
+
 // Materials follow this pattern
 // [enum, cooldownMax, timerLive, actual count]
 var resourceDefaultStats = [
@@ -20,6 +24,8 @@ class GameVariables: ObservableObject {
     // Sets up the gameResourceList to contain all resource values
     var gameResources: [resourceStatsList] = []
     @Published var currentView: String
+    @Published var currentGameState: gameStates
+    @Published var gameCode: String
 
     init() {
         for a in resourceDefaultStats {
@@ -27,6 +33,8 @@ class GameVariables: ObservableObject {
         }
         
         currentView = "TitleScreenView"
+        currentGameState = gameStates.NA
+        gameCode = ""
     }
 }
 

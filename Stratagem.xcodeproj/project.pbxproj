@@ -46,6 +46,7 @@
 		FF8C4E6C254FBCBD00522756 /* SaveData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF8C4E6A254FBCBD00522756 /* SaveData.xcdatamodeld */; };
 		FFAD01DE255AE84600BA2907 /* CreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD01DD255AE84600BA2907 /* CreateGameView.swift */; };
 		FFD9693E255B0505005A1BC7 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = FFD9693D255B0505005A1BC7 /* Podfile */; };
+		FFF2D86C255B88F800CE2990 /* GameLobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2D86B255B88F800CE2990 /* GameLobbyView.swift */; };
 		FFFCFAB9255B296400D03284 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAB8255B296400D03284 /* AppDelegate.swift */; };
 		FFFCFABE255B366700D03284 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFFCFABD255B366700D03284 /* GoogleService-Info.plist */; };
 		FFFCFAC3255B62B300D03284 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAC2255B62B300D03284 /* GameManager.swift */; };
@@ -96,6 +97,7 @@
 		FF8C4E6B254FBCBD00522756 /* SaveData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SaveData.xcdatamodel; sourceTree = "<group>"; };
 		FFAD01DD255AE84600BA2907 /* CreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameView.swift; sourceTree = "<group>"; };
 		FFD9693D255B0505005A1BC7 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		FFF2D86B255B88F800CE2990 /* GameLobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLobbyView.swift; sourceTree = "<group>"; };
 		FFFCFAB8255B296400D03284 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFFCFABD255B366700D03284 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FFFCFAC2255B62B300D03284 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
@@ -178,10 +180,9 @@
 			isa = PBXGroup;
 			children = (
 				FF078BCC254F3F8300E9FA7C /* ContentView.swift */,
-				FF33849E2559A751000EF945 /* TitleScreenView.swift */,
-				FFAD01DD255AE84600BA2907 /* CreateGameView.swift */,
-				FF33849225599EB9000EF945 /* JoinGameView.swift */,
-				FF40F4702559CF310036E4C7 /* CityView.swift */,
+				FFF2D86E255B890900CE2990 /* Pregame */,
+				FFF2D86F255B891A00CE2990 /* Game */,
+				FF35D831255C37540054EC27 /* Postgame */,
 			);
 			path = "UI Views";
 			sourceTree = "<group>";
@@ -220,6 +221,13 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		FF35D831255C37540054EC27 /* Postgame */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Postgame;
+			sourceTree = "<group>";
+		};
 		FF8C4E4D254FB04200522756 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +253,25 @@
 				FF078BDA254F3FBE00E9FA7C /* GameScene.swift */,
 			);
 			path = "Game Scenes";
+			sourceTree = "<group>";
+		};
+		FFF2D86E255B890900CE2990 /* Pregame */ = {
+			isa = PBXGroup;
+			children = (
+				FF33849E2559A751000EF945 /* TitleScreenView.swift */,
+				FFAD01DD255AE84600BA2907 /* CreateGameView.swift */,
+				FF33849225599EB9000EF945 /* JoinGameView.swift */,
+				FFF2D86B255B88F800CE2990 /* GameLobbyView.swift */,
+			);
+			path = Pregame;
+			sourceTree = "<group>";
+		};
+		FFF2D86F255B891A00CE2990 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				FF40F4702559CF310036E4C7 /* CityView.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 		FFFCFAC1255B629700D03284 /* Firebase */ = {
@@ -398,6 +425,7 @@
 				FFFCFAC3255B62B300D03284 /* GameManager.swift in Sources */,
 				FF33849F2559A751000EF945 /* TitleScreenView.swift in Sources */,
 				FF8C4E5A254FB2CF00522756 /* GameVariables.swift in Sources */,
+				FFF2D86C255B88F800CE2990 /* GameLobbyView.swift in Sources */,
 				FF078BE8254F404B00E9FA7C /* BasicScene.swift in Sources */,
 				FF40F4712559CF310036E4C7 /* CityView.swift in Sources */,
 				FF078BDB254F3FBE00E9FA7C /* GameScene.swift in Sources */,

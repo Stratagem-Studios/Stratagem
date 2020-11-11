@@ -8,7 +8,7 @@
 import SwiftUI
 import SpriteKit
 
-struct CityView: View {
+public struct CityView: View {
     @EnvironmentObject var gameVariables: GameVariables
     
     var scene: SKScene {
@@ -23,7 +23,7 @@ struct CityView: View {
         return SKScene()
     }
     
-    var body: some View {
+    public var body: some View {
         SpriteView(scene: scene)
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .edgesIgnoringSafeArea(.all)
