@@ -28,6 +28,9 @@ public struct GameListener {
         let gameStatusRef = ref.child("game_statuses").child(staticGameVariables.gameCode)
         gameStatusRef.observe(.value) { snapshot in
             staticGameVariables.gameState = gameStates(rawValue: snapshot.value as! String) ?? gameStates.NA
+            if staticGameVariables.gameState == gameStates.GAME {
+                playerVariables.currentView = viewStates.CityView
+            }
         }
     }
 }

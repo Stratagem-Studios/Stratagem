@@ -49,7 +49,6 @@ public struct GameLobbyView: View {
                 
                 Button(action: {
                     GameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).startGame()
-                    playerVariables.currentView = .CityView
                 }) {
                     Text("START")
                 }.buttonStyle(BasicButtonStyle())

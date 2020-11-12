@@ -10,7 +10,7 @@ public struct GameManager {
     public func generateRandomGameCode() {
         let letters = "0123456789"
         var gameCode: String = ""
-        gameCode = String((0..<5).map{ _ in letters.randomElement()! })
+        gameCode = String((0..<4).map{ _ in letters.randomElement()! })
         
         // Check if code already exists
         let gameStatusRef = ref.child("game_statuses")
@@ -20,8 +20,6 @@ public struct GameManager {
             } else {
                 self.ref.child("game_statuses").child(gameCode).setValue(gameStates.PRE_LOBBY.rawValue)
                 staticGameVariables.gameCode = gameCode
-                //staticGameVariables.gameState = .PRE_LOBBY
-                //staticGameVariables.playerNames.append(playerVariables.playerName)
             }
         }
     }
@@ -30,14 +28,14 @@ public struct GameManager {
         self.ref.child("game_statuses").child(code).setValue(gameStates.LOBBY.rawValue)
         self.ref.child("games").child(code).setValue(
             ["usernames": [playerVariables.playerName]])
-        self.ref.child("users").child(playerVariables.playerName).setValue(
+        self.ref.child("current_users").child(playerVariables.playerName).setValue(
             ["game_id": code])
         
         staticGameVariables.gameState = .LOBBY
     }
     
     public func joinGameWithCode(code: String) {
-        self.ref.child("users").child(playerVariables.playerName).setValue(
+        self.ref.child("current_users").child(playerVariables.playerName).setValue(
             ["game_id": code])
         
         let gameStatusRef = ref.child("games").child(code).child("usernames")
@@ -52,8 +50,6 @@ public struct GameManager {
         }
         
         staticGameVariables.gameCode = code
-        //staticGameVariables.gameState = .LOBBY
-        //staticGameVariables.playerNames.append(playerVariables.playerName)
     }
     
     public func startGame() {

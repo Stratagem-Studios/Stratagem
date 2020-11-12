@@ -4,34 +4,82 @@ public struct TitleScreenView: View {
     @EnvironmentObject var playerVariables: PlayerVariables
     @EnvironmentObject var staticGameVariables: StaticGameVariables
     
+    @State var enteredUsername: String = ""
+    @State var invalidUsername: String = ""
+    @State var hasUsername: Bool = true
+
     public var body: some View {
-        VStack {
-            TitleText(text: "STRATAGEM")
-                .padding(.top, 10)
+        ZStack {
+            VStack {
+                TitleText(text: "STRATAGEM")
+                    .padding(.top, 10)
+                
+                Spacer()
+                
+                Button(action: {
+                    GameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).generateRandomGameCode()
+                    playerVariables.currentView = .CreateGameView
+                }) {
+                    Text("PLAY")
+                }.buttonStyle(BasicButtonStyle())
+                .padding(.bottom, 10)
+                
+                Button(action: {
+                    playerVariables.currentView = .JoinGameView
+                }) {
+                    Text("JOIN")
+                }.buttonStyle(BasicButtonStyle())
+                .padding(.bottom, 10)
+                
+                Button(action: {
+                }) {
+                    Text("LEARN")
+                }.buttonStyle(BasicButtonStyle())
+                .padding(.bottom, 10)
+                
+            }.statusBar(hidden: true)
             
-            Spacer()
+            if !hasUsername {
+                BlurView(effect: UIBlurEffect(style: .dark))
+                    .edgesIgnoringSafeArea(.all)
+            }
             
-            Button(action: {
-                GameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).generateRandomGameCode()
-                playerVariables.currentView = .CreateGameView
-            }) {
-                Text("PLAY")
-            }.buttonStyle(BasicButtonStyle())
-            .padding(.bottom, 10)
-            
-            Button(action: {
-                playerVariables.currentView = .JoinGameView
-            }) {
-                Text("JOIN")
-            }.buttonStyle(BasicButtonStyle())
-            .padding(.bottom, 10)
-            
-            Button(action: {
-            }) {
-                Text("LEARN")
-            }.buttonStyle(BasicButtonStyle())
-            .padding(.bottom, 10)
-        }.statusBar(hidden: true)
+            if !hasUsername {
+                ZStack {
+                    Color.white
+                    VStack {
+                        Text("SELECT YOUR USERNAME")
+                        
+                        Spacer()
+                        
+                        ZStack {
+                            TextField("USERNAME", text: $enteredUsername)
+                                .multilineTextAlignment(.center)
+                                .frame(width: 250, height: 40)
+                                .font(.custom("Montserrat-Bold", size: 15))
+                            
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(Color("ButtonBackground"))
+                                .frame(width: 270, height: 40)
+                        }
+                        
+                        if invalidUsername != "" {
+                            Text(invalidUsername)
+                        }
+                        
+                        Button(action: {
+                            PlayerManager(playerVariables: playerVariables, hasUsername: $hasUsername, invalidUsername: $invalidUsername).assignName(enteredUsername: enteredUsername)
+                        }, label: {
+                            Text("Confirm")
+                        })
+                    }.padding()
+                }
+                .frame(width: 300, height: 200)
+                .cornerRadius(20).shadow(radius: 10)
+            }
+        }.onAppear {
+            PlayerManager(playerVariables: playerVariables, hasUsername: $hasUsername, invalidUsername: $invalidUsername).fetchName()
+        }
     }
 }
 
