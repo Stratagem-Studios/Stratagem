@@ -7,7 +7,7 @@ enum viewStates : String {
 }
 
 class PlayerVariables: ObservableObject {
-    @Published var playerName: String = "NO NAME"
+    @Published var playerName: String = "inter"
     @Published var currentView: viewStates = viewStates.TitleScreenView
     
     init() {

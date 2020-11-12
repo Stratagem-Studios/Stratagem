@@ -44,8 +44,8 @@ public struct CreateGameView: View {
                 Spacer()
                 
                 Button(action: {
-                    GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
                     GameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).createGameWithCode(code: staticGameVariables.gameCode)
+                    GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
                     playerVariables.currentView = .GameLobbyView
                 }) {
                     Text("CREATE")
