@@ -2,6 +2,8 @@ import SwiftUI
 import SpriteKit
 
 public struct JoinGameView: View {
+    @EnvironmentObject var playerVariables: PlayerVariables
+    @EnvironmentObject var staticGameVariables: StaticGameVariables
     @EnvironmentObject var gameVariables: GameVariables
     @State var enteredCode: String = ""
 
@@ -13,7 +15,8 @@ public struct JoinGameView: View {
             Spacer()
             
             Button(action: {
-                self.gameVariables.currentView = "CityView"
+                GameManager(staticGameVariables: staticGameVariables).joinGameWithCode(code: enteredCode)
+                playerVariables.currentView = .GameLobbyView
             }) {
                 Text("PLAY")
             }.buttonStyle(BasicButtonStyle())
@@ -31,7 +34,7 @@ public struct JoinGameView: View {
                 .padding(.bottom, 10)
             
             Button(action: {
-                    self.gameVariables.currentView = "TitleScreenView"
+                playerVariables.currentView = .TitleScreenView
             }) {
                 Text("BACK")
             }.buttonStyle(BasicButtonStyle())

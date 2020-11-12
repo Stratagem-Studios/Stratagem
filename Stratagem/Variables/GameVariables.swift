@@ -1,16 +1,11 @@
-// This file contains all the game variables that will be held in the cloud for the duration of a game
+// Stores variables for high-frequency game updates
 
-import Foundation
 import Combine
 
 // enum keeps track of all possible materials
 // Not sure if nessasary
 enum resourceTypes {
     case metal, gold
-}
-
-enum gameStates {
-    case NA, PRE_LOBBY, LOBBY, GAME
 }
 
 // Materials follow this pattern
@@ -23,18 +18,11 @@ var resourceDefaultStats = [
 class GameVariables: ObservableObject {
     // Sets up the gameResourceList to contain all resource values
     var gameResources: [resourceStatsList] = []
-    @Published var currentView: String
-    @Published var currentGameState: gameStates
-    @Published var gameCode: String
 
     init() {
         for a in resourceDefaultStats {
             gameResources.append(resourceStatsList(resourceType: a[0] as! resourceTypes, resourceMaxTimer: a[1] as! Double, resourceLiveTimer: a[2] as! Double))
         }
-        
-        currentView = "TitleScreenView"
-        currentGameState = gameStates.NA
-        gameCode = ""
     }
 }
 

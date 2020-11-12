@@ -2,22 +2,20 @@ import SwiftUI
 import SpriteKit
 
 struct ContentView: View {
-    @EnvironmentObject var gameVariables: GameVariables
+    @EnvironmentObject var playerVariables: PlayerVariables
     
     var body: some View {
-        switch gameVariables.currentView {
-        case "TitleScreenView":
+        switch playerVariables.currentView {
+        case .TitleScreenView:
             TitleScreenView()
-        case "CreateGameView":
+        case .CreateGameView:
             CreateGameView()
-        case "JoinGameView":
+        case .JoinGameView:
             JoinGameView()
-        case "GameLobbyView":
+        case .GameLobbyView:
             GameLobbyView()
-        case "CityView":
+        case .CityView:
             CityView()
-        default:
-            EmptyView()
         }
     }
 }
@@ -25,7 +23,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(GameVariables())
+            .environmentObject(PlayerVariables())
             .previewLayout(.fixed(width: 896, height: 414))
     }
 }

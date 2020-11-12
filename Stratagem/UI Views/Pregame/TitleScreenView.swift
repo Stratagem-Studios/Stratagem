@@ -1,7 +1,8 @@
 import SwiftUI
 
 public struct TitleScreenView: View {
-    @EnvironmentObject var gameVariables: GameVariables
+    @EnvironmentObject var playerVariables: PlayerVariables
+    @EnvironmentObject var staticGameVariables: StaticGameVariables
 
     public var body: some View {
             VStack {
@@ -11,14 +12,15 @@ public struct TitleScreenView: View {
                 Spacer()
                 
                 Button(action: {
-                    gameVariables.currentView = "CreateGameView"
+                    GameManager(staticGameVariables: staticGameVariables).generateRandomGameCode()
+                    playerVariables.currentView = .CreateGameView
                 }) {
                     Text("PLAY")
                 }.buttonStyle(BasicButtonStyle())
                 .padding(.bottom, 10)
                 
                 Button(action: {
-                    gameVariables.currentView = "JoinGameView"
+                    playerVariables.currentView = .JoinGameView
                 }) {
                     Text("JOIN")
                 }.buttonStyle(BasicButtonStyle())

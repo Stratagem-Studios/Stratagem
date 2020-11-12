@@ -2,7 +2,8 @@ import SwiftUI
 import SpriteKit
 
 public struct GameLobbyView: View {
-    @EnvironmentObject var gameVariables: GameVariables
+    @EnvironmentObject var playerVariables: PlayerVariables
+    @EnvironmentObject var staticGameVariables: StaticGameVariables
 
     public var body: some View {
         VStack {
@@ -13,7 +14,7 @@ public struct GameLobbyView: View {
             
             HStack {
                 Button(action: {
-                    self.gameVariables.currentView = "TitleScreenView"
+                    playerVariables.currentView = .TitleScreenView
                 }) {
                     Text("BACK")
                 }.buttonStyle(BasicButtonStyle())
@@ -22,12 +23,12 @@ public struct GameLobbyView: View {
                 Spacer()
                 
                 HStack {
-                    Text(gameVariables.gameCode)
+                    Text(staticGameVariables.gameCode)
                         .font(.custom("Montserrat-Bold", size: 20))
                         .background(Color("TitleBackground"))
                         .foregroundColor(Color.white)
                     Button(action: {
-                        UIPasteboard.general.string = "CODE"
+                        UIPasteboard.general.string = staticGameVariables.gameCode
                     }) {
                         Image("Copy")
                     }
@@ -43,13 +44,7 @@ public struct GameLobbyView: View {
                 Spacer()
                 
                 Button(action: {
-                    let createdGame = GameManager().createGameWithCode(code: gameVariables.gameCode)
-                    
-                    if createdGame {
-                        self.gameVariables.currentView = "CityView"
-                    } else {
-                        // inform failure
-                    }
+                    playerVariables.currentView = .CityView
                 }) {
                     Text("START")
                 }.buttonStyle(BasicButtonStyle())
