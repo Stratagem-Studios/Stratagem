@@ -38,9 +38,13 @@ public struct PlayerManager {
             }
             
             if !usernameExists {
-                self.ref.child("id_to_username").child(id).setValue(enteredUsername)
-                playerVariables.playerName = enteredUsername
-                hasUsername = true
+                if enteredUsername.isAlphanumeric {
+                    self.ref.child("id_to_username").child(id).setValue(enteredUsername)
+                    playerVariables.playerName = enteredUsername
+                    hasUsername = true
+                } else {
+                    invalidUsername = "Username must be alphanumeric and must not contain spaces"
+                }
             }
         }
     }

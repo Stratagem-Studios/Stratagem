@@ -54,6 +54,9 @@ public struct TitleScreenView: View {
                         
                         ZStack {
                             TextField("USERNAME", text: $enteredUsername)
+                                .onReceive(enteredUsername.publisher.collect()) {
+                                    enteredUsername = String($0.prefix(16))
+                                }
                                 .multilineTextAlignment(.center)
                                 .frame(width: 250, height: 40)
                                 .font(.custom("Montserrat-Bold", size: 15))

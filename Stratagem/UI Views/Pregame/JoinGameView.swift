@@ -25,6 +25,9 @@ public struct JoinGameView: View {
             
             ZStack {
                 TextField("CODE", text: $enteredCode)
+                    .onReceive(enteredCode.publisher.collect()) {
+                        enteredCode = String($0.prefix(4))
+                    }
                     .frame(width: 62, height: 40)
                     .font(.custom("Montserrat-Bold", size: 20))
                 
