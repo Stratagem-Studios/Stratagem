@@ -20,7 +20,7 @@ public struct BasicButtonStyle: ButtonStyle {
             .foregroundColor(.white)
             .overlay(
                 RoundedRectangle(cornerRadius: 5)
-                   .stroke(Color.white, lineWidth: 1)
+                    .stroke(Color.white, lineWidth: 1)
             )
         //.scaleEffect(configuration.isPressed ? 1.3 : 1.0)
     }

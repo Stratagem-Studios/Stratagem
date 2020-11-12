@@ -11,7 +11,7 @@ public struct TitleText: View {
     let text: String
     var backgroundColor: Color = Color("TitleBackground")
     var iconName: String? = nil
-
+    
     public var body: some View {
         HStack {
             if let iconName = iconName {
@@ -24,11 +24,11 @@ public struct TitleText: View {
                 .background(backgroundColor)
                 .foregroundColor(Color.white)
         }
-            .padding()
-            .frame(height: 40)
-            .background(backgroundColor)
-            .cornerRadius(5)
-            .foregroundColor(.white)
+        .padding()
+        .frame(height: 40)
+        .background(backgroundColor)
+        .cornerRadius(5)
+        .foregroundColor(.white)
     }
 }
 
@@ -36,19 +36,19 @@ public struct TitleTextWithBorder: View {
     let text: String
     var backgroundColor: Color = Color("TitleBackground")
     var iconName: String? = nil
-
+    
     public var body: some View {
         TitleText(text: text, backgroundColor: backgroundColor, iconName: iconName)
             .overlay(RoundedRectangle(cornerRadius: 5)
-            .stroke(Color.white, lineWidth: 1)
-        )
+                        .stroke(Color.white, lineWidth: 1)
+            )
     }
 }
 
 public struct SmallTitleText: View {
     let text: String
     var iconName: String? = nil
-
+    
     public var body: some View {
         HStack {
             if let iconName = iconName {
@@ -72,12 +72,12 @@ public struct SmallTitleText: View {
 public struct SmallTitleTextWithBorder: View {
     let text: String
     var iconName: String? = nil
-
+    
     public var body: some View {
         SmallTitleText(text: text, iconName: iconName)
             .overlay(RoundedRectangle(cornerRadius: 5)
-            .stroke(Color.white, lineWidth: 1)
-        )
+                        .stroke(Color.white, lineWidth: 1)
+            )
     }
 }
 

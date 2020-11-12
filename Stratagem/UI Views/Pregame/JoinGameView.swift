@@ -6,12 +6,12 @@ public struct JoinGameView: View {
     @EnvironmentObject var staticGameVariables: StaticGameVariables
     @EnvironmentObject var gameVariables: GameVariables
     @State var enteredCode: String = ""
-
+    
     public var body: some View {
         VStack() {
             TitleText(text: "STRATAGEM")
                 .padding(.top, 10)
-
+            
             Spacer()
             
             Button(action: {
@@ -32,7 +32,7 @@ public struct JoinGameView: View {
                     .stroke(Color("ButtonBackground"))
                     .frame(width: 85, height: 40)
             }
-                .padding(.bottom, 10)
+            .padding(.bottom, 10)
             
             Button(action: {
                 playerVariables.currentView = .TitleScreenView

@@ -25,27 +25,27 @@ public struct GameManager {
             }
         }
     }
-
+    
     public func createGameWithCode(code: String) {
         self.ref.child("game_statuses").child(code).setValue(gameStates.LOBBY.rawValue)
         self.ref.child("games").child(code).setValue(
-                ["usernames": [playerVariables.playerName]])
+            ["usernames": [playerVariables.playerName]])
         self.ref.child("users").child(playerVariables.playerName).setValue(
-                ["game_id": code])
+            ["game_id": code])
         
         staticGameVariables.gameState = .LOBBY
     }
     
     public func joinGameWithCode(code: String) {
         self.ref.child("users").child(playerVariables.playerName).setValue(
-                ["game_id": code])
+            ["game_id": code])
         
         let gameStatusRef = ref.child("games").child(code).child("usernames")
         gameStatusRef.observeSingleEvent(of: .value) { snapshot in
-                var playerNames = [String]()
-                let enumerator = snapshot.children
-                while let rest = enumerator.nextObject() as? DataSnapshot {
-                    playerNames.append(rest.value as! String)
+            var playerNames = [String]()
+            let enumerator = snapshot.children
+            while let rest = enumerator.nextObject() as? DataSnapshot {
+                playerNames.append(rest.value as! String)
             }
             playerNames.append(playerVariables.playerName)
             gameStatusRef.setValue(playerNames)

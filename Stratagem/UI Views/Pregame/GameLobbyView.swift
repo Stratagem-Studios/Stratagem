@@ -4,7 +4,7 @@ import SpriteKit
 public struct GameLobbyView: View {
     @EnvironmentObject var playerVariables: PlayerVariables
     @EnvironmentObject var staticGameVariables: StaticGameVariables
-
+    
     public var body: some View {
         VStack {
             TitleText(text: "LOBBY")
@@ -38,16 +38,17 @@ public struct GameLobbyView: View {
                     }
                     .padding(.leading, 5)
                 }
-                    .padding()
-                    .frame(height: 40)
-                    .background(Color("TitleBackground"))
-                    .cornerRadius(5)
-                    .foregroundColor(.white)
-                    .padding(.bottom, 10)
+                .padding()
+                .frame(height: 40)
+                .background(Color("TitleBackground"))
+                .cornerRadius(5)
+                .foregroundColor(.white)
+                .padding(.bottom, 10)
                 
                 Spacer()
                 
                 Button(action: {
+                    GameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).startGame()
                     playerVariables.currentView = .CityView
                 }) {
                     Text("START")
