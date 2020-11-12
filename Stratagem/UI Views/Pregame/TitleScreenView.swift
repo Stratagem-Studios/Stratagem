@@ -12,7 +12,7 @@ public struct TitleScreenView: View {
                 Spacer()
                 
                 Button(action: {
-                    GameManager(staticGameVariables: staticGameVariables).generateRandomGameCode()
+                    GameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).generateRandomGameCode()
                     playerVariables.currentView = .CreateGameView
                 }) {
                     Text("PLAY")

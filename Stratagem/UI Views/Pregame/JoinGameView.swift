@@ -15,7 +15,8 @@ public struct JoinGameView: View {
             Spacer()
             
             Button(action: {
-                GameManager(staticGameVariables: staticGameVariables).joinGameWithCode(code: enteredCode)
+                GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
+                GameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).joinGameWithCode(code: enteredCode)
                 playerVariables.currentView = .GameLobbyView
             }) {
                 Text("PLAY")

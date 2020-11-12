@@ -10,6 +10,10 @@ public struct GameLobbyView: View {
             TitleText(text: "LOBBY")
                 .padding(.top, 10)
             
+            ForEach(staticGameVariables.playerNames, id: \.self) { playerName in
+                Text(playerName).padding()
+            }
+            
             Spacer()
             
             HStack {
