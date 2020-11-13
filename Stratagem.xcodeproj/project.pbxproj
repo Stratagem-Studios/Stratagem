@@ -156,7 +156,7 @@
 				CECA774A255E43A600CE9F69 /* Units.swift */,
 				CECA774F255E458300CE9F69 /* GameBoards.swift */,
 			);
-			path = Instantiatable;
+			name = Instantiatable;
 			sourceTree = "<group>";
 		};
 		FF078BBE254F3F8300E9FA7C = {
