@@ -22,10 +22,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@master
-      # Run xcodebuild
-      - uses: sersoft-gmbh/xcodebuild-action@v1
+        
+      # Run xcodebuild            
+      - name: Xcodebuild
+        uses: sersoft-gmbh/xcodebuild-action@v1
         with:
           workspace: Stratagem.xcworkspace
           scheme: Stratagem
-          destination: platform=macOS
+          destination: platform=iOS Simulator,name=iPhone 11,OS=14.0
           action: build
