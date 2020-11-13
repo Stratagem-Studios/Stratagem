@@ -28,4 +28,4 @@ jobs:
           workspace: Stratagem.xcworkspace
           scheme: Stratagem
           destination: platform=macOS
-          action: test
+          action: build
