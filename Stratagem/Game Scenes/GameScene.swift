@@ -13,6 +13,7 @@ class GameScene: SKScene {
 
     // Refernces the TileMapNode
     var playerGameMap: SKTileMapNode?
+    
     // These vars will be used to reference labels
     var metalCountLabel: SKLabelNode?
     var goldCountLabel: SKLabelNode?
