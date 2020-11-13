@@ -7,7 +7,7 @@ public struct PlayerManager {
     
     @Binding var hasUsername: Bool
     @Binding var invalidUsername: String
-
+    
     public func fetchName() {
         let id = UIDevice.current.identifierForVendor?.uuidString ?? "NO UUID"
         
@@ -31,10 +31,12 @@ public struct PlayerManager {
         let gameStatusRef = ref.child("id_to_username")
         gameStatusRef.observeSingleEvent(of: .value) { snapshot in
             var usernameExists = false
-            let value = (snapshot.value as! Dictionary<String, Any>).values.first as! String
-            if value.lowercased() == enteredUsername.lowercased() {
-                usernameExists = true
-                invalidUsername = "Username already exists"
+            if snapshot.exists() {
+                let value = (snapshot.value as! Dictionary<String, Any>).values.first as! String
+                if value.lowercased() == enteredUsername.lowercased() {
+                    usernameExists = true
+                    invalidUsername = "Username already exists"
+                }
             }
             
             if !usernameExists {
@@ -49,3 +51,4 @@ public struct PlayerManager {
         }
     }
 }
+
