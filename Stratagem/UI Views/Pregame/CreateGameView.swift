@@ -2,9 +2,9 @@ import SwiftUI
 import SpriteKit
 
 public struct CreateGameView: View {
-    @EnvironmentObject var gameVariables: GameVariables
-    let gameCode: String = GameManager().generateRandomGameCode()
-
+    @EnvironmentObject var playerVariables: PlayerVariables
+    @EnvironmentObject var staticGameVariables: StaticGameVariables
+    
     public var body: some View {
         VStack {
             TitleText(text: "OPTIONS")
@@ -14,7 +14,7 @@ public struct CreateGameView: View {
             
             HStack {
                 Button(action: {
-                    self.gameVariables.currentView = "TitleScreenView"
+                    playerVariables.currentView = .TitleScreenView
                 }) {
                     Text("BACK")
                 }.buttonStyle(BasicButtonStyle())
@@ -23,29 +23,30 @@ public struct CreateGameView: View {
                 Spacer()
                 
                 HStack {
-                    Text(gameCode)
+                    Text(staticGameVariables.gameCode)
                         .font(.custom("Montserrat-Bold", size: 20))
                         .background(Color("TitleBackground"))
                         .foregroundColor(Color.white)
                     Button(action: {
-                        UIPasteboard.general.string = "CODE"
+                        UIPasteboard.general.string = staticGameVariables.gameCode
                     }) {
                         Image("Copy")
                     }
                     .padding(.leading, 5)
                 }
-                    .padding()
-                    .frame(height: 40)
-                    .background(Color("TitleBackground"))
-                    .cornerRadius(5)
-                    .foregroundColor(.white)
-                    .padding(.bottom, 10)
+                .padding()
+                .frame(height: 40)
+                .background(Color("TitleBackground"))
+                .cornerRadius(5)
+                .foregroundColor(.white)
+                .padding(.bottom, 10)
                 
                 Spacer()
                 
                 Button(action: {
-                    gameVariables.gameCode = self.gameCode
-                    self.gameVariables.currentView = "GameLobbyView"
+                    GameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).createGameWithCode(code: staticGameVariables.gameCode)
+                    GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
+                    playerVariables.currentView = .GameLobbyView
                 }) {
                     Text("CREATE")
                 }.buttonStyle(BasicButtonStyle())

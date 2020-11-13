@@ -1,51 +1,58 @@
+// Mediates connection between StaticGameVariables <-> Firebase (realtime)
+
 import Firebase
 
 public struct GameManager {
+    var playerVariables: PlayerVariables
+    var staticGameVariables: StaticGameVariables
     var ref: DatabaseReference! = Database.database().reference()
     
-    public func generateRandomGameCode() -> String {
+    public func generateRandomGameCode() {
+        let letters = "0123456789"
         var gameCode: String = ""
-        var gameCodeAlreadyExists: Bool = false
+        gameCode = String((0..<4).map{ _ in letters.randomElement()! })
         
-        while true {
-            let letters = "0123456789"
-            gameCode = String((0..<4).map{ _ in letters.randomElement()! })
-            
-            // Check if code already exists
-            let gameStatusRef = ref.child("game_statuses")
-            gameStatusRef.observeSingleEvent(of: .value) { snapshot in
-                       let enumerator = snapshot.children
-                       while let rest = enumerator.nextObject() as? DataSnapshot {
-                        if rest.key == letters {
-                            gameCodeAlreadyExists = true
-                        }
-                }
-            }
-            if gameCodeAlreadyExists {
-                gameCodeAlreadyExists.toggle()
+        // Check if code already exists
+        let gameStatusRef = ref.child("game_statuses")
+        gameStatusRef.observeSingleEvent(of: .value) { snapshot in
+            if snapshot.hasChild(gameCode) {
+                generateRandomGameCode()
             } else {
-                break
+                self.ref.child("game_statuses").child(gameCode).setValue(gameStates.PRE_LOBBY.rawValue)
+                staticGameVariables.gameCode = gameCode
             }
         }
-        
-        self.ref.child("game_statuses").child(gameCode).setValue(String(describing: gameStates.PRE_LOBBY))
-        return gameCode
     }
-
-    public func createGameWithCode(code: String) -> Bool {
-        let uuid = UIDevice.current.identifierForVendor?.uuidString
+    
+    public func createGameWithCode(code: String) {
+        self.ref.child("game_statuses").child(code).setValue(gameStates.LOBBY.rawValue)
+        self.ref.child("games").child(code).setValue(
+            ["usernames": [playerVariables.playerName]])
+        self.ref.child("current_users").child(playerVariables.playerName).setValue(
+            ["game_id": code])
         
-        if let uuid = uuid {
-            self.ref.child("users").child(uuid).setValue(
-                ["username": "interspatial",
-                 "game_id": code])
-            
-            self.ref.child("games").child(code).setValue(
-                ["username": "interspatial"])
-        } else {
-            return false
+        staticGameVariables.gameState = .LOBBY
+    }
+    
+    public func joinGameWithCode(code: String) {
+        self.ref.child("current_users").child(playerVariables.playerName).setValue(
+            ["game_id": code])
+        
+        let gameStatusRef = ref.child("games").child(code).child("usernames")
+        gameStatusRef.observeSingleEvent(of: .value) { snapshot in
+            var playerNames = [String]()
+            let enumerator = snapshot.children
+            while let rest = enumerator.nextObject() as? DataSnapshot {
+                playerNames.append(rest.value as! String)
+            }
+            playerNames.append(playerVariables.playerName)
+            gameStatusRef.setValue(playerNames)
         }
-
-        return true
+        
+        staticGameVariables.gameCode = code
+    }
+    
+    public func startGame() {
+        self.ref.child("game_statuses").child(staticGameVariables.gameCode).setValue(gameStates.GAME.rawValue)
     }
 }

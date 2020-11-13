@@ -2,18 +2,22 @@ import SwiftUI
 import SpriteKit
 
 public struct JoinGameView: View {
+    @EnvironmentObject var playerVariables: PlayerVariables
+    @EnvironmentObject var staticGameVariables: StaticGameVariables
     @EnvironmentObject var gameVariables: GameVariables
     @State var enteredCode: String = ""
-
+    
     public var body: some View {
         VStack() {
             TitleText(text: "STRATAGEM")
                 .padding(.top, 10)
-
+            
             Spacer()
             
             Button(action: {
-                self.gameVariables.currentView = "CityView"
+                GameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).joinGameWithCode(code: enteredCode)
+                GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
+                playerVariables.currentView = .GameLobbyView
             }) {
                 Text("PLAY")
             }.buttonStyle(BasicButtonStyle())
@@ -21,6 +25,9 @@ public struct JoinGameView: View {
             
             ZStack {
                 TextField("CODE", text: $enteredCode)
+                    .onReceive(enteredCode.publisher.collect()) {
+                        enteredCode = String($0.prefix(4))
+                    }
                     .frame(width: 62, height: 40)
                     .font(.custom("Montserrat-Bold", size: 20))
                 
@@ -28,10 +35,10 @@ public struct JoinGameView: View {
                     .stroke(Color("ButtonBackground"))
                     .frame(width: 85, height: 40)
             }
-                .padding(.bottom, 10)
+            .padding(.bottom, 10)
             
             Button(action: {
-                    self.gameVariables.currentView = "TitleScreenView"
+                playerVariables.currentView = .TitleScreenView
             }) {
                 Text("BACK")
             }.buttonStyle(BasicButtonStyle())

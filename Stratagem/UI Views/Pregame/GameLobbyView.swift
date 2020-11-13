@@ -2,18 +2,23 @@ import SwiftUI
 import SpriteKit
 
 public struct GameLobbyView: View {
-    @EnvironmentObject var gameVariables: GameVariables
-
+    @EnvironmentObject var playerVariables: PlayerVariables
+    @EnvironmentObject var staticGameVariables: StaticGameVariables
+    
     public var body: some View {
         VStack {
             TitleText(text: "LOBBY")
                 .padding(.top, 10)
             
+            ForEach(staticGameVariables.playerNames, id: \.self) { playerName in
+                Text(playerName).padding()
+            }
+            
             Spacer()
             
             HStack {
                 Button(action: {
-                    self.gameVariables.currentView = "TitleScreenView"
+                    playerVariables.currentView = .TitleScreenView
                 }) {
                     Text("BACK")
                 }.buttonStyle(BasicButtonStyle())
@@ -22,34 +27,28 @@ public struct GameLobbyView: View {
                 Spacer()
                 
                 HStack {
-                    Text(gameVariables.gameCode)
+                    Text(staticGameVariables.gameCode)
                         .font(.custom("Montserrat-Bold", size: 20))
                         .background(Color("TitleBackground"))
                         .foregroundColor(Color.white)
                     Button(action: {
-                        UIPasteboard.general.string = "CODE"
+                        UIPasteboard.general.string = staticGameVariables.gameCode
                     }) {
                         Image("Copy")
                     }
                     .padding(.leading, 5)
                 }
-                    .padding()
-                    .frame(height: 40)
-                    .background(Color("TitleBackground"))
-                    .cornerRadius(5)
-                    .foregroundColor(.white)
-                    .padding(.bottom, 10)
+                .padding()
+                .frame(height: 40)
+                .background(Color("TitleBackground"))
+                .cornerRadius(5)
+                .foregroundColor(.white)
+                .padding(.bottom, 10)
                 
                 Spacer()
                 
                 Button(action: {
-                    let createdGame = GameManager().createGameWithCode(code: gameVariables.gameCode)
-                    
-                    if createdGame {
-                        self.gameVariables.currentView = "CityView"
-                    } else {
-                        // inform failure
-                    }
+                    GameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).startGame()
                 }) {
                     Text("START")
                 }.buttonStyle(BasicButtonStyle())
