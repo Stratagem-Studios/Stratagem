@@ -40,7 +40,7 @@ public struct TitleScreenView: View {
             }.statusBar(hidden: true)
             
             if !hasUsername {
-                BlurView(effect: UIBlurEffect(style: .dark))
+                VisualEffectView(effect: UIBlurEffect(style: .dark))
                     .edgesIgnoringSafeArea(.all)
             }
             

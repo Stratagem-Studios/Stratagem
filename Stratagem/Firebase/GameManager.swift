@@ -26,12 +26,13 @@ public struct GameManager {
     
     public func createGameWithCode(code: String) {
         self.ref.child("game_statuses").child(code).setValue(gameStates.LOBBY.rawValue)
-        self.ref.child("games").child(code).setValue(
-            ["usernames": [playerVariables.playerName]])
+        self.ref.child("games").child(code).child("usernames").setValue([playerVariables.playerName])
+        self.ref.child("games").child(code).child("leader").setValue(playerVariables.playerName)
         self.ref.child("current_users").child(playerVariables.playerName).setValue(
             ["game_id": code])
         
         staticGameVariables.gameState = .LOBBY
+        staticGameVariables.leaderName = playerVariables.playerName
     }
     
     public func joinGameWithCode(code: String) {

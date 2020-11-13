@@ -13,6 +13,9 @@ public struct GameLobbyView: View {
             ForEach(staticGameVariables.playerNames, id: \.self) { playerName in
                 Text(playerName).padding()
             }
+            if staticGameVariables.leaderName == playerVariables.playerName {
+                Text("you're the leader")
+            }
             
             Spacer()
             

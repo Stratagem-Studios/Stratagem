@@ -10,4 +10,5 @@ class StaticGameVariables: ObservableObject {
     @Published var gameCode: String = "NO CODE"
     @Published var gameState: gameStates = .NA
     @Published var playerNames: [String] = []
+    @Published var leaderName: String = ""
 }

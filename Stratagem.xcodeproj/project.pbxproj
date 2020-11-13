@@ -45,7 +45,7 @@
 		FF8C4E5A254FB2CF00522756 /* GameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8C4E59254FB2CF00522756 /* GameVariables.swift */; };
 		FF8C4E67254FBAFB00522756 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FF8C4E66254FBAFB00522756 /* .gitignore */; };
 		FF8C4E6C254FBCBD00522756 /* SaveData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF8C4E6A254FBCBD00522756 /* SaveData.xcdatamodeld */; };
-		FF96B533255DCB6E00E5F8D4 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96B532255DCB6E00E5F8D4 /* BlurView.swift */; };
+		FF96B533255DCB6E00E5F8D4 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96B532255DCB6E00E5F8D4 /* VisualEffectView.swift */; };
 		FFAD01DE255AE84600BA2907 /* CreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD01DD255AE84600BA2907 /* CreateGameView.swift */; };
 		FFB4A299255CE6A7003298E2 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB4A298255CE6A7003298E2 /* FirebaseHelper.swift */; };
 		FFB4A2A7255D9EA1003298E2 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB4A2A6255D9EA1003298E2 /* PlayerManager.swift */; };
@@ -104,7 +104,7 @@
 		FF8C4E59254FB2CF00522756 /* GameVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVariables.swift; sourceTree = "<group>"; };
 		FF8C4E66254FBAFB00522756 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FF8C4E6B254FBCBD00522756 /* SaveData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SaveData.xcdatamodel; sourceTree = "<group>"; };
-		FF96B532255DCB6E00E5F8D4 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		FF96B532255DCB6E00E5F8D4 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		FFAD01DD255AE84600BA2907 /* CreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameView.swift; sourceTree = "<group>"; };
 		FFB4A298255CE6A7003298E2 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		FFB4A2A6255D9EA1003298E2 /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 			children = (
 				FF0857482550F39300F0F220 /* ButtonStyles.swift */,
 				FF012D3A2551B0420017E288 /* TitleText.swift */,
-				FF96B532255DCB6E00E5F8D4 /* BlurView.swift */,
+				FF96B532255DCB6E00E5F8D4 /* VisualEffectView.swift */,
 				FF65EF1E255DE8CF0013C2C4 /* UIExtensions.swift */,
 			);
 			path = "UI Element Styles";
@@ -466,7 +466,7 @@
 				FFFCFAB9255B296400D03284 /* AppDelegate.swift in Sources */,
 				FF0857492550F39300F0F220 /* ButtonStyles.swift in Sources */,
 				FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */,
-				FF96B533255DCB6E00E5F8D4 /* BlurView.swift in Sources */,
+				FF96B533255DCB6E00E5F8D4 /* VisualEffectView.swift in Sources */,
 				FFF85E3E255C73B700DFDDC2 /* GameListener.swift in Sources */,
 				FF33849325599EB9000EF945 /* JoinGameView.swift in Sources */,
 				FFB4A2A7255D9EA1003298E2 /* PlayerManager.swift in Sources */,
