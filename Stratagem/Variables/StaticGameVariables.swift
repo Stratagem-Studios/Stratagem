@@ -7,8 +7,22 @@ enum gameStates : String {
 }
 
 class StaticGameVariables: ObservableObject {
-    @Published var gameCode: String = "NO CODE"
-    @Published var gameState: gameStates = .NA
-    @Published var playerNames: [String] = []
-    @Published var leaderName: String = ""
+    @Published var gameCode: String
+    @Published var gameState: gameStates
+    @Published var playerNames: [String]
+    @Published var leaderName: String
+    
+    init() {
+        gameCode = "NO CODE"
+        gameState = .NA
+        playerNames = []
+        leaderName = ""
+    }
+    
+    func reset() {
+        gameCode = "NO CODE"
+        gameState = .NA
+        playerNames = []
+        leaderName = ""
+    }
 }

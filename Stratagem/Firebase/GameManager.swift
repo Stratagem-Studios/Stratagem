@@ -20,6 +20,7 @@ public struct GameManager {
             } else {
                 self.ref.child("game_statuses").child(gameCode).setValue(gameStates.PRE_LOBBY.rawValue)
                 staticGameVariables.gameCode = gameCode
+                playerVariables.currentView = .CreateGameView
             }
         }
     }
@@ -36,21 +37,49 @@ public struct GameManager {
     }
     
     public func joinGameWithCode(code: String) {
-        self.ref.child("current_users").child(playerVariables.playerName).setValue(
-            ["game_id": code])
+        // Check if game code exists
+        let gameCodesRef = ref.child("games")
+        gameCodesRef.observeSingleEvent(of: .value) { snapshot in
+            if snapshot.hasChild(code) {
+                // Join game
+                self.ref.child("current_users").child(playerVariables.playerName).child("game_id").setValue(code)
+                
+                let gamePlayersRef = ref.child("games").child(code).child("usernames")
+                gamePlayersRef.observeSingleEvent(of: .value) { snapshot in
+                    var playerNames = [String]()
+                    let enumerator = snapshot.children
+                    while let rest = enumerator.nextObject() as? DataSnapshot {
+                        playerNames.append(rest.value as! String)
+                    }
+                    playerNames.append(playerVariables.playerName)
+                    gamePlayersRef.setValue(playerNames)
+                    
+                    staticGameVariables.gameCode = code
+                    
+                    GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
+                    playerVariables.currentView = .GameLobbyView
+                }
+            } else {
+                // Propagate error message popup
+            }
+        }
+    }
+    
+    public func removePlayerFromGame(username: String) {
+        ref.child("current_users").child(username).removeValue()
+        ref.removeAllObservers()
         
-        let gameStatusRef = ref.child("games").child(code).child("usernames")
-        gameStatusRef.observeSingleEvent(of: .value) { snapshot in
+        // Remove from game
+        let gamePlayersRef = ref.child("games").child(staticGameVariables.gameCode).child("usernames")
+        gamePlayersRef.observeSingleEvent(of: .value) { snapshot in
             var playerNames = [String]()
             let enumerator = snapshot.children
             while let rest = enumerator.nextObject() as? DataSnapshot {
                 playerNames.append(rest.value as! String)
             }
-            playerNames.append(playerVariables.playerName)
-            gameStatusRef.setValue(playerNames)
+            playerNames.remove(object: username)
+            gamePlayersRef.setValue(playerNames)
         }
-        
-        staticGameVariables.gameCode = code
     }
     
     public func startGame() {
