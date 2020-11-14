@@ -10,6 +10,7 @@ enum viewStates : String {
 class PlayerVariables: ObservableObject {
     @Published var playerName: String = "***NIL***"
     @Published var currentView: viewStates = viewStates.TitleScreenView
+    @Published var errorMessage: String = ""
     @Published var observerRefs: [DatabaseReference] = []
     
     init() {

@@ -5,17 +5,23 @@ struct ContentView: View {
     @EnvironmentObject var playerVariables: PlayerVariables
     
     var body: some View {
-        switch playerVariables.currentView {
-        case .TitleScreenView:
-            TitleScreenView()
-        case .CreateGameView:
-            CreateGameView()
-        case .JoinGameView:
-            JoinGameView()
-        case .GameLobbyView:
-            GameLobbyView()
-        case .CityView:
-            CityView()
+        ZStack {
+            switch playerVariables.currentView {
+            case .TitleScreenView:
+                TitleScreenView()
+            case .CreateGameView:
+                CreateGameView()
+            case .JoinGameView:
+                JoinGameView()
+            case .GameLobbyView:
+                GameLobbyView()
+            case .CityView:
+                CityView()
+            }
+            
+            if playerVariables.errorMessage != "" {
+                ErrorPopup()
+            }
         }
     }
 }

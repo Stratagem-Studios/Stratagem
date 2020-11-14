@@ -41,9 +41,7 @@ public struct TitleScreenView: View {
             if !hasUsername {
                 VisualEffectView(effect: UIBlurEffect(style: .dark))
                     .edgesIgnoringSafeArea(.all)
-            }
-            
-            if !hasUsername {
+                
                 ZStack {
                     Color.white
                     VStack {

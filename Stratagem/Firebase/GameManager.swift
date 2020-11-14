@@ -61,6 +61,7 @@ public struct GameManager {
                 }
             } else {
                 // Propagate error message popup
+                playerVariables.errorMessage = "Please enter a valid 4 digit game code"
             }
         }
     }
