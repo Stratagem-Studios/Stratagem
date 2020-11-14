@@ -67,15 +67,15 @@ public struct GameManager {
     
     public func removePlayerFromGame(username: String) {
         ref.child("current_users").child(username).removeValue()
-        ref.removeAllObservers()
+        GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).stopListening()
         
         // Remove from game
         let gamePlayersRef = ref.child("games").child(staticGameVariables.gameCode).child("usernames")
         gamePlayersRef.observeSingleEvent(of: .value) { snapshot in
             var playerNames = [String]()
             let enumerator = snapshot.children
-            while let rest = enumerator.nextObject() as? DataSnapshot {
-                playerNames.append(rest.value as! String)
+            while let username = enumerator.nextObject() as? DataSnapshot {
+                playerNames.append(username.value as! String)
             }
             playerNames.remove(object: username)
             gamePlayersRef.setValue(playerNames)
@@ -84,5 +84,22 @@ public struct GameManager {
     
     public func startGame() {
         self.ref.child("game_statuses").child(staticGameVariables.gameCode).setValue(gameStates.GAME.rawValue)
+    }
+    
+    public func removeGame() {
+        GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).stopListening()
+
+        // Remove all players from game
+        let gamePlayersRef = ref.child("games").child(staticGameVariables.gameCode).child("usernames")
+        gamePlayersRef.observeSingleEvent(of: .value) { snapshot in
+            let enumerator = snapshot.children
+            while let username = enumerator.nextObject() as? DataSnapshot {
+                ref.child("current_users").child(username.value as! String).removeValue()
+            }
+
+            ref.child("games").child(staticGameVariables.gameCode).removeValue()
+            ref.child("game_statuses").child(staticGameVariables.gameCode).removeValue()
+            playerVariables.currentView = .TitleScreenView
+        }
     }
 }

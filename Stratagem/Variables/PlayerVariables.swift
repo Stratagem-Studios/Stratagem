@@ -1,6 +1,7 @@
 // Stores variables for player (LF)
 
 import Combine
+import Firebase
 
 enum viewStates : String {
     case TitleScreenView, CreateGameView, JoinGameView, GameLobbyView, CityView
@@ -9,6 +10,7 @@ enum viewStates : String {
 class PlayerVariables: ObservableObject {
     @Published var playerName: String = "***NIL***"
     @Published var currentView: viewStates = viewStates.TitleScreenView
+    @Published var observerRefs: [DatabaseReference] = []
     
     init() {
         

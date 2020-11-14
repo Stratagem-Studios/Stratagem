@@ -14,7 +14,7 @@ public struct CreateGameView: View {
             
             HStack {
                 Button(action: {
-                    playerVariables.currentView = .TitleScreenView
+                    GameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).removeGame()
                 }) {
                     Text("BACK")
                 }.buttonStyle(BasicButtonStyle())

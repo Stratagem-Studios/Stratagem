@@ -192,6 +192,7 @@
 				FFE1000B2551B7F500DD6608 /* Game Scenes */,
 				FF0857472550D8F200F0F220 /* UI Element Styles */,
 				FF0857412550D7AE00F0F220 /* UI Views */,
+				FF3789A9255F81CE00D30F66 /* Helper Views */,
 				FF078BCE254F3F8800E9FA7C /* Assets.xcassets */,
 				FFFCFAC1255B629700D03284 /* Firebase */,
 				FF8C4E4D254FB04200522756 /* Core Data */,
@@ -262,6 +263,13 @@
 			children = (
 			);
 			name = Postgame;
+			sourceTree = "<group>";
+		};
+		FF3789A9255F81CE00D30F66 /* Helper Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Helper Views";
 			sourceTree = "<group>";
 		};
 		FF8C4E4D254FB04200522756 /* Core Data */ = {

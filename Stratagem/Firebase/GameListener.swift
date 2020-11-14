@@ -13,6 +13,13 @@ public struct GameListener {
         listenForGameStateChanges()
     }
     
+    public func stopListening() {
+        for ref in playerVariables.observerRefs {
+            ref.removeAllObservers()
+        }
+        playerVariables.observerRefs = []
+    }
+    
     public func listenForPlayerChanges() {
         let gameUsernameRef = ref.child("games").child(staticGameVariables.gameCode).child("usernames")
         gameUsernameRef.observe(.value) { snapshot in
@@ -29,6 +36,7 @@ public struct GameListener {
                 staticGameVariables.reset()
             }
         }
+        playerVariables.observerRefs.append(gameUsernameRef)
     }
     
     public func listenForLeader() {
@@ -36,6 +44,7 @@ public struct GameListener {
         leaderRef.observe(.value) { snapshot in
             staticGameVariables.leaderName = snapshot.value as! String
         }
+        playerVariables.observerRefs.append(leaderRef)
     }
     
     public func listenForGameStateChanges() {
@@ -56,6 +65,7 @@ public struct GameListener {
                 break
             }
         }
+        playerVariables.observerRefs.append(gameStatusRef)
     }
 }
 
