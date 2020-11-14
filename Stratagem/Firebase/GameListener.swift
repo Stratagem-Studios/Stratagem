@@ -9,6 +9,7 @@ public struct GameListener {
     
     public func listenToAll() {
         listenForPlayerChanges()
+        listenForLeader()
         listenForGameStateChanges()
     }
     
@@ -20,7 +21,20 @@ public struct GameListener {
             while let username = enumerator.nextObject() as? DataSnapshot {
                 playerNames.append(username.value as! String)
             }
-            staticGameVariables.playerNames = playerNames
+            if playerNames.contains(playerVariables.playerName) {
+                staticGameVariables.playerNames = playerNames
+            } else {
+                // Removed from game
+                playerVariables.currentView = viewStates.TitleScreenView
+                staticGameVariables.reset()
+            }
+        }
+    }
+    
+    public func listenForLeader() {
+        let leaderRef = ref.child("games").child(staticGameVariables.gameCode).child("leader")
+        leaderRef.observe(.value) { snapshot in
+            staticGameVariables.leaderName = snapshot.value as! String
         }
     }
     
@@ -28,8 +42,18 @@ public struct GameListener {
         let gameStatusRef = ref.child("game_statuses").child(staticGameVariables.gameCode)
         gameStatusRef.observe(.value) { snapshot in
             staticGameVariables.gameState = gameStates(rawValue: snapshot.value as! String) ?? gameStates.NA
-            if staticGameVariables.gameState == gameStates.GAME {
+            
+            switch staticGameVariables.gameState {
+            case .NA:
+                playerVariables.currentView = viewStates.TitleScreenView
+            case .GAME:
                 playerVariables.currentView = viewStates.CityView
+            case .PRE_LOBBY:
+                break
+            case .LOBBY:
+                break
+            case .POSTGAME:
+                break
             }
         }
     }

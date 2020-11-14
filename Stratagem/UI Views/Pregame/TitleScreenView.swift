@@ -18,7 +18,6 @@ public struct TitleScreenView: View {
                 
                 Button(action: {
                     GameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).generateRandomGameCode()
-                    playerVariables.currentView = .CreateGameView
                 }) {
                     Text("PLAY")
                 }.buttonStyle(BasicButtonStyle())

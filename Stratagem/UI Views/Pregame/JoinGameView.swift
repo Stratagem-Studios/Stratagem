@@ -16,8 +16,6 @@ public struct JoinGameView: View {
             
             Button(action: {
                 GameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).joinGameWithCode(code: enteredCode)
-                GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
-                playerVariables.currentView = .GameLobbyView
             }) {
                 Text("PLAY")
             }.buttonStyle(BasicButtonStyle())

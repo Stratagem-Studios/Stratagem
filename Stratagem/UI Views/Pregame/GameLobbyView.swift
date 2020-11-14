@@ -11,10 +11,18 @@ public struct GameLobbyView: View {
                 .padding(.top, 10)
             
             ForEach(staticGameVariables.playerNames, id: \.self) { playerName in
-                Text(playerName).padding()
-            }
-            if staticGameVariables.leaderName == playerVariables.playerName {
-                Text("you're the leader")
+                HStack {
+                    if staticGameVariables.leaderName == playerName {
+                        Image("Star")
+                    } else if staticGameVariables.leaderName == playerVariables.playerName {
+                        Button(action: {
+                            GameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).removePlayerFromGame(username: playerName)
+                        }) {
+                            Image("Close")
+                        }
+                    }
+                    Text(playerName).padding()
+                }
             }
             
             Spacer()
