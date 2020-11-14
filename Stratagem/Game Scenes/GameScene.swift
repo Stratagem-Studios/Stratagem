@@ -31,36 +31,15 @@ class GameScene: SKScene {
     // Runs when scene loaded, used to init things
     override func sceneDidLoad() {
         
-        // Sets up initial user data
-        //dataPull()
-        
         // Sets label vars to respective labels and puts them in an array
         self.metalCountLabel = self.childNode(withName: "//" + "metalCountLabel") as? SKLabelNode
         self.goldCountLabel = self.childNode(withName: "//goldCountLabel") as? SKLabelNode
         self.usernameLabel = self.childNode(withName: "//usernameLabel") as? SKLabelNode
-        let labelArray = [metalCountLabel, goldCountLabel]
+        
+        // Sets all labels in proper positions
         
     }
     func touchDown(atPoint pos : CGPoint) {
-        
-        
-        // Sets up alert
-        let alert = UIAlertController(title: "Input Username", message: "do it", preferredStyle: UIAlertController.Style.alert)
-        alert.addTextField()
-        
-        // Sets up alert action
-        let action = UIAlertAction(title: "Ok", style: .default) { action in
-            // Handle when button is clicked
-            print(alert.textFields![0].text!)
-            NSUbiquitousKeyValueStore.default.set(alert.textFields![0].text!, forKey: "username")
-            NSUbiquitousKeyValueStore.default.synchronize()
-        }
-        alert.addAction(action)
-        
-        // Runs alert
-        if let vc = self.scene?.view?.window?.rootViewController {
-            vc.present(alert, animated: true, completion: nil)
-        }
     }
     
     func touchMoved(toPoint pos : CGPoint) {
