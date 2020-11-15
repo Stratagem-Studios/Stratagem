@@ -5,12 +5,6 @@ import CoreData
 
 class GameScene: SKScene {
     
-    // Refrences the viewcontroller
-    //var viewController = GameViewController()
-    
-    // Popup used to get username
-    let alert = UIAlertController(title: "Alert Title", message: "Alert Message", preferredStyle: .alert)
-
     // These vars will be used to refrence labels
     var metalCountLabel: SKLabelNode?
     var goldCountLabel: SKLabelNode?
@@ -22,7 +16,7 @@ class GameScene: SKScene {
     
     // PlayerVars instantiates the GameVariables class which holds the variables for in-game use
     // Materials follow this pattern
-    // [enum, cooldownMax, timerLive, actual count]
+    // [enum, timerMax, timerLive, actual count]
     var playerVars = GameVariables()
     
     // This var holds a refrence to the content view
@@ -32,37 +26,13 @@ class GameScene: SKScene {
     override func sceneDidLoad() {
         
         // Sets label vars to respective labels and puts them in an array
-        self.metalCountLabel = self.childNode(withName: "//" + "metalCountLabel") as? SKLabelNode
+        self.metalCountLabel = self.childNode(withName: "//metalCountLabel") as? SKLabelNode
         self.goldCountLabel = self.childNode(withName: "//goldCountLabel") as? SKLabelNode
         self.usernameLabel = self.childNode(withName: "//usernameLabel") as? SKLabelNode
         
         // Sets all labels in proper positions
         
     }
-    func touchDown(atPoint pos : CGPoint) {
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        
-    }
-    
-    
-    // The following functions just trigger functions listed above
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
-    }
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
-    }
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
-    
     
     // Called before each frame is rendered
     override func update(_ currentTime: TimeInterval) {
@@ -80,87 +50,21 @@ class GameScene: SKScene {
         updateResources(deltaTime: dt)
         
         // Seting all labels to refelect var values
-        metalCountLabel?.text = "Metal: " + String(playerVars.gameResources[0].resourceQuantity)
-        goldCountLabel?.text = "Gold: " + String(playerVars.gameResources[1].resourceQuantity)
+        metalCountLabel?.text = "Metal: " + String(playerVars.gameResources[0].quantity)
+        goldCountLabel?.text = "Gold: " + String(playerVars.gameResources[1].quantity)
     }
         
         
     func updateResources(deltaTime: Double)  {
         for i in 0...1 {
-            let currentMaxTimer = playerVars.gameResources[i].resourceMaxTimer
-            playerVars.gameResources[i].resourceLiveTimer -= deltaTime
-            if playerVars.gameResources[i].resourceLiveTimer < 0 {
-                playerVars.gameResources[i].resourceLiveTimer = currentMaxTimer
-                playerVars.gameResources[i].resourceQuantity += 1
+            let currentMaxTimer = playerVars.gameResources[i].timerMax
+            playerVars.gameResources[i].timerLive -= deltaTime
+            if playerVars.gameResources[i].timerLive < 0 {
+                let excessTime = -playerVars.gameResources[i].timerLive
+                playerVars.gameResources[i].timerLive = currentMaxTimer - excessTime
+                playerVars.gameResources[i].quantity += 1
             }
         }
     }
     
-    func setContentView(tempContentView: ContentView){
-        contentView = tempContentView
-    }
-    
-    
-//    // =========================================================================================
-//    // Cloud Data code
-//
-//    // Cloud data containers
-//    let publicDatabase = CKContainer(identifier: "iCloud.stratagem").publicCloudDatabase;
-//    let privateDatabase = CKContainer(identifier: "iCloud.stratagem").privateCloudDatabase;
-//
-//
-//    // Eventually will direct data func flow
-//    func dataPull(){
-//        setInitialUserData()
-//    }
-//
-//
-//
-//
-//    // Called at the begening of app load, will read preset user data
-//    func setInitialUserData() {
-//        // Cloud data serach parameters
-//        // This sets the predicate to only show results that exist (hence true)
-//        let pred = NSPredicate(value: true)
-//
-//        // Sets up descriptor to arrange the data
-//        let sort = NSSortDescriptor(key: "testIndex", ascending: true)
-//
-//        // Defines the container to pull from using pred restrictions
-//        let query = CKQuery(recordType: "PermanentUserData", predicate: pred)
-//
-//        // Sets up a sorter to sort through the data
-//        query.sortDescriptors = [sort]
-//
-//        // Pulls data from container
-//        let operation = CKQueryOperation(query: query)
-//
-//        // Sets up a few more restrictions on which data will be pulled
-//        operation.desiredKeys = ["username"]
-//
-//        // Records pulled data into local data
-//        operation.recordFetchedBlock = { record in
-//            if record.isEqual("Changed Later") {
-//                print("empty")
-//            }
-//            print (record.recordID)
-//            print (record["username"]!)
-//         }
-//
-//        // Closes the query, alerts us if any errors
-//         operation.queryCompletionBlock = {(cursor, error) in
-//            DispatchQueue.main.async {
-//            if error == nil {
-//            } else {
-//                    print(error!.localizedDescription)
-//                }
-//            }
-//         }
-//
-//        // Actually triggers the operation that was setup
-//        privateDatabase.add(operation)
-//
-//
-//
-//    }
 }
