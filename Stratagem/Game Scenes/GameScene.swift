@@ -5,7 +5,9 @@ import CoreData
 
 class GameScene: SKScene {
     
-    // These vars will be used to refrence labels
+    // Vars to hold refs to gamescene objects
+    var sceneCamera: SKCameraNode?
+    var gameMap: SKTileMapNode?
     var metalCountLabel: SKLabelNode?
     var goldCountLabel: SKLabelNode?
     var usernameLabel: SKLabelNode?
@@ -19,18 +21,18 @@ class GameScene: SKScene {
     // [enum, timerMax, timerLive, actual count]
     var playerVars = GameVariables()
     
-    // This var holds a refrence to the content view
+    // This var holds a reference to the content view
     var contentView: ContentView?
     
     // Runs when scene loaded, used to init things
     override func sceneDidLoad() {
         
-        // Sets label vars to respective labels and puts them in an array
-        self.metalCountLabel = self.childNode(withName: "//metalCountLabel") as? SKLabelNode
-        self.goldCountLabel = self.childNode(withName: "//goldCountLabel") as? SKLabelNode
-        self.usernameLabel = self.childNode(withName: "//usernameLabel") as? SKLabelNode
-        
-        // Sets all labels in proper positions
+        // Sets all gamescene objects to refs
+        self.gameMap = self.childNode(withName: "//GameMap") as? SKTileMapNode
+        self.sceneCamera = self.childNode(withName: "//SceneCamera") as? SKCameraNode
+        self.metalCountLabel = self.childNode(withName: "//MetalCountLabel") as? SKLabelNode
+        self.goldCountLabel = self.childNode(withName: "//GoldCountLabel") as? SKLabelNode
+        self.usernameLabel = self.childNode(withName: "//UsernameLabel") as? SKLabelNode
         
     }
     
@@ -53,8 +55,19 @@ class GameScene: SKScene {
         metalCountLabel?.text = "Metal: " + String(playerVars.gameResources[0].quantity)
         goldCountLabel?.text = "Gold: " + String(playerVars.gameResources[1].quantity)
     }
-        
-        
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {
+          return
+        }
+
+        let location = touch.location(in: self)
+        let previousLocation = touch.previousLocation(in: self)
+
+        sceneCamera?.position.x -= location.x - previousLocation.x
+        sceneCamera?.position.y -= location.y - previousLocation.y
+    }
+    
     func updateResources(deltaTime: Double)  {
         for i in 0...1 {
             let currentMaxTimer = playerVars.gameResources[i].timerMax
