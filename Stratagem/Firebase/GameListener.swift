@@ -13,6 +13,13 @@ public struct GameListener {
         listenForGameStateChanges()
     }
     
+    public func stopListening() {
+        for ref in playerVariables.observerRefs {
+            ref.removeAllObservers()
+        }
+        playerVariables.observerRefs = []
+    }
+    
     public func listenForPlayerChanges() {
         let gameUsernameRef = ref.child("games").child(staticGameVariables.gameCode).child("usernames")
         gameUsernameRef.observe(.value) { snapshot in
@@ -25,23 +32,34 @@ public struct GameListener {
                 staticGameVariables.playerNames = playerNames
             } else {
                 // Removed from game
-                playerVariables.currentView = viewStates.TitleScreenView
-                staticGameVariables.reset()
+                PlayerManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).resetPlayer()
             }
         }
+        playerVariables.observerRefs.append(gameUsernameRef)
     }
     
     public func listenForLeader() {
         let leaderRef = ref.child("games").child(staticGameVariables.gameCode).child("leader")
         leaderRef.observe(.value) { snapshot in
-            staticGameVariables.leaderName = snapshot.value as! String
+            if snapshot.exists() {
+                print(snapshot.value as! String)
+                staticGameVariables.leaderName = snapshot.value as! String
+            } else {
+                // Game lobby doesn't exist anymore
+                PlayerManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).resetPlayer()
+            }
         }
+        playerVariables.observerRefs.append(leaderRef)
     }
     
     public func listenForGameStateChanges() {
         let gameStatusRef = ref.child("game_statuses").child(staticGameVariables.gameCode)
         gameStatusRef.observe(.value) { snapshot in
-            staticGameVariables.gameState = gameStates(rawValue: snapshot.value as! String) ?? gameStates.NA
+            if snapshot.exists() {
+                staticGameVariables.gameState = gameStates(rawValue: snapshot.value as! String) ?? .NA
+            } else {
+                PlayerManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).resetPlayer()
+            }
             
             switch staticGameVariables.gameState {
             case .NA:
@@ -56,6 +74,7 @@ public struct GameListener {
                 break
             }
         }
+        playerVariables.observerRefs.append(gameStatusRef)
     }
 }
 

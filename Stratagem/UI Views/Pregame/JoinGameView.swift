@@ -5,6 +5,7 @@ public struct JoinGameView: View {
     @EnvironmentObject var playerVariables: PlayerVariables
     @EnvironmentObject var staticGameVariables: StaticGameVariables
     @EnvironmentObject var gameVariables: GameVariables
+    
     @State var enteredCode: String = ""
     
     public var body: some View {
@@ -42,6 +43,8 @@ public struct JoinGameView: View {
             }.buttonStyle(BasicButtonStyle())
             .padding(.bottom, 10)
         }.statusBar(hidden: true)
+        
+        
     }
 }
 

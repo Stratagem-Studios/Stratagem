@@ -3,10 +3,8 @@ import Firebase
 
 public struct PlayerManager {
     var playerVariables: PlayerVariables
+    var staticGameVariables: StaticGameVariables
     var ref: DatabaseReference! = Database.database().reference()
-    
-    @Binding var hasUsername: Bool
-    @Binding var invalidUsername: String
     
     public func fetchName() {
         let id = UIDevice.current.identifierForVendor?.uuidString ?? "NO UUID"
@@ -16,10 +14,12 @@ public struct PlayerManager {
             if snapshot.hasChild(id) {
                 if let value = snapshot.value as? [String: Any] {
                     playerVariables.playerName = value[id] as! String
+                    self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(playerStates.TITLESCREEN.rawValue)
+                    handleDisconnect()
                 }
             } else {
                 // Tell user to enter username
-                hasUsername = false
+                playerVariables.playerName = "***NIL***"
             }
         }
     }
@@ -35,7 +35,7 @@ public struct PlayerManager {
                 let value = (snapshot.value as! Dictionary<String, Any>).values.first as! String
                 if value.lowercased() == enteredUsername.lowercased() {
                     usernameExists = true
-                    invalidUsername = "Username already exists"
+                    playerVariables.inlineErrorMessage = "Username already exists"
                 }
             }
             
@@ -43,12 +43,36 @@ public struct PlayerManager {
                 if enteredUsername.isAlphanumeric {
                     self.ref.child("id_to_username").child(id).setValue(enteredUsername)
                     playerVariables.playerName = enteredUsername
-                    hasUsername = true
+                    handleDisconnect()
+                    self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(playerStates.TITLESCREEN.rawValue)
                 } else {
-                    invalidUsername = "Username must be alphanumeric and must not contain spaces"
+                    playerVariables.inlineErrorMessage = "Username must be alphanumeric and must not contain spaces"
                 }
             }
         }
+    }
+    
+    public func handleDisconnect() {
+        let playerStatusRef = self.ref.child("all_users").child(playerVariables.playerName).child("status")
+        let connectedRef = Database.database().reference(withPath: ".info/connected")
+        connectedRef.observe(.value, with: { snapshot in
+          // Only handle connection established (or I've reconnected after a loss of connection)
+          guard let connected = snapshot.value as? Bool, connected else { return }
+
+          // When this device disconnects, set as offline
+          playerStatusRef.onDisconnectSetValue(playerStates.OFFLINE.rawValue)
+          self.ref.child("all_users").child(playerVariables.playerName).child("last_online").onDisconnectSetValue(ServerValue.timestamp())
+
+          // Player is connected again
+          playerStatusRef.setValue(playerStates.LOBBY.rawValue) // change later for rejoining game
+          self.ref.child("all_users").child(playerVariables.playerName).child("last_online").removeValue()
+        })
+    }
+    
+    public func resetPlayer() {
+        GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).stopListening()
+        playerVariables.currentView = viewStates.TitleScreenView
+        staticGameVariables.reset()
     }
 }
 

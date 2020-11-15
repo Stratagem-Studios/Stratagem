@@ -40,6 +40,7 @@
 		FF08577E2550FC5100F0F220 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08576C2550FC5100F0F220 /* Montserrat-Italic.ttf */; };
 		FF33849325599EB9000EF945 /* JoinGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33849225599EB9000EF945 /* JoinGameView.swift */; };
 		FF33849F2559A751000EF945 /* TitleScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33849E2559A751000EF945 /* TitleScreenView.swift */; };
+		FF3789AB255F823B00D30F66 /* ErrorPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3789AA255F823B00D30F66 /* ErrorPopup.swift */; };
 		FF40F4712559CF310036E4C7 /* CityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF40F4702559CF310036E4C7 /* CityView.swift */; };
 		FF57238F2551BFD900872457 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = FF57238E2551BFD900872457 /* .gitattributes */; };
 		FF5AF90A255E489F00836F03 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AF909255E489F00836F03 /* Units.swift */; };
@@ -101,6 +102,7 @@
 		FF08576C2550FC5100F0F220 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		FF33849225599EB9000EF945 /* JoinGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameView.swift; sourceTree = "<group>"; };
 		FF33849E2559A751000EF945 /* TitleScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScreenView.swift; sourceTree = "<group>"; };
+		FF3789AA255F823B00D30F66 /* ErrorPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPopup.swift; sourceTree = "<group>"; };
 		FF40F4702559CF310036E4C7 /* CityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityView.swift; sourceTree = "<group>"; };
 		FF57238E2551BFD900872457 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
 		FF5AF909255E489F00836F03 /* Units.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Units.swift; path = Instantiatable/Units.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				FFE1000B2551B7F500DD6608 /* Game Scenes */,
 				FF0857472550D8F200F0F220 /* UI Element Styles */,
 				FF0857412550D7AE00F0F220 /* UI Views */,
+				FF3789A9255F81CE00D30F66 /* Helper Views */,
 				FF078BCE254F3F8800E9FA7C /* Assets.xcassets */,
 				FFFCFAC1255B629700D03284 /* Firebase */,
 				FF8C4E4D254FB04200522756 /* Core Data */,
@@ -260,6 +263,14 @@
 			children = (
 			);
 			name = Postgame;
+			sourceTree = "<group>";
+		};
+		FF3789A9255F81CE00D30F66 /* Helper Views */ = {
+			isa = PBXGroup;
+			children = (
+				FF3789AA255F823B00D30F66 /* ErrorPopup.swift */,
+			);
+			path = "Helper Views";
 			sourceTree = "<group>";
 		};
 		FF8C4E4D254FB04200522756 /* Core Data */ = {
@@ -484,6 +495,7 @@
 				FF078BDB254F3FBE00E9FA7C /* GameScene.swift in Sources */,
 				FFFCFAB9255B296400D03284 /* AppDelegate.swift in Sources */,
 				FF0857492550F39300F0F220 /* ButtonStyles.swift in Sources */,
+				FF3789AB255F823B00D30F66 /* ErrorPopup.swift in Sources */,
 				CECA7740255E3F1700CE9F69 /* GameVariables.swift in Sources */,
 				FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */,
 				FF96B533255DCB6E00E5F8D4 /* VisualEffectView.swift in Sources */,
