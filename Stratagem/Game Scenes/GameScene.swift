@@ -63,10 +63,47 @@ class GameScene: SKScene {
 
         let location = touch.location(in: self)
         let previousLocation = touch.previousLocation(in: self)
-
-        sceneCamera?.position.x -= location.x - previousLocation.x
-        sceneCamera?.position.y -= location.y - previousLocation.y
+        sceneCamera!.position.x -= location.x - previousLocation.x
+        sceneCamera!.position.y -= location.y - previousLocation.y
+        
+        if abs(sceneCamera!.position.x) >= 500.0 {
+            if sceneCamera!.position.x > 0 {
+                sceneCamera!.position.x = 500
+            } else {
+                sceneCamera!.position.x = -500
+            }
+        }
+        if abs(sceneCamera!.position.y) >= 650{
+            if sceneCamera!.position.y > 0 {
+                sceneCamera!.position.y = 650
+            } else {
+                sceneCamera!.position.y = -650
+            }
+        }
+        
+        
     }
+    
+    func handleTapFrom(recognizer: UITapGestureRecognizer) {
+        // Detects and reports the tapped tile
+        
+        if recognizer.state != .ended {
+            return
+        }
+
+        let recognizorLocation = recognizer.location(in: recognizer.view!)
+        let location = self.convertPoint(fromView: recognizorLocation)
+
+        guard let map = gameMap else {
+            fatalError("Map not loaded")
+        }
+
+        let column = map.tileColumnIndex(fromPosition: location)
+        let row = map.tileRowIndex(fromPosition: location)
+        let tile = map.tileDefinition(atColumn: column, row: row)
+        
+    }
+    
     
     func updateResources(deltaTime: Double)  {
         for i in 0...1 {
