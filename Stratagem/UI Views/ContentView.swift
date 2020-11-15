@@ -3,7 +3,8 @@ import SpriteKit
 
 struct ContentView: View {
     @EnvironmentObject var playerVariables: PlayerVariables
-    
+    @EnvironmentObject var staticGameVariables: StaticGameVariables
+
     var body: some View {
         ZStack {
             switch playerVariables.currentView {
@@ -22,6 +23,8 @@ struct ContentView: View {
             if playerVariables.errorMessage != "" {
                 ErrorPopup()
             }
+        }.onAppear() {
+            PlayerManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).fetchName()
         }
     }
 }

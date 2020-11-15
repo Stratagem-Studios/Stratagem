@@ -5,8 +5,6 @@ public struct TitleScreenView: View {
     @EnvironmentObject var staticGameVariables: StaticGameVariables
     
     @State var enteredUsername: String = ""
-    @State var invalidUsername: String = ""
-    @State var hasUsername: Bool = true
 
     public var body: some View {
         ZStack {
@@ -38,7 +36,7 @@ public struct TitleScreenView: View {
                 
             }.statusBar(hidden: true)
             
-            if !hasUsername {
+            if playerVariables.playerName == "***NIL***" {
                 VisualEffectView(effect: UIBlurEffect(style: .dark))
                     .edgesIgnoringSafeArea(.all)
                 
@@ -63,12 +61,12 @@ public struct TitleScreenView: View {
                                 .frame(width: 270, height: 40)
                         }
                         
-                        if invalidUsername != "" {
-                            Text(invalidUsername)
+                        if playerVariables.inlineErrorMessage != "" {
+                            Text(playerVariables.inlineErrorMessage)
                         }
                         
                         Button(action: {
-                            PlayerManager(playerVariables: playerVariables, hasUsername: $hasUsername, invalidUsername: $invalidUsername).assignName(enteredUsername: enteredUsername)
+                            PlayerManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).assignName(enteredUsername: enteredUsername)
                         }, label: {
                             Text("Confirm")
                         })
@@ -77,8 +75,6 @@ public struct TitleScreenView: View {
                 .frame(width: 300, height: 200)
                 .cornerRadius(20).shadow(radius: 10)
             }
-        }.onAppear {
-            PlayerManager(playerVariables: playerVariables, hasUsername: $hasUsername, invalidUsername: $invalidUsername).fetchName()
         }
     }
 }

@@ -29,8 +29,8 @@ public struct GameManager {
         self.ref.child("game_statuses").child(code).setValue(gameStates.LOBBY.rawValue)
         self.ref.child("games").child(code).child("usernames").setValue([playerVariables.playerName])
         self.ref.child("games").child(code).child("leader").setValue(playerVariables.playerName)
-        self.ref.child("current_users").child(playerVariables.playerName).setValue(
-            ["game_id": code])
+        self.ref.child("all_users").child(playerVariables.playerName).child("game_id").setValue(code)
+        self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(playerStates.LOBBY.rawValue)
         
         staticGameVariables.gameState = .LOBBY
         staticGameVariables.leaderName = playerVariables.playerName
@@ -42,7 +42,8 @@ public struct GameManager {
         gameCodesRef.observeSingleEvent(of: .value) { snapshot in
             if snapshot.hasChild(code) {
                 // Join game
-                self.ref.child("current_users").child(playerVariables.playerName).child("game_id").setValue(code)
+                self.ref.child("all_users").child(playerVariables.playerName).child("game_id").setValue(code)
+                self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(playerStates.LOBBY.rawValue)
                 
                 let gamePlayersRef = ref.child("games").child(code).child("usernames")
                 gamePlayersRef.observeSingleEvent(of: .value) { snapshot in
@@ -67,8 +68,8 @@ public struct GameManager {
     }
     
     public func removePlayerFromGame(username: String) {
-        ref.child("current_users").child(username).removeValue()
-        GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).stopListening()
+        ref.child("all_users").child(username).child("game_id").removeValue()
+        self.ref.child("all_users").child(username).child("status").setValue(playerStates.TITLESCREEN.rawValue)
         
         // Remove from game
         let gamePlayersRef = ref.child("games").child(staticGameVariables.gameCode).child("usernames")
@@ -85,19 +86,26 @@ public struct GameManager {
     
     public func startGame() {
         self.ref.child("game_statuses").child(staticGameVariables.gameCode).setValue(gameStates.GAME.rawValue)
+        let gamePlayersRef = ref.child("games").child(staticGameVariables.gameCode).child("usernames")
+        gamePlayersRef.observeSingleEvent(of: .value) { snapshot in
+            let enumerator = snapshot.children
+            while let username = enumerator.nextObject() as? DataSnapshot {
+                ref.child("all_users").child(username.value as! String).child("game_id").removeValue()
+                ref.child("all_users").child(username.value as! String).child("status").setValue(playerStates.TITLESCREEN.rawValue)
+            }
+        }
     }
     
-    public func removeGame() {
-        GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).stopListening()
-
+    public func removeGame() {        
         // Remove all players from game
         let gamePlayersRef = ref.child("games").child(staticGameVariables.gameCode).child("usernames")
         gamePlayersRef.observeSingleEvent(of: .value) { snapshot in
             let enumerator = snapshot.children
             while let username = enumerator.nextObject() as? DataSnapshot {
-                ref.child("current_users").child(username.value as! String).removeValue()
+                ref.child("all_users").child(username.value as! String).child("game_id").removeValue()
+                self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(playerStates.LOBBY.rawValue)
             }
-
+            
             ref.child("games").child(staticGameVariables.gameCode).removeValue()
             ref.child("game_statuses").child(staticGameVariables.gameCode).removeValue()
             playerVariables.currentView = .TitleScreenView
