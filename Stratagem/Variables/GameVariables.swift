@@ -9,7 +9,7 @@ enum resourceTypes {
 }
 
 // Materials follow this pattern
-// [enum, cooldownMax, timerLive, actual count]
+// [enum, timerMax, timerLive, actual count]
 var resourceDefaultStats = [
     [resourceTypes.metal, 2.0, 2.0, 0],
     [resourceTypes.gold, 7.0, 7.0, 0]
@@ -23,16 +23,16 @@ class GameVariables: ObservableObject {
 
     init() {
         for a in resourceDefaultStats {
-            gameResources.append(resourceStatsList(resourceType: a[0] as! resourceTypes, resourceMaxTimer: a[1] as! Double, resourceLiveTimer: a[2] as! Double))
+            gameResources.append(resourceStatsList(type: a[0] as! resourceTypes, timerMax: a[1] as! Double, timerLive: a[2] as! Double))
         }
     }
 }
 
 struct resourceStatsList {
-    var resourceType: resourceTypes
-    var resourceMaxTimer: Double
-    var resourceLiveTimer: Double
-    var resourceQuantity = 0
+    var type: resourceTypes
+    var timerMax: Double
+    var timerLive: Double
+    var quantity = 0
     
     
 }
