@@ -42,7 +42,6 @@ public struct GameListener {
         let leaderRef = ref.child("games").child(staticGameVariables.gameCode).child("leader")
         leaderRef.observe(.value) { snapshot in
             if snapshot.exists() {
-                print(snapshot.value as! String)
                 staticGameVariables.leaderName = snapshot.value as! String
             } else {
                 // Game lobby doesn't exist anymore
@@ -60,7 +59,7 @@ public struct GameListener {
             } else {
                 PlayerManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).resetPlayer()
             }
-            
+
             switch staticGameVariables.gameState {
             case .NA:
                 playerVariables.currentView = viewStates.TitleScreenView

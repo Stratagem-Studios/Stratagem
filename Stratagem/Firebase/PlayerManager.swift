@@ -67,12 +67,39 @@ public struct PlayerManager {
             let gameIdRef = ref.child("all_users").child(playerVariables.playerName).child("game_id")
             gameIdRef.observeSingleEvent(of: .value, with: { snapshot in
                 if snapshot.exists() {
-                    // In a game
-                    playerStatusRef.setValue(playerStates.GAME.rawValue)
-                    playerVariables.currentView = .CityView
+                    let gameRef = ref.child("games")
+                    gameRef.observeSingleEvent(of: .value, with: { snapshot2 in
+                        if snapshot2.hasChild(snapshot.value as! String) {
+                            // Game still exists
+                            let gameCodeRef = ref.child("games").child(snapshot.value as! String)
+                            gameCodeRef.observeSingleEvent(of: .value, with: { snapshot3 in
+                                let gameDict = (snapshot3.value as! Dictionary<String, Any>)
+                                staticGameVariables.gameCode = snapshot.value as! String
+                                
+                                if playerVariables.observerRefs.count == 0 {
+                                    // Reattach listeners
+                                    GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
+                                }
+                                
+                                if gameDict["game_status"] as! String == gameStates.LOBBY.rawValue {
+                                    playerStatusRef.setValue(playerStates.LOBBY.rawValue)
+                                    playerVariables.currentView = .GameLobbyView
+                                } else if  gameDict["game_status"] as! String == gameStates.GAME.rawValue {
+                                    playerStatusRef.setValue(playerStates.GAME.rawValue)
+                                    playerVariables.currentView = .CityView
+                                }
+                            })
+                        } else {
+                            // Game removed
+                            playerStatusRef.setValue(playerStates.TITLESCREEN.rawValue)
+                            ref.child("all_users").child(playerVariables.playerName).child("game_id").removeValue()
+                            resetPlayer()
+                        }
+                    })
                 } else {
                     // Not in a game
-                    playerStatusRef.setValue(playerStates.LOBBY.rawValue)
+                    playerStatusRef.setValue(playerStates.TITLESCREEN.rawValue)
+                    ref.child("all_users").child(playerVariables.playerName).child("game_id").removeValue()
                     resetPlayer()
                 }
             })

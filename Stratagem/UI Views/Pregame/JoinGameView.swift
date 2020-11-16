@@ -16,7 +16,9 @@ public struct JoinGameView: View {
             Spacer()
             
             Button(action: {
-                GameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).joinGameWithCode(code: enteredCode)
+                if enteredCode != "" {
+                    GameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).joinGameWithCode(code: enteredCode)
+                }
             }) {
                 Text("PLAY")
             }.buttonStyle(BasicButtonStyle())

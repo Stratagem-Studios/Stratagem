@@ -20,6 +20,13 @@ public struct GameManager {
             } else {
                 staticGameVariables.gameCode = gameCode
                 self.ref.child("games").child(staticGameVariables.gameCode).child("game_status").setValue(gameStates.PRE_LOBBY.rawValue)
+                
+                staticGameVariables.leaderName = playerVariables.playerName
+                self.ref.child("games").child(gameCode).child("usernames").setValue([playerVariables.playerName])
+                self.ref.child("games").child(gameCode).child("leader").setValue(playerVariables.playerName)
+                self.ref.child("all_users").child(playerVariables.playerName).child("game_id").setValue(gameCode)
+                self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(playerStates.LOBBY.rawValue)
+                
                 playerVariables.currentView = .CreateGameView
             }
         }
@@ -27,13 +34,7 @@ public struct GameManager {
     
     public func createGameWithCode(code: String) {
         self.ref.child("games").child(staticGameVariables.gameCode).child("game_status").setValue(gameStates.LOBBY.rawValue)
-        self.ref.child("games").child(code).child("usernames").setValue([playerVariables.playerName])
-        self.ref.child("games").child(code).child("leader").setValue(playerVariables.playerName)
-        self.ref.child("all_users").child(playerVariables.playerName).child("game_id").setValue(code)
-        self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(playerStates.LOBBY.rawValue)
-        
         staticGameVariables.gameState = .LOBBY
-        staticGameVariables.leaderName = playerVariables.playerName
     }
     
     public func joinGameWithCode(code: String) {
@@ -108,6 +109,33 @@ public struct GameManager {
             
             ref.child("games").child(staticGameVariables.gameCode).removeValue()
             playerVariables.currentView = .TitleScreenView
+        }
+    }
+    
+    public func detectAndRemoveDeadGames() {
+        let allUsersRef = ref.child("all_users")
+        allUsersRef.observeSingleEvent(of: .value) { snapshot in
+            var allGameCodes: [String] = []
+            var dontKillGameCode: [String] = []
+            
+            let enumerator = snapshot.children
+            while let username = enumerator.nextObject() as? DataSnapshot {
+                let value = username.value as! Dictionary<String, Any>
+                if let game_id = value["game_id"] {
+                    if value["status"] as! String != "OFFLINE" {
+                        // 1+ active player in game
+                        dontKillGameCode.append(game_id as! String)
+                    }
+                    allGameCodes.append(game_id as! String)
+                }
+            }
+            
+            let toRemove = Array(Set(allGameCodes).subtracting(dontKillGameCode))
+            for removeGameCode in toRemove {
+                ref.child("games").child(removeGameCode).removeValue()
+            }
+            
+            PlayerManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).fetchName()
         }
     }
 }
