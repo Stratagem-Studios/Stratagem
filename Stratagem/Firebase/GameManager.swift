@@ -13,27 +13,28 @@ public struct GameManager {
         gameCode = String((0..<4).map{ _ in letters.randomElement()! })
         
         // Check if code already exists
-        let gameStatusRef = ref.child("game_statuses")
+        let gameStatusRef = ref.child("games")
         gameStatusRef.observeSingleEvent(of: .value) { snapshot in
             if snapshot.hasChild(gameCode) {
                 generateRandomGameCode()
             } else {
-                self.ref.child("game_statuses").child(gameCode).setValue(gameStates.PRE_LOBBY.rawValue)
                 staticGameVariables.gameCode = gameCode
+                self.ref.child("games").child(staticGameVariables.gameCode).child("game_status").setValue(gameStates.PRE_LOBBY.rawValue)
+                
+                staticGameVariables.leaderName = playerVariables.playerName
+                self.ref.child("games").child(gameCode).child("usernames").setValue([playerVariables.playerName])
+                self.ref.child("games").child(gameCode).child("leader").setValue(playerVariables.playerName)
+                self.ref.child("all_users").child(playerVariables.playerName).child("game_id").setValue(gameCode)
+                self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(playerStates.LOBBY.rawValue)
+                
                 playerVariables.currentView = .CreateGameView
             }
         }
     }
     
     public func createGameWithCode(code: String) {
-        self.ref.child("game_statuses").child(code).setValue(gameStates.LOBBY.rawValue)
-        self.ref.child("games").child(code).child("usernames").setValue([playerVariables.playerName])
-        self.ref.child("games").child(code).child("leader").setValue(playerVariables.playerName)
-        self.ref.child("all_users").child(playerVariables.playerName).child("game_id").setValue(code)
-        self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(playerStates.LOBBY.rawValue)
-        
+        self.ref.child("games").child(staticGameVariables.gameCode).child("game_status").setValue(gameStates.LOBBY.rawValue)
         staticGameVariables.gameState = .LOBBY
-        staticGameVariables.leaderName = playerVariables.playerName
     }
     
     public func joinGameWithCode(code: String) {
@@ -85,13 +86,13 @@ public struct GameManager {
     }
     
     public func startGame() {
-        self.ref.child("game_statuses").child(staticGameVariables.gameCode).setValue(gameStates.GAME.rawValue)
+        self.ref.child("games").child(staticGameVariables.gameCode).child("game_status").setValue(gameStates.GAME.rawValue)
         let gamePlayersRef = ref.child("games").child(staticGameVariables.gameCode).child("usernames")
         gamePlayersRef.observeSingleEvent(of: .value) { snapshot in
             let enumerator = snapshot.children
             while let username = enumerator.nextObject() as? DataSnapshot {
-                ref.child("all_users").child(username.value as! String).child("game_id").removeValue()
-                ref.child("all_users").child(username.value as! String).child("status").setValue(playerStates.TITLESCREEN.rawValue)
+                ref.child("all_users").child(username.value as! String).child("game_id").setValue(staticGameVariables.gameCode)
+                ref.child("all_users").child(username.value as! String).child("status").setValue(playerStates.GAME.rawValue)
             }
         }
     }
@@ -107,8 +108,34 @@ public struct GameManager {
             }
             
             ref.child("games").child(staticGameVariables.gameCode).removeValue()
-            ref.child("game_statuses").child(staticGameVariables.gameCode).removeValue()
             playerVariables.currentView = .TitleScreenView
+        }
+    }
+    
+    public func detectAndRemoveDeadGames() {
+        let allUsersRef = ref.child("all_users")
+        allUsersRef.observeSingleEvent(of: .value) { snapshot in
+            var allGameCodes: [String] = []
+            var dontKillGameCode: [String] = []
+            
+            let enumerator = snapshot.children
+            while let username = enumerator.nextObject() as? DataSnapshot {
+                let value = username.value as! Dictionary<String, Any>
+                if let game_id = value["game_id"] {
+                    if value["status"] as! String != "OFFLINE" {
+                        // 1+ active player in game
+                        dontKillGameCode.append(game_id as! String)
+                    }
+                    allGameCodes.append(game_id as! String)
+                }
+            }
+            
+            let toRemove = Array(Set(allGameCodes).subtracting(dontKillGameCode))
+            for removeGameCode in toRemove {
+                ref.child("games").child(removeGameCode).removeValue()
+            }
+            
+            PlayerManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).fetchName()
         }
     }
 }

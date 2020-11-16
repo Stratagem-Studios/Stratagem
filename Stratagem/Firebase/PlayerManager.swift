@@ -56,16 +56,54 @@ public struct PlayerManager {
         let playerStatusRef = self.ref.child("all_users").child(playerVariables.playerName).child("status")
         let connectedRef = Database.database().reference(withPath: ".info/connected")
         connectedRef.observe(.value, with: { snapshot in
-          // Only handle connection established (or I've reconnected after a loss of connection)
-          guard let connected = snapshot.value as? Bool, connected else { return }
-
-          // When this device disconnects, set as offline
-          playerStatusRef.onDisconnectSetValue(playerStates.OFFLINE.rawValue)
-          self.ref.child("all_users").child(playerVariables.playerName).child("last_online").onDisconnectSetValue(ServerValue.timestamp())
-
-          // Player is connected again
-          playerStatusRef.setValue(playerStates.LOBBY.rawValue) // change later for rejoining game
-          self.ref.child("all_users").child(playerVariables.playerName).child("last_online").removeValue()
+            // Only handle connection established (or I've reconnected after a loss of connection)
+            guard let connected = snapshot.value as? Bool, connected else { return }
+            
+            // When this device disconnects, set as offline
+            playerStatusRef.onDisconnectSetValue(playerStates.OFFLINE.rawValue)
+            self.ref.child("all_users").child(playerVariables.playerName).child("last_online").onDisconnectSetValue(ServerValue.timestamp())
+            
+            // Player is connected again
+            let gameIdRef = ref.child("all_users").child(playerVariables.playerName).child("game_id")
+            gameIdRef.observeSingleEvent(of: .value, with: { snapshot in
+                if snapshot.exists() {
+                    let gameRef = ref.child("games")
+                    gameRef.observeSingleEvent(of: .value, with: { snapshot2 in
+                        if snapshot2.hasChild(snapshot.value as! String) {
+                            // Game still exists
+                            let gameCodeRef = ref.child("games").child(snapshot.value as! String)
+                            gameCodeRef.observeSingleEvent(of: .value, with: { snapshot3 in
+                                let gameDict = (snapshot3.value as! Dictionary<String, Any>)
+                                staticGameVariables.gameCode = snapshot.value as! String
+                                
+                                if playerVariables.observerRefs.count == 0 {
+                                    // Reattach listeners
+                                    GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
+                                }
+                                
+                                if gameDict["game_status"] as! String == gameStates.LOBBY.rawValue {
+                                    playerStatusRef.setValue(playerStates.LOBBY.rawValue)
+                                    playerVariables.currentView = .GameLobbyView
+                                } else if  gameDict["game_status"] as! String == gameStates.GAME.rawValue {
+                                    playerStatusRef.setValue(playerStates.GAME.rawValue)
+                                    playerVariables.currentView = .CityView
+                                }
+                            })
+                        } else {
+                            // Game removed
+                            playerStatusRef.setValue(playerStates.TITLESCREEN.rawValue)
+                            ref.child("all_users").child(playerVariables.playerName).child("game_id").removeValue()
+                            resetPlayer()
+                        }
+                    })
+                } else {
+                    // Not in a game
+                    playerStatusRef.setValue(playerStates.TITLESCREEN.rawValue)
+                    ref.child("all_users").child(playerVariables.playerName).child("game_id").removeValue()
+                    resetPlayer()
+                }
+            })
+            self.ref.child("all_users").child(playerVariables.playerName).child("last_online").removeValue()
         })
     }
     

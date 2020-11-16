@@ -24,7 +24,9 @@ struct ContentView: View {
                 ErrorPopup()
             }
         }.onAppear() {
-            PlayerManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).fetchName()
+            // Because we don't have a server, we make new players help remove dead games
+            GameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).detectAndRemoveDeadGames()
+            // Then calls fetchName
         }
     }
 }
