@@ -53,7 +53,7 @@ public struct GameListener {
     }
     
     public func listenForGameStateChanges() {
-        let gameStatusRef = ref.child("game_statuses").child(staticGameVariables.gameCode)
+        let gameStatusRef = ref.child("games").child(staticGameVariables.gameCode).child("game_status")
         gameStatusRef.observe(.value) { snapshot in
             if snapshot.exists() {
                 staticGameVariables.gameState = gameStates(rawValue: snapshot.value as! String) ?? .NA

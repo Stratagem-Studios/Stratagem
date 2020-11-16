@@ -15,7 +15,6 @@ enum playerStates : String {
 class PlayerVariables: ObservableObject {
     @Published var playerName: String = ""
     @Published var currentView: viewStates = .TitleScreenView
-    //@Published var playerState: playerStates = .TITLESCREEN
     @Published var errorMessage: String = ""
     @Published var inlineErrorMessage: String = ""
     @Published var observerRefs: [DatabaseReference] = []

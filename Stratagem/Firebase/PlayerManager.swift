@@ -56,16 +56,27 @@ public struct PlayerManager {
         let playerStatusRef = self.ref.child("all_users").child(playerVariables.playerName).child("status")
         let connectedRef = Database.database().reference(withPath: ".info/connected")
         connectedRef.observe(.value, with: { snapshot in
-          // Only handle connection established (or I've reconnected after a loss of connection)
-          guard let connected = snapshot.value as? Bool, connected else { return }
-
-          // When this device disconnects, set as offline
-          playerStatusRef.onDisconnectSetValue(playerStates.OFFLINE.rawValue)
-          self.ref.child("all_users").child(playerVariables.playerName).child("last_online").onDisconnectSetValue(ServerValue.timestamp())
-
-          // Player is connected again
-          playerStatusRef.setValue(playerStates.LOBBY.rawValue) // change later for rejoining game
-          self.ref.child("all_users").child(playerVariables.playerName).child("last_online").removeValue()
+            // Only handle connection established (or I've reconnected after a loss of connection)
+            guard let connected = snapshot.value as? Bool, connected else { return }
+            
+            // When this device disconnects, set as offline
+            playerStatusRef.onDisconnectSetValue(playerStates.OFFLINE.rawValue)
+            self.ref.child("all_users").child(playerVariables.playerName).child("last_online").onDisconnectSetValue(ServerValue.timestamp())
+            
+            // Player is connected again
+            let gameIdRef = ref.child("all_users").child(playerVariables.playerName).child("game_id")
+            gameIdRef.observeSingleEvent(of: .value, with: { snapshot in
+                if snapshot.exists() {
+                    // In a game
+                    playerStatusRef.setValue(playerStates.GAME.rawValue)
+                    playerVariables.currentView = .CityView
+                } else {
+                    // Not in a game
+                    playerStatusRef.setValue(playerStates.LOBBY.rawValue)
+                    resetPlayer()
+                }
+            })
+            self.ref.child("all_users").child(playerVariables.playerName).child("last_online").removeValue()
         })
     }
     
