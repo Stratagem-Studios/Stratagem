@@ -42,30 +42,37 @@ public struct GameManager {
         let gameCodesRef = ref.child("games")
         gameCodesRef.observeSingleEvent(of: .value) { snapshot in
             if snapshot.hasChild(code) {
-                // Join game
-                self.ref.child("all_users").child(playerVariables.playerName).child("game_id").setValue(code)
-                self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(playerStates.LOBBY.rawValue)
-                
-                let gamePlayersRef = ref.child("games").child(code).child("usernames")
-                gamePlayersRef.observeSingleEvent(of: .value) { snapshot in
-                    var playerNames = [String]()
-                    let enumerator = snapshot.children
-                    while let rest = enumerator.nextObject() as? DataSnapshot {
-                        playerNames.append(rest.value as! String)
+                // Check if game is joinable
+                let game_status = snapshot.childSnapshot(forPath: code).childSnapshot(forPath: "game_status").value as! String
+                if game_status == gameStates.LOBBY.rawValue {
+                    // Join game
+                    self.ref.child("all_users").child(playerVariables.playerName).child("game_id").setValue(code)
+                    self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(playerStates.LOBBY.rawValue)
+                    
+                    let gamePlayersRef = ref.child("games").child(code).child("usernames")
+                    gamePlayersRef.observeSingleEvent(of: .value) { snapshot in
+                        var playerNames = [String]()
+                        let enumerator = snapshot.children
+                        while let rest = enumerator.nextObject() as? DataSnapshot {
+                            playerNames.append(rest.value as! String)
+                        }
+                        playerNames.append(playerVariables.playerName)
+                        gamePlayersRef.setValue(playerNames)
+                        
+                        staticGameVariables.gameCode = code
+                        
+                        GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
+                        playerVariables.currentView = .GameLobbyView
                     }
-                    playerNames.append(playerVariables.playerName)
-                    gamePlayersRef.setValue(playerNames)
-                    
-                    staticGameVariables.gameCode = code
-                    
-                    GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
-                    playerVariables.currentView = .GameLobbyView
+                } else {
+                    playerVariables.errorMessage = "Game is in progress or hasn't been created yet"
                 }
             } else {
                 // Propagate error message popup
                 playerVariables.errorMessage = "Please enter a valid 4 digit game code"
             }
         }
+        
     }
     
     public func removePlayerFromGame(username: String) {
@@ -97,14 +104,14 @@ public struct GameManager {
         }
     }
     
-    public func removeGame() {        
+    public func removeGame() {
         // Remove all players from game
         let gamePlayersRef = ref.child("games").child(staticGameVariables.gameCode).child("usernames")
         gamePlayersRef.observeSingleEvent(of: .value) { snapshot in
             let enumerator = snapshot.children
             while let username = enumerator.nextObject() as? DataSnapshot {
                 ref.child("all_users").child(username.value as! String).child("game_id").removeValue()
-                self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(playerStates.LOBBY.rawValue)
+                self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(playerStates.TITLESCREEN.rawValue)
             }
             
             ref.child("games").child(staticGameVariables.gameCode).removeValue()
@@ -139,3 +146,4 @@ public struct GameManager {
         }
     }
 }
+
