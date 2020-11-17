@@ -62,7 +62,7 @@
 		FFF85E4E255C744E00DFDDC2 /* StaticGameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E4D255C744E00DFDDC2 /* StaticGameVariables.swift */; };
 		FFFCFAB9255B296400D03284 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAB8255B296400D03284 /* AppDelegate.swift */; };
 		FFFCFABE255B366700D03284 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFFCFABD255B366700D03284 /* GoogleService-Info.plist */; };
-		FFFCFAC3255B62B300D03284 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAC2255B62B300D03284 /* GameManager.swift */; };
+		FFFCFAC3255B62B300D03284 /* StaticGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAC2255B62B300D03284 /* StaticGameManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,7 +126,7 @@
 		FFF85E4D255C744E00DFDDC2 /* StaticGameVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticGameVariables.swift; sourceTree = "<group>"; };
 		FFFCFAB8255B296400D03284 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFFCFABD255B366700D03284 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		FFFCFAC2255B62B300D03284 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		FFFCFAC2255B62B300D03284 /* StaticGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticGameManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,7 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				FFB4A2A6255D9EA1003298E2 /* PlayerManager.swift */,
-				FFFCFAC2255B62B300D03284 /* GameManager.swift */,
+				FFFCFAC2255B62B300D03284 /* StaticGameManager.swift */,
 				FFF85E3D255C73B700DFDDC2 /* GameListener.swift */,
 				FFF85E40255C73C100DFDDC2 /* GamePusher.swift */,
 				FFB4A298255CE6A7003298E2 /* FirebaseHelper.swift */,
@@ -499,7 +499,7 @@
 				FFF85E4A255C744300DFDDC2 /* PlayerVariables.swift in Sources */,
 				FF012D3B2551B0420017E288 /* TitleText.swift in Sources */,
 				FFB4A299255CE6A7003298E2 /* FirebaseHelper.swift in Sources */,
-				FFFCFAC3255B62B300D03284 /* GameManager.swift in Sources */,
+				FFFCFAC3255B62B300D03284 /* StaticGameManager.swift in Sources */,
 				FF33849F2559A751000EF945 /* TitleScreenView.swift in Sources */,
 				FFF2D86C255B88F800CE2990 /* GameLobbyView.swift in Sources */,
 				FF40F4712559CF310036E4C7 /* CityView.swift in Sources */,

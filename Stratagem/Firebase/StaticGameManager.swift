@@ -3,7 +3,7 @@
 import Firebase
 import SwiftUI
 
-public struct GameManager {
+public struct StaticGameManager {
     var playerVariables: PlayerVariables
     var staticGameVariables: StaticGameVariables
     var ref: DatabaseReference! = Database.database().reference()
