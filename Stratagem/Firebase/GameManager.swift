@@ -1,6 +1,7 @@
 // Mediates connection between StaticGameVariables <-> Firebase (realtime)
 
 import Firebase
+import SwiftUI
 
 public struct GameManager {
     var playerVariables: PlayerVariables
@@ -35,6 +36,7 @@ public struct GameManager {
     public func createGameWithCode(code: String) {
         self.ref.child("games").child(staticGameVariables.gameCode).child("game_status").setValue(gameStates.LOBBY.rawValue)
         staticGameVariables.gameState = .LOBBY
+        playerVariables.currentView = .GameLobbyView
     }
     
     public func joinGameWithCode(code: String) {

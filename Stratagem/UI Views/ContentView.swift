@@ -4,18 +4,22 @@ import SpriteKit
 struct ContentView: View {
     @EnvironmentObject var playerVariables: PlayerVariables
     @EnvironmentObject var staticGameVariables: StaticGameVariables
-
+    
     var body: some View {
         ZStack {
+            Color.black.ignoresSafeArea()
+            
             switch playerVariables.currentView {
             case .TitleScreenView:
                 TitleScreenView()
             case .CreateGameView:
                 CreateGameView()
+                    .transition(.slide)
             case .JoinGameView:
                 JoinGameView()
             case .GameLobbyView:
                 GameLobbyView()
+                    .transition(.slide)
             case .CityView:
                 CityView()
             }
@@ -27,7 +31,7 @@ struct ContentView: View {
             // Because we don't have a server, we make new players help remove dead games
             GameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).detectAndRemoveDeadGames()
             // Then calls fetchName
-        }
+        }.animation(.default)
     }
 }
 

@@ -21,7 +21,10 @@ public struct GameLobbyView: View {
                             Image("Close")
                         }
                     }
-                    Text(playerName).padding()
+                    Text(playerName)
+                        .font(.custom("Montserrat-Bold", size: 15))
+                        .foregroundColor(Color.white)
+                        .padding()
                 }
             }
             

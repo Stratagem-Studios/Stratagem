@@ -8,7 +8,7 @@ struct ErrorPopup: View {
             .edgesIgnoringSafeArea(.all)
         
         ZStack {
-            Color.white
+            Color.gray
             VStack {
                 Text("ERROR")
                 Spacer()

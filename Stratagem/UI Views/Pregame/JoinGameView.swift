@@ -29,7 +29,10 @@ public struct JoinGameView: View {
                     .onReceive(enteredCode.publisher.collect()) {
                         enteredCode = String($0.prefix(4))
                     }
-                    .frame(width: 62, height: 40)
+                    .multilineTextAlignment(.center)
+                    .frame(width: 85, height: 40)
+                    .background(Color.gray)
+                    .cornerRadius(5)
                     .font(.custom("Montserrat-Bold", size: 20))
                 
                 RoundedRectangle(cornerRadius: 5)
@@ -45,8 +48,6 @@ public struct JoinGameView: View {
             }.buttonStyle(BasicButtonStyle())
             .padding(.bottom, 10)
         }.statusBar(hidden: true)
-        
-        
     }
 }
 
