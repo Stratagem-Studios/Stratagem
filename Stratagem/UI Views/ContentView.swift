@@ -7,7 +7,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color.black.ignoresSafeArea()
+            LoopingVideo().ignoresSafeArea()
             
             switch playerVariables.currentView {
             case .TitleScreenView:
