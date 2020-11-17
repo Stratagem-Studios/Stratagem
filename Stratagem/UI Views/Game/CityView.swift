@@ -13,7 +13,6 @@ public struct CityView: View {
     
     var scene: SKScene {
         let scene = GameScene(fileNamed: "GameScene")
-        //let scene = BasicScene()
         if let scene = scene {
             scene.size = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
             //scene.scaleMode = .fill

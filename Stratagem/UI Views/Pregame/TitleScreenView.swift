@@ -5,7 +5,7 @@ public struct TitleScreenView: View {
     @EnvironmentObject var staticGameVariables: StaticGameVariables
     
     @State var enteredUsername: String = ""
-
+    
     public var body: some View {
         ZStack {
             VStack {
@@ -41,7 +41,7 @@ public struct TitleScreenView: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 ZStack {
-                    Color.white
+                    Color.gray
                     VStack {
                         Text("SELECT YOUR USERNAME")
                         
