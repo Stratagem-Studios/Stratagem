@@ -21,6 +21,7 @@ final class LoopingVideoController : UIViewControllerRepresentable {
     AVPlayerViewController {
         let controller = AVPlayerViewController()
         controller.showsPlaybackControls = false
+        controller.videoGravity = .resizeAspectFill
         
         guard let path = Bundle.main.path(forResource: "starfield", ofType:"mp4") else {
             print("starfield.mp4 not found")
