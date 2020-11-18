@@ -37,6 +37,8 @@
 		FF08577C2550FC5100F0F220 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08576A2550FC5000F0F220 /* Montserrat-Regular.ttf */; };
 		FF08577D2550FC5100F0F220 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08576B2550FC5100F0F220 /* Montserrat-BlackItalic.ttf */; };
 		FF08577E2550FC5100F0F220 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08576C2550FC5100F0F220 /* Montserrat-Italic.ttf */; };
+		FF0CAB9A25646250009681C8 /* LoopingVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0CAB9925646250009681C8 /* LoopingVideo.swift */; };
+		FF0CABA1256464BF009681C8 /* starfield.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FF0CABA0256464BE009681C8 /* starfield.mp4 */; };
 		FF33849325599EB9000EF945 /* JoinGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33849225599EB9000EF945 /* JoinGameView.swift */; };
 		FF33849F2559A751000EF945 /* TitleScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33849E2559A751000EF945 /* TitleScreenView.swift */; };
 		FF3789AB255F823B00D30F66 /* ErrorPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3789AA255F823B00D30F66 /* ErrorPopup.swift */; };
@@ -60,7 +62,7 @@
 		FFF85E4E255C744E00DFDDC2 /* StaticGameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E4D255C744E00DFDDC2 /* StaticGameVariables.swift */; };
 		FFFCFAB9255B296400D03284 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAB8255B296400D03284 /* AppDelegate.swift */; };
 		FFFCFABE255B366700D03284 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFFCFABD255B366700D03284 /* GoogleService-Info.plist */; };
-		FFFCFAC3255B62B300D03284 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAC2255B62B300D03284 /* GameManager.swift */; };
+		FFFCFAC3255B62B300D03284 /* StaticGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAC2255B62B300D03284 /* StaticGameManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +100,8 @@
 		FF08576A2550FC5000F0F220 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		FF08576B2550FC5100F0F220 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BlackItalic.ttf"; sourceTree = "<group>"; };
 		FF08576C2550FC5100F0F220 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
+		FF0CAB9925646250009681C8 /* LoopingVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopingVideo.swift; sourceTree = "<group>"; };
+		FF0CABA0256464BE009681C8 /* starfield.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = starfield.mp4; sourceTree = "<group>"; };
 		FF33849225599EB9000EF945 /* JoinGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameView.swift; sourceTree = "<group>"; };
 		FF33849E2559A751000EF945 /* TitleScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScreenView.swift; sourceTree = "<group>"; };
 		FF3789AA255F823B00D30F66 /* ErrorPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPopup.swift; sourceTree = "<group>"; };
@@ -122,7 +126,7 @@
 		FFF85E4D255C744E00DFDDC2 /* StaticGameVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticGameVariables.swift; sourceTree = "<group>"; };
 		FFFCFAB8255B296400D03284 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFFCFABD255B366700D03284 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		FFFCFAC2255B62B300D03284 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		FFFCFAC2255B62B300D03284 /* StaticGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticGameManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +168,7 @@
 				FF8C4E66254FBAFB00522756 /* .gitignore */,
 				FFD9693D255B0505005A1BC7 /* Podfile */,
 				FF078BC9254F3F8300E9FA7C /* Stratagem */,
-				FF08575A2550FC1700F0F220 /* Fonts */,
+				FF0CABA3256464CC009681C8 /* Videos */,
 				FF078BC8254F3F8300E9FA7C /* Products */,
 				FF8C4E50254FB11800522756 /* Frameworks */,
 				59B0506723D59354ED7DAD04 /* Pods */,
@@ -182,6 +186,7 @@
 		FF078BC9254F3F8300E9FA7C /* Stratagem */ = {
 			isa = PBXGroup;
 			children = (
+				FF08575A2550FC1700F0F220 /* Fonts */,
 				FFFCFAB8255B296400D03284 /* AppDelegate.swift */,
 				FF8C4E4E254FB0A200522756 /* Stratagem.entitlements */,
 				FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */,
@@ -256,6 +261,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		FF0CABA3256464CC009681C8 /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				FF0CABA0256464BE009681C8 /* starfield.mp4 */,
+			);
+			path = Videos;
+			sourceTree = "<group>";
+		};
 		FF35D831255C37540054EC27 /* Postgame */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				FF3789AA255F823B00D30F66 /* ErrorPopup.swift */,
+				FF0CAB9925646250009681C8 /* LoopingVideo.swift */,
 			);
 			path = "Helper Views";
 			sourceTree = "<group>";
@@ -331,7 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				FFB4A2A6255D9EA1003298E2 /* PlayerManager.swift */,
-				FFFCFAC2255B62B300D03284 /* GameManager.swift */,
+				FFFCFAC2255B62B300D03284 /* StaticGameManager.swift */,
 				FFF85E3D255C73B700DFDDC2 /* GameListener.swift */,
 				FFF85E40255C73C100DFDDC2 /* GamePusher.swift */,
 				FFB4A298255CE6A7003298E2 /* FirebaseHelper.swift */,
@@ -398,6 +412,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF0CABA1256464BF009681C8 /* starfield.mp4 in Resources */,
 				FF08577B2550FC5100F0F220 /* Montserrat-MediumItalic.ttf in Resources */,
 				FF8C4E67254FBAFB00522756 /* .gitignore in Resources */,
 				FF08576E2550FC5100F0F220 /* Montserrat-ExtraLight.ttf in Resources */,
@@ -484,7 +499,7 @@
 				FFF85E4A255C744300DFDDC2 /* PlayerVariables.swift in Sources */,
 				FF012D3B2551B0420017E288 /* TitleText.swift in Sources */,
 				FFB4A299255CE6A7003298E2 /* FirebaseHelper.swift in Sources */,
-				FFFCFAC3255B62B300D03284 /* GameManager.swift in Sources */,
+				FFFCFAC3255B62B300D03284 /* StaticGameManager.swift in Sources */,
 				FF33849F2559A751000EF945 /* TitleScreenView.swift in Sources */,
 				FFF2D86C255B88F800CE2990 /* GameLobbyView.swift in Sources */,
 				FF40F4712559CF310036E4C7 /* CityView.swift in Sources */,
@@ -499,6 +514,7 @@
 				FF33849325599EB9000EF945 /* JoinGameView.swift in Sources */,
 				FFB4A2A7255D9EA1003298E2 /* PlayerManager.swift in Sources */,
 				FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */,
+				FF0CAB9A25646250009681C8 /* LoopingVideo.swift in Sources */,
 				FF65EF1F255DE8D00013C2C4 /* UIExtensions.swift in Sources */,
 				FFF85E41255C73C100DFDDC2 /* GamePusher.swift in Sources */,
 				FFF85E4E255C744E00DFDDC2 /* StaticGameVariables.swift in Sources */,
