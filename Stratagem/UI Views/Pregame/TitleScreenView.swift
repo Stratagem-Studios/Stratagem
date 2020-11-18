@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftVideoBackground
 
 public struct TitleScreenView: View {
     @EnvironmentObject var playerVariables: PlayerVariables
@@ -75,6 +76,8 @@ public struct TitleScreenView: View {
                 .frame(width: 300, height: 200)
                 .cornerRadius(20).shadow(radius: 10)
             }
+        }.onAppear() {
+            VideoBackground.shared.resume()
         }
     }
 }

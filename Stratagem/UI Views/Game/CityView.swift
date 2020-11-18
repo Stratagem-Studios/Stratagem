@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SpriteKit
+import SwiftVideoBackground
 
 public struct CityView: View {
     @EnvironmentObject var gameVariables: GameVariables
@@ -26,6 +27,9 @@ public struct CityView: View {
         SpriteView(scene: scene)
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .edgesIgnoringSafeArea(.all)
+            .onAppear {
+                VideoBackground.shared.pause()
+            }
     }
 }
 
