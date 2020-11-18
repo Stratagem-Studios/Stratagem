@@ -32,7 +32,11 @@ public struct GameLobbyView: View {
             
             HStack {
                 Button(action: {
-                    StaticGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).removeGame()
+                    if staticGameVariables.leaderName == playerVariables.playerName {
+                        StaticGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).removeGame()
+                    } else {
+                        StaticGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).removePlayerFromGame(username: playerVariables.playerName)
+                    }
                 }) {
                     Text("BACK")
                 }.buttonStyle(BasicButtonStyle())
