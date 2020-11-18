@@ -78,7 +78,7 @@ public struct PlayerManager {
                                 
                                 if playerVariables.observerRefs.count == 0 {
                                     // Reattach listeners
-                                    GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
+                                    LFGameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
                                 }
                                 
                                 if gameDict["game_status"] as! String == gameStates.LOBBY.rawValue {
@@ -108,7 +108,7 @@ public struct PlayerManager {
     }
     
     public func resetPlayer() {
-        GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).stopListening()
+        LFGameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).stopListening()
         playerVariables.currentView = viewStates.TitleScreenView
         staticGameVariables.reset()
     }

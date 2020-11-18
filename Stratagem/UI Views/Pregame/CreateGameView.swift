@@ -14,7 +14,7 @@ public struct CreateGameView: View {
             
             HStack {
                 Button(action: {
-                    StaticGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).removeGame()
+                    LFGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).removeGame()
                 }) {
                     Text("BACK")
                 }.buttonStyle(BasicButtonStyle())
@@ -44,8 +44,8 @@ public struct CreateGameView: View {
                 Spacer()
                 
                 Button(action: {
-                    StaticGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).createGameWithCode(code: staticGameVariables.gameCode)
-                    GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
+                    LFGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).createGameWithCode(code: staticGameVariables.gameCode)
+                    LFGameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
                     playerVariables.currentView = .GameLobbyView
                 }) {
                     Text("CREATE")

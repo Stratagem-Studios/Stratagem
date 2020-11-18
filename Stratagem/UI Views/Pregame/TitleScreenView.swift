@@ -16,7 +16,7 @@ public struct TitleScreenView: View {
                 Spacer()
                 
                 Button(action: {
-                    StaticGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).generateRandomGameCode()
+                    LFGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).generateRandomGameCode()
                 }) {
                     Text("PLAY")
                 }.buttonStyle(BasicButtonStyle())

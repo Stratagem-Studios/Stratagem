@@ -3,7 +3,7 @@
 import Firebase
 import SwiftUI
 
-public struct StaticGameManager {
+public struct LFGameManager {
     var playerVariables: PlayerVariables
     var staticGameVariables: StaticGameVariables
     var ref: DatabaseReference! = Database.database().reference()
@@ -63,7 +63,7 @@ public struct StaticGameManager {
                         
                         staticGameVariables.gameCode = code
                         
-                        GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
+                        LFGameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
                         playerVariables.currentView = .GameLobbyView
                     }
                 } else {

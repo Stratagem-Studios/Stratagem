@@ -51,18 +51,19 @@
 		FF8C4E67254FBAFB00522756 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FF8C4E66254FBAFB00522756 /* .gitignore */; };
 		FF8C4E6C254FBCBD00522756 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		FF96B533255DCB6E00E5F8D4 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96B532255DCB6E00E5F8D4 /* VisualEffectView.swift */; };
+		FF9D7D69256574890076C8DF /* HFGameListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9D7D68256574890076C8DF /* HFGameListener.swift */; };
 		FFAD01DE255AE84600BA2907 /* CreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD01DD255AE84600BA2907 /* CreateGameView.swift */; };
 		FFB4A299255CE6A7003298E2 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB4A298255CE6A7003298E2 /* FirebaseHelper.swift */; };
 		FFB4A2A7255D9EA1003298E2 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB4A2A6255D9EA1003298E2 /* PlayerManager.swift */; };
 		FFD9693E255B0505005A1BC7 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = FFD9693D255B0505005A1BC7 /* Podfile */; };
 		FFF2D86C255B88F800CE2990 /* GameLobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2D86B255B88F800CE2990 /* GameLobbyView.swift */; };
 		FFF85E3E255C73B700DFDDC2 /* GameListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E3D255C73B700DFDDC2 /* GameListener.swift */; };
-		FFF85E41255C73C100DFDDC2 /* GamePusher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E40255C73C100DFDDC2 /* GamePusher.swift */; };
+		FFF85E41255C73C100DFDDC2 /* HFGamePusher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E40255C73C100DFDDC2 /* HFGamePusher.swift */; };
 		FFF85E4A255C744300DFDDC2 /* PlayerVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E49255C744300DFDDC2 /* PlayerVariables.swift */; };
 		FFF85E4E255C744E00DFDDC2 /* StaticGameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E4D255C744E00DFDDC2 /* StaticGameVariables.swift */; };
 		FFFCFAB9255B296400D03284 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAB8255B296400D03284 /* AppDelegate.swift */; };
 		FFFCFABE255B366700D03284 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFFCFABD255B366700D03284 /* GoogleService-Info.plist */; };
-		FFFCFAC3255B62B300D03284 /* StaticGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAC2255B62B300D03284 /* StaticGameManager.swift */; };
+		FFFCFAC3255B62B300D03284 /* LFGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAC2255B62B300D03284 /* LFGameManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,18 +116,19 @@
 		FF8C4E66254FBAFB00522756 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FF8C4E6B254FBCBD00522756 /* SaveData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SaveData.xcdatamodel; sourceTree = "<group>"; };
 		FF96B532255DCB6E00E5F8D4 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		FF9D7D68256574890076C8DF /* HFGameListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFGameListener.swift; sourceTree = "<group>"; };
 		FFAD01DD255AE84600BA2907 /* CreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameView.swift; sourceTree = "<group>"; };
 		FFB4A298255CE6A7003298E2 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		FFB4A2A6255D9EA1003298E2 /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
 		FFD9693D255B0505005A1BC7 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		FFF2D86B255B88F800CE2990 /* GameLobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLobbyView.swift; sourceTree = "<group>"; };
 		FFF85E3D255C73B700DFDDC2 /* GameListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListener.swift; sourceTree = "<group>"; };
-		FFF85E40255C73C100DFDDC2 /* GamePusher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePusher.swift; sourceTree = "<group>"; };
+		FFF85E40255C73C100DFDDC2 /* HFGamePusher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFGamePusher.swift; sourceTree = "<group>"; };
 		FFF85E49255C744300DFDDC2 /* PlayerVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVariables.swift; sourceTree = "<group>"; };
 		FFF85E4D255C744E00DFDDC2 /* StaticGameVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticGameVariables.swift; sourceTree = "<group>"; };
 		FFFCFAB8255B296400D03284 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFFCFABD255B366700D03284 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		FFFCFAC2255B62B300D03284 /* StaticGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticGameManager.swift; sourceTree = "<group>"; };
+		FFFCFAC2255B62B300D03284 /* LFGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFGameManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,9 +347,10 @@
 			isa = PBXGroup;
 			children = (
 				FFB4A2A6255D9EA1003298E2 /* PlayerManager.swift */,
-				FFFCFAC2255B62B300D03284 /* StaticGameManager.swift */,
+				FFFCFAC2255B62B300D03284 /* LFGameManager.swift */,
 				FFF85E3D255C73B700DFDDC2 /* GameListener.swift */,
-				FFF85E40255C73C100DFDDC2 /* GamePusher.swift */,
+				FF9D7D68256574890076C8DF /* HFGameListener.swift */,
+				FFF85E40255C73C100DFDDC2 /* HFGamePusher.swift */,
 				FFB4A298255CE6A7003298E2 /* FirebaseHelper.swift */,
 			);
 			path = Firebase;
@@ -493,13 +496,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CECA7755255E469E00CE9F69 /* GameBoards.swift in Sources */,
+				FF9D7D69256574890076C8DF /* HFGameListener.swift in Sources */,
 				FFAD01DE255AE84600BA2907 /* CreateGameView.swift in Sources */,
 				FF8C4E6C254FBCBD00522756 /* (null) in Sources */,
 				FF5AF90A255E489F00836F03 /* Units.swift in Sources */,
 				FFF85E4A255C744300DFDDC2 /* PlayerVariables.swift in Sources */,
 				FF012D3B2551B0420017E288 /* TitleText.swift in Sources */,
 				FFB4A299255CE6A7003298E2 /* FirebaseHelper.swift in Sources */,
-				FFFCFAC3255B62B300D03284 /* StaticGameManager.swift in Sources */,
+				FFFCFAC3255B62B300D03284 /* LFGameManager.swift in Sources */,
 				FF33849F2559A751000EF945 /* TitleScreenView.swift in Sources */,
 				FFF2D86C255B88F800CE2990 /* GameLobbyView.swift in Sources */,
 				FF40F4712559CF310036E4C7 /* CityView.swift in Sources */,
@@ -516,7 +520,7 @@
 				FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */,
 				FF0CAB9A25646250009681C8 /* LoopingVideo.swift in Sources */,
 				FF65EF1F255DE8D00013C2C4 /* UIExtensions.swift in Sources */,
-				FFF85E41255C73C100DFDDC2 /* GamePusher.swift in Sources */,
+				FFF85E41255C73C100DFDDC2 /* HFGamePusher.swift in Sources */,
 				FFF85E4E255C744E00DFDDC2 /* StaticGameVariables.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

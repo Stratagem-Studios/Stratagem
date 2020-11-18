@@ -17,7 +17,7 @@ public struct JoinGameView: View {
             
             Button(action: {
                 if enteredCode != "" {
-                    StaticGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).joinGameWithCode(code: enteredCode)
+                    LFGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).joinGameWithCode(code: enteredCode)
                 }
             }) {
                 Text("PLAY")
