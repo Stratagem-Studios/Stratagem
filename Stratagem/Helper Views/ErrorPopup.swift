@@ -5,6 +5,7 @@ struct ErrorPopup: View {
     
     var body: some View {
         VisualEffectView(effect: UIBlurEffect(style: .dark))
+            .edgesIgnoringSafeArea(.all)
         
         ZStack {
             Color.gray
