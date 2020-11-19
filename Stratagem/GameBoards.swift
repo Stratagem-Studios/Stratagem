@@ -1,51 +1,45 @@
-/*
- README
- 
- This file contains the setup for the game board
- 
- gameBoard -> 10x10 gameClusters
- gameCluster -> 5x5 gameTiles
- 
- game tile
- 
- 
- */
-
 import Foundation
+import GameKit
 
-func createGameBoard() -> GameBoard{
-    let newGameBoard = GameBoard()
-    return newGameBoard
-}
-
-enum tileTypes {
+enum TileType {
     case Rocky
 }
 
 class GameBoard {
-    var gameBoard =
-        [
-            [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
-            [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
-            [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
-            [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
-            [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
-            [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
-            [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
-            [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
-            [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
-            [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
-        ]
+    
+    // Reference to tilemapNode
+    var gameBoardTileNode: SKTileMapNode
+    
+    // This will get a ref to the tilemapNode
+    init(tileMapNode: SKTileMapNode) {
+        gameBoardTileNode = tileMapNode
+    }
+    
+    // This variable holds the game Board array
+    var gameBoard = gameBoardEmpty
+    
+    // These variables hold lists of the players units
     var player1Units = playerUnits(unitEnums: [UnitType.swordsman, UnitType.swordsman],
                                    unitPosition: [[0,0],[0,1]] as [[Int]] )
     var player2Units = playerUnits(unitEnums: [UnitType.swordsman, UnitType.swordsman],
-                                  unitPosition: [[0,0],[0,1]] as [[Int]] )
+                                   unitPosition: [[0,0],[0,1]] as [[Int]] )
+    
+    func TileTypeToGroup(tileType: TileType) -> SKTileGroup {
+        switch tileType {
+        case TileType.Rocky:
+            return gameBoardTileNode.tileSet.tileGroups[0]
+        default:
+            exit(1)
+        }
+    }
 }
 
 struct GameCluster {
-    var tilePiece = tileTypes.Rocky
+    var tilePiece: TileType?
+    var isOccupied = false
 }
 
+// This struct is a list of units held by the players
 struct playerUnits {
     // Holds all the units for this player
     var unitArray: [Unit]
@@ -68,3 +62,28 @@ struct playerUnits {
 // Holds some defualt player setups
 
 // Holds some default map setups
+let gameBoardEmpty =
+    [
+        [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
+        [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
+        [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
+        [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
+        [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
+        [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
+        [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
+        [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
+        [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
+        [GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster(),GameCluster()],
+    ]
+let gameBoardRocky = [
+    [GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky)],
+    [GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky)],
+    [GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky)],
+    [GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky)],
+    [GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky)],
+    [GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky)],
+    [GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky)],
+    [GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky)],
+    [GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky)],
+    [GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky),GameCluster(tilePiece: TileType.Rocky)],
+]
