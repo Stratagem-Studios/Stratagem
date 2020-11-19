@@ -7,39 +7,23 @@
 
 import Foundation
 
-let unitArrays =
-    // Holds the default stats for the various units
-    [
-        // Swordsman
-        [],
-        
-        // Archer
-        [],
-        
-        // Knight
-        []
-    ]
-
-enum UnitType {
+public enum UnitType {
     case swordsman, archer, knight
 }
 
-func spawnSwordsman() {
-    let swordsman = Units(unitType: UnitType.swordsman)
-    
-}
-
-class Units {
+class Unit {
     var unitType: UnitType
     var health: Double
     var damage: Double
     var range: Double
     var moveSpeed: Double
     var attackSpeed: Double
+    var position: [Int]
     
-    init(unitType: UnitType) {
+    init(unitType: UnitType, position: [Int]) {
         
         self.unitType = unitType
+        self.position = position
         
         switch unitType {
         case.swordsman :
