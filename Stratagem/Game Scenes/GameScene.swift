@@ -15,6 +15,8 @@ class GameScene: SKScene {
     // This var keeps track of the most recent frame's time
     private var lastUpdateTime : TimeInterval = 0
     
+    // Holds gameboard
+    var gameBoard: GameBoard?
     
     // PlayerVars instantiates the GameVariables class which holds the variables for in-game use
     // Materials follow this pattern
@@ -28,12 +30,13 @@ class GameScene: SKScene {
     override func sceneDidLoad() {
         
         // Sets all gamescene objects to refs
-        self.gameMap = self.childNode(withName: "//GameMap") as? SKTileMapNode
+        self.gameMap = (self.childNode(withName: "//GameMap") as! SKTileMapNode)
         self.sceneCamera = self.childNode(withName: "//SceneCamera") as? SKCameraNode
         self.metalCountLabel = self.childNode(withName: "//MetalCountLabel") as? SKLabelNode
         self.goldCountLabel = self.childNode(withName: "//GoldCountLabel") as? SKLabelNode
         self.usernameLabel = self.childNode(withName: "//UsernameLabel") as? SKLabelNode
         
+        gameBoard = GameBoard(tileMapNode: self.childNode(withName: "//GameMap") as! SKTileMapNode)
     }
     
     // Called before each frame is rendered
