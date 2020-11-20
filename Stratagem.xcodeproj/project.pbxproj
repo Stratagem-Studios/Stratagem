@@ -52,6 +52,15 @@
 		FF8C4E6C254FBCBD00522756 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		FF96B533255DCB6E00E5F8D4 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96B532255DCB6E00E5F8D4 /* VisualEffectView.swift */; };
 		FF9D7D69256574890076C8DF /* HFGameListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9D7D68256574890076C8DF /* HFGameListener.swift */; };
+		FFA3FFA725661BFB00CFA406 /* CityScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA3FFA625661BFB00CFA406 /* CityScene.swift */; };
+		FFA3FFB925662A9500CFA406 /* Prototype.tmx in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFB825662A9500CFA406 /* Prototype.tmx */; };
+		FFA3FFBC25662C0B00CFA406 /* PrototypePack.tsx in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFBB25662C0B00CFA406 /* PrototypePack.tsx */; };
+		FFA3FFC525662D7F00CFA406 /* doorClosed_S.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFBF25662D7D00CFA406 /* doorClosed_S.png */; };
+		FFA3FFC625662D7F00CFA406 /* doorwayRight_S.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFC025662D7E00CFA406 /* doorwayRight_S.png */; };
+		FFA3FFC725662D7F00CFA406 /* block_N.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFC125662D7E00CFA406 /* block_N.png */; };
+		FFA3FFC825662D7F00CFA406 /* blockAngle_S.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFC225662D7E00CFA406 /* blockAngle_S.png */; };
+		FFA3FFC925662D7F00CFA406 /* floor_E.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFC325662D7E00CFA406 /* floor_E.png */; };
+		FFA3FFCA25662D7F00CFA406 /* crate_S.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFC425662D7F00CFA406 /* crate_S.png */; };
 		FFAD01DE255AE84600BA2907 /* CreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD01DD255AE84600BA2907 /* CreateGameView.swift */; };
 		FFB4A299255CE6A7003298E2 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB4A298255CE6A7003298E2 /* FirebaseHelper.swift */; };
 		FFB4A2A7255D9EA1003298E2 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB4A2A6255D9EA1003298E2 /* PlayerManager.swift */; };
@@ -117,6 +126,15 @@
 		FF8C4E6B254FBCBD00522756 /* SaveData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SaveData.xcdatamodel; sourceTree = "<group>"; };
 		FF96B532255DCB6E00E5F8D4 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		FF9D7D68256574890076C8DF /* HFGameListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFGameListener.swift; sourceTree = "<group>"; };
+		FFA3FFA625661BFB00CFA406 /* CityScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityScene.swift; sourceTree = "<group>"; };
+		FFA3FFB825662A9500CFA406 /* Prototype.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Prototype.tmx; sourceTree = "<group>"; };
+		FFA3FFBB25662C0B00CFA406 /* PrototypePack.tsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrototypePack.tsx; sourceTree = "<group>"; };
+		FFA3FFBF25662D7D00CFA406 /* doorClosed_S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doorClosed_S.png; sourceTree = "<group>"; };
+		FFA3FFC025662D7E00CFA406 /* doorwayRight_S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doorwayRight_S.png; sourceTree = "<group>"; };
+		FFA3FFC125662D7E00CFA406 /* block_N.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_N.png; sourceTree = "<group>"; };
+		FFA3FFC225662D7E00CFA406 /* blockAngle_S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blockAngle_S.png; sourceTree = "<group>"; };
+		FFA3FFC325662D7E00CFA406 /* floor_E.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = floor_E.png; sourceTree = "<group>"; };
+		FFA3FFC425662D7F00CFA406 /* crate_S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crate_S.png; sourceTree = "<group>"; };
 		FFAD01DD255AE84600BA2907 /* CreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameView.swift; sourceTree = "<group>"; };
 		FFB4A298255CE6A7003298E2 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		FFB4A2A6255D9EA1003298E2 /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
@@ -170,6 +188,7 @@
 				FF8C4E66254FBAFB00522756 /* .gitignore */,
 				FFD9693D255B0505005A1BC7 /* Podfile */,
 				FF078BC9254F3F8300E9FA7C /* Stratagem */,
+				FFA3FFB625662A4200CFA406 /* Assets */,
 				FF0CABA3256464CC009681C8 /* Videos */,
 				FF078BC8254F3F8300E9FA7C /* Products */,
 				FF8C4E50254FB11800522756 /* Frameworks */,
@@ -198,8 +217,8 @@
 				FF0857472550D8F200F0F220 /* UI Element Styles */,
 				FF0857412550D7AE00F0F220 /* UI Views */,
 				FF3789A9255F81CE00D30F66 /* Helper Views */,
-				FF078BCE254F3F8800E9FA7C /* Assets.xcassets */,
 				FFFCFAC1255B629700D03284 /* Firebase */,
+				FF078BCE254F3F8800E9FA7C /* Assets.xcassets */,
 				FF8C4E4D254FB04200522756 /* Core Data */,
 				FF078BD0254F3F8800E9FA7C /* Preview Content */,
 				FF078BD3254F3F8800E9FA7C /* Info.plist */,
@@ -304,12 +323,36 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FFA3FFB625662A4200CFA406 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				FFA3FFB725662A6800CFA406 /* Tiled */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		FFA3FFB725662A6800CFA406 /* Tiled */ = {
+			isa = PBXGroup;
+			children = (
+				FFA3FFBB25662C0B00CFA406 /* PrototypePack.tsx */,
+				FFA3FFB825662A9500CFA406 /* Prototype.tmx */,
+				FFA3FFC125662D7E00CFA406 /* block_N.png */,
+				FFA3FFC225662D7E00CFA406 /* blockAngle_S.png */,
+				FFA3FFC425662D7F00CFA406 /* crate_S.png */,
+				FFA3FFBF25662D7D00CFA406 /* doorClosed_S.png */,
+				FFA3FFC025662D7E00CFA406 /* doorwayRight_S.png */,
+				FFA3FFC325662D7E00CFA406 /* floor_E.png */,
+			);
+			path = Tiled;
+			sourceTree = "<group>";
+		};
 		FFE1000B2551B7F500DD6608 /* Game Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				FF078BE1254F3FFE00E9FA7C /* GameScene.sks */,
 				FF078BDA254F3FBE00E9FA7C /* GameScene.swift */,
 				CECA7742255E40FF00CE9F69 /* GameTiles.sks */,
+				FFA3FFA625661BFB00CFA406 /* CityScene.swift */,
 			);
 			path = "Game Scenes";
 			sourceTree = "<group>";
@@ -415,20 +458,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFA3FFB925662A9500CFA406 /* Prototype.tmx in Resources */,
 				FF0CABA1256464BF009681C8 /* starfield.mp4 in Resources */,
 				FF08577B2550FC5100F0F220 /* Montserrat-MediumItalic.ttf in Resources */,
 				FF8C4E67254FBAFB00522756 /* .gitignore in Resources */,
 				FF08576E2550FC5100F0F220 /* Montserrat-ExtraLight.ttf in Resources */,
 				FF57238F2551BFD900872457 /* .gitattributes in Resources */,
 				FF078BD2254F3F8800E9FA7C /* Preview Assets.xcassets in Resources */,
+				FFA3FFCA25662D7F00CFA406 /* crate_S.png in Resources */,
 				FF08576D2550FC5100F0F220 /* Montserrat-ExtraLightItalic.ttf in Resources */,
 				FF64B6C825530268006A9F38 /* README.md in Resources */,
 				FF0857702550FC5100F0F220 /* Montserrat-Bold.ttf in Resources */,
 				FF078BE2254F3FFE00E9FA7C /* GameScene.sks in Resources */,
 				FF0857762550FC5100F0F220 /* Montserrat-Thin.ttf in Resources */,
+				FFA3FFC525662D7F00CFA406 /* doorClosed_S.png in Resources */,
 				FFD9693E255B0505005A1BC7 /* Podfile in Resources */,
 				FF08577C2550FC5100F0F220 /* Montserrat-Regular.ttf in Resources */,
+				FFA3FFC825662D7F00CFA406 /* blockAngle_S.png in Resources */,
 				FF0857752550FC5100F0F220 /* Montserrat-SemiBoldItalic.ttf in Resources */,
+				FFA3FFBC25662C0B00CFA406 /* PrototypePack.tsx in Resources */,
 				FFFCFABE255B366700D03284 /* GoogleService-Info.plist in Resources */,
 				FF0857782550FC5100F0F220 /* Montserrat-BoldItalic.ttf in Resources */,
 				FF0857792550FC5100F0F220 /* Montserrat-ThinItalic.ttf in Resources */,
@@ -438,9 +486,12 @@
 				FF08577A2550FC5100F0F220 /* Montserrat-Light.ttf in Resources */,
 				FF08577D2550FC5100F0F220 /* Montserrat-BlackItalic.ttf in Resources */,
 				FF0857722550FC5100F0F220 /* Montserrat-LightItalic.ttf in Resources */,
+				FFA3FFC625662D7F00CFA406 /* doorwayRight_S.png in Resources */,
 				CECA7744255E40FF00CE9F69 /* GameTiles.sks in Resources */,
 				FF0857772550FC5100F0F220 /* Montserrat-Black.ttf in Resources */,
 				FF078BCF254F3F8800E9FA7C /* Assets.xcassets in Resources */,
+				FFA3FFC725662D7F00CFA406 /* block_N.png in Resources */,
+				FFA3FFC925662D7F00CFA406 /* floor_E.png in Resources */,
 				FF0857742550FC5100F0F220 /* Montserrat-Medium.ttf in Resources */,
 				FF0857732550FC5100F0F220 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
 			);
@@ -512,6 +563,7 @@
 				FF0857492550F39300F0F220 /* ButtonStyles.swift in Sources */,
 				FF3789AB255F823B00D30F66 /* ErrorPopup.swift in Sources */,
 				CECA7740255E3F1700CE9F69 /* GameVariables.swift in Sources */,
+				FFA3FFA725661BFB00CFA406 /* CityScene.swift in Sources */,
 				FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */,
 				FF96B533255DCB6E00E5F8D4 /* VisualEffectView.swift in Sources */,
 				FFF85E3E255C73B700DFDDC2 /* LFGameListener.swift in Sources */,

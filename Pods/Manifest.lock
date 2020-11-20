@@ -29,10 +29,12 @@ PODS:
   - nanopb/decode (2.30906.0)
   - nanopb/encode (2.30906.0)
   - PromisesObjC (1.2.11)
+  - SKTiled (1.20)
   - SwiftVideoBackground (3.4.0)
 
 DEPENDENCIES:
   - Firebase/Database
+  - SKTiled
   - SwiftVideoBackground
 
 SPEC REPOS:
@@ -46,6 +48,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - SKTiled
     - SwiftVideoBackground
 
 SPEC CHECKSUMS:
@@ -58,8 +61,9 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
+  SKTiled: 84ed596ca6a408447f9ea212df0a48bbeb068ac2
   SwiftVideoBackground: 826e0567c737ded2a211aa309e9951c643695e8f
 
-PODFILE CHECKSUM: 00822206e966ea1a47a1cb72cc506bdf6c20bbe5
+PODFILE CHECKSUM: 81a55cc3728d0fd8239b3be7308f49bf817fb2e6
 
 COCOAPODS: 1.10.0

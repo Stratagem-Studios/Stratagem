@@ -8,6 +8,7 @@ target 'Stratagem' do
   # Pods for Stratagem
   pod 'Firebase/Database'
   pod 'SwiftVideoBackground'
+  pod 'SKTiled'
 
   post_install do |installer|
       installer.pods_project.targets.each do |target|
