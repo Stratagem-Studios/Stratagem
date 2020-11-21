@@ -23,6 +23,8 @@ struct ContentView: View {
                     .transition(.slide)
             case .CityView:
                 CityView()
+            case .PlanetView:
+                PlanetView()
             }
             
             if playerVariables.errorMessage != "" {
