@@ -25,6 +25,7 @@ struct ContentView: View {
                 CityView()
             case .PlanetView:
                 PlanetView()
+                    .edgesIgnoringSafeArea(.all)
             }
             
             if playerVariables.errorMessage != "" {

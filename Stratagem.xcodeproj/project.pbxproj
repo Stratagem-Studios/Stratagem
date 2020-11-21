@@ -155,12 +155,12 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		CE1004BD256856500077941A /* Planet SceneKit */ = {
+		CE1004BD256856500077941A /* Planets */ = {
 			isa = PBXGroup;
 			children = (
 				CE1004BA256855D00077941A /* TestPlanet.scn */,
 			);
-			path = "Planet SceneKit";
+			path = Planets;
 			sourceTree = "<group>";
 		};
 		CECA7749255E438500CE9F69 /* Instantiatable */ = {
@@ -340,7 +340,7 @@
 			children = (
 				FF40F4702559CF310036E4C7 /* CityView.swift */,
 				CE1004BE256856BC0077941A /* PlanetView.swift */,
-				CE1004BD256856500077941A /* Planet SceneKit */,
+				CE1004BD256856500077941A /* Planets */,
 			);
 			path = Game;
 			sourceTree = "<group>";

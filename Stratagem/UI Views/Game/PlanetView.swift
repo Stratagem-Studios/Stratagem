@@ -5,7 +5,7 @@ import SwiftVideoBackground
 
 struct PlanetView : UIViewRepresentable {
     let planet = SCNScene.init(named: "TestPlanet.scn")!
-
+    
     func makeUIView(context: Context) -> SCNView {
         // create and add a light to the scene
         let lightNode = SCNNode()
@@ -22,8 +22,8 @@ struct PlanetView : UIViewRepresentable {
         planet.rootNode.addChildNode(ambientLightNode)
 
         // retrieve the SCNView
-        let scnView = SCNView()
-        return scnView
+        let planet = SCNView()
+        return planet
     }
 
     func updateUIView(_ scnView: SCNView, context: Context) {
