@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1E10A050010A84F42517D3F9 /* Pods_Stratagem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500AA38F10AA677CBCF94516 /* Pods_Stratagem.framework */; };
-		CE1004BB256855D00077941A /* TestPlanet.scn in Resources */ = {isa = PBXBuildFile; fileRef = CE1004BA256855D00077941A /* TestPlanet.scn */; };
 		CE1004BF256856BC0077941A /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004BE256856BC0077941A /* PlanetView.swift */; };
 		CECA7740255E3F1700CE9F69 /* GameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA773F255E3F1700CE9F69 /* GameVariables.swift */; };
 		CECA7744255E40FF00CE9F69 /* GameTiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = CECA7742255E40FF00CE9F69 /* GameTiles.sks */; };
@@ -80,7 +79,6 @@
 /* Begin PBXFileReference section */
 		500AA38F10AA677CBCF94516 /* Pods_Stratagem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stratagem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5397A0390D7C1A2EC8CCF6F0 /* Pods-Stratagem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stratagem.debug.xcconfig"; path = "Target Support Files/Pods-Stratagem/Pods-Stratagem.debug.xcconfig"; sourceTree = "<group>"; };
-		CE1004BA256855D00077941A /* TestPlanet.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = TestPlanet.scn; sourceTree = "<group>"; };
 		CE1004BE256856BC0077941A /* PlanetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		CECA773F255E3F1700CE9F69 /* GameVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVariables.swift; sourceTree = "<group>"; };
 		CECA7742255E40FF00CE9F69 /* GameTiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameTiles.sks; sourceTree = "<group>"; };
@@ -173,14 +171,6 @@
 				E54BF43E273D93EB0EDE54FC /* Pods-Stratagem.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		CE1004BD256856500077941A /* Planets */ = {
-			isa = PBXGroup;
-			children = (
-				CE1004BA256855D00077941A /* TestPlanet.scn */,
-			);
-			path = Planets;
 			sourceTree = "<group>";
 		};
 		CECA7749255E438500CE9F69 /* Instantiatable */ = {
@@ -385,7 +375,6 @@
 			children = (
 				FF40F4702559CF310036E4C7 /* CityView.swift */,
 				CE1004BE256856BC0077941A /* PlanetView.swift */,
-				CE1004BD256856500077941A /* Planets */,
 			);
 			path = Game;
 			sourceTree = "<group>";
