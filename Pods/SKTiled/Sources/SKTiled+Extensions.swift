@@ -2,18 +2,46 @@
 //  SKTiled+Extensions.swift
 //  SKTiled
 //
-//  Created by Michael Fessenden on 4/5/16.
-//  Copyright © 2016 Michael Fessenden. All rights reserved.
-//  Compression extensions based on: https://github.com/1024jp/GzipSwift
+//  Created by Michael Fessenden.
+//
+//  Web: https://github.com/mfessenden
+//  Email: michael.fessenden@gmail.com
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+//
+//  Compression extensions adapted from `GzipSwift`:
+//  - https://github.com/1024jp/GzipSwift
 
-import Foundation
 import SpriteKit
 import zlib
+import GLKit
 #if os(iOS) || os(tvOS)
 import UIKit
+import MobileCoreServices
 #else
 import Cocoa
 #endif
+
+
+/// Added for backwards compatibility.
+public typealias int2   = SIMD2<Int32>
+public typealias float2 = SIMD2<Float>
 
 
 // MARK: - Global Functions
@@ -46,15 +74,36 @@ func getSKTiledBuildVersion() -> String? {
     return buildVersion
 }
 
+/**
+ Returns current framework version suffix (ie: `beta`).
+
+ - Returns: SKTiled framework version suffix.
+*/
+internal func getSKTiledVersionSuffix() -> String? {
+    var versionSuffix: String?
+    if let bundleSuffixValue = Bundle(for: SKTilemap.self).infoDictionary?["CFBundleVersionSuffix"] {
+        versionSuffix = "\(bundleSuffixValue)"
+    }
+    return versionSuffix
+}
+
 
 /**
  Returns current framework Swift version.
 
  - returns: `String` Swift version.
  */
-public func getSwiftVersion() -> String {
-    var swiftVersion = ""
-    #if swift(>=4.2)
+internal func getSwiftVersion() -> String {
+    var swiftVersion = "5.0"
+    #if swift(>=5.3)
+    swiftVersion = "5.3"
+    #elseif swift(>=5.2)
+    swiftVersion = "5.2"
+    #elseif swift(>=5.1)
+    swiftVersion = "5.1"
+    #elseif swift(>=5.0)
+    swiftVersion = "5.0"
+    #elseif swift(>=4.2)
     swiftVersion = "4.2"
     #elseif swift(>=4.1)
     swiftVersion = "4.1"
@@ -65,7 +114,6 @@ public func getSwiftVersion() -> String {
     #endif
     return swiftVersion
 }
-
 
 /**
  Dumps SKTiled framework globals to the console.
@@ -116,7 +164,7 @@ public func cpuUsage() -> Double {
         return -1
     }
 
-    var thread_list: thread_act_array_t? = UnsafeMutablePointer(mutating: [thread_act_t]())
+    var thread_list: thread_act_array_t?
     var thread_count: mach_msg_type_number_t = 0
     defer {
         if let thread_list = thread_list {
@@ -126,7 +174,7 @@ public func cpuUsage() -> Double {
 
     kr = task_threads(mach_task_self_, &thread_list, &thread_count)
 
-    if kr != KERN_SUCCESS {
+    if (kr != KERN_SUCCESS) {
         return -1
     }
 
@@ -155,8 +203,7 @@ public func cpuUsage() -> Double {
 }
 
 
-
-func convertThreadInfoToThreadBasicInfo(_ threadInfo: [integer_t]) -> thread_basic_info {
+internal func convertThreadInfoToThreadBasicInfo(_ threadInfo: [integer_t]) -> thread_basic_info {
     var result = thread_basic_info()
 
     result.user_time = time_value_t(seconds: threadInfo[0], microseconds: threadInfo[1])
@@ -280,7 +327,7 @@ extension BinaryInteger {
 }
 
 
-public extension Int {
+extension Int {
     /// returns number of digits in Int number
     public var digitCount: Int {
         return numberOfDigits(in: self)
@@ -312,7 +359,7 @@ public extension Int {
 
 
 
-internal extension CGFloat {
+extension CGFloat {
 
     /**
      Convert a float to radians.
@@ -428,7 +475,7 @@ internal func sin(degrees: Float) -> Float {
 
 
 
-public extension CGPoint {
+extension CGPoint {
 
     /// Returns an point inverted in the Y-coordinate.
     public var invertedY: CGPoint {
@@ -476,21 +523,43 @@ public extension CGPoint {
 
 extension CGPoint: Hashable {
 
-    public var hashValue: Int {
-        return x.hashValue << 32 ^ y.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(x)
+        hasher.combine(y)
     }
 }
 
 
+/// :nodoc:
+extension CGSize {
 
-public extension CGSize {
+    /**
+     Initialize with a single integer value representing both weidth & height.
+     
+     - parameter value: `IntegerLiteralType` width & height value.
+     */
+    public init(value: IntegerLiteralType) {
+        self.init(width: value, height: value)
+    }
+    
+    /// Returns the count (in points) of this size.
+    public var pointCount: Int {
+        return Int(width) * Int(height)
+    }
+    
+    public var halfSize: CGSize {
+        return CGSize(width: width / 2, height: height / 2)
+    }
+    
+    public var halfWidth: CGFloat {
+        return width / 2.0
+    }
+    
+    public var halfHeight: CGFloat {
+        return height / 2.0
+    }
 
-    public var count: Int { return Int(width) * Int(height) }
-    public var halfSize: CGSize { return CGSize(width: width / 2, height: height / 2) }
-    public var halfWidth: CGFloat { return width / 2.0 }
-    public var halfHeight: CGFloat { return height / 2.0 }
-
-    public func roundTo(_ decimals: Int = 1) -> String {
+    public func stringRoundedTo(_ decimals: Int = 1) -> String {
         return "w: \(self.width.roundTo(decimals)), h: \(self.height.roundTo(decimals))"
     }
 
@@ -505,7 +574,8 @@ public extension CGSize {
 }
 
 
-public extension CGRect {
+
+extension CGRect {
 
     /// Initialize with a center point and size.
     public init(center: CGPoint, size: CGSize) {
@@ -571,7 +641,7 @@ public extension CGRect {
 }
 
 
-public extension CGVector {
+extension CGVector {
     /**
      * Returns the squared length of the vector described by the CGVector.
      */
@@ -586,7 +656,7 @@ public extension CGVector {
 }
 
 
-public extension SKScene {
+extension SKScene {
     /**
      Returns the center point of a scene.
      */
@@ -605,7 +675,7 @@ public extension SKScene {
 }
 
 
-public extension SKNode {
+extension SKNode {
 
     /**
      Run an action with key & optional completion function.
@@ -651,7 +721,7 @@ public extension SKNode {
 
 
 
-public extension SKSpriteNode {
+extension SKSpriteNode {
 
     /**
      Convenience initalizer to set texture filtering to nearest neighbor.
@@ -665,7 +735,7 @@ public extension SKSpriteNode {
 }
 
 
-public extension SKColor {
+extension SKColor {
 
     /// Returns the hue, saturation, brightess & alpha components of the color
     internal var hsba: (h: CGFloat, s: CGFloat, b: CGFloat, a: CGFloat) {
@@ -677,7 +747,7 @@ public extension SKColor {
     /// Returns the red, green and blue components of the color.
     internal var rgb: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         let comps = components
-        return (comps[0], comps[1], comps[2], comps[3])
+        return (comps.r, comps.g, comps.b, comps.a)
     }
 
     /**
@@ -712,36 +782,72 @@ public extension SKColor {
     }
 
     /**
-     Initialize an SKColor with a hexidecimal string.
+     Initialize an [`SKColor`][skcolor-url] with a hexadecimal string.
 
      - parameter hexString:  `String` hexidecimal code.
      - returns: `SKColor`
+     [skcolor-url]:https://developer.apple.com/reference/spritekit/skcolor
      */
-    convenience public init(hexString: String) {
-        let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int = UInt32()
-        Scanner(string: hex).scanHexInt32(&int)
-        let a, r, g, b: UInt32
+    public convenience init(hexString: String) {
+        let hex = expandShortenedHexString(hexString)
+        var hexNumber = UInt64()
+        Scanner(string: hex).scanHexInt64(&hexNumber)
+        let a, r, g, b: UInt64
         switch hex.count {
-        case 3: // RGB (12-bit)
-            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
-        case 6: // RGB (24-bit)
-            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8: // ARGB (32-bit)
-            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
-        default:
-            (a, r, g, b) = (1, 1, 1, 0)
+            case 3: // RGB (12-bit)
+                (a, r, g, b) = (255, (hexNumber >> 8) * 17, (hexNumber >> 4 & 0xF) * 17, (hexNumber & 0xF) * 17)
+            case 6: // RGB (24-bit)
+                (a, r, g, b) = (255, hexNumber >> 16, hexNumber >> 8 & 0xFF, hexNumber & 0xFF)
+            case 8: // ARGB (32-bit)
+                (a, r, g, b) = (hexNumber & 0x000000ff, hexNumber >> 24 & 0xFF, hexNumber >> 16 & 0xFF, hexNumber >> 8 & 0xFF)
+            default:
+                (a, r, g, b) = (0, 0, 0, 0)
         }
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
 
-    /// Returns the individual color components.
-    internal var components: [CGFloat] {
-        guard let comps = cgColor.components else { return [0,0,0,0] }
-        if comps.count < 4 {
-            return [comps.first!,comps.first!,comps.first!,comps.last!]
+    /**
+
+     Initialize an SKColor with integer values (0-255).
+
+     - Parameters:
+       - red:   `Int` red value (0-255).
+       - green: `Int` green value (0-255).
+       - blue:  `Int` blue value (0-255).
+       - alpha: `Int` alpha value (0-255).
+     - returns: `SKColor`
+     */
+    public convenience init(red: Int, green: Int, blue: Int, alpha: Int = 255) {
+        self.init(red: CGFloat(red) / 255, green: CGFloat(green) / 255, blue: CGFloat(blue) / 255, alpha: CGFloat(alpha) / 255)
+    }
+
+    /**
+     Returns the individual color RGBA components as float values.
+
+     - returns: RGBA color components.
+    */
+    internal var components: (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
+        guard let comps = cgColor.components else {
+            return (0,0,0,0)
         }
-        return comps
+        if (comps.count < 4) {
+            return (comps.first!,comps.first!,comps.first!,comps.last!)
+        }
+        return (comps[0], comps[1], comps[2], comps[3])
+    }
+
+    /**
+     Returns the individual color RGBA components as integer values.
+
+     - returns: RGBA color components.
+    */
+    internal var integerCompoments: (r: Int, g: Int, b: Int, a: Int) {
+        let comps = components
+        let r = Int(comps.r * 255)
+        let g = Int(comps.g * 255)
+        let b = Int(comps.b * 255)
+        let a = Int(comps.a * 255)
+        return (r,g,b,a)
     }
 
     /**
@@ -750,45 +856,42 @@ public extension SKColor {
      - returns: `String` hexadecimal string.
      */
     public func hexString() -> String {
-        let comps = components
-        let r = Int(comps[0] * 255)
-        let g = Int(comps[1] * 255)
-        let b = Int(comps[2] * 255)
-        let a = Int(comps[3] * 255)
-
-        var rgbHex = "#\(String(format: "%02X%02X%02X", r, g, b))"
-        rgbHex += (a == 255) ? "" : String(format: "%02X", a)
+        let comps = integerCompoments
+        var rgbHex = "#\(String(format: "%02x%02x%02x", comps.r, comps.g, comps.b))"
+        rgbHex += (comps.a == 255) ? "" : String(format: "%02x", comps.a)
         return rgbHex
     }
 
     /*
-     Blend current color with another `SKColor`.
+     Blend this color with another `SKColor`.
 
      - parameter color:   `SKColor` color to blend.
      - parameter factor:  `CGFloat` blend factor.
      - returns: `SKColor` blended color.
      */
     internal func blend(with color: SKColor, factor s: CGFloat = 0.5) -> SKColor {
+        let r1 = components.r
+        let g1 = components.g
+        let b1 = components.b
+        let a1 = components.a
 
-        let r1 = components[0]
-        let g1 = components[1]
-        let b1 = components[2]
-
-        let r2 = color.components[0]
-        let g2 = color.components[1]
-        let b2 = color.components[2]
+        let r2 = color.components.r
+        let g2 = color.components.g
+        let b2 = color.components.b
+        let a2 = color.components.a
 
         let r = (r1 * s) + (1 - s) * r2
         let g = (g1 * s) + (1 - s) * g2
         let b = (b1 * s) + (1 - s) * b2
+        let a = (a1 * s) + (1 - s) * a2
 
-        return SKColor(red: r, green: g, blue: b, alpha: 1.0)
+        return SKColor(red: r, green: g, blue: b, alpha: a)
     }
 
     /**
-     Return the color as a vector4.
+     Return the color as a floating-point vector.
 
-     - returns: `GLKVector4` color as a vector4.
+     - returns: vector representation of the color.
      */
     internal func vec4() -> GLKVector4 {
         var r: CGFloat = 0.0
@@ -798,32 +901,56 @@ public extension SKColor {
         getRed(&r, green: &g, blue: &b, alpha: &a)
         return GLKVector4(v: (Float(r), Float(g), Float(b), Float(a)))
     }
-
+    
+    /// Returns the color represented as a `vector_float4` instance.
     public var toVec4: vector_float4 {
-        return vector_float4(components.map { Float($0) })
-    }
-
-    public var hexDescription: String {
-        return "SKColor(hexString:  \"\(self.hexString())\")"
-    }
-
-    public var rgbDescription: String {
         let comps = components
-        let r = Int(comps[0] * 255)
-        let g = Int(comps[1] * 255)
-        let b = Int(comps[2] * 255)
-        let a = Int(comps[3] * 255)
+        return vector_float4([comps.r, comps.g, comps.b, comps.a].map { Float($0) })
+    }
+}
+
+
+/// :nodoc:
+extension SKColor {
+
+    /// Returns a string description of the color hex string value.
+    ///
+    ///  ie: `SKColor(hexString: "##2FD62A")`
+    ///
+    /// - Returns: RGBA component string description.
+    public var hexDescription: String {
+        return "SKColor(hexString:  '\(self.hexString())')"
+    }
+
+    /// Returns a string description of the color RGBA integer components.
+    ///
+    ///  ie: `SKColor(r: 227, g: 180, b: 71, a: 71)`
+    ///
+    /// - Returns: RGBA component string description.
+    public var rgbaDescription: String {
+        let comps = components
+        let r = Int(comps.r * 255)
+        let g = Int(comps.g * 255)
+        let b = Int(comps.b * 255)
+        let a = Int(comps.a * 255)
         return "SKColor(r: \(r), g: \(g), b: \(b), a: \(a))"
     }
 
+    /// Returns a string description of the color RGBA float components.
+    ///
+    ///  ie: `SKColor(r: 0.1843, g: 0.8392, b: 0.1647, a: 1.0)`
+    ///
+    /// - Returns: RGBA component string description.
     public var componentDescription: String {
-        var result: [String] = []
-        for compDesc in components.map({ "\($0.roundTo(1))" }) {
-            result.append(compDesc)
-        }
-        return "SKColor: " + result.joined(separator: ",")
+        let comps = components
+        let r = comps.r.roundTo(3)
+        let g = comps.g.roundTo(3)
+        let b = comps.b.roundTo(3)
+        let a = comps.a.roundTo(3)
+        return "SKColor(r: \(r), g: \(g), b: \(b), a: \(a))"
     }
 }
+
 
 
 // MARK: - String
@@ -1010,6 +1137,38 @@ extension URL {
 }
 
 
+extension String {
+
+    /// Returns true if the string represents a valid hexadecimal color.
+    public var isValidHexColor: Bool {
+        let pattern = "^#?([0-9A-F]{3}){1,2}$|^#?([0-9A-F]{4}){1,2}$"
+        do {
+            let regex = try NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options.caseInsensitive)
+            let numberOfMatches = regex.numberOfMatches(in: self, options: [], range: NSMakeRange(0, self.count))
+
+            if (numberOfMatches != 1) {
+                return false
+            }
+
+            return true
+
+        } catch {
+            return false
+        }
+    }
+
+    /**
+     Returns a SpriteKit color for this string. Returns `SKColor.clear` if the string cannot be parsed.
+
+     - returns: hex color, or clear if the string is invalid.
+    */
+    public func toHexColor() -> SKColor {
+        return (self.isValidHexColor == true) ? SKColor(hexString: self) : SKColor.clear
+    }
+}
+
+
+
 // MARK: - TimeInterval
 
 extension TimeInterval {
@@ -1019,6 +1178,26 @@ extension TimeInterval {
         return Double(self * 1000)
     }
 }
+
+
+
+// MARK: - FloatingPoint
+
+
+extension FloatingPoint {
+    
+    /**
+     Returns a value that is precise to a given number of digits.
+    
+     - parameter value: floating point precision.
+     - returns: the current value with the given precision.
+    */
+    public func precised(_ value: Int = 1) -> Self {
+        let offset = Self(Int(pow(10.0, Double(value))))
+        return (self * offset).rounded() / offset
+    }
+}
+
 
 
 // MARK: - Events & Vallbacks
@@ -1204,32 +1383,6 @@ extension SKAction {
 }
 
 
-public extension Data {
-    // init with a value
-    public init<T>(from value: T) {
-        var value = value
-        self.init(buffer: UnsafeBufferPointer(start: &value, count: 1))
-    }
-
-    // export back as value
-    public func to<T>(type: T.Type) -> T {
-        return self.withUnsafeBytes { $0.pointee }
-    }
-
-    // init with array
-    public init<T>(fromArray values: [T]) {
-        var values = values
-        self.init(buffer: UnsafeBufferPointer(start: &values, count: values.count))
-    }
-
-    // output to array
-    public func toArray<T>(type: T.Type) -> [T] {
-        return self.withUnsafeBytes {
-            [T](UnsafeBufferPointer(start: $0, count: self.count/MemoryLayout<T>.stride))
-        }
-    }
-}
-
 
 // MARK: - Operators
 
@@ -1393,51 +1546,26 @@ public func - (lhs: CGVector, rhs: CGVector) -> CGVector {
     return CGVector(dx: lhs.dx - rhs.dx, dy: lhs.dy - rhs.dy)
 }
 
-/*
-public func -= (lhs: inout CGVector, rhs: CGVector) {
-    lhs -= rhs
-}
-*/
 
 public func * (lhs: CGVector, rhs: CGVector) -> CGVector {
     return CGVector(dx: lhs.dx * rhs.dx, dy: lhs.dy * rhs.dy)
 }
 
-/*
-public func *= (lhs: inout CGVector, rhs: CGVector) {
-    lhs *= rhs
-}
-*/
 
 public func * (vector: CGVector, scalar: CGFloat) -> CGVector {
     return CGVector(dx: vector.dx * scalar, dy: vector.dy * scalar)
 }
 
-/*
-public func *= (vector: inout CGVector, scalar: CGFloat) {
-    vector *= scalar
-}
-*/
 
 public func / (lhs: CGVector, rhs: CGVector) -> CGVector {
     return CGVector(dx: lhs.dx / rhs.dx, dy: lhs.dy / rhs.dy)
 }
 
-/*
-public func /= (lhs: inout CGVector, rhs: CGVector) {
-    lhs /= rhs
-}
-*/
 
 public func / (lhs: CGVector, rhs: CGFloat) -> CGVector {
     return CGVector(dx: lhs.dx / rhs, dy: lhs.dy / rhs)
 }
 
-/*
-public func /= (lhs: inout CGVector, rhs: CGFloat) {
-    lhs /= rhs
-}
-*/
 
 public func lerp(start: CGVector, end: CGVector, t: CGFloat) -> CGVector {
     return start + (end - start) * t
@@ -1469,10 +1597,18 @@ public func / (lhs: CGRect, rhs: CGFloat) -> CGRect {
 
 // MARK: SKColor
 
+/**
+ Returns a new color based on interpolated values of two source colors.
+
+ - parameter start: start color.
+ - parameter end: end color.
+ - parameter t: blend amount.
+ - returns: interpolated color.
+*/
 public func lerp(start: SKColor, end: SKColor, t: CGFloat) -> SKColor {
-    let newRed   = (1.0 - t) * start.components[0]   + t * end.components[0]
-    let newGreen = (1.0 - t) * start.components[1] + t * end.components[1]
-    let newBlue  = (1.0 - t) * start.components[2]  + t * end.components[2]
+    let newRed   = (1.0 - t) * start.components.r   + t * end.components.r
+    let newGreen = (1.0 - t) * start.components.g + t * end.components.g
+    let newBlue  = (1.0 - t) * start.components.b  + t * end.components.b
     return SKColor(red: newRed, green: newGreen, blue: newBlue, alpha: 1)
 }
 
@@ -1514,22 +1650,6 @@ public func *= (lhs: inout int2, rhs: int2) {
 public func / (lhs: int2, rhs: int2) -> int2 {
     return int2(lhs.x / rhs.x, lhs.y / rhs.y)
 }
-
-// Swift 4 Error
-/*
-public func /= (lhs: inout int2, rhs: int2) {
-    lhs /= rhs
-}
-
-
-public func == (lhs: int2, rhs: int2) -> Bool {
-    return (lhs.x == rhs.x) && (lhs.y == rhs.y)
-}
-
-internal func == (lhs: CGPoint, rhs: CGPoint) -> Bool {
-    return lhs.distance(rhs) < 0.000001
-}
-*/
 
 
 extension vector_int2 {
@@ -1575,6 +1695,30 @@ public func floor(point: CGPoint) -> CGPoint {
 public func normalize(_ value: CGFloat, _ minimum: CGFloat, _ maximum: CGFloat) -> CGFloat {
     return (value - minimum) / (maximum - minimum)
 }
+
+
+/**
+ Expand shortened hex color strings.
+
+   ie: `333` -> `333333`, or `6573` -> `66557733`
+
+ - parameter hexString: input hex string.
+ - returns: valid hex string.
+ */
+public func expandShortenedHexString(_ hexString: String) -> String {
+    let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+    switch hex.count {
+        case 3, 4:
+            let hexStringArray = Array(hex)
+            return zip(hexStringArray, hexStringArray).reduce("") { (result, values) in
+                return result + String(values.0) + String(values.1)
+            }
+        default:
+            return hex
+    }
+}
+
+
 
 
 // MARK: - Visualization Functions
@@ -2233,6 +2377,55 @@ public func clampNodePosition(node: SKNode, scale: CGFloat) {
 }
 
 
+// MARK: - Deprecations
+
+/// :nodoc:
+extension SKColor {
+
+    /**
+     Returns a string description of the color RGBA integer components.
+
+      ie: `SKColor(r: 227, g: 180, b: 71, a: 71)`
+
+     - returns: RGBA component string description.
+    */
+    @available(*, deprecated, renamed: "rgbaDescription")
+    public var rgbDescription: String {
+        return rgbaDescription
+    }
+
+    /**
+     Returns a string description of the color RGBA integer components.
+
+      ie: `SKColor(r: 227, g: 180, b: 71, a: 71)`
+
+     - returns: RGBA component string description.
+    */
+    @available(*, deprecated, renamed: "rgbaDescription")
+    public var integerComponentDescription: String {
+        return rgbaDescription
+    }
+}
+
+
+extension CGSize {
+    
+    /// Returns a display string rounded to a given number of decimal places.
+    ///
+    /// - Parameter decimals: decimals to round to.
+    /// - Returns: display string.
+    @available(*, deprecated, renamed: "stringRoundedTo(_:)")
+    public func roundTo(_ decimals: Int = 1) -> String {
+        return stringRoundedTo(decimals)
+    }
+    
+    /// Returns the width x height.
+    @available(*, deprecated, renamed: "pointCount")
+    public var count: Int {
+        return Int(width) * Int(height)
+    }
+}
+
 
 /**
  Dumps SKTiled framework globals to the console.
@@ -2255,105 +2448,98 @@ public func clampPositionWithNode(node: SKNode, scale: CGFloat) {
 }
 
 
-// MARK: - Compression
+// MARK: - Compression/Gzip
 
-/**
- Compression level with constants based on the zlib's constants.
- */
-public typealias CompressionLevel = Int32
+/// Compression level whose rawValue is based on the zlib's constants.
+public struct CompressionLevel: RawRepresentable {
 
-public extension CompressionLevel {
+    /// Compression level in the range of `0` (no compression) to `9` (maximum compression).
+    public let rawValue: Int32
 
-    static public let noCompression      = Z_NO_COMPRESSION
-    static public let bestSpeed          = Z_BEST_SPEED
-    static public let bestCompression    = Z_BEST_COMPRESSION
-    static public let defaultCompression = Z_DEFAULT_COMPRESSION
+    public static let noCompression = CompressionLevel(Z_NO_COMPRESSION)
+    public static let bestSpeed = CompressionLevel(Z_BEST_SPEED)
+    public static let bestCompression = CompressionLevel(Z_BEST_COMPRESSION)
+    public static let defaultCompression = CompressionLevel(Z_DEFAULT_COMPRESSION)
+
+
+    public init(rawValue: Int32) {
+        self.rawValue = rawValue
+    }
+
+
+    public init(_ rawValue: Int32) {
+        self.rawValue = rawValue
+    }
 }
 
 
-/**
- Errors on gzipping/gunzipping based on the zlib error codes.
- */
-public enum GzipError: Error {
+/// Errors on gzipping/gunzipping based on the zlib error codes.
+public struct GzipError: Swift.Error {
     // cf. http://www.zlib.net/manual.html
 
-    /**
-     The stream structure was inconsistent.
+    public enum Kind: Equatable {
+        /// The stream structure was inconsistent.
+        ///
+        /// - underlying zlib error: `Z_STREAM_ERROR` (-2)
+        case stream
 
-     - underlying zlib error: `Z_STREAM_ERROR` (-2)
-     - parameter message: returned message by zlib
-     */
-    case stream(message: String)
+        /// The input data was corrupted
+        /// (input stream not conforming to the zlib format or incorrect check value).
+        ///
+        /// - underlying zlib error: `Z_DATA_ERROR` (-3)
+        case data
 
-    /**
-     The input data was corrupted (input stream not conforming to the zlib format or incorrect check value).
+        /// There was not enough memory.
+        ///
+        /// - underlying zlib error: `Z_MEM_ERROR` (-4)
+        case memory
 
-     - underlying zlib error: `Z_DATA_ERROR` (-3)
-     - parameter message: returned message by zlib
-     */
-    case data(message: String)
+        /// No progress is possible or there was not enough room in the output buffer.
+        ///
+        /// - underlying zlib error: `Z_BUF_ERROR` (-5)
+        case buffer
 
-    /**
-     There was not enough memory.
+        /// The zlib library version is incompatible with the version assumed by the caller.
+        ///
+        /// - underlying zlib error: `Z_VERSION_ERROR` (-6)
+        case version
 
-     - underlying zlib error: `Z_MEM_ERROR` (-4)
-     - parameter message: returned message by zlib
-     */
-    case memory(message: String)
+        /// An unknown error occurred.
+        ///
+        /// - parameter code: return error by zlib
+        case unknown(code: Int)
+    }
 
-    /**
-     No progress is possible or there was not enough room in the output buffer.
+    /// Error kind.
+    public let kind: Kind
 
-     - underlying zlib error: `Z_BUF_ERROR` (-5)
-     - parameter message: returned message by zlib
-     */
-    case buffer(message: String)
-
-    /**
-     The zlib library version is incompatible with the version assumed by the caller.
-
-     - underlying zlib error: `Z_VERSION_ERROR` (-6)
-     - parameter message: returned message by zlib
-     */
-    case version(message: String)
-
-    /**
-     An unknown error occurred.
-
-     - parameter message: returned message by zlib
-     - parameter code: return error by zlib
-     */
-    case unknown(message: String, code: Int)
+    /// Returned message by zlib.
+    public let message: String
 
 
     internal init(code: Int32, msg: UnsafePointer<CChar>?) {
 
-        let message: String = {
+        self.message = {
             guard let msg = msg, let message = String(validatingUTF8: msg) else {
                 return "Unknown gzip error"
             }
             return message
         }()
 
-        self = {
+        self.kind = {
             switch code {
-            case Z_STREAM_ERROR:
-                return .stream(message: message)
-
-            case Z_DATA_ERROR:
-                return .data(message: message)
-
-            case Z_MEM_ERROR:
-                return .memory(message: message)
-
-            case Z_BUF_ERROR:
-                return .buffer(message: message)
-
-            case Z_VERSION_ERROR:
-                return .version(message: message)
-
-            default:
-                return .unknown(message: message, code: Int(code))
+                case Z_STREAM_ERROR:
+                    return .stream
+                case Z_DATA_ERROR:
+                    return .data
+                case Z_MEM_ERROR:
+                    return .memory
+                case Z_BUF_ERROR:
+                    return .buffer
+                case Z_VERSION_ERROR:
+                    return .version
+                default:
+                    return .unknown(code: Int(code))
             }
         }()
     }
@@ -2361,117 +2547,130 @@ public enum GzipError: Error {
 
     public var localizedDescription: String {
 
-        let description: String = {
-            switch self {
-            case .stream(let message):
-                return message
-            case .data(let message):
-                return message
-            case .memory(let message):
-                return message
-            case .buffer(let message):
-                return message
-            case .version(let message):
-                return message
-            case .unknown(let message, _):
-                return message
-            }
-        }()
-
-        return NSLocalizedString(description, comment: "error message")
+        return self.message
     }
 
 }
 
+/// Extension for Data objectsfor roundtripping data from arrays.
+/// https://stackoverflow.com/questions/38023838/round-trip-swift-number-types-to-from-data
+extension Data {
 
-public extension Data {
-
-    /**
-     Check if the reciever is already gzipped.
-
-     - returns: Whether the data is compressed.
-     */
-    public var isGzipped: Bool {
-        return self.starts(with: [0x1f, 0x8b])
+    // Initialize with a value.
+    init<T>(from value: T) {
+        self = Swift.withUnsafeBytes(of: value) { Data($0) }
     }
 
-    /**
-     Check if the reciever is already zlib compressed.
+    // Export back as value.
+    func to<T>(type: T.Type) -> T? where T: ExpressibleByIntegerLiteral {
+        var value: T = 0
+        guard count >= MemoryLayout.size(ofValue: value) else { return nil }
+        _ = Swift.withUnsafeMutableBytes(of: &value, { copyBytes(to: $0)} )
+        return value
+    }
 
-     - returns: Whether the data is compressed.
-     */
+    // Initialize with an array.
+    init<T>(fromArray values: [T]) {
+        self = values.withUnsafeBytes { Data($0) }
+    }
+
+    // Output data to an array.
+    func toArray<T>(type: T.Type) -> [T] where T: ExpressibleByIntegerLiteral {
+        var array = Array<T>(repeating: 0, count: self.count/MemoryLayout<T>.stride)
+        _ = array.withUnsafeMutableBytes { copyBytes(to: $0) }
+        return array
+    }
+}
+
+
+extension Data {
+
+    /// Whether the receiver is compressed in gzip format.
+    public var isGzipped: Bool {
+        return self.starts(with: [0x1f, 0x8b])  // check magic number
+    }
+
+    /// Whether the receiver is compressed in zlib format.
     public var isZlibCompressed: Bool {
         return self.starts(with: [0x78, 0x9C])
     }
 
-    /**
-     Create a new `Data` object by compressing the receiver using zlib.
-     Throws an error if compression failed.
 
-     - parameters:
-     - level: Compression level in the range of `0` (no compression) to `9` (maximum compression).
-
-     - throws: `GzipError`
-     - returns: Gzip-compressed `Data` object.
-     */
+    /// Create a new `Data` object by compressing the receiver using zlib.
+    /// Throws an error if compression failed.
+    ///
+    /// - Parameter level: Compression level.
+    /// - Returns: Gzip-compressed `Data` object.
+    /// - Throws: `GzipError`
     public func gzipped(level: CompressionLevel = .defaultCompression) throws -> Data {
 
-        guard self.isEmpty == false else {
+        guard !self.isEmpty else {
             return Data()
         }
 
-        var stream = self.createZStream()
+        var stream = z_stream()
         var status: Int32
 
-        status = deflateInit2_(&stream, level, Z_DEFLATED, MAX_WBITS + 16, MAX_MEM_LEVEL, Z_DEFAULT_STRATEGY, ZLIB_VERSION, STREAM_SIZE)
+        status = deflateInit2_(&stream, level.rawValue, Z_DEFLATED, MAX_WBITS + 16, MAX_MEM_LEVEL, Z_DEFAULT_STRATEGY, ZLIB_VERSION, Int32(DataSize.stream))
 
         guard status == Z_OK else {
             // deflateInit2 returns:
             // Z_VERSION_ERROR  The zlib library version is incompatible with the version assumed by the caller.
             // Z_MEM_ERROR      There was not enough memory.
             // Z_STREAM_ERROR   A parameter is invalid.
-
             throw GzipError(code: status, msg: stream.msg)
         }
 
-        var data = Data(capacity: CHUNK_SIZE)
-        while stream.avail_out == 0 {
+        var data = Data(capacity: DataSize.chunk)
+        repeat {
             if Int(stream.total_out) >= data.count {
-                data.count += CHUNK_SIZE
+                data.count += DataSize.chunk
             }
 
-            data.withUnsafeMutableBytes { (bytes: UnsafeMutablePointer<Bytef>) in
-                stream.next_out = bytes.advanced(by: Int(stream.total_out))
-            }
-            stream.avail_out = uInt(data.count) - uInt(stream.total_out)
+            let inputCount = self.count
+            let outputCount = data.count
 
-            deflate(&stream, Z_FINISH)
+            self.withUnsafeBytes { (inputPointer: UnsafeRawBufferPointer) in
+                stream.next_in = UnsafeMutablePointer<Bytef>(mutating: inputPointer.bindMemory(to: Bytef.self).baseAddress!).advanced(by: Int(stream.total_in))
+                stream.avail_in = uint(inputCount) - uInt(stream.total_in)
+
+                data.withUnsafeMutableBytes { (outputPointer: UnsafeMutableRawBufferPointer) in
+                    stream.next_out = outputPointer.bindMemory(to: Bytef.self).baseAddress!.advanced(by: Int(stream.total_out))
+                    stream.avail_out = uInt(outputCount) - uInt(stream.total_out)
+
+                    status = deflate(&stream, Z_FINISH)
+                    stream.next_out = nil
+                }
+
+                stream.next_in = nil
+            }
+
+        } while stream.avail_out == 0
+
+        guard deflateEnd(&stream) == Z_OK, status == Z_STREAM_END else {
+            throw GzipError(code: status, msg: stream.msg)
         }
 
-        deflateEnd(&stream)
         data.count = Int(stream.total_out)
 
         return data
     }
 
-
-    /**
-     Create a new `Data` object by decompressing the receiver using zlib.
-     Throws an error if decompression failed.
-
-     - throws: `GzipError`
-     - returns: Gzip-decompressed `Data` object.
-     */
+    /// Create a new `Data` object by decompressing the receiver using zlib.
+    /// Throws an error if decompression failed.
+    ///
+    /// - Returns: Gzip-decompressed `Data` object.
+    /// - Throws: `GzipError`
     public func gunzipped() throws -> Data {
 
-        guard self.isEmpty == false else {
+        guard !self.isEmpty else {
             return Data()
         }
 
-        var stream = self.createZStream()
+        var stream = z_stream()
         var status: Int32
 
-        status = inflateInit2_(&stream, MAX_WBITS + 32, ZLIB_VERSION, STREAM_SIZE)
+        status = inflateInit2_(&stream, MAX_WBITS + 32, ZLIB_VERSION, Int32(DataSize.stream))
 
         guard status == Z_OK else {
             // inflateInit2 returns:
@@ -2483,28 +2682,38 @@ public extension Data {
         }
 
         var data = Data(capacity: self.count * 2)
-
         repeat {
             if Int(stream.total_out) >= data.count {
                 data.count += self.count / 2
             }
 
-            data.withUnsafeMutableBytes { (bytes: UnsafeMutablePointer<Bytef>) in
-                stream.next_out = bytes.advanced(by: Int(stream.total_out))
-            }
-            stream.avail_out = uInt(data.count) - uInt(stream.total_out)
+            let inputCount = self.count
+            let outputCount = data.count
 
-            status = inflate(&stream, Z_SYNC_FLUSH)
+            self.withUnsafeBytes { (inputPointer: UnsafeRawBufferPointer) in
+                stream.next_in = UnsafeMutablePointer<Bytef>(mutating: inputPointer.bindMemory(to: Bytef.self).baseAddress!).advanced(by: Int(stream.total_in))
+                stream.avail_in = uint(inputCount) - uInt(stream.total_in)
+
+                data.withUnsafeMutableBytes { (outputPointer: UnsafeMutableRawBufferPointer) in
+                    stream.next_out = outputPointer.bindMemory(to: Bytef.self).baseAddress!.advanced(by: Int(stream.total_out))
+                    stream.avail_out = uInt(outputCount) - uInt(stream.total_out)
+
+                    status = inflate(&stream, Z_SYNC_FLUSH)
+
+                    stream.next_out = nil
+                }
+
+                stream.next_in = nil
+            }
 
         } while status == Z_OK
 
-        guard inflateEnd(&stream) == Z_OK && status == Z_STREAM_END else {
+        guard inflateEnd(&stream) == Z_OK, status == Z_STREAM_END else {
             // inflate returns:
             // Z_DATA_ERROR   The input data was corrupted (input stream not conforming to the zlib format or incorrect check value).
             // Z_STREAM_ERROR The stream structure was inconsistent (for example if next_in or next_out was NULL).
             // Z_MEM_ERROR    There was not enough memory.
             // Z_BUF_ERROR    No progress is possible or there was not enough room in the output buffer when Z_FINISH is used.
-
             throw GzipError(code: status, msg: stream.msg)
         }
 
@@ -2512,21 +2721,13 @@ public extension Data {
 
         return data
     }
-
-    private func createZStream() -> z_stream {
-
-        var stream = z_stream()
-
-        self.withUnsafeBytes { (bytes: UnsafePointer<Bytef>) in
-            stream.next_in = UnsafeMutablePointer<Bytef>(mutating: bytes)
-        }
-        stream.avail_in = uint(self.count)
-
-        return stream
-    }
-
 }
 
 
-private let CHUNK_SIZE: Int = 2 ^ 14
-private let STREAM_SIZE: Int32 = Int32(MemoryLayout<z_stream>.size)
+private struct DataSize {
+
+    static let chunk = 1 << 14
+    static let stream = MemoryLayout<z_stream>.size
+
+    private init() { }
+}

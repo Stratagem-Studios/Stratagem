@@ -2,68 +2,42 @@
 //  SKTilesetData.swift
 //  SKTiled
 //
-//  Created by Michael Fessenden on 3/21/16.
-//  Copyright © 2016 Michael Fessenden. All rights reserved.
+//  Created by Michael Fessenden.
+//
+//  Web: https://github.com/mfessenden
+//  Email: michael.fessenden@gmail.com
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 
 import SpriteKit
 
 
-/**
- 
- ## Overview ##
- 
- A structure representing a single frame of animation. Time is stored in milliseconds.
- 
- ### Properties ###
- 
- | Property | Description             |
- |----------|-------------------------|
- | id       | unique tile (local) id. |
- | duration | frame duration.         |
- | texture  | optional tile texture.  |
-
- */
-public class TileAnimationFrame: NSObject {
-    public var id: Int = 0
-    public var duration: Int = 0
-    public var texture: SKTexture?
-
-    public init(id: Int, duration: Int, texture: SKTexture? = nil) {
-        super.init()
-        self.id = id
-        self.duration = duration
-        self.texture = texture
-    }
-}
-
-
-/**
- A structure representing a tile collision shape.
-
- - parameter points:  `[CGPoint]` frame duration.
- */
-internal class SKTileCollisionShape: SKTiledObject {
-
-    var uuid: String = UUID().uuidString
-    var type: String!
-    var properties: [String: String] = [:]
-    var ignoreProperties: Bool = false
-    var renderQuality: CGFloat = 1
-
-    public var id: Int = 0
-    public var points: [CGPoint] = []
-}
-
 
 /**
 
- ## Overview ##
+ ## Overview
 
  The `SKTilesetData` object stores data for a single tileset tile, referencing the tile texture, animation frames (for animated tiles) as well as tile orientation.
 
  Also includes navigation properties for tile accessability, and graph node weight.
 
- ### Properties ###
+ ### Properties
 
  | Property   | Description     |
  |------------|-----------------|
@@ -72,30 +46,41 @@ internal class SKTileCollisionShape: SKTiledObject {
  | texture    | Tile texture    |
  | tileOffset | Tile offset     |
 
-*/
+ */
 public class SKTilesetData: SKTiledObject {
 
     weak public var tileset: SKTileset!                     // reference to parent tileset
 
     /// Unique id.
     public var uuid: String = UUID().uuidString
+
     /// Tile id (local).
     public var id: Int = 0
+
     /// Tiled type.
     public var type: String!
+
     /// Tile data name.
     public var name: String? {
         return properties["name"]
     }
-    
+
     /// Tile texture.
     public var texture: SKTexture!
+
     /// Source image name (collections tileset)
     public var source: String! = nil
-    public var probability: CGFloat = 1.0                   // carried over from Tiled application.
+
+    /// Tile occurance probability (parsed from Tiled, not currently used).
+
+    public var probability: CGFloat = 1.0
+
+    /// Custom Tiled properties.
     public var properties: [String: String] = [:]
-    public var ignoreProperties: Bool = false               // ignore custom properties
-    
+
+    /// Node ignores custom properties.
+    public var ignoreProperties: Bool = false
+
     /// Tile offset.
     public var tileOffset: CGPoint = CGPoint.zero
 
@@ -105,15 +90,20 @@ public class SKTilesetData: SKTiledObject {
     /// Animated frames.
     internal var currentTime: TimeInterval = 0
     internal var frameIndex: UInt8 = 0
-    internal var blockAnimation: Bool = false               // supress tile animation
+
+    /// Supress tile animation.
+    internal var blockAnimation: Bool = false
     internal var _frames: [TileAnimationFrame] = []
+
+
+    /// Tile animation frame storate.
     public var frames:  [TileAnimationFrame] {
         return (blockAnimation == false) ? _frames : []
     }
 
     /// Indicates the tile is animated.
     public var isAnimated: Bool { return frames.isEmpty == false }
-    
+
     /// Signifies that the tile data has changed.
     internal var dataChanged: Bool = false {
         didSet {
@@ -124,10 +114,10 @@ public class SKTilesetData: SKTiledObject {
             }
         }
     }
-    
+
     /// Private animation action.
     private var _animationAction: SKAction?
-    
+
     /// Returns an aniamtion action for the tile data.
     public var animationAction: SKAction? {
         if (_animationAction != nil) {
@@ -136,27 +126,27 @@ public class SKTilesetData: SKTiledObject {
 
         guard (isAnimated == true),
             let tileset = tileset else { return nil }
-        
+
         var framesData: [(texture: SKTexture, duration: TimeInterval)] = []
-        
+
         for frame in frames {
             guard let frameTexture = tileset.getTileData(localID: frame.id)?.texture else {
                 Logger.default.log("cannot access texture data for id: \(frame.id)", level: .error, symbol: "SKTilesetData")
                 return nil
             }
-            
+
             frameTexture.filteringMode = .nearest
             framesData.append((texture: frameTexture, duration:  TimeInterval(frame.duration) / 1000))
         }
         // return the resulting action
         let newAction = SKAction.tileAnimation(framesData)
-        
+
         NotificationCenter.default.post(
             name: Notification.Name.TileData.ActionAdded,
             object: self,
             userInfo: ["action": newAction]
         )
-        
+
         _animationAction = newAction
         return newAction
     }
@@ -172,8 +162,10 @@ public class SKTilesetData: SKTiledObject {
 
     /// Tile is flipped horizontally
     public var flipHoriz: Bool = false
+
     /// Tile is flipped vertically.
     public var flipVert:  Bool = false
+
     /// Tile is flipped diagonally.
     public var flipDiag:  Bool = false
 
@@ -181,31 +173,25 @@ public class SKTilesetData: SKTiledObject {
 
     /// Tile is walkable.
     public var walkable: Bool = false
+
     /// Tile represents an obstacle.
     public var obstacle: Bool = false
+
     /// Pathfinding weight.
     public var weight: CGFloat = 1
 
     /// Collision objects (not yet implemented).
     public var collisions: [SKTileObject] = []
 
-    /// Local id for this tile.
-    public var localID: Int {
-        guard let tileset = tileset else { return id }
-        return tileset.getLocalID(forGlobalID: id)
-    }
-
     /// Global id for this tile.
     public var globalID: Int {
-        guard let tileset = tileset else { return id }
-        return (localID == id) ? (tileset.firstGID + id) : id
+        let firstGID = (tileset != nil) ? tileset.firstGID : 0
+        return id + firstGID
     }
 
     // MARK: - Init
 
-    /**
-     Initialize an empty data structure.
-     */
+    /// Initialize an empty data structure.
     public init() {}
 
     /**
@@ -243,7 +229,7 @@ public class SKTilesetData: SKTiledObject {
     }
 
     // MARK: - Animation
-    
+
 
     /**
      Add tile animation to the data.
@@ -260,13 +246,13 @@ public class SKTilesetData: SKTiledObject {
             id = withID - tileset.firstGID
         }
         let frame = TileAnimationFrame(id: id, duration: interval, texture: tileTexture)
-        
+
         NotificationCenter.default.post(
             name: Notification.Name.TileData.FrameAdded,
             object: self,
             userInfo: nil
         )
-        
+
         _frames.append(frame)
         return frame
     }
@@ -405,22 +391,22 @@ public func == (lhs: SKTilesetData, rhs: SKTilesetData) -> Bool {
 }
 
 
+
 extension SKTilesetData: Hashable {
-    public var hashValue: Int {
-        return id.hashValue << 32 ^ globalID.hashValue
+
+    /// :nodoc: Tile data hash function.
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(globalID)
     }
 }
 
 
-extension TileAnimationFrame {
-    override public var description: String { return "Frame: \(id): \(duration)" }
-    override public var debugDescription: String { return "<\(description)>" }
-}
 
 
 extension SKTilesetData: CustomStringConvertible, CustomDebugStringConvertible {
 
-    /// Tile data description.
+    /// :nodoc: Tile data description.
     public var description: String {
         guard let tileset = tileset else { return "Tile ID: \(id) (no tileset)" }
         let typeString = (type != nil) ? ", type: \"\(type!)\"" : ""
@@ -431,14 +417,27 @@ extension SKTilesetData: CustomStringConvertible, CustomDebugStringConvertible {
             sourceString = sourceURL.relativeString
         }
         let framesString = (isAnimated == true) ? ", \(frames.count) frames" : ""
-        let idValue = localID  // globalID
+        let idValue = id
         let dataString = (properties.isEmpty == false) ? "Tile ID: \(idValue)\(typeString)\(sourceString) @ \(tileset.tileSize.shortDescription)\(framesString), "
             : "Tile ID: \(idValue)\(typeString) @ \(tileset.tileSize.shortDescription)\(framesString)"
 
         return "\(dataString)\(propertiesString)"
     }
 
+    /// :nodoc:
     public var debugDescription: String {
         return "<\(description)>"
+    }
+}
+
+
+// MARK: - Deprecated
+
+extension SKTilesetData {
+
+    /// Local id for this tile data.
+    @available(*, deprecated, renamed: "id")
+    public var localID: Int {
+        return id
     }
 }

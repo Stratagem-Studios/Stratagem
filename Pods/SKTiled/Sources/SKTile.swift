@@ -2,22 +2,41 @@
 //  SKTile.swift
 //  SKTiled
 //
-//  Created by Michael Fessenden on 3/21/16.
-//  Copyright © 2016 Michael Fessenden. All rights reserved.
+//  Created by Michael Fessenden.
 //
+//  Web: https://github.com/mfessenden
+//  Email: michael.fessenden@gmail.com
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 
 import SpriteKit
 
 
 /**
 
- ## Overview ##
+ ## Overview
 
  The `TileRenderMode` flag determines how a particular tile instance is rendered. If the default is
  specified, the tile renders however the parent tilemap tells it to. Only set this flag to override a
  particular tile instance's render behavior.
 
- ### Properties ###
+ ### Properties
 
  | Property | Description                                    |
  |:---------|:-----------------------------------------------|
@@ -36,14 +55,14 @@ public enum TileRenderMode {
 
 /**
 
- ## Overview ##
+ ## Overview
 
  The `SKTile` class is a custom SpriteKit sprite node that references its data from a tileset.
 
  Tile data (including texture) is stored in `SKTilesetData` property.
 
 
- ### Properties ###
+ ### Properties
 
  | Property                          | Description                                 |
  |:----------------------------------|:--------------------------------------------|
@@ -97,14 +116,16 @@ open class SKTile: SKSpriteNode {
         }
     }
 
+    /// Returns true if the tile is part of a tile object.
+    public internal(set) var isTileObject: Bool = false
 
     /**
-     ## Overview ##
+     ## Overview
 
      Alignment hint used to define how to handle tile positioning within layers &
      objects (in the event the tile size is different than the parent).
 
-     ### Properties ###
+     ### Properties
 
      | Property       | Description                                 |
      |:---------------|:--------------------------------------------|
@@ -140,19 +161,36 @@ open class SKTile: SKSpriteNode {
 
     /// Tile highlight color.
     open var highlightColor: SKColor = TiledGlobals.default.debug.tileHighlightColor
+
     /// Tile bounds color.
     open var frameColor: SKColor = TiledGlobals.default.debug.frameColor
+
     /// Tile highlight duration.
     open var highlightDuration: TimeInterval = TiledGlobals.default.debug.highlightDuration
+
+    /// Bounding shape key.
     internal var boundsKey: String = "BOUNDS"
+
+    /// Animation key.
     internal var animationKey: String = "TILE-ANIMATION"
+
+    /// Enable tile animation.
+    open var enableAnimation: Bool = true {
+        didSet {
+            if (enableAnimation == false) {
+                removeAction(forKey: animationKey)
+            } else {
+                runAnimationAsActions()
+            }
+        }
+    }
 
     /**
      ## Overview:
 
      Describes the tile's physics shape.
 
-     ### Properties ###
+     ### Properties
 
      | Property  | Description                    |
      |:----------|:-------------------------------|
@@ -196,6 +234,7 @@ open class SKTile: SKSpriteNode {
         self.animationKey += "-\(data.globalID)"
         self.tileSize = tileset.tileSize
         super.init(texture: data.texture, color: SKColor.clear, size: fabs(tileset.tileSize))
+        _ = getAlphaBitmask()
 
         // get render mode from tile data properties
         if let rawRenderMode = data.intForKey("renderMode") {
@@ -205,15 +244,16 @@ open class SKTile: SKSpriteNode {
         }
     }
 
+    /// Default initializer.
+    ///
+    /// - Parameter aDecoder: decoder instance.
     required public init?(coder aDecoder: NSCoder) {
         tileData = SKTilesetData()
         tileSize = CGSize.zero
         super.init(coder: aDecoder)
     }
 
-    /**
-     Initialize an empty tile.
-     */
+    /// Initialize an empty tile.
     required public init() {
         // create empty tileset data
         tileData = SKTilesetData()
@@ -249,6 +289,16 @@ open class SKTile: SKSpriteNode {
         super.init(texture: texture, color: SKColor.clear, size: tileSize)
         colorBlendFactor = 0
     }
+    
+    public func getAlphaBitmask() -> [[Int]] {
+        if tileData.tileset.alphaBitmasks[self.tileData.id] == nil {
+            if let texture = self.texture {
+                let img = UIImage(cgImage: texture.cgImage())
+                tileData.tileset.alphaBitmasks[self.tileData.id] = img.getAlphaMask()
+            }
+        }
+        return tileData.tileset.alphaBitmasks[self.tileData.id]!
+    }
 
 
     /**
@@ -274,18 +324,18 @@ open class SKTile: SKSpriteNode {
         physicsShape = shapeOf
 
         switch physicsShape {
-        case .rectangle:
-            physicsBody = SKPhysicsBody(rectangleOf: tileSize)
+            case .rectangle:
+                physicsBody = SKPhysicsBody(rectangleOf: tileSize)
 
-        case .texture:
-            guard let texture = texture else {
+            case .texture:
+                guard let texture = texture else {
+                    physicsBody = nil
+                    return
+                }
+                physicsBody = SKPhysicsBody(texture: texture, size: tileSize)
+
+            default:
                 physicsBody = nil
-                return
-            }
-            physicsBody = SKPhysicsBody(texture: texture, size: tileSize)
-
-        default:
-            physicsBody = nil
         }
 
         // set the dynamic flag
@@ -413,9 +463,7 @@ open class SKTile: SKSpriteNode {
         tileOverlap = overlap
     }
 
-    /**
-     Orient the tile based on the current flip flags.
-     */
+    /// Orient the tile based on the current flip flags.
     internal func orientTile() {
         // reset orientation & scale
         zRotation = 0
@@ -468,6 +516,9 @@ open class SKTile: SKSpriteNode {
             }
 
         } else {
+            // reset to default
+            alignment = .bottomLeft
+
             if (tileData.flipHoriz == true) {
                 newXScale *= -1
                 alignment = (tileData.flipVert == true) ? .topRight : .bottomRight
@@ -485,30 +536,38 @@ open class SKTile: SKSpriteNode {
         let yAnchor: CGFloat
 
         switch alignment {
-        case .bottomLeft:
-            xAnchor = mapTileSizeHalfWidth / tilesetTileWidth
-            yAnchor = mapTileSizeHalfHeight / tilesetTileHeight
+            case .bottomLeft:
+                xAnchor = mapTileSizeHalfWidth / tilesetTileWidth
+                yAnchor = mapTileSizeHalfHeight / tilesetTileHeight
 
-        case .bottomRight:
-            xAnchor = 1 - (mapTileSizeHalfWidth / tilesetTileWidth)
-            yAnchor = mapTileSizeHalfHeight / tilesetTileHeight
+            case .bottomRight:
+                xAnchor = 1 - (mapTileSizeHalfWidth / tilesetTileWidth)
+                yAnchor = mapTileSizeHalfHeight / tilesetTileHeight
 
-        case .topLeft:
-            xAnchor = mapTileSizeHalfWidth / tilesetTileWidth
-            yAnchor = 1 - (mapTileSizeHalfHeight / tilesetTileHeight)
+            case .topLeft:
+                xAnchor = mapTileSizeHalfWidth / tilesetTileWidth
+                yAnchor = 1 - (mapTileSizeHalfHeight / tilesetTileHeight)
 
-        case .topRight:
-            xAnchor = 1 - (mapTileSizeHalfWidth / tilesetTileWidth)
-            yAnchor = 1 - (mapTileSizeHalfHeight / tilesetTileHeight)
+            case .topRight:
+                xAnchor = 1 - (mapTileSizeHalfWidth / tilesetTileWidth)
+                yAnchor = 1 - (mapTileSizeHalfHeight / tilesetTileHeight)
 
-        default:
-            xAnchor = mapTileSizeHalfWidth / tilesetTileWidth
-            yAnchor = mapTileSizeHalfHeight / tilesetTileHeight
+            default:
+                xAnchor = mapTileSizeHalfWidth / tilesetTileWidth
+                yAnchor = mapTileSizeHalfHeight / tilesetTileHeight
         }
 
-        // set the anchor point
-        anchorPoint.x = xAnchor
-        anchorPoint.y = yAnchor
+        // if this is a tile object, the anchor point should be
+        if (isTileObject == false) {
+            // set the anchor point
+            anchorPoint.x = xAnchor
+            anchorPoint.y = yAnchor
+        } else {
+            alignment = .center
+            newYScale = newYScale * -1
+            position.x = 0
+            position.y = 0
+        }
 
         // rotate the sprite
         zRotation = newZRotation
@@ -535,61 +594,61 @@ open class SKTile: SKSpriteNode {
 
         switch layer.orientation {
 
-        case .orthogonal:
+            case .orthogonal:
 
-            var origin = CGPoint(x: -tileSizeHalved.width, y: tileSizeHalved.height)
+                var origin = CGPoint(x: -tileSizeHalved.width, y: tileSizeHalved.height)
 
-            // adjust for tileset.tileOffset here
-            origin.x += tileData.tileOffset.x
-            //origin.y -= tileData.tileOffset.y
+                // adjust for tileset.tileOffset here
+                origin.x += tileData.tileOffset.x
+                //origin.y -= tileData.tileOffset.y
 
-            vertices = rectPointArray(tileSize, origin: origin)
-            vertices = vertices.map { $0.invertedY }
+                vertices = rectPointArray(tileSize, origin: origin)
+                vertices = vertices.map { $0.invertedY }
 
-        case .isometric, .staggered:
-            vertices = [
-                CGPoint(x: -tileSizeHalved.width, y: 0),    // left-side
-                CGPoint(x: 0, y: tileSizeHalved.height),
-                CGPoint(x: tileSizeHalved.width, y: 0),
-                CGPoint(x: 0, y: -tileSizeHalved.height)    // bottom
+            case .isometric, .staggered:
+                vertices = [
+                    CGPoint(x: -tileSizeHalved.width, y: 0),    // left-side
+                    CGPoint(x: 0, y: tileSizeHalved.height),
+                    CGPoint(x: tileSizeHalved.width, y: 0),
+                    CGPoint(x: 0, y: -tileSizeHalved.height)    // bottom
             ]
 
-        case .hexagonal:
-            var hexPoints = Array(repeating: CGPoint.zero, count: 6)
-            let staggerX = layer.tilemap.staggerX
-            let tileWidth = layer.tilemap.tileWidth
-            let tileHeight = layer.tilemap.tileHeight
+            case .hexagonal:
+                var hexPoints = Array(repeating: CGPoint.zero, count: 6)
+                let staggerX = layer.tilemap.staggerX
+                let tileWidth = layer.tilemap.tileWidth
+                let tileHeight = layer.tilemap.tileHeight
 
-            let sideLengthX = layer.tilemap.sideLengthX
-            let sideLengthY = layer.tilemap.sideLengthY
-            var variableSize: CGFloat = 0
+                let sideLengthX = layer.tilemap.sideLengthX
+                let sideLengthY = layer.tilemap.sideLengthY
+                var variableSize: CGFloat = 0
 
-            // flat
-            if (staggerX == true) {
-                let r = (tileWidth - sideLengthX) / 2
-                let h = tileHeight / 2
-                variableSize = tileWidth - (r * 2)
-                hexPoints[0] = CGPoint(x: -(variableSize / 2), y: h)
-                hexPoints[1] = CGPoint(x: (variableSize / 2), y: h)
-                hexPoints[2] = CGPoint(x: (tileWidth / 2), y: 0)
-                hexPoints[3] = CGPoint(x: (variableSize / 2), y: -h)
-                hexPoints[4] = CGPoint(x: -(variableSize / 2), y: -h)
-                hexPoints[5] = CGPoint(x: -(tileWidth / 2), y: 0)
+                // flat
+                if (staggerX == true) {
+                    let r = (tileWidth - sideLengthX) / 2
+                    let h = tileHeight / 2
+                    variableSize = tileWidth - (r * 2)
+                    hexPoints[0] = CGPoint(x: -(variableSize / 2), y: h)
+                    hexPoints[1] = CGPoint(x: (variableSize / 2), y: h)
+                    hexPoints[2] = CGPoint(x: (tileWidth / 2), y: 0)
+                    hexPoints[3] = CGPoint(x: (variableSize / 2), y: -h)
+                    hexPoints[4] = CGPoint(x: -(variableSize / 2), y: -h)
+                    hexPoints[5] = CGPoint(x: -(tileWidth / 2), y: 0)
 
-            // pointy
-            } else {
-                let r = (tileWidth / 2)
-                let h = (tileHeight - sideLengthY) / 2
-                variableSize = tileHeight - (h * 2)
-                hexPoints[0] = CGPoint(x: 0, y: (tileHeight / 2))
-                hexPoints[1] = CGPoint(x: r, y: (variableSize / 2))
-                hexPoints[2] = CGPoint(x: r, y: -(variableSize / 2))
-                hexPoints[3] = CGPoint(x: 0, y: -(tileHeight / 2))
-                hexPoints[4] = CGPoint(x: -r, y: -(variableSize / 2))
-                hexPoints[5] = CGPoint(x: -r, y: (variableSize / 2))
-            }
+                    // pointy
+                } else {
+                    let r = (tileWidth / 2)
+                    let h = (tileHeight - sideLengthY) / 2
+                    variableSize = tileHeight - (h * 2)
+                    hexPoints[0] = CGPoint(x: 0, y: (tileHeight / 2))
+                    hexPoints[1] = CGPoint(x: r, y: (variableSize / 2))
+                    hexPoints[2] = CGPoint(x: r, y: -(variableSize / 2))
+                    hexPoints[3] = CGPoint(x: 0, y: -(tileHeight / 2))
+                    hexPoints[4] = CGPoint(x: -r, y: -(variableSize / 2))
+                    hexPoints[5] = CGPoint(x: -r, y: (variableSize / 2))
+                }
 
-            vertices = hexPoints.map { $0.invertedY }
+                vertices = hexPoints.map { $0.invertedY }
         }
 
         return vertices.map { $0 + offset }
@@ -626,23 +685,23 @@ open class SKTile: SKSpriteNode {
 
         if let layer = layer {
             switch layer.orientation {
-            case .orthogonal:
-                // calculate the offset amount based on the current tile orientation
-                if alignment == .bottomRight || alignment == .topRight {
-                    xOffset = -(tilesetTileHeight - mapTileSize.height)
+                case .orthogonal:
+                    // calculate the offset amount based on the current tile orientation
+                    if alignment == .bottomRight || alignment == .topRight {
+                        xOffset = -(tilesetTileHeight - mapTileSize.height)
 
-                    if alignment == .topRight {
-                        yOffset = -(tilesetTileHeight - mapTileSize.height)
+                        if alignment == .topRight {
+                            yOffset = -(tilesetTileHeight - mapTileSize.height)
+                        }
                     }
+
+                    if alignment == .topLeft {
+                        yOffset = -(tilesetTileHeight - mapTileSize.height)
                 }
 
-                if alignment == .topLeft {
-                    yOffset = -(tilesetTileHeight - mapTileSize.height)
-                }
-
-            default:
-                xOffset = 0
-                yOffset = 0
+                default:
+                    xOffset = 0
+                    yOffset = 0
             }
         }
 
@@ -785,26 +844,33 @@ open class SKTile: SKSpriteNode {
 }
 
 
+// MARK: - Extensions
+
+/// :nodoc:
 extension TileRenderMode: RawRepresentable {
+
     public typealias RawValue = Int
 
+    /// Initialize with an integer value.
+    ///
+    /// - Parameter rawValue: raw integer.
     public init?(rawValue: RawValue) {
         switch rawValue {
-        case 0: self = .default
-        case 1: self = .static
-        case 2: self = .ignore
-        case -1: self = .animated(gid: nil)
-        default: self = .animated(gid: rawValue)
+            case 0: self = .default
+            case 1: self = .static
+            case 2: self = .ignore
+            case -1: self = .animated(gid: nil)
+            default: self = .animated(gid: rawValue)
         }
     }
 
     public var rawValue: RawValue {
         switch self {
-        case .default: return 0
-        case .static: return 1
-        case .ignore: return 2
-        case .animated(let gid):
-            return gid ?? -1
+            case .default: return 0
+            case .static: return 1
+            case .ignore: return 2
+            case .animated(let gid):
+                return gid ?? -1
         }
     }
 }
@@ -813,53 +879,59 @@ extension TileRenderMode: RawRepresentable {
 
 extension TileRenderMode: CustomStringConvertible, CustomDebugStringConvertible {
 
+    /// Returns the next tile render mode in the array.
+    ///
+    /// - Returns: next tile render mode.
     public func next() -> TileRenderMode {
         switch self {
-        case .default: return .static
-        case .static:  return .ignore
-        default: return .default
+            case .default: return .static
+            case .static:  return .ignore
+            default: return .default
         }
     }
 
+    /// Render mode string identifier.
     public var identifier: String {
         switch self {
-        case .default: return "default"
-        case .static: return "static"
-        case .ignore: return "ignore"
-        case .animated(let gid):
-            let gidstr = (gid != nil) ? "-\(gid!)" : ""
-            return "animated\(gidstr)"
+            case .default: return "default"
+            case .static: return "static"
+            case .ignore: return "ignore"
+            case .animated(let gid):
+                let gidstr = (gid != nil) ? "-\(gid!)" : ""
+                return "animated\(gidstr)"
         }
     }
 
     public var description: String {
         switch self {
-        case .default: return "default"
-        case .static: return "static"
-        case .ignore: return "ignore"
-        case .animated(let gid):
-            let gidString = (gid != nil) ? "\(gid!)" : "nil"
-            return "animated: \(gidString)"
+            case .default: return "default"
+            case .static: return "static"
+            case .ignore: return "ignore"
+            case .animated(let gid):
+                let gidString = (gid != nil) ? "\(gid!)" : "nil"
+                return "animated: \(gidString)"
         }
     }
 
     public var debugDescription: String {
         switch self {
-        case .default: return ""
-        case .static: return "(static)"
-        case .ignore: return "(ignore)"
-        case .animated(let gid):
-            return (gid != nil) ? "(\(gid!))" : ""
+            case .default: return ""
+            case .static: return "(static)"
+            case .ignore: return "(ignore)"
+            case .animated(let gid):
+                return (gid != nil) ? "(\(gid!))" : ""
         }
     }
 }
 
 
 extension TileRenderMode: Equatable {
-    public var hashValue: Int {
-        return identifier.hashValue
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(identifier)
     }
 }
+
 
 
 extension SKTile {
@@ -874,7 +946,7 @@ extension SKTile {
         }
     }
 
-    /// Visibility value of the tile.
+    /// Tile visibility.
     open var visible: Bool {
         get {
             return !self.isHidden
@@ -983,18 +1055,18 @@ extension SKTile {
 extension SKTile.TileAlignmentHint: CustomStringConvertible, CustomDebugStringConvertible {
     public var description: String {
         switch self {
-        case .topLeft: return "topLeft"
-        case .top: return "top"
-        case .topRight: return "topRight"
-        case .left: return "left"
-        case .center: return "center"
-        case .right: return "right"
-        case .bottomLeft: return "bottomLeft"
-        case .bottom: return "bottom"
-        case .bottomRight: return "bottomRight"
+            case .topLeft: return "topLeft"
+            case .top: return "top"
+            case .topRight: return "topRight"
+            case .left: return "left"
+            case .center: return "center"
+            case .right: return "right"
+            case .bottomLeft: return "bottomLeft"
+            case .bottom: return "bottom"
+            case .bottomRight: return "bottomRight"
         }
     }
-    
+
     public var debugDescription: String {
         return description
     }
@@ -1004,14 +1076,14 @@ extension SKTile.TileAlignmentHint: CustomStringConvertible, CustomDebugStringCo
 extension SKTile.PhysicsShape: CustomStringConvertible, CustomDebugStringConvertible {
     public var description: String {
         switch self {
-        case .none: return "Physics Shape: none"
-        case .rectangle: return "Physics Shape: rectangle"
-        case .ellipse: return "Physics Shape: ellipse"
-        case .texture: return "Physics Shape: texture"
-        case .path: return "Physics Shape: path"
+            case .none: return "Physics Shape: none"
+            case .rectangle: return "Physics Shape: rectangle"
+            case .ellipse: return "Physics Shape: ellipse"
+            case .texture: return "Physics Shape: texture"
+            case .path: return "Physics Shape: path"
         }
     }
-    
+
     public var debugDescription: String {
         return description
     }
