@@ -11,6 +11,7 @@ import SwiftVideoBackground
 
 public struct CityView: View {
     @EnvironmentObject var gameVariables: GameVariables
+    @EnvironmentObject var playerVariables: PlayerVariables
     
     var scene: SKScene {
         let scene = GameScene(fileNamed: "GameScene")
@@ -30,6 +31,11 @@ public struct CityView: View {
             .onAppear {
                 VideoBackground.shared.pause()
             }
+            
+            // Just for testing purposes
+            .onTapGesture(count: 2, perform: {
+                playerVariables.currentView = .PlanetView
+            })
     }
 }
 
