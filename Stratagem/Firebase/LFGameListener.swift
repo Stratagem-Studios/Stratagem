@@ -2,7 +2,7 @@
 
 import Firebase
 
-public struct GameListener {
+public struct LFGameListener {
     var playerVariables: PlayerVariables
     var staticGameVariables: StaticGameVariables
     var ref: DatabaseReference! = Database.database().reference()

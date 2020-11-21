@@ -3,7 +3,7 @@
 import Firebase
 import SwiftUI
 
-public struct StaticGameManager {
+public struct LFGameManager {
     var playerVariables: PlayerVariables
     var staticGameVariables: StaticGameVariables
     var ref: DatabaseReference! = Database.database().reference()
@@ -63,7 +63,7 @@ public struct StaticGameManager {
                         
                         staticGameVariables.gameCode = code
                         
-                        GameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
+                        LFGameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
                         playerVariables.currentView = .GameLobbyView
                     }
                 } else {
@@ -95,14 +95,19 @@ public struct StaticGameManager {
     }
     
     public func startGame() {
-        self.ref.child("games").child(staticGameVariables.gameCode).child("game_status").setValue(gameStates.GAME.rawValue)
-        let gamePlayersRef = ref.child("games").child(staticGameVariables.gameCode).child("usernames")
-        gamePlayersRef.observeSingleEvent(of: .value) { snapshot in
-            let enumerator = snapshot.children
-            while let username = enumerator.nextObject() as? DataSnapshot {
-                ref.child("all_users").child(username.value as! String).child("game_id").setValue(staticGameVariables.gameCode)
-                ref.child("all_users").child(username.value as! String).child("status").setValue(playerStates.GAME.rawValue)
+        if staticGameVariables.leaderName == playerVariables.playerName {
+            // Player is the leader
+            self.ref.child("games").child(staticGameVariables.gameCode).child("game_status").setValue(gameStates.GAME.rawValue)
+            let gamePlayersRef = ref.child("games").child(staticGameVariables.gameCode).child("usernames")
+            gamePlayersRef.observeSingleEvent(of: .value) { snapshot in
+                let enumerator = snapshot.children
+                while let username = enumerator.nextObject() as? DataSnapshot {
+                    ref.child("all_users").child(username.value as! String).child("game_id").setValue(staticGameVariables.gameCode)
+                    ref.child("all_users").child(username.value as! String).child("status").setValue(playerStates.GAME.rawValue)
+                }
             }
+        } else {
+            playerVariables.errorMessage = "You're not the leader"
         }
     }
     

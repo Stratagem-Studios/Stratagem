@@ -14,14 +14,15 @@ public struct CityView: View {
     @EnvironmentObject var playerVariables: PlayerVariables
     
     var scene: SKScene {
-        let scene = GameScene(fileNamed: "GameScene")
-        if let scene = scene {
+        //let scene = GameScene(fileNamed: "GameScene")
+        let scene = CityScene(size: CGSize(width: 200, height: 200))
+        //if let scene = scene {
             scene.size = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
             //scene.scaleMode = .fill
             //scene.setContentView(tempContentView: self)
             return scene
-        }
-        return SKScene()
+       // }
+      //  return SKScene()
     }
     
     public var body: some View {

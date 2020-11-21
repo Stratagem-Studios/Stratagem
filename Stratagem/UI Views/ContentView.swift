@@ -12,7 +12,8 @@ struct ContentView: View {
             
             switch playerVariables.currentView {
             case .TitleScreenView:
-                TitleScreenView()
+                CityView()
+                //TitleScreenView()
             case .CreateGameView:
                 CreateGameView()
                     .transition(.slide)
@@ -33,7 +34,7 @@ struct ContentView: View {
             }
         }.onAppear() {
             // Because we don't have a server, we make new players help remove dead games
-            StaticGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).detectAndRemoveDeadGames()
+            LFGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).detectAndRemoveDeadGames()
             // Then calls fetchName
         }.animation(.default)
     }
