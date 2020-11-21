@@ -24,6 +24,9 @@ struct ContentView: View {
                     .transition(.slide)
             case .CityView:
                 CityView()
+            case .PlanetView:
+                PlanetView()
+                    .edgesIgnoringSafeArea(.all)
             }
             
             if playerVariables.errorMessage != "" {
