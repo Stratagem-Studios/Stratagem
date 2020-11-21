@@ -8,10 +8,12 @@ struct PlanetView : UIViewRepresentable {
     
     func makeUIView(context: Context) -> SCNView {
         // Make the sphere
-        
-        
-        // set the planet spheres mask
-        
+        let planetSphere = SCNSphere.init(radius: 10)
+        let planetNode = SCNNode(geometry: planetSphere)
+        if let planetMask = UIImage(named: "TestPlanetMask"){
+            planetSphere.firstMaterial?.diffuse.contents = planetMask
+        }
+        planet.rootNode.addChildNode(planetNode)
         
         // create and add a light to the scene
         let lightNode = SCNNode()
