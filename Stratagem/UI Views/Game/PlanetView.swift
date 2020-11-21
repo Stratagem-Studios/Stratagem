@@ -4,9 +4,15 @@ import SceneKit
 import SwiftVideoBackground
 
 struct PlanetView : UIViewRepresentable {
-    let planet = SCNScene.init(named: "TestPlanet.scn")!
+    let planet = SCNScene.init()
     
     func makeUIView(context: Context) -> SCNView {
+        // Make the sphere
+        
+        
+        // set the planet spheres mask
+        
+        
         // create and add a light to the scene
         let lightNode = SCNNode()
         lightNode.light = SCNLight()
