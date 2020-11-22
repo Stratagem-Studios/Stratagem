@@ -34,7 +34,7 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/Database
-  - SKTiled (from `https://github.com/andrewpeng02/SKTiled.git`, commit `6f7daf9c6cbb078fece64dde10a276361977149d`)
+  - SKTiled (from `https://github.com/andrewpeng02/SKTiled.git`, commit `56e0ea1cff9905f86c8747025afa32ba51baef25`)
   - SwiftVideoBackground
 
 SPEC REPOS:
@@ -52,12 +52,12 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   SKTiled:
-    :commit: 6f7daf9c6cbb078fece64dde10a276361977149d
+    :commit: 56e0ea1cff9905f86c8747025afa32ba51baef25
     :git: https://github.com/andrewpeng02/SKTiled.git
 
 CHECKOUT OPTIONS:
   SKTiled:
-    :commit: 6f7daf9c6cbb078fece64dde10a276361977149d
+    :commit: 56e0ea1cff9905f86c8747025afa32ba51baef25
     :git: https://github.com/andrewpeng02/SKTiled.git
 
 SPEC CHECKSUMS:
@@ -73,6 +73,6 @@ SPEC CHECKSUMS:
   SKTiled: 8d90e6c9521a43c3f73985149e85d75ea751dc9b
   SwiftVideoBackground: 826e0567c737ded2a211aa309e9951c643695e8f
 
-PODFILE CHECKSUM: 75da5e687a5769da6f6fc1d04ad4c28113bccf21
+PODFILE CHECKSUM: 11aacc5574a53be243bf51710a553663c89a57bb
 
 COCOAPODS: 1.10.0

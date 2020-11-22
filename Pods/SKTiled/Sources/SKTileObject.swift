@@ -29,7 +29,7 @@ import SpriteKit
 
 
 /// Generic protocol for renderable Tiled objects.
-protocol SKTiledGeometry {
+public protocol SKTiledGeometry {
     var visibleToCamera: Bool { get set }
     func draw(debug: Bool)
 }
@@ -212,7 +212,7 @@ open class SKTileObject: SKShapeNode, SKTiledObject {
     open var id: Int = 0
 
     /// Tiled global id (for tile objects).
-    internal var gid: Int!
+    public var gid: Int!
 
     /// Object type.
     open var type: String!
@@ -223,17 +223,17 @@ open class SKTileObject: SKShapeNode, SKTiledObject {
     /// Object is visible in camera.
     open var visibleToCamera: Bool = true
 
-    internal var objectType: TiledObjectType = TiledObjectType.none          // object type
-    internal var shapeType: TiledObjectShape = TiledObjectShape.rectangle    // shape type
-    internal var points: [CGPoint] = []                                      // points that describe the object's shape
+    public var objectType: TiledObjectType = TiledObjectType.none          // object type
+    public var shapeType: TiledObjectShape = TiledObjectShape.rectangle    // shape type
+    public var points: [CGPoint] = []                                      // points that describe the object's shape
 
     /// Object keys.
-    internal var tileObjectKey: String = "TILE_OBJECT"
-    internal var textObjectKey: String = "TEXT_OBJECT"
-    internal var boundsKey: String = "BOUNDS"
-    internal var anchorKey: String = "ANCHOR"
+    public var tileObjectKey: String = "TILE_OBJECT"
+    public var textObjectKey: String = "TEXT_OBJECT"
+    public var boundsKey: String = "BOUNDS"
+    public var anchorKey: String = "ANCHOR"
 
-    internal var _enableAnimation: Bool = true
+    public var _enableAnimation: Bool = true
 
     /// Enable tile animation.
     open var enableAnimation: Bool {
@@ -247,12 +247,12 @@ open class SKTileObject: SKShapeNode, SKTiledObject {
     }
 
     /// Object tile (for tile objects)
-    internal var tile: SKTile?                                               // optional tile
-    internal var template: String?                                           // optional template reference
-    internal var isInitialized: Bool = true
+    public var tile: SKTile?                                               // optional tile
+    public var template: String?                                           // optional template reference
+    public var isInitialized: Bool = true
 
     /// Proxy object.
-    weak internal var proxy: TileObjectProxy?
+    weak public var proxy: TileObjectProxy?
 
     /// Tile data (for tile objects).
     open var tileData: SKTilesetData? {
@@ -324,7 +324,7 @@ open class SKTileObject: SKShapeNode, SKTiledObject {
     }
 
     /// Object label.
-    internal enum LabelPosition {
+    public enum LabelPosition {
         case above
         case below
     }
@@ -780,7 +780,7 @@ open class SKTileObject: SKShapeNode, SKTiledObject {
      - parameter points: `[[CGFloat]]` array of coordinates.
      - parameter closed: `Bool` close the object path.
      */
-    internal func addPoints(_ coordinates: [[CGFloat]], closed: Bool = true) {
+    public func addPoints(_ coordinates: [[CGFloat]], closed: Bool = true) {
         self.shapeType = (closed == true) ? TiledObjectShape.polygon : TiledObjectShape.polyline
         // create an array of points from the given coordinates
         points = coordinates.map { CGPoint(x: $0[0], y: $0[1]) }
@@ -791,7 +791,7 @@ open class SKTileObject: SKShapeNode, SKTiledObject {
 
      - parameter points: `String` string of coordinates.
      */
-    internal func addPointsWithString(_ points: String) {
+    public func addPointsWithString(_ points: String) {
         var coordinates: [[CGFloat]] = []
         let pointsArray = points.components(separatedBy: " ")
         for point in pointsArray {
@@ -802,7 +802,7 @@ open class SKTileObject: SKShapeNode, SKTiledObject {
     }
 
     /**
-     Returns the internal `SKTileObject.points` array, translated into the current map's projection.
+     Returns the public `SKTileObject.points` array, translated into the current map's projection.
 
      - returns: `[CGPoint]?` array of points.
      */
@@ -824,7 +824,7 @@ open class SKTileObject: SKShapeNode, SKTiledObject {
 
      - returns: `[CGPoint]?` array of points.
      */
-    internal func translatedVertices() -> [CGPoint]? {
+    public func translatedVertices() -> [CGPoint]? {
         guard let vertices = getVertices() else { return nil }
         let translated = (isPolyType == true) ? (gid == nil) ? vertices.map { $0.invertedY } : vertices : (gid == nil) ? vertices.map { $0.invertedY } : vertices
 
@@ -849,7 +849,7 @@ open class SKTileObject: SKShapeNode, SKTiledObject {
      - parameter zpos:      `CGFloat?` optional z-position of bounds shape.
      - parameter duration:  `TimeInterval` effect length.
      */
-    internal func drawBounds(withColor: SKColor? = nil, zpos: CGFloat? = nil, duration: TimeInterval = 0) {
+    public func drawBounds(withColor: SKColor? = nil, zpos: CGFloat? = nil, duration: TimeInterval = 0) {
 
         childNode(withName: boundsKey)?.removeFromParent()
         childNode(withName: "FIRST_POINT")?.removeFromParent()
