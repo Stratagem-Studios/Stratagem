@@ -35,7 +35,7 @@ public struct CityView: View {
             
             // Just for testing purposes
             .onTapGesture(count: 2, perform: {
-                playerVariables.currentView = .PlanetView
+                playerVariables.currentView = .GalaxyView
             })
     }
 }
