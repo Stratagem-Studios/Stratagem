@@ -122,31 +122,37 @@ public struct LFGameManager {
             }
             
             ref.child("games").child(staticGameVariables.gameCode).removeValue()
+            ref.child("game_statuses").child(staticGameVariables.gameCode).removeValue()
             playerVariables.currentView = .TitleScreenView
         }
     }
     
     public func detectAndRemoveDeadGames() {
+        var allGameCodes: [String] = []
+        let gameRef = ref.child("games")
+        gameRef.observeSingleEvent(of: .value, with: { snapshot in
+            let enumerator = snapshot.children
+            while let game = enumerator.nextObject() as? DataSnapshot {
+                allGameCodes.append(game.key)
+            }
+        })
+        
         let allUsersRef = ref.child("all_users")
         allUsersRef.observeSingleEvent(of: .value) { snapshot in
-            var allGameCodes: [String] = []
-            var dontKillGameCode: [String] = []
-            
             let enumerator = snapshot.children
             while let username = enumerator.nextObject() as? DataSnapshot {
                 let value = username.value as! Dictionary<String, Any>
                 if let game_id = value["game_id"] {
                     if value["status"] as! String != "OFFLINE" {
                         // 1+ active player in game
-                        dontKillGameCode.append(game_id as! String)
+                        allGameCodes.remove(object: game_id as! String)
                     }
-                    allGameCodes.append(game_id as! String)
                 }
             }
             
-            let toRemove = Array(Set(allGameCodes).subtracting(dontKillGameCode))
-            for removeGameCode in toRemove {
+            for removeGameCode in allGameCodes {
                 ref.child("games").child(removeGameCode).removeValue()
+                ref.child("game_statuses").child(staticGameVariables.gameCode).removeValue()
             }
             
             PlayerManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).fetchName()

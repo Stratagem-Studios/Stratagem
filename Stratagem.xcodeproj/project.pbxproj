@@ -41,6 +41,8 @@
 		FF08577E2550FC5100F0F220 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08576C2550FC5100F0F220 /* Montserrat-Italic.ttf */; };
 		FF0CAB9A25646250009681C8 /* LoopingVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0CAB9925646250009681C8 /* LoopingVideo.swift */; };
 		FF0CABA1256464BF009681C8 /* starfield.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FF0CABA0256464BE009681C8 /* starfield.mp4 */; };
+		FF1B13D7256B0B81005158C9 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1B13D6256B0B81005158C9 /* City.swift */; };
+		FF1B13EA256B67DB005158C9 /* Base.tmx in Resources */ = {isa = PBXBuildFile; fileRef = FF1B13E9256B67DB005158C9 /* Base.tmx */; };
 		FF33849325599EB9000EF945 /* JoinGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33849225599EB9000EF945 /* JoinGameView.swift */; };
 		FF33849F2559A751000EF945 /* TitleScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33849E2559A751000EF945 /* TitleScreenView.swift */; };
 		FF3789AB255F823B00D30F66 /* ErrorPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3789AA255F823B00D30F66 /* ErrorPopup.swift */; };
@@ -63,6 +65,7 @@
 		FFA3FFC825662D7F00CFA406 /* blockAngle_S.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFC225662D7E00CFA406 /* blockAngle_S.png */; };
 		FFA3FFC925662D7F00CFA406 /* floor_E.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFC325662D7E00CFA406 /* floor_E.png */; };
 		FFA3FFCA25662D7F00CFA406 /* crate_S.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFC425662D7F00CFA406 /* crate_S.png */; };
+		FFA55AC5256C6D9700EB12D9 /* Perlin2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA55AC4256C6D9700EB12D9 /* Perlin2D.swift */; };
 		FFAD01DE255AE84600BA2907 /* CreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD01DD255AE84600BA2907 /* CreateGameView.swift */; };
 		FFB4A299255CE6A7003298E2 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB4A298255CE6A7003298E2 /* FirebaseHelper.swift */; };
 		FFB4A2A7255D9EA1003298E2 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB4A2A6255D9EA1003298E2 /* PlayerManager.swift */; };
@@ -116,6 +119,8 @@
 		FF08576C2550FC5100F0F220 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		FF0CAB9925646250009681C8 /* LoopingVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopingVideo.swift; sourceTree = "<group>"; };
 		FF0CABA0256464BE009681C8 /* starfield.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = starfield.mp4; sourceTree = "<group>"; };
+		FF1B13D6256B0B81005158C9 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		FF1B13E9256B67DB005158C9 /* Base.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Base.tmx; sourceTree = "<group>"; };
 		FF33849225599EB9000EF945 /* JoinGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameView.swift; sourceTree = "<group>"; };
 		FF33849E2559A751000EF945 /* TitleScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScreenView.swift; sourceTree = "<group>"; };
 		FF3789AA255F823B00D30F66 /* ErrorPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPopup.swift; sourceTree = "<group>"; };
@@ -139,6 +144,7 @@
 		FFA3FFC225662D7E00CFA406 /* blockAngle_S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blockAngle_S.png; sourceTree = "<group>"; };
 		FFA3FFC325662D7E00CFA406 /* floor_E.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = floor_E.png; sourceTree = "<group>"; };
 		FFA3FFC425662D7F00CFA406 /* crate_S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crate_S.png; sourceTree = "<group>"; };
+		FFA55AC4256C6D9700EB12D9 /* Perlin2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perlin2D.swift; sourceTree = "<group>"; };
 		FFAD01DD255AE84600BA2907 /* CreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameView.swift; sourceTree = "<group>"; };
 		FFB4A298255CE6A7003298E2 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		FFB4A2A6255D9EA1003298E2 /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
@@ -294,6 +300,14 @@
 			path = Videos;
 			sourceTree = "<group>";
 		};
+		FF1B13D5256B0B74005158C9 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				FF1B13D6256B0B81005158C9 /* City.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		FF35D831255C37540054EC27 /* Postgame */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +352,7 @@
 		FFA3FFB725662A6800CFA406 /* Tiled */ = {
 			isa = PBXGroup;
 			children = (
+				FF1B13E9256B67DB005158C9 /* Base.tmx */,
 				FFA3FFBB25662C0B00CFA406 /* PrototypePack.tsx */,
 				FFA3FFB825662A9500CFA406 /* Prototype.tmx */,
 				FFA3FFC125662D7E00CFA406 /* block_N.png */,
@@ -350,9 +365,19 @@
 			path = Tiled;
 			sourceTree = "<group>";
 		};
+		FFA55AC8256C6DA500EB12D9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FFA55AC4256C6D9700EB12D9 /* Perlin2D.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		FFE1000B2551B7F500DD6608 /* Game Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				FFA55AC8256C6DA500EB12D9 /* Helpers */,
+				FF1B13D5256B0B74005158C9 /* Managers */,
 				FF078BE1254F3FFE00E9FA7C /* GameScene.sks */,
 				FF078BDA254F3FBE00E9FA7C /* GameScene.swift */,
 				CECA7742255E40FF00CE9F69 /* GameTiles.sks */,
@@ -487,6 +512,7 @@
 				FF0857782550FC5100F0F220 /* Montserrat-BoldItalic.ttf in Resources */,
 				FF0857792550FC5100F0F220 /* Montserrat-ThinItalic.ttf in Resources */,
 				FF0857712550FC5100F0F220 /* Montserrat-SemiBold.ttf in Resources */,
+				FF1B13EA256B67DB005158C9 /* Base.tmx in Resources */,
 				FF08577E2550FC5100F0F220 /* Montserrat-Italic.ttf in Resources */,
 				FF08576F2550FC5100F0F220 /* Montserrat-ExtraBold.ttf in Resources */,
 				FF08577A2550FC5100F0F220 /* Montserrat-Light.ttf in Resources */,
@@ -554,6 +580,7 @@
 			files = (
 				CECA7755255E469E00CE9F69 /* GameBoards.swift in Sources */,
 				FF9D7D69256574890076C8DF /* HFGameListener.swift in Sources */,
+				FF1B13D7256B0B81005158C9 /* City.swift in Sources */,
 				FFAD01DE255AE84600BA2907 /* CreateGameView.swift in Sources */,
 				FF8C4E6C254FBCBD00522756 /* (null) in Sources */,
 				FF5AF90A255E489F00836F03 /* Units.swift in Sources */,
@@ -561,6 +588,7 @@
 				CE1004E12569E1B70077941A /* GalaxyView.swift in Sources */,
 				CE1004BF256856BC0077941A /* PlanetView.swift in Sources */,
 				FF012D3B2551B0420017E288 /* TitleText.swift in Sources */,
+				FFA55AC5256C6D9700EB12D9 /* Perlin2D.swift in Sources */,
 				FFB4A299255CE6A7003298E2 /* FirebaseHelper.swift in Sources */,
 				FFFCFAC3255B62B300D03284 /* LFGameManager.swift in Sources */,
 				FF33849F2559A751000EF945 /* TitleScreenView.swift in Sources */,

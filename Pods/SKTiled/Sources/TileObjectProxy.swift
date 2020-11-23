@@ -29,16 +29,16 @@ import SpriteKit
 
 
 /// Vector object proxy.
-internal class TileObjectProxy: SKShapeNode, SKTiledGeometry {
+public class TileObjectProxy: SKShapeNode, SKTiledGeometry {
     
     /// Parent container.
     weak var container: TileObjectOverlay?
     
     /// Referenced vector object.
-    weak var reference: SKTileObject?
+    public weak var reference: SKTileObject?
     
     /// Node is visible to the camera.
-    var visibleToCamera: Bool = false
+    public var visibleToCamera: Bool = false
     
     var isRenderable: Bool = false
     
@@ -89,7 +89,7 @@ internal class TileObjectProxy: SKShapeNode, SKTiledGeometry {
         super.init()
     }
 
-    func draw(debug: Bool = false) {
+    public func draw(debug: Bool = false) {
 
         let showFocused = TiledGlobals.default.debug.mouseFilters.contains(.objectsUnderCursor)
         let proxyIsVisible = (showObjects == true) || (isFocused == true && showFocused == true)
@@ -143,14 +143,14 @@ internal class TileObjectProxy: SKShapeNode, SKTiledGeometry {
 
 extension TileObjectProxy {
 
-    override var description: String {
+    public override var description: String {
         guard let object = reference else {
             return "Object Proxy: nil"
         }
         return "Object Proxy: \(object.id)"
     }
 
-    override var debugDescription: String {
+    public override var debugDescription: String {
         return description
     }
 }

@@ -190,8 +190,12 @@ internal class SKTilemapParser: NSObject, XMLParserDelegate {
         }
         
         // create a url relative to the current root
-        let fileURL = URL(fileURLWithPath: tmxFilename, relativeTo: rootPath)
-        fileNames.append(fileURL.path)
+        // fileURL = URL(fileURLWithPath: tmxFilename, relativeTo: rootPath)
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+
+            let fileURL = dir.appendingPathComponent("City.tmx")
+            fileNames.append(fileURL.path)
+        }
         
         
         // add existing tilesets
@@ -492,7 +496,7 @@ internal class SKTilemapParser: NSObject, XMLParserDelegate {
         //Logger.default.release()
         
         // sync external queue here
-        queue.sync { 
+        queue.sync {
             self.tilemap.didFinishRendering(timeStarted: self.timer)
         }
     }
@@ -657,7 +661,6 @@ internal class SKTilemapParser: NSObject, XMLParserDelegate {
                         
                         // append the source path to parse queue
                         let tilesetFileURL = URL(fileURLWithPath: source, relativeTo: rootPath)
-                        
                         // check that file exists
                         guard self.fileExists(at: tilesetFileURL) else {
                             self.log("tileset file not found: \"\(tilesetFileURL.lastPathComponent)\".", level: .fatal)
