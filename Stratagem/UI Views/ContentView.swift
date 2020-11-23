@@ -12,8 +12,7 @@ struct ContentView: View {
             
             switch playerVariables.currentView {
             case .TitleScreenView:
-                CityView()
-                //TitleScreenView()
+                TitleScreenView()
             case .CreateGameView:
                 CreateGameView()
                     .transition(.slide)

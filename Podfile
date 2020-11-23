@@ -8,7 +8,7 @@ target 'Stratagem' do
   # Pods for Stratagem
   pod 'Firebase/Database'
   pod 'SwiftVideoBackground'
-  pod 'SKTiled', :git => 'https://github.com/andrewpeng02/SKTiled.git', :commit => '56e0ea1cff9905f86c8747025afa32ba51baef25'
+  pod 'SKTiled', :git => 'https://github.com/andrewpeng02/SKTiled.git', :commit => 'cd65692d521ecac1835c224b6a7e6ad52a5758d2'
 
   post_install do |installer|
       installer.pods_project.targets.each do |target|

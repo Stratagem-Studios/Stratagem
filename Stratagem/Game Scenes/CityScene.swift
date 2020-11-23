@@ -4,8 +4,11 @@ import SKTiled
 
 public class CityScene: SKTiledScene {
     public override func didMove(to view: SKView) {
+        let city = City()
+        city.initCity(cityName: "hi")
+
         super.didMove(to: view)
-        super.setup(tmxFile: "Prototype")
+        super.setup(tmxFile: "City")
         cameraNode.allowGestures = true
     }
     
