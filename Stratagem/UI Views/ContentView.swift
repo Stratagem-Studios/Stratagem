@@ -27,6 +27,9 @@ struct ContentView: View {
             case .PlanetView:
                 PlanetView()
                     .edgesIgnoringSafeArea(.all)
+            case .GalaxyView:
+                    GalaxyView()
+                        .edgesIgnoringSafeArea(.all)
             }
             
             if playerVariables.errorMessage != "" {
