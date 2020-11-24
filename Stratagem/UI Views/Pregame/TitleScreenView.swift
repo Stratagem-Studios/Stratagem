@@ -16,7 +16,11 @@ public struct TitleScreenView: View {
                 Spacer()
                 
                 Button(action: {
-                    LFGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).generateRandomGameCode()
+                    if playerVariables.playerName != "" {
+                        LFGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).generateRandomGameCode()
+                    } else {
+                        playerVariables.errorMessage = "Player not connected yet"
+                    }
                 }) {
                     Text("PLAY")
                 }.buttonStyle(BasicButtonStyle())
