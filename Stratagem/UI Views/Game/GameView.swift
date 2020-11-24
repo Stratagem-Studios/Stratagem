@@ -1,3 +1,5 @@
+// This class is mostly for holding very top level things such as game currency
+
 import SwiftUI
 
 // One of these must be passed to the GameStruct
@@ -9,6 +11,7 @@ enum GameTypes {
 struct GameView: View {
     @EnvironmentObject var playerVariables: PlayerVariables
     @EnvironmentObject var staticGameVariables: StaticGameVariables
+    
     
     var gameType: GameTypes
     var galaxy: GalaxyView
@@ -23,6 +26,7 @@ struct GameView: View {
     
     // Sets up the galaxy
     init(gameType: GameTypes){
+        
         self.gameType = gameType
         
         switch gameType {
@@ -32,6 +36,6 @@ struct GameView: View {
             print("creating planetRush galaxy")
         }
         
-        galaxy = GalaxyView()
+        galaxy = GalaxyView(gameType: GameTypes.standard)
     }
 }

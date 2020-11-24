@@ -10,8 +10,13 @@ enum PlanetTypes {
 }
 
 struct GalaxyView : UIViewRepresentable {
+    
     let galaxy = SCNScene.init()
+    var gameType: GameTypes
         
+    init(gameType: GameTypes) {
+        self.gameType = gameType
+    }
     func makeUIView(context: Context) -> SCNView {
         
         // add an ambient light to the scene
