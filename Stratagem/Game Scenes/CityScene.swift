@@ -13,6 +13,10 @@ public class CityScene: SKTiledScene {
         super.didMove(to: view)
         super.setup(tmxFile: "City")
         cameraNode.allowGestures = true
+        cameraNode.setCameraZoom(0.2)
+        cameraNode.setZoomConstraints(minimum: 0.175, maximum: 0.3)
+        //cameraNode.setCameraBounds(bounds: CGRect(x: 0, y: 0, width: 300, height: 100))
+        //cameraNode.constraints = getCameraConstraints()
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sceneTapped(_:)))
         self.view!.addGestureRecognizer(tapGestureRecognizer)
@@ -162,6 +166,52 @@ public class CityScene: SKTiledScene {
             }
         }
         return -1
+    }
+    
+    private func getCameraConstraints() -> [SKConstraint] {
+        /*
+            Also constrain the camera to avoid it moving to the very edges of the scene.
+            First, work out the scaled size of the scene. Its scaled height will always be
+            the original height of the scene, but its scaled width will vary based on
+            the window's current aspect ratio.
+        */
+        let scaledSize = CGSize(width: size.width * cameraNode.xScale, height: size.height * cameraNode.yScale)
+
+        /*
+            Find the root "board" node in the scene (the container node for
+            the level's background tiles).
+        */
+        //let boardNode = childNode(withName: WorldLayer.board.nodePath)!
+        let boardNode = tilemap
+        
+        /*
+            Calculate the accumulated frame of this node.
+            The accumulated frame of a node is the outer bounds of all of the node's
+            child nodes, i.e. the total size of the entire contents of the node.
+            This gives us the bounding rectangle for the level's environment.
+        */
+        //let boardContentRect = boardNode.calculateAccumulatedFrame()
+        let boardContentRect = tilemap.calculateAccumulatedFrame()
+
+        /*
+            Work out how far within this rectangle to constrain the camera.
+            We want to stop the camera when we get within 100pts of the edge of the screen,
+            unless the level is so small that this inset would be outside of the level.
+        */
+        let xInset = min((scaledSize.width / 2) - 100.0, boardContentRect.width / 2)
+        let yInset = min((scaledSize.height / 2) - 100.0, boardContentRect.height / 2)
+
+        // Use these insets to create a smaller inset rectangle within which the camera must stay.
+        let insetContentRect = boardContentRect.insetBy(dx: xInset, dy: yInset)
+
+        // Define an `SKRange` for each of the x and y axes to stay within the inset rectangle.
+        let xRange = SKRange(lowerLimit: insetContentRect.minX, upperLimit: insetContentRect.maxX)
+        let yRange = SKRange(lowerLimit: insetContentRect.minY, upperLimit: insetContentRect.maxY)
+
+        // Constrain the camera within the inset rectangle.
+        let levelEdgeConstraint = SKConstraint.positionX(xRange, y: yRange)
+        levelEdgeConstraint.referenceNode = boardNode
+        return [levelEdgeConstraint]
     }
 }
 

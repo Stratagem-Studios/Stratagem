@@ -358,6 +358,8 @@ public class SKTiledSceneCamera: SKCameraNode {
         // round zoom value to alleviate artifact
         zoomClamped = (ignoreZoomClamping == false) ? clampZoomValue(zoomClamped, factor: zoomClamping.rawValue) : scale
         
+        zoomClamped = zoomClamped.clamped(minZoom, maxZoom)
+        
         self.zoom = zoomClamped
         
         let zoomAction = SKAction.scale(to: zoomClamped, duration: interval)
@@ -378,17 +380,6 @@ public class SKTiledSceneCamera: SKCameraNode {
         }
         
         self.updateContainedNodes()
-    }
-    
-    /**
-     Apply zooming to the camera based on location.
-     
-     - parameter scale:    `CGFloat` zoom amount.
-     - parameter location: `CGPoint` zoom location.
-     */
-    public func setCameraZoomAtLocation(scale: CGFloat, location: CGPoint) {
-        setCameraZoom(scale)
-        moveCamera(location: location, previous: position)
     }
     
     /**
@@ -444,7 +435,6 @@ public class SKTiledSceneCamera: SKCameraNode {
         let dy = position.y - (location.y - previous.y)
         let dx = position.x - (location.x - previous.x)
         position = CGPoint(x: dx, y: dy)
-        
         
         // notify delegates
         for delegate in delegates {
@@ -717,23 +707,23 @@ extension SKTiledSceneCamera {
      
      - parameter recognizer: `UIPanGestureRecognizer` pan gesture recognizer.
      */
-    @objc public func cameraPanned(_ recognizer: UIPanGestureRecognizer) {
-        guard (self.scene != nil), (allowMovement == true) else { return }
-        
+    @objc open func cameraPanned(_ recognizer: UIPanGestureRecognizer) {
+        guard let _ = self.scene as? SKTiledScene else { return }
+         
         if (recognizer.state == .began) {
             let location = recognizer.location(in: recognizer.view)
             lastLocation = location
         }
-        
+         
         if (recognizer.state == .changed) && (allowMovement == true) {
             if lastLocation == nil { return }
             let location = recognizer.location(in: recognizer.view)
-            let difference = CGPoint(x: location.x - lastLocation.x, y: location.y - lastLocation.y)
-            // calls `cameraPositionChanged`
-            centerOn(scenePoint: CGPoint(x: Int(position.x - difference.x), y: Int(position.y - -difference.y)))
+            centerOn(scenePoint: clampCameraPosition(location))
+             
             lastLocation = location
         }
     }
+
     
     /**
      Handler for double taps.
@@ -756,23 +746,85 @@ extension SKTiledSceneCamera {
      - parameter recognizer: `UIPinchGestureRecognizer`
      */
     @objc public func scenePinched(_ recognizer: UIPinchGestureRecognizer) {
-        guard let scene = self.scene,
+        guard let _ = self.scene,
             (allowZoom == true) else { return }
         
         if recognizer.state == .began {
             let location = recognizer.location(in: recognizer.view)
-            focusLocation = scene.convertPoint(fromView: location)  // correct
-            // calls `cameraPositionChanged`
-            centerOn(scenePoint: focusLocation)
+            lastLocation = location
         }
-        
+
         if recognizer.state == .changed {
             zoom *= recognizer.scale
-            
+
             // set the world scaling here
-            setCameraZoomAtLocation(scale: zoom, location: focusLocation)
+            setCameraZoom(zoom)
+            let pos = lastLocation
+            let clamped = clampCameraPosition(pos!)
+            centerOn(scenePoint: clamped)
             recognizer.scale = 1
         }
+    }
+    
+    private func clampCameraPosition(_ location: CGPoint) -> CGPoint {
+        guard let scene = self.scene as? SKTiledScene else { return CGPoint(x: 0, y: 0)}
+
+        let left = 125
+        let right = -50
+        let top = -25
+        let bottom = 125
+        
+        var minPanX = (scene.size.halfWidth * zoom)
+        minPanX = minPanX - (scene.tilemap.sizeInPoints.halfWidth * zoom - ((scene.size.width * xScale) / 2)) - (left * xScale)
+        var maxPanX = (scene.size.halfWidth * zoom)
+        maxPanX = maxPanX + (scene.tilemap.sizeInPoints.halfWidth * zoom  - ((scene.size.width * xScale) / 2)) + (right * xScale)
+        var minPanY = (scene.size.halfHeight * zoom)
+        minPanY = minPanY - (scene.tilemap.sizeInPoints.halfHeight * zoom  - ((scene.size.height * yScale) / 2)) - (bottom * yScale)
+        var maxPanY = (scene.size.halfHeight * zoom)
+        maxPanY = maxPanY + (scene.tilemap.sizeInPoints.halfHeight * zoom - ((scene.size.height * yScale) / 2)) + (top * yScale)
+        
+        if lastLocation == nil { return CGPoint(x: 0, y: 0)}
+         
+        let difference = CGPoint(x: location.x - lastLocation.x, y: location.y - lastLocation.y)
+         
+        var newPositionX = position.x - (difference.x * self.xScale)
+        let a = (scene.tilemap.sizeInPoints.width / xScale) * zoom
+        if a < scene.size.width - (left + right) {
+            if(newPositionX < maxPanX) {
+                newPositionX = maxPanX
+            }
+            if(newPositionX > minPanX) {
+                newPositionX = minPanX
+            }
+        } else {
+            if(newPositionX > maxPanX) {
+                newPositionX = maxPanX
+            }
+            if(newPositionX < minPanX) {
+                newPositionX = minPanX
+            }
+        }
+         
+        var newPositionY = position.y - -(difference.y * self.yScale)
+        let b = (scene.tilemap.sizeInPoints.height / yScale) * zoom
+        if b < scene.size.height - (top + bottom) {
+            if(newPositionY < maxPanY) {
+                newPositionY = maxPanY
+            }
+            if(newPositionY > minPanY) {
+                newPositionY = minPanY
+            }
+        } else {
+            if(newPositionY > maxPanY) {
+                newPositionY = maxPanY
+            }
+            if(newPositionY < minPanY) {
+                newPositionY = minPanY
+            }
+        }
+        
+        
+        return CGPoint(x: newPositionX, y: newPositionY)
     }
     
     #endif
