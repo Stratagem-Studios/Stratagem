@@ -85,7 +85,7 @@ public class City {
                 }
                 let avgTerrainHeight = total / 16
                 if avgTerrainHeight <= 0.47 {
-                    terrain[row][col] = 0
+                    terrain[row][col] = 2
                 } else if avgTerrainHeight <= 0.53 {
                     terrain[row][col] = 3
                 } else if avgTerrainHeight <= 1 {

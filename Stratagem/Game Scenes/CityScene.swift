@@ -17,6 +17,9 @@ public class CityScene: SKTiledScene {
         self.view!.addGestureRecognizer(tapGestureRecognizer)
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(scenePan(_:)))
         self.view!.addGestureRecognizer(panGestureRecognizer)
+        
+        view.showsFPS = true
+        view.showsDrawCount = true
     }
     
     /// Called only when user single taps
