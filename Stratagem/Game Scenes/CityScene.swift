@@ -10,8 +10,8 @@ public class CityScene: SKTiledScene {
         super.didMove(to: view)
         super.setup(tmxFile: "City")
         cameraNode.allowGestures = true
-        cameraNode.setCameraZoom(0.3)
-        //cameraNode.setZoomConstraints(minimum: 0.175, maximum: 0.3)
+        cameraNode.setCameraZoom(0.2)
+        cameraNode.setZoomConstraints(minimum: 0.175, maximum: 0.3)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sceneTapped(_:)))
         self.view!.addGestureRecognizer(tapGestureRecognizer)
