@@ -9,7 +9,7 @@ public class City {
     var cityTerrain: [[Int]]?
     
     /// City size
-    let citySize: CGSize = CGSize(width: 12, height: 24)
+    let citySize: CGSize = CGSize(width: 15, height: 45)
     
     /// Initializes city variables (required)
     func initCity(cityName: String) {
