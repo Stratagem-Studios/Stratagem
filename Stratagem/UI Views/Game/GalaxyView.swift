@@ -11,6 +11,10 @@ enum PlanetTypes {
 
 struct GalaxyView : UIViewRepresentable {
     
+    var isDisplayingplanet = false
+    var planetToDisplay: PlanetView?
+    var planets: [PlanetView]?
+    
     let galaxy = SCNScene.init()
     var gameType: GameTypes
         
@@ -30,13 +34,28 @@ struct GalaxyView : UIViewRepresentable {
         return galaxy
     }
     func updateUIView(_ scnView: SCNView, context: Context) {
-        scnView.scene = galaxy
+        if isDisplayingplanet{
+        } else {
+            scnView.scene = galaxy
+            
+            // allows the user to manipulate the camera
+            scnView.allowsCameraControl = true
+            
+            // configure the view
+            galaxy.background.contents = UIColor.clear
+            scnView.backgroundColor = UIColor.clear
+        }
+    }
+    
+    func getPlanet() -> some View {
+        return planetToDisplay
+    }
+    
+    func getCity() -> some View {
+        return planetToDisplay
+    }
+    
+    func generatePlanets(n: Int){
         
-        // allows the user to manipulate the camera
-        scnView.allowsCameraControl = true
-        
-        // configure the view
-        galaxy.background.contents = UIColor.clear
-        scnView.backgroundColor = UIColor.clear
     }
 }
