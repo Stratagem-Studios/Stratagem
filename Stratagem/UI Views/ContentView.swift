@@ -23,11 +23,8 @@ struct ContentView: View {
                     .transition(.slide)
             case .CityView:
                 CityView()
-            case .PlanetView:
-                PlanetView()
-                    .edgesIgnoringSafeArea(.all)
-            case .GalaxyView:
-                    GalaxyView()
+            case .GameView:
+                GameView(gameType: GameTypes.standard)
                         .edgesIgnoringSafeArea(.all)
             }
             

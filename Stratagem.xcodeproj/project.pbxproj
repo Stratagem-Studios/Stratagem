@@ -10,6 +10,7 @@
 		1E10A050010A84F42517D3F9 /* Pods_Stratagem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500AA38F10AA677CBCF94516 /* Pods_Stratagem.framework */; };
 		CE1004BF256856BC0077941A /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004BE256856BC0077941A /* PlanetView.swift */; };
 		CE1004E12569E1B70077941A /* GalaxyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004E02569E1B70077941A /* GalaxyView.swift */; };
+		CEC78654256C1B51001E440F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC78653256C1B51001E440F /* GameView.swift */; };
 		CECA7740255E3F1700CE9F69 /* GameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA773F255E3F1700CE9F69 /* GameVariables.swift */; };
 		CECA7744255E40FF00CE9F69 /* GameTiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = CECA7742255E40FF00CE9F69 /* GameTiles.sks */; };
 		CECA7755255E469E00CE9F69 /* GameBoards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA7754255E469E00CE9F69 /* GameBoards.swift */; };
@@ -85,6 +86,7 @@
 		5397A0390D7C1A2EC8CCF6F0 /* Pods-Stratagem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stratagem.debug.xcconfig"; path = "Target Support Files/Pods-Stratagem/Pods-Stratagem.debug.xcconfig"; sourceTree = "<group>"; };
 		CE1004BE256856BC0077941A /* PlanetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		CE1004E02569E1B70077941A /* GalaxyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyView.swift; sourceTree = "<group>"; };
+		CEC78653256C1B51001E440F /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		CECA773F255E3F1700CE9F69 /* GameVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVariables.swift; sourceTree = "<group>"; };
 		CECA7742255E40FF00CE9F69 /* GameTiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameTiles.sks; sourceTree = "<group>"; };
 		CECA7754255E469E00CE9F69 /* GameBoards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoards.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 		FFF2D86F255B891A00CE2990 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				CEC78653256C1B51001E440F /* GameView.swift */,
 				FF40F4702559CF310036E4C7 /* CityView.swift */,
 				CE1004BE256856BC0077941A /* PlanetView.swift */,
 				CE1004E02569E1B70077941A /* GalaxyView.swift */,
@@ -609,6 +612,7 @@
 				FF0CAB9A25646250009681C8 /* LoopingVideo.swift in Sources */,
 				FF65EF1F255DE8D00013C2C4 /* UIExtensions.swift in Sources */,
 				FFF85E41255C73C100DFDDC2 /* HFGamePusher.swift in Sources */,
+				CEC78654256C1B51001E440F /* GameView.swift in Sources */,
 				FFF85E4E255C744E00DFDDC2 /* StaticGameVariables.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
