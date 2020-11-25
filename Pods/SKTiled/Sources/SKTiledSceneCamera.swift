@@ -717,7 +717,6 @@ extension SKTiledSceneCamera {
         if recognizer.numberOfTouches == 2 {
             lastLocation = recognizer.location(ofTouch: 0, in: recognizer.view)
         } else {
-        
             if (recognizer.state == .changed) && (allowMovement == true) {
                 if lastLocation == nil { return }
                 let location = recognizer.location(in: recognizer.view)
