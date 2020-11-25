@@ -54,6 +54,7 @@
 		FF65EF1F255DE8D00013C2C4 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF65EF1E255DE8CF0013C2C4 /* UIExtensions.swift */; };
 		FF88BDA4256E0B7B00DF0E40 /* CityTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88BDA3256E0B7B00DF0E40 /* CityTile.swift */; };
 		FF88BDA7256E0BC100DF0E40 /* CityBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88BDA6256E0BC100DF0E40 /* CityBuilding.swift */; };
+		FF88BDB8256EB24F00DF0E40 /* HudNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88BDB7256EB24F00DF0E40 /* HudNode.swift */; };
 		FF8C4E52254FB11800522756 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8C4E51254FB11800522756 /* CloudKit.framework */; };
 		FF8C4E67254FBAFB00522756 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FF8C4E66254FBAFB00522756 /* .gitignore */; };
 		FF8C4E6C254FBCBD00522756 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -135,6 +136,7 @@
 		FF65EF1E255DE8CF0013C2C4 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		FF88BDA3256E0B7B00DF0E40 /* CityTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTile.swift; sourceTree = "<group>"; };
 		FF88BDA6256E0BC100DF0E40 /* CityBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityBuilding.swift; sourceTree = "<group>"; };
+		FF88BDB7256EB24F00DF0E40 /* HudNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudNode.swift; sourceTree = "<group>"; };
 		FF8C4E4E254FB0A200522756 /* Stratagem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stratagem.entitlements; sourceTree = "<group>"; };
 		FF8C4E51254FB11800522756 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		FF8C4E66254FBAFB00522756 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				FFA3FFA625661BFB00CFA406 /* CityScene.swift */,
+				FF88BDB7256EB24F00DF0E40 /* HudNode.swift */,
 				FF1B13D6256B0B81005158C9 /* City.swift */,
 				FF88BDA3256E0B7B00DF0E40 /* CityTile.swift */,
 				FF88BDA6256E0BC100DF0E40 /* CityBuilding.swift */,
@@ -618,6 +621,7 @@
 				FFB4A2A7255D9EA1003298E2 /* PlayerManager.swift in Sources */,
 				FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */,
 				FF0CAB9A25646250009681C8 /* LoopingVideo.swift in Sources */,
+				FF88BDB8256EB24F00DF0E40 /* HudNode.swift in Sources */,
 				FF65EF1F255DE8D00013C2C4 /* UIExtensions.swift in Sources */,
 				FFF85E41255C73C100DFDDC2 /* HFGamePusher.swift in Sources */,
 				CEC78654256C1B51001E440F /* GameView.swift in Sources */,

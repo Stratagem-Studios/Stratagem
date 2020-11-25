@@ -224,7 +224,6 @@ public class SKTiledSceneCamera: SKCameraNode {
     /// Flag to show the overlay
     public var showOverlay: Bool = true {
         didSet {
-            guard oldValue != showOverlay else { return }
             overlay.isHidden = !showOverlay
         }
     }
@@ -243,7 +242,6 @@ public class SKTiledSceneCamera: SKCameraNode {
         
         // add the overlay
         addChild(overlay)
-        overlay.isHidden = true
         
         #if os(iOS)
         setupGestures(for: view)

@@ -5,47 +5,65 @@ public class City {
     /// Unique city name (no spaces)
     var cityName: String?
     
-    /// City terrain, a 2d array of tile ids
-    var cityTerrain: [[Int]]?
-    
     /// City size
-    let citySize: CGSize = CGSize(width: 15, height: 45)
+    let cityWidth: Int = 15
+    let cityHeight: Int = 45
+    
+    /// City terrain, a 2d array of CityTiles
+    var cityTerrain: [[CityTile]]?
+    
+    /// Tilemap
+    var tilemap: SKTilemap?
     
     /// Initializes city variables (required)
     func initCity(cityName: String) {
         self.cityName = cityName
-        makeCityTerrain()
         createTMXFile()
+    }
+    
+    // Creates CityTiles from a tilemap and loads it into cityTerrain
+    func loadTilemap(_ tilemap: SKTilemap) {
+        self.tilemap = tilemap
+        
+        cityTerrain = Array(repeating: Array(repeating: CityTile(), count: cityHeight), count: cityWidth)
+        let layer = tilemap.getLayers(named: "Tile Layer 1")[0] as? SKTileLayer
+        for row in 0..<cityWidth {
+            for col in 0..<cityHeight {
+                let cityTile = CityTile()
+                cityTile.initTile(tile: (layer?.tileAt(row, col))!, isEditable: true)
+                cityTerrain![row][col] = cityTile
+            }
+        }
     }
     
     /// Creates file [cityName].tmx from cityTerrain
     private func createTMXFile() {
+        let terrain = makeCityTerrain()
+        
         // Copy tsx file
         copyFileToDocumentsFolder(nameForFile: "PrototypePack", extForFile: "tsx")
         
         // Create tmx file
         var layer1 = ""
         var layer2 = ""
-        let num_columns = Int(citySize.height)
-        let num_rows = Int(citySize.width)
-        for row in 0..<num_rows {
-            for col in 0..<num_columns {
-                layer1 = layer1 + "\(cityTerrain![row][col]),"
+        for row in 0..<cityWidth {
+            for col in 0..<cityHeight {
+                layer1 = layer1 + "\(terrain[row][col]),"
             }
             layer1 = layer1 + " \n"
         }
         layer1 = String(layer1.dropLast(3)) + "\n"
-        for _ in 0..<num_rows {
-            for _ in 0..<num_columns {
+        for _ in 0..<cityWidth {
+            for _ in 0..<cityHeight {
                 layer2 = layer2 + "0,"
             }
             layer2 = layer2 + " \n"
         }
         layer2 = String(layer2.dropLast(3)) + "\n"
         
-        var text = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<map version=\"1.4\" tiledversion=\"1.4.3\" orientation=\"staggered\" renderorder=\"right-down\" width=\"" + String(Int(citySize.width)) + "\" height=\""
-        text = text + String(Int(citySize.height)) + "\" tilewidth=\"256\" tileheight=\"128\" infinite=\"0\" staggeraxis=\"y\" staggerindex=\"odd\" nextlayerid=\"11\" nextobjectid=\"1\">\n <tileset firstgid=\"1\" source=\"PrototypePack.tsx\"/>\n <layer id=\"8\" name=\"Tile Layer 1\" width=\"" + String(Int(citySize.width)) + "\" height=\""
-        text = text + String(Int(citySize.height)) + "\">\n  <data encoding=\"csv\">\n" + layer1 + "</data>\n </layer>\n <layer id=\"9\" name=\"Tile Layer 2\" width=\"" + String(Int(citySize.width)) + "\" height=\"" + String(Int(citySize.height)) + "\">\n  <data encoding=\"csv\">\n" + layer2 + "</data>\n </layer>\n</map>\n"
+        var text = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<map version=\"1.4\" tiledversion=\"1.4.3\" orientation=\"staggered\" renderorder=\"right-down\" width=\"" + String(cityWidth) + "\" height=\""
+        text = text + String(cityHeight) + "\" tilewidth=\"256\" tileheight=\"128\" infinite=\"0\" staggeraxis=\"y\" staggerindex=\"odd\" nextlayerid=\"11\" nextobjectid=\"1\">\n <tileset firstgid=\"1\" source=\"PrototypePack.tsx\"/>\n <layer id=\"8\" name=\"Tile Layer 1\" width=\"" + String(cityWidth) + "\" height=\""
+        text = text + String(cityHeight) + "\">\n  <data encoding=\"csv\">\n" + layer1 + "</data>\n </layer>\n <layer id=\"9\" name=\"Tile Layer 2\" width=\"" + String(cityWidth) + "\" height=\"" + String(cityHeight) + "\">\n  <data encoding=\"csv\">\n" + layer2 + "</data>\n </layer>\n</map>\n"
         
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let fileURL = dir.appendingPathComponent("City.tmx")
@@ -60,13 +78,13 @@ public class City {
     }
     
     /// Creates a 2d array of integers representing the tile id using perlin noise
-    private func makeCityTerrain() {
-        let num_columns = Int(citySize.height)
-        let num_rows = Int(citySize.width)
+    private func makeCityTerrain() -> [[Int]] {
+        let num_columns = cityHeight
+        let num_rows = cityWidth
         //let noiseMap = makeNoiseMap(columns: num_columns, rows: num_rows, persistence: 0.9)
         let noisemap = Perlin2D().octaveMatrix(width: num_rows * 4, height: num_columns * 4, octaves: 6, persistance: 0.25)
         
-        var terrain: [[Int]] = Array(repeating: Array(repeating: 0, count: Int(citySize.height)), count: Int(citySize.width))
+        var terrain: [[Int]] = Array(repeating: Array(repeating: 0, count: cityHeight), count: cityWidth)
         // Downsizes a 128x128 matrix by averaging every 4x4 sub-matrix
         for row in 0..<num_rows {
             for col in 0..<num_columns {
@@ -91,8 +109,8 @@ public class City {
                     terrain[row][col] = 1
                 }
             }
-            cityTerrain = terrain
         }
+        return terrain
     }
     
     private func copyFileToDocumentsFolder(nameForFile: String, extForFile: String) {

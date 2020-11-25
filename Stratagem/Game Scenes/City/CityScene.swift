@@ -3,15 +3,20 @@ import SKTiled
 
 
 public class CityScene: SKTiledScene {
+    private let hudNode = HudNode()
+    
     public override func didMove(to view: SKView) {
         let city = City()
-        city.initCity(cityName: "hi")
+        city.initCity(cityName: "City Name")
         
         super.didMove(to: view)
         super.setup(tmxFile: "City")
         cameraNode.allowGestures = true
         cameraNode.setCameraZoom(0.4)
         cameraNode.setZoomConstraints(minimum: 0.3, maximum: 0.6)
+        cameraNode.showOverlay = true
+        
+        city.loadTilemap(tilemap)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sceneTapped(_:)))
         self.view!.addGestureRecognizer(tapGestureRecognizer)
@@ -20,17 +25,26 @@ public class CityScene: SKTiledScene {
         
         view.showsFPS = true
         view.showsDrawCount = true
+        
+        hudNode.setup(city: city, size: size)
+        cameraNode.addToOverlay(hudNode)
     }
     
     /// Called only when user single taps
     @objc public func sceneTapped(_ recognizer: UITapGestureRecognizer) {
         if recognizer.state == UIGestureRecognizer.State.ended {
             let loc = recognizer.location(in: recognizer.view)
-            let tile = getTappedTile(loc)
-            if let tile = tile as? SKTile {
-                //tile.isHidden = true
-                let action = SKAction.colorize(with: .black, colorBlendFactor: 0.1, duration: 1)
-                tile.run(action)
+            let coordWRTHUD = hudNode.convert(self.convertPoint(fromView: loc), from: self)
+            let tappedHudNodes = hudNode.nodes(at: coordWRTHUD)
+            
+            if tappedHudNodes.count > 0 {
+                print(tappedHudNodes[0].name)
+            } else {
+                let tile = getTappedTile(loc)
+                if let tile = tile as? SKTile {
+                    let action = SKAction.colorize(with: .black, colorBlendFactor: 0.1, duration: 1)
+                    tile.run(action)
+                }
             }
         }
     }
