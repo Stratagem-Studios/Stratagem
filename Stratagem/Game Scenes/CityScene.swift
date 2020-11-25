@@ -10,20 +10,26 @@ public class CityScene: SKTiledScene {
         super.didMove(to: view)
         super.setup(tmxFile: "City")
         cameraNode.allowGestures = true
-        cameraNode.setCameraZoom(0.2)
-        cameraNode.setZoomConstraints(minimum: 0.175, maximum: 0.3)
+        cameraNode.setCameraZoom(0.4)
+        cameraNode.setZoomConstraints(minimum: 0.3, maximum: 0.6)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sceneTapped(_:)))
         self.view!.addGestureRecognizer(tapGestureRecognizer)
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(scenePan(_:)))
         self.view!.addGestureRecognizer(panGestureRecognizer)
+        
+        view.showsFPS = true
+        view.showsDrawCount = true
     }
     
     /// Called only when user single taps
     @objc public func sceneTapped(_ recognizer: UITapGestureRecognizer) {
         if recognizer.state == UIGestureRecognizer.State.ended {
             let loc = recognizer.location(in: recognizer.view)
-            print(getTappedTile(loc))
+            let tile = getTappedTile(loc)
+            if let tile = tile as? SKTile {
+                tile.isHidden = true
+            }
         }
     }
     
@@ -35,8 +41,8 @@ public class CityScene: SKTiledScene {
     /// Can return a tile or a tile object
     private func getTappedTile(_ touchLoc: CGPoint) -> Any {
         guard let tilemap = tilemap else { return -1 }
-        
-        let locationInMap = tilemap.convert(self.convertPoint(fromView: touchLoc), from: cameraNode)
+        var locationInMap = self.convertPoint(fromView: touchLoc)
+        locationInMap = tilemap.convert(locationInMap, from: self)
         let nodesUnderCursor = tilemap.nodes(at: locationInMap)
         
         let focusObjects = nodesUnderCursor.filter { node in
@@ -52,9 +58,8 @@ public class CityScene: SKTiledScene {
                 if let tile = object as? SKTile {
                     if tile.visibleToCamera {
                         // Transform: origin is in the bottom left, upper right is +x,+y
-                        let coordWRTTile = tile.convert(self.convertPoint(fromView: touchLoc), from: cameraNode)
-                        
-                        
+                        let coordWRTTile = tile.convert(locationInMap, from: tilemap)
+
                         var x: Int
                         var y: Int
                         if tile.getVertices().count > 0 {
@@ -64,7 +69,7 @@ public class CityScene: SKTiledScene {
                             x = abs(Int(coordWRTTile.x + tile.bounds.width / 2))
                             y = abs(Int(coordWRTTile.y + tile.bounds.width / 2))
                         }
-                        
+
                         if 0 <= x && x < Int(tile.tileSize.width.rounded()) && 0 <= y && y < Int(tile.tileSize.height.rounded()) {
                             if tile.getAlphaBitmask()[x][y] == 1 {
                                 currentTile = tile
@@ -77,7 +82,7 @@ public class CityScene: SKTiledScene {
                 if let obj = object as? SKTileObject {
                     if let proxy = obj.proxy {
                         if proxy.visibleToCamera && (currentObject == nil) {
-                            let coordWRTTile = proxy.reference!.convert(self.convertPoint(fromView: touchLoc), from: cameraNode)
+                            let coordWRTTile = proxy.reference!.convert(locationInMap, from: tilemap)
                             let x = Int((coordWRTTile.x + proxy.reference!.size.width / 2).rounded())
                             let y = Int((coordWRTTile.y + proxy.reference!.size.height / 2).rounded())
                             
@@ -95,7 +100,7 @@ public class CityScene: SKTiledScene {
                 
                 if let proxy = object as? TileObjectProxy {
                     if proxy.visibleToCamera {
-                        let coordWRTTile = proxy.reference!.convert(self.convertPoint(fromView: touchLoc), from: cameraNode)
+                        let coordWRTTile = proxy.reference!.convert(locationInMap, from: tilemap)
                         let x = Int((coordWRTTile.x + proxy.reference!.size.width / 2).rounded())
                         let y = Int((coordWRTTile.y + proxy.reference!.size.height / 2).rounded())
                         

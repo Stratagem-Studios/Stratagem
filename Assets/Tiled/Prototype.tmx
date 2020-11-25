@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="isometric" renderorder="right-down" width="16" height="16" tilewidth="256" tileheight="128" infinite="0" nextlayerid="11" nextobjectid="1">
+<map version="1.4" tiledversion="1.4.3" orientation="staggered" renderorder="right-down" width="16" height="16" tilewidth="256" tileheight="128" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="11" nextobjectid="1">
  <tileset firstgid="1" source="PrototypePack.tsx"/>
  <layer id="8" name="Tile Layer 1" width="16" height="16">
   <data encoding="csv">
