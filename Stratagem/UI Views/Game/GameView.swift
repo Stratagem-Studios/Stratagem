@@ -7,7 +7,7 @@ struct GameView: View {
     @EnvironmentObject var playerVariables: PlayerVariables
     @EnvironmentObject var staticGameVariables: StaticGameVariables
     
-    @StateObject var gameVariables = GameVariables()
+    @StateObject var gameVariables = GameVariables(gameType: GameTypes.standard)
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()

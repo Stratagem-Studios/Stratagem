@@ -21,7 +21,7 @@ class GameScene: SKScene {
     // PlayerVars instantiates the GameVariables class which holds the variables for in-game use
     // Materials follow this pattern
     // [enum, timerMax, timerLive, actual count]
-    var playerVars = GameVariables()
+    var playerVars = GameVariables(gameType: GameTypes.standard)
     
     // This var holds a reference to the content view
     var contentView: ContentView?

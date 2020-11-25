@@ -1,6 +1,7 @@
 // Stores variables for high-frequency game updates
 
 import Combine
+import ObjectiveC
 
 enum GameViewLevel {
     case galaxy, planet, city
@@ -11,12 +12,15 @@ enum GameTypes {
 }
 
 class GameVariables: ObservableObject {
+    @Published var gameType: GameTypes = GameTypes.standard
     @Published var currentGameViewLevel = GameViewLevel.galaxy
     @Published var galaxy: GalaxyView?
-    @Published var planets:[PlanetView]?
+    @Published var selectedPlanet:[PlanetView]?
+    @Published var selectedCity: [CityView]?
     
-    init() {
-        
+    init(gameType: GameTypes) {
+        galaxy = GalaxyView()
+        self.gameType = gameType
         
         
 // All of the below is for resource generation and may be moved to a new class
@@ -48,3 +52,15 @@ struct resourceStatsList {
     
     
 }
+
+struct planetLayout {
+    var planet: PlanetView
+    var cities: [CityView]
+}
+
+struct cityLayout {
+    var city: CityView
+    // This struct will hold the cities variable classes
+}
+
+
