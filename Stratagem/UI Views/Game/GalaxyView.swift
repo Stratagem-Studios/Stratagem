@@ -41,6 +41,17 @@ struct GalaxyView : UIViewRepresentable {
     }
     
     func generatePlanets(gameType: GameTypes){
-        
+        var numPlanets: Int
+        switch gameType {
+        case .standard:
+            numPlanets = 7
+        default:
+            numPlanets = 5
+        }
+        for i in 0...numPlanets {
+            let tempPlanet = PlanetView(planetID: i)
+            let tempCities = tempPlanet.generateCities()
+            gameVariables.galaxyLayout.append(PlanetLayout(planet: tempPlanet, cities: tempCities))
+        }
     }
 }

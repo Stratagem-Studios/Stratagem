@@ -13,11 +13,11 @@ struct GameView: View {
             Color.black.ignoresSafeArea()
             switch (gameVariables.currentGameViewLevel){
             case GameViewLevel.galaxy:
-                PlanetView()
+                CityView()
             case GameViewLevel.planet:
-                PlanetView()
+                CityView()
             case GameViewLevel.city:
-                PlanetView()
+                CityView()
             }
         }
     }
