@@ -216,6 +216,7 @@ public class SKTiledSceneCamera: SKCameraNode {
     
     /// Previous focus location.
     fileprivate var lastLocation: CGPoint!
+    fileprivate var isMultiTouch: Bool = false
     
     /// Camera overlay node.
     internal let overlay: SKNode = SKNode()
@@ -709,22 +710,29 @@ extension SKTiledSceneCamera {
      */
     @objc open func cameraPanned(_ recognizer: UIPanGestureRecognizer) {
         guard let _ = self.scene as? SKTiledScene else { return }
-         
+        
         if (recognizer.state == .began) {
             let location = recognizer.location(in: recognizer.view)
             lastLocation = location
         }
-        if recognizer.numberOfTouches == 2 {
-            lastLocation = recognizer.location(ofTouch: 0, in: recognizer.view)
-        } else {
-            if (recognizer.state == .changed) && (allowMovement == true) {
-                if lastLocation == nil { return }
-                let location = recognizer.location(in: recognizer.view)
-                centerOn(scenePoint: clampCameraPosition(location))
-                 
-                lastLocation = location
+        
+        if (isMultiTouch) && (recognizer.numberOfTouches < 2){
+                isMultiTouch = false
+                lastLocation = recognizer.location(in: recognizer.view)
+            } else {
+                if recognizer.numberOfTouches >= 2 {
+                    isMultiTouch = true
+                } else {
+                
+                    if (recognizer.state == .changed) && (allowMovement == true) {
+                        if lastLocation == nil { return }
+                        let location = recognizer.location(in: recognizer.view)
+                        centerOn(scenePoint: clampCameraPosition(location))
+                         
+                        lastLocation = location
+                    }
+                }
             }
-        }
     }
 
     
