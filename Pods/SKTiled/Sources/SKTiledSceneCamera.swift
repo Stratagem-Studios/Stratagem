@@ -714,13 +714,17 @@ extension SKTiledSceneCamera {
             let location = recognizer.location(in: recognizer.view)
             lastLocation = location
         }
-         
-        if (recognizer.state == .changed) && (allowMovement == true) {
-            if lastLocation == nil { return }
-            let location = recognizer.location(in: recognizer.view)
-            centerOn(scenePoint: clampCameraPosition(location))
-             
-            lastLocation = location
+        if recognizer.numberOfTouches == 2 {
+            lastLocation = recognizer.location(ofTouch: 0, in: recognizer.view)
+        } else {
+        
+            if (recognizer.state == .changed) && (allowMovement == true) {
+                if lastLocation == nil { return }
+                let location = recognizer.location(in: recognizer.view)
+                centerOn(scenePoint: clampCameraPosition(location))
+                 
+                lastLocation = location
+            }
         }
     }
 
