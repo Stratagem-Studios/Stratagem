@@ -28,7 +28,9 @@ public class CityScene: SKTiledScene {
             let loc = recognizer.location(in: recognizer.view)
             let tile = getTappedTile(loc)
             if let tile = tile as? SKTile {
-                tile.isHidden = true
+                //tile.isHidden = true
+                let action = SKAction.colorize(with: .black, colorBlendFactor: 0.1, duration: 1)
+                tile.run(action)
             }
         }
     }
