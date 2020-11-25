@@ -5,17 +5,23 @@ import SpriteKit
 import SceneKit
 import SwiftVideoBackground
 
+enum PlanetTypes {
+    case homebaseRed, homebaseBlue, metalRich, goldRich
+}
+
 struct GalaxyView : UIViewRepresentable {
+    
+    var isDisplayingplanet = false
+    var planetToDisplay: PlanetView?
+    var planets: [PlanetView]?
+    
     let galaxy = SCNScene.init()
+    var gameType: GameTypes
         
+    init(gameType: GameTypes) {
+        self.gameType = gameType
+    }
     func makeUIView(context: Context) -> SCNView {
-        // Generates some planets
-        // Should later be replaced
-        for index in 0...3 {
-            galaxy.rootNode.addChildNode(generatePlanet(name: "Planet_" + String(index), mask: UIImage(named: "TestPlanetMask")!, cityCount: 0))
-            galaxy.rootNode.childNodes[index].position.x = Float((index - 2) * 25)
-            
-        }
         
         // add an ambient light to the scene
         let ambientLightNode = SCNNode()
@@ -28,22 +34,28 @@ struct GalaxyView : UIViewRepresentable {
         return galaxy
     }
     func updateUIView(_ scnView: SCNView, context: Context) {
-        scnView.scene = galaxy
-        
-        // allows the user to manipulate the camera
-        scnView.allowsCameraControl = true
-        
-        // configure the view
-        galaxy.background.contents = UIColor.clear
-        scnView.backgroundColor = UIColor.clear
+        if isDisplayingplanet{
+        } else {
+            scnView.scene = galaxy
+            
+            // allows the user to manipulate the camera
+            scnView.allowsCameraControl = true
+            
+            // configure the view
+            galaxy.background.contents = UIColor.clear
+            scnView.backgroundColor = UIColor.clear
+        }
     }
-
-    func generatePlanet(name: String, mask: UIImage, cityCount: Int) -> SCNNode{
-
-        let planetSphere = SCNSphere.init(radius: 10)
-        let planetNode = SCNNode(geometry: planetSphere)
-        planetNode.name = name
-        planetSphere.firstMaterial?.diffuse.contents = mask
-        return planetNode
+    
+    func getPlanet() -> some View {
+        return planetToDisplay
+    }
+    
+    func getCity() -> some View {
+        return planetToDisplay
+    }
+    
+    func generatePlanets(n: Int){
+        
     }
 }
