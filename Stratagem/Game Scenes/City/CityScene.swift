@@ -3,10 +3,12 @@ import SKTiled
 
 
 public class CityScene: SKTiledScene {
+    private var city = City()
+    private var cityEditState = CityEditStates.NONE
+    
     private let hudNode = HudNode()
     
     public override func didMove(to view: SKView) {
-        let city = City()
         city.initCity(cityName: "City Name")
         
         super.didMove(to: view)
@@ -37,13 +39,45 @@ public class CityScene: SKTiledScene {
             let coordWRTHUD = hudNode.convert(self.convertPoint(fromView: loc), from: self)
             let tappedHudNodes = hudNode.nodes(at: coordWRTHUD)
             
+            var clickedOnHud = false
             if tappedHudNodes.count > 0 {
-                print(tappedHudNodes[0].name)
-            } else {
+                switch tappedHudNodes[0].name {
+                case "buildButtonNode":
+                    if cityEditState != CityEditStates.BUILD {
+                        cityEditState = CityEditStates.BUILD
+                        hudNode.changeBorderColor(color: .green)
+                    } else {
+                        cityEditState = CityEditStates.NONE
+                        hudNode.changeBorderColor(color: .clear)
+                    }
+                    clickedOnHud = true
+                case "destroyButtonNode":
+                    if cityEditState != CityEditStates.DESTROY {
+                        cityEditState = CityEditStates.DESTROY
+                        hudNode.changeBorderColor(color: .red)
+                    } else {
+                        cityEditState = CityEditStates.NONE
+                        hudNode.changeBorderColor(color: .clear)
+                    }
+                    clickedOnHud = true
+                    
+                default:
+                    clickedOnHud = false
+                }
+            }
+            if !clickedOnHud {
                 let tile = getTappedTile(loc)
                 if let tile = tile as? SKTile {
-                    let action = SKAction.colorize(with: .black, colorBlendFactor: 0.1, duration: 1)
-                    tile.run(action)
+                    //let action = SKAction.colorize(with: .black, colorBlendFactor: 0.1, duration: 1)
+                    //tile.run(action)
+                    switch cityEditState {
+                    case .NONE:
+                        print(tile)
+                    case .BUILD:
+                        city.changeTileAtLoc(firstTile: tile, secondTileID: 2)
+                    case .DESTROY:
+                        city.changeTileAtLoc(firstTile: tile, secondTileID: 1)
+                    }
                 }
             }
         }
@@ -55,8 +89,8 @@ public class CityScene: SKTiledScene {
     }
     
     /// Can return a tile or a tile object
-    private func getTappedTile(_ touchLoc: CGPoint) -> Any {
-        guard let tilemap = tilemap else { return -1 }
+    private func getTappedTile(_ touchLoc: CGPoint) -> Any? {
+        guard let tilemap = tilemap else { return nil }
         var locationInMap = self.convertPoint(fromView: touchLoc)
         locationInMap = tilemap.convert(locationInMap, from: self)
         let nodesUnderCursor = tilemap.nodes(at: locationInMap)
@@ -70,12 +104,11 @@ public class CityScene: SKTiledScene {
             var currentObject: TileObjectProxy?
             
             for object in focusObjects {
-                
                 if let tile = object as? SKTile {
                     if tile.visibleToCamera {
                         // Transform: origin is in the bottom left, upper right is +x,+y
                         let coordWRTTile = tile.convert(locationInMap, from: tilemap)
-
+                        
                         var x: Int
                         var y: Int
                         if tile.getVertices().count > 0 {
@@ -85,7 +118,7 @@ public class CityScene: SKTiledScene {
                             x = abs(Int(coordWRTTile.x + tile.bounds.width / 2))
                             y = abs(Int(coordWRTTile.y + tile.bounds.width / 2))
                         }
-
+                        
                         if 0 <= x && x < Int(tile.tileSize.width.rounded()) && 0 <= y && y < Int(tile.tileSize.height.rounded()) {
                             if tile.getAlphaBitmask()[x][y] == 1 {
                                 currentTile = tile
@@ -138,7 +171,7 @@ public class CityScene: SKTiledScene {
                 return currentObject
             }
         }
-        return -1
+        return nil
     }
 }
 

@@ -21,3 +21,12 @@ public class CityTile {
         
     }
 }
+
+enum CityTileType : String {
+    case GROUND, BUILDING
+}
+
+enum GroundTileType : String {
+    case WATER, SAND, GRASS
+}
+

@@ -374,6 +374,7 @@ public class SKTileLayer: SKTiledLayerObject {
         
         // set the layer property
         tile.layer = self
+        tile.tileCoord = coord
         self.tiles[Int(coord.x), Int(coord.y)] = tile
         
         // get the position in the layer (plus tileset offset)
@@ -415,6 +416,7 @@ public class SKTileLayer: SKTiledLayerObject {
         
         // set the layer property
         tile.layer = self
+        tile.tileCoord = coord
         self.tiles[Int(coord.x), Int(coord.y)] = tile
         
         // get the position in the layer (plus tileset offset)
@@ -527,15 +529,14 @@ public class SKTileLayer: SKTiledLayerObject {
                 let tilePosition = pointForCoordinate(coord: coord, offsetX: tileData.tileset.tileOffset.x, offsetY: tileData.tileset.tileOffset.y)
                 
                 // add to the layer
-                //tile.tileSize = CGSize(width: 10, height: 10)
                 addChild(tile)
-                //tile.tileSize = CGSize(width: 130, height: 230)
                 
                 // set orientation & position
                 tile.orientTile()
                 tile.position = tilePosition
                 
                 // add to the tiles array
+                tile.tileCoord = coord
                 self.tiles[Int(coord.x), Int(coord.y)] = tile
                 
                 // set the tile zPosition to the current y-coordinate

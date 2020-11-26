@@ -21,6 +21,18 @@ public class City {
         createTMXFile()
     }
     
+    /// Try to replace firstTile with secondTile given its global ID
+    func changeTileAtLoc(firstTile: SKTile, secondTileID: Int) {
+        if let tileLayer = firstTile.layer {
+            if tileLayer.name! == "Tile Layer 1" {
+                let newTexture = tileLayer.getTileData(globalID: secondTileID)!.texture
+                newTexture!.filteringMode = .nearest
+                firstTile.texture = newTexture!
+                //let cityTile = cityTerrain[][]
+            }
+        }
+    }
+    
     // Creates CityTiles from a tilemap and loads it into cityTerrain
     func loadTilemap(_ tilemap: SKTilemap) {
         self.tilemap = tilemap
