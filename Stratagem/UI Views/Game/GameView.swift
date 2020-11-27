@@ -17,22 +17,20 @@ struct GameView: View {
             case GameViewLevel.planet:
                 ZStack{
                     gameVars.selectedPlanet
-                    Button(action: {
-                        gameVars.currentGameViewLevel = GameViewLevel.galaxy
-                    }) {
-                        Image("Galaxy")
-                            .position(x: screenSize.topLeft.x + 60, y: screenSize.topLeft.y + 60)
-                    }
+                    Image("Galaxy")
+                        .position(x: screenSize.topLeft.x + 60, y: screenSize.topLeft.y + 60)
+                        .onTapGesture {
+                            gameVars.currentGameViewLevel = GameViewLevel.galaxy
+                        }
                 }
             case GameViewLevel.city:
                 ZStack{
                     gameVars.selectedCity
-                    Button(action: {
-                        gameVars.currentGameViewLevel = GameViewLevel.planet
-                    }) {
-                        Image("Galaxy")
-                            .position(x: screenSize.topLeft.x + 60, y: screenSize.topLeft.y + 60)
-                    }
+                    Image("Planet")
+                        .position(x: screenSize.topLeft.x + 60, y: screenSize.topLeft.y + 60)
+                        .onTapGesture {
+                            gameVars.currentGameViewLevel = GameViewLevel.planet
+                        }
                 }
             }
         }
