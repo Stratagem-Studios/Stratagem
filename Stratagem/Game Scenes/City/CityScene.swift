@@ -15,7 +15,7 @@ public class CityScene: SKTiledScene {
         super.setup(tmxFile: "City")
         cameraNode.allowGestures = true
         cameraNode.setCameraZoom(0.4)
-        cameraNode.setZoomConstraints(minimum: 0.3, maximum: 0.6)
+        cameraNode.setZoomConstraints(minimum: 0.4, maximum: 0.75)
         cameraNode.showOverlay = true
         
         city.loadTilemap(tilemap)
@@ -44,20 +44,16 @@ public class CityScene: SKTiledScene {
                 switch tappedHudNodes[0].name {
                 case "buildButtonNode":
                     if cityEditState != CityEditStates.BUILD {
-                        cityEditState = CityEditStates.BUILD
-                        hudNode.changeBorderColor(color: .green)
+                        changeStateToBuild()
                     } else {
-                        cityEditState = CityEditStates.NONE
-                        hudNode.changeBorderColor(color: .clear)
+                       changeStateToNone()
                     }
                     clickedOnHud = true
                 case "destroyButtonNode":
                     if cityEditState != CityEditStates.DESTROY {
-                        cityEditState = CityEditStates.DESTROY
-                        hudNode.changeBorderColor(color: .red)
+                        changeStateToDestroy()
                     } else {
-                        cityEditState = CityEditStates.NONE
-                        hudNode.changeBorderColor(color: .clear)
+                        changeStateToNone()
                     }
                     clickedOnHud = true
                     
@@ -68,13 +64,11 @@ public class CityScene: SKTiledScene {
             if !clickedOnHud {
                 let tile = getTappedTile(loc)
                 if let tile = tile as? SKTile {
-                    //let action = SKAction.colorize(with: .black, colorBlendFactor: 0.1, duration: 1)
-                    //tile.run(action)
                     switch cityEditState {
                     case .NONE:
                         print(tile)
                     case .BUILD:
-                        city.changeTileAtLoc(firstTile: tile, secondTileID: 2)
+                        city.changeTileAtLoc(firstTile: tile, secondTileID: 4)
                     case .DESTROY:
                         city.changeTileAtLoc(firstTile: tile, secondTileID: 1)
                     }
@@ -83,9 +77,37 @@ public class CityScene: SKTiledScene {
         }
     }
     
+    private func changeStateToNone() {
+        cityEditState = CityEditStates.NONE
+        hudNode.changeBorderColor(color: .clear)
+        highlightUneditableTiles(colorBlendFactor: 0)
+    }
+    
+    private func changeStateToBuild() {
+        cityEditState = CityEditStates.BUILD
+        hudNode.changeBorderColor(color: .green)
+        highlightUneditableTiles(colorBlendFactor: 0.25)
+    }
+    
+    private func changeStateToDestroy() {
+        cityEditState = CityEditStates.DESTROY
+        hudNode.changeBorderColor(color: .red)
+        highlightUneditableTiles(colorBlendFactor: 0.25)
+    }
+    
     /// Called only when user pans
     @objc public func scenePan(_ recognizer: UIPanGestureRecognizer) {
         cameraNode.cameraPanned(recognizer)
+    }
+    
+    private func highlightUneditableTiles(colorBlendFactor: CGFloat) {
+        for cityTile in city.cityTerrain!.joined() {
+            if !cityTile.isEditable! {
+                let tile = cityTile.tile
+                let action = SKAction.colorize(with: .black, colorBlendFactor: colorBlendFactor, duration: 1)
+                tile!.run(action)
+            }
+        }
     }
     
     /// Can return a tile or a tile object

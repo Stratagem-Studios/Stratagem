@@ -18,8 +18,8 @@ class GameVariables: ObservableObject {
     
     // Directly determines display
     @Published var selectedPlanet:PlanetView = PlanetView(planetID: 0)
-    @Published var selectedCity: CityView?
-    @Published var currentGameViewLevel = GameViewLevel.planet
+    @Published var selectedCity: CityView = CityView()
+    @Published var currentGameViewLevel = GameViewLevel.city
     
     @Published var galaxy: GalaxyView
     @Published var galaxyLayout: [PlanetLayout] = []
