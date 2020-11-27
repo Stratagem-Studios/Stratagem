@@ -778,10 +778,10 @@ extension SKTiledSceneCamera {
     private func clampCameraPosition(_ location: CGPoint) -> CGPoint {
         guard let scene = self.scene as? SKTiledScene else { return CGPoint(x: 0, y: 0)}
 
-        let left = 125
-        let right = -50
-        let top = -25
-        let bottom = 125
+        let left = 0
+        let right = -300
+        let top = -200
+        let bottom = 0
         
         var minPanX = (scene.size.halfWidth * zoom)
         minPanX = minPanX - (scene.tilemap.sizeInPoints.halfWidth * zoom - ((scene.size.width * xScale) / 2)) - (left * xScale)
