@@ -87,6 +87,9 @@ open class SKTile: SKSpriteNode {
 
     /// Tile size.
     open var tileSize: CGSize
+    
+    /// Tile coord
+    open var tileCoord: CGPoint?
 
     /// Animation frame index
     private var frameIndex: UInt8 = 0

@@ -35,7 +35,8 @@ struct ContentView: View {
             if playerVariables.errorMessage != "" {
                 ErrorPopup()
             }
-        }.onAppear() {
+        }.statusBar(hidden: true)
+        .onAppear() {
             // Because we don't have a server, we make new players help remove dead games
             LFGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).detectAndRemoveDeadGames()
             // Then calls fetchName

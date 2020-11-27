@@ -49,6 +49,9 @@
 		FF5AF90A255E489F00836F03 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AF909255E489F00836F03 /* Units.swift */; };
 		FF64B6C825530268006A9F38 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FF64B6C725530268006A9F38 /* README.md */; };
 		FF65EF1F255DE8D00013C2C4 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF65EF1E255DE8CF0013C2C4 /* UIExtensions.swift */; };
+		FF88BDA4256E0B7B00DF0E40 /* CityTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88BDA3256E0B7B00DF0E40 /* CityTile.swift */; };
+		FF88BDA7256E0BC100DF0E40 /* CityBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88BDA6256E0BC100DF0E40 /* CityBuilding.swift */; };
+		FF88BDB8256EB24F00DF0E40 /* HudNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88BDB7256EB24F00DF0E40 /* HudNode.swift */; };
 		FF8C4E52254FB11800522756 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF8C4E51254FB11800522756 /* CloudKit.framework */; };
 		FF8C4E67254FBAFB00522756 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FF8C4E66254FBAFB00522756 /* .gitignore */; };
 		FF8C4E6C254FBCBD00522756 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -125,6 +128,9 @@
 		FF5AF909255E489F00836F03 /* Units.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Units.swift; path = Instantiatable/Units.swift; sourceTree = "<group>"; };
 		FF64B6C725530268006A9F38 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FF65EF1E255DE8CF0013C2C4 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		FF88BDA3256E0B7B00DF0E40 /* CityTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTile.swift; sourceTree = "<group>"; };
+		FF88BDA6256E0BC100DF0E40 /* CityBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityBuilding.swift; sourceTree = "<group>"; };
+		FF88BDB7256EB24F00DF0E40 /* HudNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudNode.swift; sourceTree = "<group>"; };
 		FF8C4E4E254FB0A200522756 /* Stratagem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stratagem.entitlements; sourceTree = "<group>"; };
 		FF8C4E51254FB11800522756 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		FF8C4E66254FBAFB00522756 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -296,14 +302,6 @@
 			path = Videos;
 			sourceTree = "<group>";
 		};
-		FF1B13D5256B0B74005158C9 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				FF1B13D6256B0B81005158C9 /* City.swift */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
 		FF35D831255C37540054EC27 /* Postgame */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +316,18 @@
 				FF0CAB9925646250009681C8 /* LoopingVideo.swift */,
 			);
 			path = "Helper Views";
+			sourceTree = "<group>";
+		};
+		FF88BDA2256E0B4B00DF0E40 /* City */ = {
+			isa = PBXGroup;
+			children = (
+				FFA3FFA625661BFB00CFA406 /* CityScene.swift */,
+				FF88BDB7256EB24F00DF0E40 /* HudNode.swift */,
+				FF1B13D6256B0B81005158C9 /* City.swift */,
+				FF88BDA3256E0B7B00DF0E40 /* CityTile.swift */,
+				FF88BDA6256E0BC100DF0E40 /* CityBuilding.swift */,
+			);
+			path = City;
 			sourceTree = "<group>";
 		};
 		FF8C4E4D254FB04200522756 /* Core Data */ = {
@@ -372,9 +382,13 @@
 		FFE1000B2551B7F500DD6608 /* Game Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				FF88BDA2256E0B4B00DF0E40 /* City */,
 				FFA55AC8256C6DA500EB12D9 /* Helpers */,
 				FF1B13D5256B0B74005158C9 /* Managers */,
 				FFA3FFA625661BFB00CFA406 /* CityScene.swift */,
+				FF078BE1254F3FFE00E9FA7C /* GameScene.sks */,
+				FF078BDA254F3FBE00E9FA7C /* GameScene.swift */,
+				CECA7742255E40FF00CE9F69 /* GameTiles.sks */,
 			);
 			path = "Game Scenes";
 			sourceTree = "<group>";
@@ -579,12 +593,14 @@
 				FFF85E4A255C744300DFDDC2 /* PlayerVariables.swift in Sources */,
 				CE1004E12569E1B70077941A /* GalaxyView.swift in Sources */,
 				CE1004BF256856BC0077941A /* PlanetView.swift in Sources */,
+				FF88BDA4256E0B7B00DF0E40 /* CityTile.swift in Sources */,
 				FF012D3B2551B0420017E288 /* TitleText.swift in Sources */,
 				FFA55AC5256C6D9700EB12D9 /* Perlin2D.swift in Sources */,
 				FFB4A299255CE6A7003298E2 /* FirebaseHelper.swift in Sources */,
 				FFFCFAC3255B62B300D03284 /* LFGameManager.swift in Sources */,
 				FF33849F2559A751000EF945 /* TitleScreenView.swift in Sources */,
 				FFF2D86C255B88F800CE2990 /* GameLobbyView.swift in Sources */,
+				FF88BDA7256E0BC100DF0E40 /* CityBuilding.swift in Sources */,
 				FF40F4712559CF310036E4C7 /* CityView.swift in Sources */,
 				FFFCFAB9255B296400D03284 /* AppDelegate.swift in Sources */,
 				FF0857492550F39300F0F220 /* ButtonStyles.swift in Sources */,
@@ -598,6 +614,7 @@
 				FFB4A2A7255D9EA1003298E2 /* PlayerManager.swift in Sources */,
 				FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */,
 				FF0CAB9A25646250009681C8 /* LoopingVideo.swift in Sources */,
+				FF88BDB8256EB24F00DF0E40 /* HudNode.swift in Sources */,
 				FF65EF1F255DE8D00013C2C4 /* UIExtensions.swift in Sources */,
 				FFF85E41255C73C100DFDDC2 /* HFGamePusher.swift in Sources */,
 				CEC78654256C1B51001E440F /* GameView.swift in Sources */,
