@@ -2,6 +2,8 @@ import SwiftUI
 import SpriteKit
 import SceneKit
 import SwiftVideoBackground
+import ObjectiveC
+import UIKit
 
 struct PlanetView : UIViewRepresentable {
     let planetID: Int!
@@ -11,7 +13,7 @@ struct PlanetView : UIViewRepresentable {
         // Make the sphere
         let planetSphere = SCNSphere.init(radius: 10)
         let planetNode = SCNNode(geometry: planetSphere)
-        if let planetMask = UIImage(named: "TestPlanetMask"){
+        if let planetMask = UIImage(named: "TestMask1"){
             planetSphere.firstMaterial?.diffuse.contents = planetMask
         }
         planet.rootNode.addChildNode(planetNode)
@@ -24,8 +26,10 @@ struct PlanetView : UIViewRepresentable {
         planet.rootNode.addChildNode(ambientLightNode)
 
         // retrieve the SCNView
-        let planet = SCNView()
-        return planet
+        let planetView = SCNView()
+        planetView.scene = planet
+        
+        return planetView
     }
 
     func updateUIView(_ scnView: SCNView, context: Context) {
@@ -39,4 +43,6 @@ struct PlanetView : UIViewRepresentable {
         scnView.backgroundColor = UIColor.clear
         
     }
+    
+    
 }
