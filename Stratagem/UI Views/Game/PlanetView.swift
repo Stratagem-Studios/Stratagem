@@ -4,11 +4,9 @@ import SceneKit
 import SwiftVideoBackground
 
 struct PlanetView : UIViewRepresentable {
-    @EnvironmentObject var gameVariables: GameVariables
-    
+    let planetID: Int!
+    @EnvironmentObject var gameVars: GameVariables
     let planet = SCNScene.init()
-    let planetID: Int
-    
     func makeUIView(context: Context) -> SCNView {
         // Make the sphere
         let planetSphere = SCNSphere.init(radius: 10)
@@ -40,13 +38,5 @@ struct PlanetView : UIViewRepresentable {
         planet.background.contents = UIColor.clear
         scnView.backgroundColor = UIColor.clear
         
-    }
-    
-    func generateCities() -> [CityLayout] {
-        var tempCityLayout: [CityLayout] = []
-        
-        // Code to setup the 
-        
-        return tempCityLayout
     }
 }

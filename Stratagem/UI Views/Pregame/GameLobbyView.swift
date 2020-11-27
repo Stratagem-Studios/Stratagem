@@ -79,7 +79,7 @@ public struct GameLobbyView: View {
 struct GameLobbyView_Preview: PreviewProvider {
     static var previews: some View {
         GameLobbyView()
-            .environmentObject(GameVariables(gameType: GameTypes.standard))
+            .environmentObject(GameVariables())
             .previewLayout(.fixed(width: 896, height: 414))
     }
 }

@@ -11,12 +11,10 @@ enum PlanetTypes {
 
 struct GalaxyView : UIViewRepresentable {
     @EnvironmentObject var gameVariables: GameVariables
-    var planets: [PlanetView]?
-    let galaxy = SCNScene.init()
+    var planets: [PlanetView] = []
+    var galaxyScene = SCNScene.init()
         
-    init(){
-        generatePlanets(gameType: gameVariables.gameType)
-    }
+
     func makeUIView(context: Context) -> SCNView {
         
         // add an ambient light to the scene
@@ -24,34 +22,20 @@ struct GalaxyView : UIViewRepresentable {
         ambientLightNode.light = SCNLight()
         ambientLightNode.light!.type = .ambient
         ambientLightNode.light!.color = UIColor.gray
-        galaxy.rootNode.addChildNode(ambientLightNode)
+        galaxyScene.rootNode.addChildNode(ambientLightNode)
         
         let galaxy = SCNView()
         return galaxy
     }
+    
     func updateUIView(_ scnView: SCNView, context: Context) {
-        scnView.scene = galaxy
+        scnView.scene = galaxyScene
         
         // allows the user to manipulate the camera
         scnView.allowsCameraControl = true
         
         // configure the view
-        galaxy.background.contents = UIColor.clear
-        scnView.backgroundColor = UIColor.clear
-    }
-    
-    func generatePlanets(gameType: GameTypes){
-        var numPlanets: Int
-        switch gameType {
-        case .standard:
-            numPlanets = 7
-        default:
-            numPlanets = 5
-        }
-        for i in 0...numPlanets {
-            let tempPlanet = PlanetView(planetID: i)
-            let tempCities = tempPlanet.generateCities()
-            gameVariables.galaxyLayout.append(PlanetLayout(planet: tempPlanet, cities: tempCities))
-        }
+        galaxyScene.background.contents = UIColor.blue
+        scnView.backgroundColor = UIColor.blue
     }
 }

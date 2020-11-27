@@ -10,7 +10,7 @@ import SpriteKit
 import SwiftVideoBackground
 
 public struct CityView: View {
-    @EnvironmentObject var gameVariables: GameVariables
+    @EnvironmentObject var gameVars: GameVariables
     @EnvironmentObject var playerVariables: PlayerVariables
     
     var scene: SKScene {
@@ -43,7 +43,6 @@ public struct CityView: View {
 struct CityView_Previews: PreviewProvider {
     static var previews: some View {
         CityView()
-            .environmentObject(GameVariables(gameType: GameTypes.standard))
             .previewLayout(.fixed(width: 896, height: 414))
     }
 }

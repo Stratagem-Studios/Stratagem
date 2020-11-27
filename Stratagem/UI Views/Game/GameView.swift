@@ -6,31 +6,25 @@ import SwiftUI
 struct GameView: View {
     @EnvironmentObject var playerVariables: PlayerVariables
     @EnvironmentObject var staticGameVariables: StaticGameVariables
+    @EnvironmentObject var gameVars: GameVariables
     
-    @StateObject var gameVariables = GameVariables(gameType: GameTypes.standard)
     var body: some View {
         ZStack {
-            Color.black.ignoresSafeArea()
-            switch (gameVariables.currentGameViewLevel){
+            switch (gameVars.currentGameViewLevel){
             case GameViewLevel.galaxy:
-                CityView()
+                gameVars.galaxy
             case GameViewLevel.planet:
-                CityView()
+                ZStack{
+                    gameVars.selectedPlanet
+                    Button(action: {
+                        gameVars.currentGameViewLevel = GameViewLevel.galaxy
+                    }) {
+                        Image("Galaxy")
+                    }
+                }
             case GameViewLevel.city:
                 CityView()
             }
-        }
-    }
-    
-    // Sets up the galaxy
-    init(gameType: GameTypes){
-        
-        // for now this doesnt do anything
-        switch gameType {
-        case .standard:
-            print("creating standard galaxy")
-        case .planetRush:
-            print("creating planetRush galaxy")
         }
     }
 }

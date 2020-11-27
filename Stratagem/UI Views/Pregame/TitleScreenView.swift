@@ -89,7 +89,7 @@ public struct TitleScreenView: View {
 struct TitleScreenView_Previews: PreviewProvider {
     static var previews: some View {
         TitleScreenView()
-            .environmentObject(GameVariables(gameType: GameTypes.standard))
+            .environmentObject(GameVariables())
             .previewLayout(.fixed(width: 896, height: 414))
     }
 }
