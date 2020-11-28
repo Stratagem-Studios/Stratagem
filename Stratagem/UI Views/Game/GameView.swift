@@ -33,8 +33,6 @@ struct GameView: View {
                         }
                 }
             }
-        }.onAppear(perform: {
-            gameVars.generateGalaxy()
-        })
+        }
     }
 }
