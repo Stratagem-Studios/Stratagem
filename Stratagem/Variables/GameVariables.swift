@@ -19,7 +19,7 @@ class GameVariables: ObservableObject {
     // Directly determines display
     @Published var selectedPlanet:PlanetView = PlanetView(planetID: 0)
     @Published var selectedCity: CityView = CityView()
-    @Published var currentGameViewLevel = GameViewLevel.city
+    @Published var currentGameViewLevel = GameViewLevel.planet
     
     @Published var galaxy: GalaxyView
     @Published var galaxyLayout: [PlanetLayout] = []
@@ -41,12 +41,31 @@ class GameVariables: ObservableObject {
 struct PlanetLayout {
     var planetID: Int!
     var planet: PlanetView!
-    var planetNode = SCNNode()
+    var planetNode: SCNNode?
+    
+    // Later when city count/position is random these will need to be procedurally generated
     var cities: [CityLayout] = []
+    let cityMapping = [
+        CGRect(x: 353, y: 153, width: 167, height: 90),
+        CGRect(x: 353, y: 183, width: 144, height: 99),
+        CGRect(x: 392, y: 148, width: 142, height: 82)
+    ]
+    
+    init(planetID: Int, planet: PlanetView) {
+        self.planet = planet
+        self.planetID = planetID
+        for i in 0...cityMapping.count {
+            cities.append(CityLayout())
+        }
+    }
 }
 
 struct CityLayout {
     var city: CityView
     // This struct will hold the cities variable/stats classes
+    
+    init() {
+        city = CityView()
+    }
 }
 

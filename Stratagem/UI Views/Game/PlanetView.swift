@@ -8,7 +8,10 @@ import UIKit
 struct PlanetView : UIViewRepresentable {
     let planetID: Int!
     @EnvironmentObject var gameVars: GameVariables
+    
     let planet = SCNScene.init()
+    var planetView = SCNView()
+    
     func makeUIView(context: Context) -> SCNView {
         // Make the sphere
         let planetSphere = SCNSphere.init(radius: 10)
@@ -24,10 +27,11 @@ struct PlanetView : UIViewRepresentable {
         ambientLightNode.light!.type = .ambient
         ambientLightNode.light!.color = UIColor.gray
         planet.rootNode.addChildNode(ambientLightNode)
-
-        // retrieve the SCNView
-        let planetView = SCNView()
+        
         planetView.scene = planet
+        
+        let tapGesture = UITapGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.handleTap(_:)))
+        planetView.addGestureRecognizer(tapGesture)
         
         return planetView
     }
@@ -44,5 +48,37 @@ struct PlanetView : UIViewRepresentable {
         
     }
     
+    func makeCoordinator() -> Coordinator {
+        Coordinator(planetView,gameVars: gameVars, planetID: planetID)
+    }
     
+    class Coordinator: NSObject {
+        private let view: SCNView
+        let gameVars: GameVariables
+        let planetID: Int
+        init(_ view: SCNView, gameVars: GameVariables, planetID: Int) {
+            self.view = view
+            self.gameVars = gameVars
+            self.planetID = planetID
+            super.init()
+        }
+        
+        @objc func handleTap(_ gestureRecognize: UIGestureRecognizer) {
+            // check what nodes are tapped
+            let p = gestureRecognize.location(in: view)
+            let hitResults = view.hitTest(p, options: [:])
+            
+            // check that we clicked on at least one object
+            if hitResults.count > 0 {
+                let result: SCNHitTestResult = hitResults[0]
+                let planetLayout = gameVars.galaxyLayout[planetID]
+                for i in 0...planetLayout.cityMapping.count - 1 {
+                    if planetLayout.cityMapping[i].contains(CGPoint(x: p.x, y: p.y)){
+                        gameVars.selectedCity = gameVars.galaxyLayout[planetID].cities[i].city
+                        gameVars.currentGameViewLevel = GameViewLevel.city
+                    }
+                }
+            }
+        }
+    }
 }
