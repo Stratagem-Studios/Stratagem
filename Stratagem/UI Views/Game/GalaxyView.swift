@@ -14,7 +14,7 @@ struct GalaxyView : View {
         Image("Galaxy")
             .onTapGesture {
                 print("g")
-                gameVars.currentGameViewLevel = .planet
+                gameVars.currentGameViewLevel = .PLANET
             }
     }
 }
