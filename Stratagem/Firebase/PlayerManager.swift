@@ -14,7 +14,7 @@ public struct PlayerManager {
             if snapshot.hasChild(id) {
                 if let value = snapshot.value as? [String: Any] {
                     playerVariables.playerName = value[id] as! String
-                    self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(playerStates.TITLESCREEN.rawValue)
+                    self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(PlayerStates.TITLESCREEN.rawValue)
                     handleDisconnect()
                 }
             } else {
@@ -44,7 +44,7 @@ public struct PlayerManager {
                     self.ref.child("id_to_username").child(id).setValue(enteredUsername)
                     playerVariables.playerName = enteredUsername
                     handleDisconnect()
-                    self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(playerStates.TITLESCREEN.rawValue)
+                    self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(PlayerStates.TITLESCREEN.rawValue)
                 } else {
                     playerVariables.inlineErrorMessage = "Username must be alphanumeric and must not contain spaces"
                 }
@@ -60,7 +60,7 @@ public struct PlayerManager {
             guard let connected = snapshot.value as? Bool, connected else { return }
             
             // When this device disconnects, set as offline
-            playerStatusRef.onDisconnectSetValue(playerStates.OFFLINE.rawValue)
+            playerStatusRef.onDisconnectSetValue(PlayerStates.OFFLINE.rawValue)
             self.ref.child("all_users").child(playerVariables.playerName).child("last_online").onDisconnectSetValue(ServerValue.timestamp())
             
             // Player is connected again
@@ -81,24 +81,24 @@ public struct PlayerManager {
                                     LFGameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
                                 }
                                 
-                                if gameDict["game_status"] as! String == gameStates.LOBBY.rawValue {
-                                    playerStatusRef.setValue(playerStates.LOBBY.rawValue)
+                                if gameDict["game_status"] as! String == GameStates.LOBBY.rawValue {
+                                    playerStatusRef.setValue(PlayerStates.LOBBY.rawValue)
                                     playerVariables.currentView = .GameLobbyView
-                                } else if  gameDict["game_status"] as! String == gameStates.GAME.rawValue {
-                                    playerStatusRef.setValue(playerStates.GAME.rawValue)
-                                    playerVariables.currentView = .CityView
+                                } else if  gameDict["game_status"] as! String == GameStates.GAME.rawValue {
+                                    playerStatusRef.setValue(PlayerStates.GAME.rawValue)
+                                    playerVariables.currentView = .GameView
                                 }
                             })
                         } else {
                             // Game removed
-                            playerStatusRef.setValue(playerStates.TITLESCREEN.rawValue)
+                            playerStatusRef.setValue(PlayerStates.TITLESCREEN.rawValue)
                             ref.child("all_users").child(playerVariables.playerName).child("game_id").removeValue()
                             resetPlayer()
                         }
                     })
                 } else {
                     // Not in a game
-                    playerStatusRef.setValue(playerStates.TITLESCREEN.rawValue)
+                    playerStatusRef.setValue(PlayerStates.TITLESCREEN.rawValue)
                     ref.child("all_users").child(playerVariables.playerName).child("game_id").removeValue()
                     resetPlayer()
                 }
@@ -109,7 +109,7 @@ public struct PlayerManager {
     
     public func resetPlayer() {
         LFGameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).stopListening()
-        playerVariables.currentView = viewStates.TitleScreenView
+        playerVariables.currentView = ViewStates.TitleScreenView
         staticGameVariables.reset()
     }
 }
