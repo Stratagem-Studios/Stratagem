@@ -142,9 +142,9 @@ public class City {
                     }
                 }
                 let avgTerrainHeight = total / (8 * 8)
-                if avgTerrainHeight <= 0.3 {
+                if avgTerrainHeight <= 0.4 {
                     rectTerrain[row][col] = 7
-                } else if avgTerrainHeight <= 0.35 {
+                } else if avgTerrainHeight <= 0.45 {
                     rectTerrain[row][col] = 6
                 } else if avgTerrainHeight <= 1 {
                     rectTerrain[row][col] = 1
@@ -154,15 +154,12 @@ public class City {
         
         var cityTerrain: [[Int]] = Array(repeating: Array(repeating: 0, count: cityHeight), count: cityWidth)
         for row in 0..<cityWidth {
-            var currentCoord = CGPoint(x: row, y: abs(16 - row))
+            let row2 = row * 2
             
-            for col in 0..<cityHeight {
-                cityTerrain[row][col] = rectTerrain[Int(currentCoord.x)][Int(currentCoord.y)]
-                
-                if col % 2 == 0 {
-                    currentCoord.y += 1
-                } else {
-                    currentCoord.x += 1
+            for i in 0..<2 {
+                for col in 0..<(cityHeight / 2) {
+                    let col2 = col * 2 + i
+                    cityTerrain[row][col2] = rectTerrain[row2][col]
                 }
             }
         }
