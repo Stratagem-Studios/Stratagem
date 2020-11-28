@@ -1,6 +1,8 @@
 // Stores variables for high-frequency game updates
 
 import Combine
+import SceneKit
+import ObjectiveC
 
 enum GameViewLevel {
     case galaxy, planet, city
@@ -11,40 +13,59 @@ enum GameTypes {
 }
 
 class GameVariables: ObservableObject {
-    @Published var currentGameViewLevel = GameViewLevel.galaxy
-    @Published var galaxy: GalaxyView?
-    @Published var planets:[PlanetView]?
+    // Used for setup
+    @Published var gameType: GameTypes = GameTypes.standard
     
-    init() {
-        
-        
-        
-// All of the below is for resource generation and may be moved to a new class
-        for a in resourceDefaultStats {
-            gameResources.append(resourceStatsList(type: a[0] as! resourceTypes, timerMax: a[1] as! Double, timerLive: a[2] as! Double))
+    // Directly determines display
+    @Published var selectedPlanet:PlanetView = PlanetView(planetID: 0)
+    @Published var selectedCity: CityView = CityView()
+    @Published var currentGameViewLevel = GameViewLevel.planet
+    
+    @Published var galaxy: GalaxyView
+    @Published var galaxyLayout: [PlanetLayout] = []
+    
+    func generateGalaxy(){
+        var numPlanets: Int
+        switch gameType {
+        case .standard:
+            numPlanets = 7
+        default:
+            numPlanets = 5
+        }
+        for i in 0...numPlanets { galaxyLayout.append(PlanetLayout(planetID: i, planet: PlanetView(planetID: i))) }
+    }
+    
+    init(){galaxy = GalaxyView()} /// generates our first galaxy. generateGalaxy can be executed again to create new galaxy
+}
+
+struct PlanetLayout {
+    var planetID: Int!
+    var planet: PlanetView!
+    var planetNode: SCNNode?
+    
+    // Later when city count/position is random these will need to be procedurally generated
+    var cities: [CityLayout] = []
+    let cityMapping = [
+        CGRect(x: 353, y: 153, width: 167, height: 90),
+        CGRect(x: 353, y: 183, width: 144, height: 99),
+        CGRect(x: 392, y: 148, width: 142, height: 82)
+    ]
+    
+    init(planetID: Int, planet: PlanetView) {
+        self.planet = planet
+        self.planetID = planetID
+        for i in 0...cityMapping.count {
+            cities.append(CityLayout())
         }
     }
-    // Sets up the gameResourceList to contain all resource values
-    var gameResources: [resourceStatsList] = []
-}
-// enum keeps track of all possible materials
-// Not sure if nessasary
-enum resourceTypes {
-    case metal, gold
 }
 
-// Materials follow this pattern
-// [enum, timerMax, timerLive, actual count]
-var resourceDefaultStats = [
-    [resourceTypes.metal, 2.0, 2.0, 0],
-    [resourceTypes.gold, 7.0, 7.0, 0]
-]
-
-struct resourceStatsList {
-    var type: resourceTypes
-    var timerMax: Double
-    var timerLive: Double
-    var quantity = 0
+struct CityLayout {
+    var city: CityView
+    // This struct will hold the cities variable/stats classes
     
-    
+    init() {
+        city = CityView()
+    }
 }
+

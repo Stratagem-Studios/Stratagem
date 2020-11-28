@@ -54,7 +54,7 @@ public struct JoinGameView: View {
 struct JoinGameView_Preview: PreviewProvider {
     static var previews: some View {
         JoinGameView()
-            .environmentObject(GameVariables())
+//            .environmentObject(GameVariables())
             .previewLayout(.fixed(width: 896, height: 414))
     }
 }

@@ -4,6 +4,7 @@ import SpriteKit
 struct ContentView: View {
     @EnvironmentObject var playerVariables: PlayerVariables
     @EnvironmentObject var staticGameVariables: StaticGameVariables
+    @EnvironmentObject var gameVars: GameVariables
     
     var body: some View {
         ZStack {
@@ -22,10 +23,13 @@ struct ContentView: View {
                 GameLobbyView()
                     .transition(.slide)
             case .CityView:
-                CityView()
+                // just temp
+                
+//                GalaxyView()
+                GameView()
+                    .edgesIgnoringSafeArea(.all)
             case .GameView:
-                GameView(gameType: GameTypes.standard)
-                        .edgesIgnoringSafeArea(.all)
+                GameView()
             }
             
             if playerVariables.errorMessage != "" {

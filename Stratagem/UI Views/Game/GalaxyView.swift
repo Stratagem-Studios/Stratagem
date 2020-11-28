@@ -10,17 +10,13 @@ enum PlanetTypes {
 }
 
 struct GalaxyView : UIViewRepresentable {
+    @EnvironmentObject var gameVariables: GameVariables
+    var planets: [PlanetView] = []
     
-    var isDisplayingplanet = false
-    var planetToDisplay: PlanetView?
-    var planets: [PlanetView]?
-    
-    let galaxy = SCNScene.init()
-    var gameType: GameTypes
+    var galaxyScene = SCNScene.init()
+    var galaxyView = SCNView()
         
-    init(gameType: GameTypes) {
-        self.gameType = gameType
-    }
+
     func makeUIView(context: Context) -> SCNView {
         
         // add an ambient light to the scene
@@ -28,34 +24,63 @@ struct GalaxyView : UIViewRepresentable {
         ambientLightNode.light = SCNLight()
         ambientLightNode.light!.type = .ambient
         ambientLightNode.light!.color = UIColor.gray
-        galaxy.rootNode.addChildNode(ambientLightNode)
-        
-        let galaxy = SCNView()
-        return galaxy
+        galaxyScene.rootNode.addChildNode(ambientLightNode)
+        galaxyView.scene = galaxyScene
+        return galaxyView
     }
+    
     func updateUIView(_ scnView: SCNView, context: Context) {
-        if isDisplayingplanet{
-        } else {
-            scnView.scene = galaxy
-            
-            // allows the user to manipulate the camera
-            scnView.allowsCameraControl = true
-            
-            // configure the view
-            galaxy.background.contents = UIColor.clear
-            scnView.backgroundColor = UIColor.clear
-        }
-    }
-    
-    func getPlanet() -> some View {
-        return planetToDisplay
-    }
-    
-    func getCity() -> some View {
-        return planetToDisplay
-    }
-    
-    func generatePlanets(n: Int){
+        scnView.scene = galaxyScene
         
+        // allows the user to manipulate the camera
+        scnView.allowsCameraControl = true
+        
+        // configure the view
+        galaxyScene.background.contents = UIColor.blue
+        scnView.backgroundColor = UIColor.blue
     }
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(galaxyView)
+    }
+    
+    class Coordinator: NSObject {
+            private let view: SCNView
+            init(_ view: SCNView) {
+                self.view = view
+                super.init()
+            }
+            
+            @objc func handleTap(_ gestureRecognize: UIGestureRecognizer) {
+                // check what nodes are tapped
+                let p = gestureRecognize.location(in: view)
+                let hitResults = view.hitTest(p, options: [:])
+                
+                // check that we clicked on at least one object
+                if hitResults.count > 0 {
+                    
+                    // retrieved the first clicked object
+                    let result = hitResults[0]
+             
+                    // get material for selected geometry element
+                    let material = result.node.geometry!.materials[(result.geometryIndex)]
+                    
+                    // highlight it
+                    SCNTransaction.begin()
+                    SCNTransaction.animationDuration = 0.5
+                    
+                    // on completion - unhighlight
+                    SCNTransaction.completionBlock = {
+                        SCNTransaction.begin()
+                        SCNTransaction.animationDuration = 0.5
+                        
+                        material.emission.contents = UIColor.black
+                      
+                        SCNTransaction.commit()
+                    }
+                    material.emission.contents = UIColor.green
+                    SCNTransaction.commit()
+                }
+            }
+        }
 }
