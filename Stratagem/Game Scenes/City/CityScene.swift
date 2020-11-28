@@ -7,7 +7,6 @@ public class CityScene: SKTiledScene {
     private var cityEditState = CityEditStates.NONE
     
     private let hudNode = HudNode()
-    private var borderRectNode = SKShapeNode()
     
     public override func didMove(to view: SKView) {
         city.initCity(cityName: "City Name")
@@ -15,8 +14,8 @@ public class CityScene: SKTiledScene {
         super.didMove(to: view)
         super.setup(tmxFile: "City")
         cameraNode.allowGestures = true
-        cameraNode.setCameraZoom(0.5)
-        //cameraNode.setZoomConstraints(minimum: 0.44, maximum: 0.75)
+        cameraNode.setCameraZoom(0.4)
+        cameraNode.setZoomConstraints(minimum: 0.4, maximum: 0.75)
         cameraNode.showOverlay = true
         
         city.loadTilemap(tilemap)
@@ -67,9 +66,9 @@ public class CityScene: SKTiledScene {
                 if let tile = tile as? SKTile {
                     switch cityEditState {
                     case .NONE:
-                        print(tile.tileCoord)
+                        print(tile)
                     case .BUILD:
-                        city.changeTileAtLoc(firstTile: tile, secondTileID: 8)
+                        city.changeTileAtLoc(firstTile: tile, secondTileID: 4)
                     case .DESTROY:
                         city.changeTileAtLoc(firstTile: tile, secondTileID: 1)
                     }

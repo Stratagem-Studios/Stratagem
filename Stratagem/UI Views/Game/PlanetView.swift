@@ -2,16 +2,21 @@ import SwiftUI
 import SpriteKit
 import SceneKit
 import SwiftVideoBackground
+import ObjectiveC
+import UIKit
 
 struct PlanetView : UIViewRepresentable {
-    @EnvironmentObject var playerVariables: PlayerVariables
+    let planetID: Int!
+    @EnvironmentObject var gameVars: GameVariables
+    
     let planet = SCNScene.init()
+    var planetView = SCNView()
     
     func makeUIView(context: Context) -> SCNView {
         // Make the sphere
         let planetSphere = SCNSphere.init(radius: 10)
         let planetNode = SCNNode(geometry: planetSphere)
-        if let planetMask = UIImage(named: "TestPlanetMask"){
+        if let planetMask = UIImage(named: "TestMask1"){
             planetSphere.firstMaterial?.diffuse.contents = planetMask
         }
         planet.rootNode.addChildNode(planetNode)
@@ -22,10 +27,13 @@ struct PlanetView : UIViewRepresentable {
         ambientLightNode.light!.type = .ambient
         ambientLightNode.light!.color = UIColor.gray
         planet.rootNode.addChildNode(ambientLightNode)
-
-        // retrieve the SCNView
-        let planet = SCNView()
-        return planet
+        
+        planetView.scene = planet
+        
+        let tapGesture = UITapGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.handleTap(_:)))
+        planetView.addGestureRecognizer(tapGesture)
+        
+        return planetView
     }
 
     func updateUIView(_ scnView: SCNView, context: Context) {
@@ -39,10 +47,38 @@ struct PlanetView : UIViewRepresentable {
         scnView.backgroundColor = UIColor.clear
         
     }
-}
-
-struct PlanetView_Previews : PreviewProvider {
-    static var previews: some View {
-        PlanetView()
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(planetView,gameVars: gameVars, planetID: planetID)
+    }
+    
+    class Coordinator: NSObject {
+        private let view: SCNView
+        let gameVars: GameVariables
+        let planetID: Int
+        init(_ view: SCNView, gameVars: GameVariables, planetID: Int) {
+            self.view = view
+            self.gameVars = gameVars
+            self.planetID = planetID
+            super.init()
+        }
+        
+        @objc func handleTap(_ gestureRecognize: UIGestureRecognizer) {
+            // check what nodes are tapped
+            let p = gestureRecognize.location(in: view)
+            let hitResults = view.hitTest(p, options: [:])
+            
+            // check that we clicked on at least one object
+            if hitResults.count > 0 {
+                let result: SCNHitTestResult = hitResults[0]
+                let planetLayout = gameVars.galaxyLayout[planetID]
+                for i in 0...planetLayout.cityMapping.count - 1 {
+                    if planetLayout.cityMapping[i].contains(CGPoint(x: p.x, y: p.y)){
+                        gameVars.selectedCity = gameVars.galaxyLayout[planetID].cities[i].city
+                        gameVars.currentGameViewLevel = GameViewLevel.city
+                    }
+                }
+            }
+        }
     }
 }

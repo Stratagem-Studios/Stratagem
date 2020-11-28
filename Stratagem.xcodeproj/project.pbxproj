@@ -10,17 +10,15 @@
 		1E10A050010A84F42517D3F9 /* Pods_Stratagem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500AA38F10AA677CBCF94516 /* Pods_Stratagem.framework */; };
 		CE1004BF256856BC0077941A /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004BE256856BC0077941A /* PlanetView.swift */; };
 		CE1004E12569E1B70077941A /* GalaxyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004E02569E1B70077941A /* GalaxyView.swift */; };
+		CEB7FD1E2570F8AF00F10E94 /* CityScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7FD1D2570F8AE00F10E94 /* CityScene.swift */; };
 		CEC78654256C1B51001E440F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC78653256C1B51001E440F /* GameView.swift */; };
 		CECA7740255E3F1700CE9F69 /* GameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA773F255E3F1700CE9F69 /* GameVariables.swift */; };
-		CECA7744255E40FF00CE9F69 /* GameTiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = CECA7742255E40FF00CE9F69 /* GameTiles.sks */; };
 		CECA7755255E469E00CE9F69 /* GameBoards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA7754255E469E00CE9F69 /* GameBoards.swift */; };
 		FF012D3B2551B0420017E288 /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF012D3A2551B0420017E288 /* TitleText.swift */; };
 		FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */; };
 		FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BCC254F3F8300E9FA7C /* ContentView.swift */; };
 		FF078BCF254F3F8800E9FA7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF078BCE254F3F8800E9FA7C /* Assets.xcassets */; };
 		FF078BD2254F3F8800E9FA7C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF078BD1254F3F8800E9FA7C /* Preview Assets.xcassets */; };
-		FF078BDB254F3FBE00E9FA7C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BDA254F3FBE00E9FA7C /* GameScene.swift */; };
-		FF078BE2254F3FFE00E9FA7C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF078BE1254F3FFE00E9FA7C /* GameScene.sks */; };
 		FF0857492550F39300F0F220 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0857482550F39300F0F220 /* ButtonStyles.swift */; };
 		FF08576D2550FC5100F0F220 /* Montserrat-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08575B2550FC4E00F0F220 /* Montserrat-ExtraLightItalic.ttf */; };
 		FF08576E2550FC5100F0F220 /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF08575C2550FC4E00F0F220 /* Montserrat-ExtraLight.ttf */; };
@@ -64,7 +62,6 @@
 		FF8C4E6C254FBCBD00522756 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		FF96B533255DCB6E00E5F8D4 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96B532255DCB6E00E5F8D4 /* VisualEffectView.swift */; };
 		FF9D7D69256574890076C8DF /* HFGameListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9D7D68256574890076C8DF /* HFGameListener.swift */; };
-		FFA3FFA725661BFB00CFA406 /* CityScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA3FFA625661BFB00CFA406 /* CityScene.swift */; };
 		FFA3FFB925662A9500CFA406 /* Prototype.tmx in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFB825662A9500CFA406 /* Prototype.tmx */; };
 		FFA3FFBC25662C0B00CFA406 /* PrototypePack.tsx in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFBB25662C0B00CFA406 /* PrototypePack.tsx */; };
 		FFA3FFC525662D7F00CFA406 /* doorClosed_S.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFBF25662D7D00CFA406 /* doorClosed_S.png */; };
@@ -91,9 +88,9 @@
 		5397A0390D7C1A2EC8CCF6F0 /* Pods-Stratagem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stratagem.debug.xcconfig"; path = "Target Support Files/Pods-Stratagem/Pods-Stratagem.debug.xcconfig"; sourceTree = "<group>"; };
 		CE1004BE256856BC0077941A /* PlanetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		CE1004E02569E1B70077941A /* GalaxyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyView.swift; sourceTree = "<group>"; };
+		CEB7FD1D2570F8AE00F10E94 /* CityScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CityScene.swift; path = "Stratagem/Game Scenes/City/CityScene.swift"; sourceTree = SOURCE_ROOT; };
 		CEC78653256C1B51001E440F /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		CECA773F255E3F1700CE9F69 /* GameVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVariables.swift; sourceTree = "<group>"; };
-		CECA7742255E40FF00CE9F69 /* GameTiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameTiles.sks; sourceTree = "<group>"; };
 		CECA7754255E469E00CE9F69 /* GameBoards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoards.swift; sourceTree = "<group>"; };
 		E54BF43E273D93EB0EDE54FC /* Pods-Stratagem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stratagem.release.xcconfig"; path = "Target Support Files/Pods-Stratagem/Pods-Stratagem.release.xcconfig"; sourceTree = "<group>"; };
 		FF012D3A2551B0420017E288 /* TitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
@@ -103,8 +100,6 @@
 		FF078BCE254F3F8800E9FA7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF078BD1254F3F8800E9FA7C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FF078BD3254F3F8800E9FA7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF078BDA254F3FBE00E9FA7C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		FF078BE1254F3FFE00E9FA7C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		FF0857482550F39300F0F220 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		FF08575B2550FC4E00F0F220 /* Montserrat-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		FF08575C2550FC4E00F0F220 /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
@@ -149,7 +144,6 @@
 		FF8C4E6B254FBCBD00522756 /* SaveData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SaveData.xcdatamodel; sourceTree = "<group>"; };
 		FF96B532255DCB6E00E5F8D4 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		FF9D7D68256574890076C8DF /* HFGameListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFGameListener.swift; sourceTree = "<group>"; };
-		FFA3FFA625661BFB00CFA406 /* CityScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityScene.swift; sourceTree = "<group>"; };
 		FFA3FFB825662A9500CFA406 /* Prototype.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Prototype.tmx; sourceTree = "<group>"; };
 		FFA3FFBB25662C0B00CFA406 /* PrototypePack.tsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrototypePack.tsx; sourceTree = "<group>"; };
 		FFA3FFBF25662D7D00CFA406 /* doorClosed_S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doorClosed_S.png; sourceTree = "<group>"; };
@@ -331,7 +325,6 @@
 		FF88BDA2256E0B4B00DF0E40 /* City */ = {
 			isa = PBXGroup;
 			children = (
-				FFA3FFA625661BFB00CFA406 /* CityScene.swift */,
 				FF88BDB7256EB24F00DF0E40 /* HudNode.swift */,
 				FF1B13D6256B0B81005158C9 /* City.swift */,
 				FF88BDA3256E0B7B00DF0E40 /* CityTile.swift */,
@@ -396,9 +389,6 @@
 			children = (
 				FF88BDA2256E0B4B00DF0E40 /* City */,
 				FFA55AC8256C6DA500EB12D9 /* Helpers */,
-				FF078BE1254F3FFE00E9FA7C /* GameScene.sks */,
-				FF078BDA254F3FBE00E9FA7C /* GameScene.swift */,
-				CECA7742255E40FF00CE9F69 /* GameTiles.sks */,
 			);
 			path = "Game Scenes";
 			sourceTree = "<group>";
@@ -418,9 +408,10 @@
 			isa = PBXGroup;
 			children = (
 				CEC78653256C1B51001E440F /* GameView.swift */,
-				FF40F4702559CF310036E4C7 /* CityView.swift */,
-				CE1004BE256856BC0077941A /* PlanetView.swift */,
 				CE1004E02569E1B70077941A /* GalaxyView.swift */,
+				CE1004BE256856BC0077941A /* PlanetView.swift */,
+				FF40F4702559CF310036E4C7 /* CityView.swift */,
+				CEB7FD1D2570F8AE00F10E94 /* CityScene.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -540,7 +531,6 @@
 				FF08577D2550FC5100F0F220 /* Montserrat-BlackItalic.ttf in Resources */,
 				FF0857722550FC5100F0F220 /* Montserrat-LightItalic.ttf in Resources */,
 				FFA3FFC625662D7F00CFA406 /* doorwayRight_S.png in Resources */,
-				CECA7744255E40FF00CE9F69 /* GameTiles.sks in Resources */,
 				FF0857772550FC5100F0F220 /* Montserrat-Black.ttf in Resources */,
 				FF078BCF254F3F8800E9FA7C /* Assets.xcassets in Resources */,
 				FF2CF3792571C39E00B71DB8 /* block_grass.png in Resources */,
@@ -616,12 +606,11 @@
 				FFF2D86C255B88F800CE2990 /* GameLobbyView.swift in Sources */,
 				FF88BDA7256E0BC100DF0E40 /* CityBuilding.swift in Sources */,
 				FF40F4712559CF310036E4C7 /* CityView.swift in Sources */,
-				FF078BDB254F3FBE00E9FA7C /* GameScene.swift in Sources */,
 				FFFCFAB9255B296400D03284 /* AppDelegate.swift in Sources */,
 				FF0857492550F39300F0F220 /* ButtonStyles.swift in Sources */,
+				CEB7FD1E2570F8AF00F10E94 /* CityScene.swift in Sources */,
 				FF3789AB255F823B00D30F66 /* ErrorPopup.swift in Sources */,
 				CECA7740255E3F1700CE9F69 /* GameVariables.swift in Sources */,
-				FFA3FFA725661BFB00CFA406 /* CityScene.swift in Sources */,
 				FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */,
 				FF96B533255DCB6E00E5F8D4 /* VisualEffectView.swift in Sources */,
 				FFF85E3E255C73B700DFDDC2 /* LFGameListener.swift in Sources */,
