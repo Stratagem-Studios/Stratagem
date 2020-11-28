@@ -32,10 +32,16 @@ class GameVariables: ObservableObject {
         default:
             numPlanets = 5
         }
-        for i in 0...numPlanets { galaxyLayout.append(PlanetLayout(planetID: i, planet: PlanetView(planetID: i))) }
+        for i in 0...numPlanets {
+            galaxyLayout.append(PlanetLayout(planetID: i, planet: PlanetView(planetID: i)))
+            galaxyLayout[i].planetNode = galaxyLayout[i].planet.planetNode
+            galaxy.galaxyScene.rootNode.addChildNode(galaxyLayout[i].planet.planetNode)
+            
+            // This can be changed later to reflect the position of the planets in a galaxy
+            galaxy.galaxyScene.rootNode.childNodes[i].position.x = Float(i) * 25.0
+        }
     }
-    
-    init(){galaxy = GalaxyView()} /// generates our first galaxy. generateGalaxy can be executed again to create new galaxy
+    init(){galaxy = GalaxyView();} /// generates our first galaxy. generateGalaxy can be executed again to create new galaxy
 }
 
 struct PlanetLayout {

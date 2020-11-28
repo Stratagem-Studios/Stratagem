@@ -10,8 +10,7 @@ enum PlanetTypes {
 }
 
 struct GalaxyView : UIViewRepresentable {
-    @EnvironmentObject var gameVariables: GameVariables
-    var planets: [PlanetView] = []
+    @EnvironmentObject var gameVars: GameVariables
     
     var galaxyScene = SCNScene.init()
     var galaxyView = SCNView()
@@ -26,6 +25,8 @@ struct GalaxyView : UIViewRepresentable {
         ambientLightNode.light!.color = UIColor.gray
         galaxyScene.rootNode.addChildNode(ambientLightNode)
         galaxyView.scene = galaxyScene
+        let tapGesture = UITapGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.handleTap(_:)))
+        galaxyView.addGestureRecognizer(tapGesture)
         return galaxyView
     }
     
@@ -41,46 +42,38 @@ struct GalaxyView : UIViewRepresentable {
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(galaxyView)
+        Coordinator(galaxyView, gameVars: self.gameVars)
     }
     
     class Coordinator: NSObject {
-            private let view: SCNView
-            init(_ view: SCNView) {
-                self.view = view
-                super.init()
-            }
+        private let view: SCNView
+        private let gameVars: GameVariables
+        init(_ view: SCNView, gameVars: GameVariables) {
+            self.view = view
+            self.gameVars = gameVars
+            super.init()
+        }
+        
+        @objc func handleTap(_ gestureRecognize: UIGestureRecognizer) {
+            // check what nodes are tapped
+            let p = gestureRecognize.location(in: view)
+            let hitResults = view.hitTest(p, options: [:])
             
-            @objc func handleTap(_ gestureRecognize: UIGestureRecognizer) {
-                // check what nodes are tapped
-                let p = gestureRecognize.location(in: view)
-                let hitResults = view.hitTest(p, options: [:])
+            // check that we clicked on at least one object
+            if hitResults.count > 0 {
                 
-                // check that we clicked on at least one object
-                if hitResults.count > 0 {
-                    
-                    // retrieved the first clicked object
-                    let result = hitResults[0]
-             
-                    // get material for selected geometry element
-                    let material = result.node.geometry!.materials[(result.geometryIndex)]
-                    
-                    // highlight it
-                    SCNTransaction.begin()
-                    SCNTransaction.animationDuration = 0.5
-                    
-                    // on completion - unhighlight
-                    SCNTransaction.completionBlock = {
-                        SCNTransaction.begin()
-                        SCNTransaction.animationDuration = 0.5
-                        
-                        material.emission.contents = UIColor.black
-                      
-                        SCNTransaction.commit()
+                // retrieved the first clicked object
+                let result = hitResults[0]
+         
+                // get material for selected geometry element
+                for i in gameVars.galaxyLayout {
+                    if i.planetNode == result.node {
+                        print("e")
+                        gameVars.selectedPlanet = i.planet
+                        gameVars.currentGameViewLevel = GameViewLevel.planet
                     }
-                    material.emission.contents = UIColor.green
-                    SCNTransaction.commit()
                 }
             }
         }
+    }
 }
