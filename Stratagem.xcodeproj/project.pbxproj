@@ -42,6 +42,10 @@
 		FF0CABA1256464BF009681C8 /* starfield.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FF0CABA0256464BE009681C8 /* starfield.mp4 */; };
 		FF1B13D7256B0B81005158C9 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1B13D6256B0B81005158C9 /* City.swift */; };
 		FF1B13EA256B67DB005158C9 /* Base.tmx in Resources */ = {isa = PBXBuildFile; fileRef = FF1B13E9256B67DB005158C9 /* Base.tmx */; };
+		FF2CF3762571C39E00B71DB8 /* building.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2CF3722571C39E00B71DB8 /* building.png */; };
+		FF2CF3772571C39E00B71DB8 /* block_water.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2CF3732571C39E00B71DB8 /* block_water.png */; };
+		FF2CF3782571C39E00B71DB8 /* block_sand.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2CF3742571C39E00B71DB8 /* block_sand.png */; };
+		FF2CF3792571C39E00B71DB8 /* block_grass.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2CF3752571C39E00B71DB8 /* block_grass.png */; };
 		FF33849325599EB9000EF945 /* JoinGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33849225599EB9000EF945 /* JoinGameView.swift */; };
 		FF33849F2559A751000EF945 /* TitleScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33849E2559A751000EF945 /* TitleScreenView.swift */; };
 		FF3789AB255F823B00D30F66 /* ErrorPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3789AA255F823B00D30F66 /* ErrorPopup.swift */; };
@@ -62,9 +66,7 @@
 		FFA3FFBC25662C0B00CFA406 /* PrototypePack.tsx in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFBB25662C0B00CFA406 /* PrototypePack.tsx */; };
 		FFA3FFC525662D7F00CFA406 /* doorClosed_S.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFBF25662D7D00CFA406 /* doorClosed_S.png */; };
 		FFA3FFC625662D7F00CFA406 /* doorwayRight_S.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFC025662D7E00CFA406 /* doorwayRight_S.png */; };
-		FFA3FFC725662D7F00CFA406 /* block_N.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFC125662D7E00CFA406 /* block_N.png */; };
 		FFA3FFC825662D7F00CFA406 /* blockAngle_S.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFC225662D7E00CFA406 /* blockAngle_S.png */; };
-		FFA3FFC925662D7F00CFA406 /* floor_E.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFC325662D7E00CFA406 /* floor_E.png */; };
 		FFA3FFCA25662D7F00CFA406 /* crate_S.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFC425662D7F00CFA406 /* crate_S.png */; };
 		FFA55AC5256C6D9700EB12D9 /* Perlin2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA55AC4256C6D9700EB12D9 /* Perlin2D.swift */; };
 		FFAD01DE255AE84600BA2907 /* CreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD01DD255AE84600BA2907 /* CreateGameView.swift */; };
@@ -121,6 +123,10 @@
 		FF0CABA0256464BE009681C8 /* starfield.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = starfield.mp4; sourceTree = "<group>"; };
 		FF1B13D6256B0B81005158C9 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		FF1B13E9256B67DB005158C9 /* Base.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Base.tmx; sourceTree = "<group>"; };
+		FF2CF3722571C39E00B71DB8 /* building.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = building.png; sourceTree = "<group>"; };
+		FF2CF3732571C39E00B71DB8 /* block_water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_water.png; sourceTree = "<group>"; };
+		FF2CF3742571C39E00B71DB8 /* block_sand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_sand.png; sourceTree = "<group>"; };
+		FF2CF3752571C39E00B71DB8 /* block_grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_grass.png; sourceTree = "<group>"; };
 		FF33849225599EB9000EF945 /* JoinGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameView.swift; sourceTree = "<group>"; };
 		FF33849E2559A751000EF945 /* TitleScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScreenView.swift; sourceTree = "<group>"; };
 		FF3789AA255F823B00D30F66 /* ErrorPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPopup.swift; sourceTree = "<group>"; };
@@ -142,9 +148,7 @@
 		FFA3FFBB25662C0B00CFA406 /* PrototypePack.tsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrototypePack.tsx; sourceTree = "<group>"; };
 		FFA3FFBF25662D7D00CFA406 /* doorClosed_S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doorClosed_S.png; sourceTree = "<group>"; };
 		FFA3FFC025662D7E00CFA406 /* doorwayRight_S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doorwayRight_S.png; sourceTree = "<group>"; };
-		FFA3FFC125662D7E00CFA406 /* block_N.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_N.png; sourceTree = "<group>"; };
 		FFA3FFC225662D7E00CFA406 /* blockAngle_S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blockAngle_S.png; sourceTree = "<group>"; };
-		FFA3FFC325662D7E00CFA406 /* floor_E.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = floor_E.png; sourceTree = "<group>"; };
 		FFA3FFC425662D7F00CFA406 /* crate_S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crate_S.png; sourceTree = "<group>"; };
 		FFA55AC4256C6D9700EB12D9 /* Perlin2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perlin2D.swift; sourceTree = "<group>"; };
 		FFAD01DD255AE84600BA2907 /* CreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameView.swift; sourceTree = "<group>"; };
@@ -357,15 +361,17 @@
 		FFA3FFB725662A6800CFA406 /* Tiled */ = {
 			isa = PBXGroup;
 			children = (
+				FF2CF3752571C39E00B71DB8 /* block_grass.png */,
+				FF2CF3742571C39E00B71DB8 /* block_sand.png */,
+				FF2CF3732571C39E00B71DB8 /* block_water.png */,
+				FF2CF3722571C39E00B71DB8 /* building.png */,
 				FF1B13E9256B67DB005158C9 /* Base.tmx */,
 				FFA3FFBB25662C0B00CFA406 /* PrototypePack.tsx */,
 				FFA3FFB825662A9500CFA406 /* Prototype.tmx */,
-				FFA3FFC125662D7E00CFA406 /* block_N.png */,
 				FFA3FFC225662D7E00CFA406 /* blockAngle_S.png */,
 				FFA3FFC425662D7F00CFA406 /* crate_S.png */,
 				FFA3FFBF25662D7D00CFA406 /* doorClosed_S.png */,
 				FFA3FFC025662D7E00CFA406 /* doorwayRight_S.png */,
-				FFA3FFC325662D7E00CFA406 /* floor_E.png */,
 			);
 			path = Tiled;
 			sourceTree = "<group>";
@@ -497,18 +503,22 @@
 				FF08577B2550FC5100F0F220 /* Montserrat-MediumItalic.ttf in Resources */,
 				FF8C4E67254FBAFB00522756 /* .gitignore in Resources */,
 				FF08576E2550FC5100F0F220 /* Montserrat-ExtraLight.ttf in Resources */,
+				FF2CF3772571C39E00B71DB8 /* block_water.png in Resources */,
 				FF57238F2551BFD900872457 /* .gitattributes in Resources */,
 				FF078BD2254F3F8800E9FA7C /* Preview Assets.xcassets in Resources */,
 				FFA3FFCA25662D7F00CFA406 /* crate_S.png in Resources */,
 				FF08576D2550FC5100F0F220 /* Montserrat-ExtraLightItalic.ttf in Resources */,
 				FF64B6C825530268006A9F38 /* README.md in Resources */,
 				FF0857702550FC5100F0F220 /* Montserrat-Bold.ttf in Resources */,
+				FF2CF3782571C39E00B71DB8 /* block_sand.png in Resources */,
+				FF078BE2254F3FFE00E9FA7C /* GameScene.sks in Resources */,
 				FF0857762550FC5100F0F220 /* Montserrat-Thin.ttf in Resources */,
 				FFA3FFC525662D7F00CFA406 /* doorClosed_S.png in Resources */,
 				FFD9693E255B0505005A1BC7 /* Podfile in Resources */,
 				FF08577C2550FC5100F0F220 /* Montserrat-Regular.ttf in Resources */,
 				FFA3FFC825662D7F00CFA406 /* blockAngle_S.png in Resources */,
 				FF0857752550FC5100F0F220 /* Montserrat-SemiBoldItalic.ttf in Resources */,
+				FF2CF3762571C39E00B71DB8 /* building.png in Resources */,
 				FFA3FFBC25662C0B00CFA406 /* PrototypePack.tsx in Resources */,
 				FFFCFABE255B366700D03284 /* GoogleService-Info.plist in Resources */,
 				FF0857782550FC5100F0F220 /* Montserrat-BoldItalic.ttf in Resources */,
@@ -523,8 +533,7 @@
 				FFA3FFC625662D7F00CFA406 /* doorwayRight_S.png in Resources */,
 				FF0857772550FC5100F0F220 /* Montserrat-Black.ttf in Resources */,
 				FF078BCF254F3F8800E9FA7C /* Assets.xcassets in Resources */,
-				FFA3FFC725662D7F00CFA406 /* block_N.png in Resources */,
-				FFA3FFC925662D7F00CFA406 /* floor_E.png in Resources */,
+				FF2CF3792571C39E00B71DB8 /* block_grass.png in Resources */,
 				FF0857742550FC5100F0F220 /* Montserrat-Medium.ttf in Resources */,
 				FF0857732550FC5100F0F220 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
 			);

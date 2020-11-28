@@ -6,8 +6,8 @@ public class City {
     var cityName: String?
     
     /// City size
-    let cityWidth: Int = 15
-    let cityHeight: Int = 45
+    let cityWidth: Int = 12
+    let cityHeight: Int = 32
     
     /// City terrain, a 2d array of CityTiles
     var cityTerrain: [[CityTile]]?
@@ -25,10 +25,39 @@ public class City {
     func changeTileAtLoc(firstTile: SKTile, secondTileID: Int) {
         if let tileLayer = firstTile.layer {
             if tileLayer.name! == "Tile Layer 1" {
-                let newTexture = tileLayer.getTileData(globalID: secondTileID)!.texture
-                newTexture!.filteringMode = .nearest
-                firstTile.texture = newTexture!
-                //let cityTile = cityTerrain[][]
+                let x = Int(firstTile.tileCoord!.x)
+                let y = Int(firstTile.tileCoord!.y)
+                
+                // Constraints that ALL tiles have to respect
+                if cityTerrain![x][y].isEditable == true {
+                    // Destroy a building
+                    if firstTile.tileData.properties["isBuilding"]! == "true" {
+                        let newTileData = tileLayer.getTileData(globalID: secondTileID)!
+                        let newTexture = newTileData.texture!
+                        
+                        newTexture.filteringMode = .nearest
+                        firstTile.texture = newTileData.texture
+                        firstTile.tileData = newTileData
+                        
+                        // Update my cityTerrain array
+                        let cityTile = CityTile()
+                        cityTile.initTile(tile: firstTile, isEditable: true)
+                        cityTerrain![x][y] = cityTile
+                    } else {
+                        // Build a building, satisfying the building's constraints
+                        let newTileData = tileLayer.getTileData(globalID: secondTileID)!
+                        let newTexture = newTileData.texture!
+                        
+                        newTexture.filteringMode = .nearest
+                        firstTile.texture = newTileData.texture
+                        firstTile.tileData = newTileData
+                        
+                        // Update my cityTerrain array
+                        let cityTile = CityTile()
+                        cityTile.initTile(tile: firstTile, isEditable: true)
+                        cityTerrain![x][y] = cityTile
+                    }
+                }
             }
         }
     }
@@ -42,7 +71,13 @@ public class City {
         for row in 0..<cityWidth {
             for col in 0..<cityHeight {
                 let cityTile = CityTile()
-                cityTile.initTile(tile: (layer?.tileAt(row, col))!, isEditable: true)
+                
+                // Add padding tiles around the playable area
+                var isEditable = true
+                if row < 2 || row > cityWidth - 2 || col < 3 || col > cityHeight - 3 {
+                    isEditable = false
+                }
+                cityTile.initTile(tile: (layer?.tileAt(row, col))!, isEditable: isEditable)
                 cityTerrain![row][col] = cityTile
             }
         }
@@ -91,38 +126,44 @@ public class City {
     
     /// Creates a 2d array of integers representing the tile id using perlin noise
     private func makeCityTerrain() -> [[Int]] {
-        let num_columns = cityHeight
-        let num_rows = cityWidth
-        //let noiseMap = makeNoiseMap(columns: num_columns, rows: num_rows, persistence: 0.9)
-        let noisemap = Perlin2D().octaveMatrix(width: num_rows * 4, height: num_columns * 4, octaves: 6, persistance: 0.25)
+        let noisemap = Perlin2D().octaveMatrix(width: 288, height: 288, octaves: 6, persistance: 0.25)
         
-        var terrain: [[Int]] = Array(repeating: Array(repeating: 0, count: cityHeight), count: cityWidth)
-        // Downsizes a 128x128 matrix by averaging every 4x4 sub-matrix
-        for row in 0..<num_rows {
-            for col in 0..<num_columns {
-                let x_st = 4 * row
-                let y_st = 4 * col
+        var rectTerrain: [[Int]] = Array(repeating: Array(repeating: 0, count: 36), count: 36)
+        // Downsizes a roughly square larger matrix by taking averages of each submatrix
+        for row in 0..<36 {
+            for col in 0..<36 {
+                let x_st = 8 * row
+                let y_st = 8 * col
                 
                 var total: CGFloat = 0
-                for x in x_st..<(x_st+4) {
-                    for y in y_st..<(y_st+4) {
-                        //let location = vector2(Int32(row), Int32(col))
-                        //let terrainHeight = noiseMap.value(at: location)
+                for x in x_st..<(x_st + 8) {
+                    for y in y_st..<(y_st + 8) {
                         total = total + noisemap[x][y]
-                        
                     }
                 }
-                let avgTerrainHeight = total / 16
-                if avgTerrainHeight <= 0.37 {
-                    terrain[row][col] = 2
-                } else if avgTerrainHeight <= 0.43 {
-                    terrain[row][col] = 3
+                let avgTerrainHeight = total / (8 * 8)
+                if avgTerrainHeight <= 0.4 {
+                    rectTerrain[row][col] = 7
+                } else if avgTerrainHeight <= 0.45 {
+                    rectTerrain[row][col] = 6
                 } else if avgTerrainHeight <= 1 {
-                    terrain[row][col] = 1
+                    rectTerrain[row][col] = 1
                 }
             }
         }
-        return terrain
+        
+        var cityTerrain: [[Int]] = Array(repeating: Array(repeating: 0, count: cityHeight), count: cityWidth)
+        for row in 0..<cityWidth {
+            let row2 = row * 2
+            
+            for i in 0..<2 {
+                for col in 0..<(cityHeight / 2) {
+                    let col2 = col * 2 + i
+                    cityTerrain[row][col2] = rectTerrain[row2][col]
+                }
+            }
+        }
+        return cityTerrain
     }
     
     private func copyFileToDocumentsFolder(nameForFile: String, extForFile: String) {

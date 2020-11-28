@@ -13,7 +13,7 @@ public class CityTile {
     
     func initTile(tile: SKTile, isEditable: Bool) {
         self.tile = tile
-        self.isEditable = false
+        self.isEditable = isEditable
         tileCreateBuilding()
     }
     
