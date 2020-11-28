@@ -3,9 +3,12 @@
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <properties>
+  <properties>
    <property name="isBuilding" type="bool" value="false"/>
   </properties>
-  <image width="256" height="512" source="block_N.png"/>
+   <property name="isBuilding" type="bool" value="false"/>
+  </properties>
+  <image width="256" height="512" source="block_grass.png"/>
  </tile>
  <tile id="1">
   <properties>
@@ -21,14 +24,32 @@
  </tile>
  <tile id="3">
  <properties>
-  <property name="isBuilding" type="bool" value="true"/>
+  <property name="isBuilding" type="bool" value="false"/>
  </properties>
   <image width="256" height="512" source="doorClosed_S.png"/>
  </tile>
+ <properties>
+  <property name="isBuilding" type="bool" value="false"/>
+ </properties>
  <tile id="4">
   <image width="256" height="512" source="doorwayRight_S.png"/>
  </tile>
  <tile id="5">
-  <image width="256" height="512" source="floor_E.png"/>
+ <properties>
+  <property name="isBuilding" type="bool" value="false"/>
+ </properties>
+  <image width="256" height="512" source="block_sand.png"/>
+ </tile>
+ <tile id="6">
+ <properties>
+  <property name="isBuilding" type="bool" value="false"/>
+ </properties>
+  <image width="256" height="512" source="block_water.png"/>
+ </tile>
+ <tile id="7">
+ <properties>
+  <property name="isBuilding" type="bool" value="true"/>
+ </properties>
+  <image width="256" height="512" source="building.png"/>
  </tile>
 </tileset>

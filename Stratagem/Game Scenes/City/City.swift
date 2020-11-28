@@ -7,7 +7,7 @@ public class City {
     
     /// City size
     let cityWidth: Int = 12
-    let cityHeight: Int = 35
+    let cityHeight: Int = 32
     
     /// City terrain, a 2d array of CityTiles
     var cityTerrain: [[CityTile]]?
@@ -126,34 +126,47 @@ public class City {
     
     /// Creates a 2d array of integers representing the tile id using perlin noise
     private func makeCityTerrain() -> [[Int]] {
-        let num_columns = cityHeight
-        let num_rows = cityWidth
-        let noisemap = Perlin2D().octaveMatrix(width: num_rows * 10, height: num_columns * 3, octaves: 6, persistance: 0.25)
+        let noisemap = Perlin2D().octaveMatrix(width: 288, height: 288, octaves: 6, persistance: 0.25)
         
-        var terrain: [[Int]] = Array(repeating: Array(repeating: 0, count: cityHeight), count: cityWidth)
+        var rectTerrain: [[Int]] = Array(repeating: Array(repeating: 0, count: 36), count: 36)
         // Downsizes a roughly square larger matrix by taking averages of each submatrix
-        for row in 0..<num_rows {
-            for col in 0..<num_columns {
-                let x_st = 10 * row
-                let y_st = 3 * col
+        for row in 0..<36 {
+            for col in 0..<36 {
+                let x_st = 8 * row
+                let y_st = 8 * col
                 
                 var total: CGFloat = 0
-                for x in x_st..<(x_st+10) {
-                    for y in y_st..<(y_st+3) {
+                for x in x_st..<(x_st + 8) {
+                    for y in y_st..<(y_st + 8) {
                         total = total + noisemap[x][y]
                     }
                 }
-                let avgTerrainHeight = total / 30
-                if avgTerrainHeight <= 0.37 {
-                    terrain[row][col] = 3
-                } else if avgTerrainHeight <= 0.43 {
-                    terrain[row][col] = 2
+                let avgTerrainHeight = total / (8 * 8)
+                if avgTerrainHeight <= 0.3 {
+                    rectTerrain[row][col] = 7
+                } else if avgTerrainHeight <= 0.35 {
+                    rectTerrain[row][col] = 6
                 } else if avgTerrainHeight <= 1 {
-                    terrain[row][col] = 1
+                    rectTerrain[row][col] = 1
                 }
             }
         }
-        return terrain
+        
+        var cityTerrain: [[Int]] = Array(repeating: Array(repeating: 0, count: cityHeight), count: cityWidth)
+        for row in 0..<cityWidth {
+            var currentCoord = CGPoint(x: row, y: abs(16 - row))
+            
+            for col in 0..<cityHeight {
+                cityTerrain[row][col] = rectTerrain[Int(currentCoord.x)][Int(currentCoord.y)]
+                
+                if col % 2 == 0 {
+                    currentCoord.y += 1
+                } else {
+                    currentCoord.x += 1
+                }
+            }
+        }
+        return cityTerrain
     }
     
     private func copyFileToDocumentsFolder(nameForFile: String, extForFile: String) {
