@@ -12,24 +12,24 @@ struct GameView: View {
     var body: some View {
         ZStack {
             switch (gameVars.currentGameViewLevel){
-            case GameViewLevel.galaxy:
+            case GameViewLevel.GALAXY:
                 gameVars.galaxy
-            case GameViewLevel.planet:
+            case GameViewLevel.PLANET:
                 ZStack{
                     gameVars.selectedPlanet
                     Image("Galaxy")
                         .position(x: screenSize.topLeft.x + 60, y: screenSize.topLeft.y + 60)
                         .onTapGesture {
-                            gameVars.currentGameViewLevel = GameViewLevel.galaxy
+                            gameVars.currentGameViewLevel = GameViewLevel.GALAXY
                         }
                 }
-            case GameViewLevel.city:
+            case GameViewLevel.CITY:
                 ZStack{
                     gameVars.selectedCity
                     Image("Planet")
                         .position(x: screenSize.topLeft.x + 60, y: screenSize.topLeft.y + 60)
                         .onTapGesture {
-                            gameVars.currentGameViewLevel = GameViewLevel.planet
+                            gameVars.currentGameViewLevel = GameViewLevel.PLANET
                         }
                 }
             }

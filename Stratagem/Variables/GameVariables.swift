@@ -5,21 +5,21 @@ import SceneKit
 import SpriteKit
 
 enum GameViewLevel {
-    case galaxy, planet, city
+    case GALAXY, PLANET, CITY
 }
 
 enum GameTypes {
-    case standard, planetRush
+    case STANDARD, PLANETRUSH
 }
 
 class GameVariables: ObservableObject {
     // Used for setup
-    @Published var gameType: GameTypes = GameTypes.standard
+    @Published var gameType: GameTypes = GameTypes.STANDARD
     
     // Directly determines display
     @Published var selectedPlanet:PlanetView = PlanetView(planetID: 0)
     @Published var selectedCity: CityView = CityView()
-    @Published var currentGameViewLevel = GameViewLevel.planet
+    @Published var currentGameViewLevel = GameViewLevel.PLANET
     
     @Published var galaxy: GalaxyView
     @Published var galaxyLayout: [PlanetLayout] = []
@@ -29,7 +29,7 @@ class GameVariables: ObservableObject {
     func generateGalaxy(){
         var numPlanets: Int
         switch gameType {
-        case .standard:
+        case .STANDARD:
             numPlanets = 7
         default:
             numPlanets = 5

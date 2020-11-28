@@ -22,12 +22,6 @@ struct ContentView: View {
             case .GameLobbyView:
                 GameLobbyView()
                     .transition(.slide)
-            case .CityView:
-                // just temp
-                
-//                GalaxyView()
-                GameView()
-                    .edgesIgnoringSafeArea(.all)
             case .GameView:
                 GameView()
             }

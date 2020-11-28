@@ -55,16 +55,16 @@ public struct LFGameListener {
         let gameStatusRef = ref.child("games").child(staticGameVariables.gameCode).child("game_status")
         gameStatusRef.observe(.value) { snapshot in
             if snapshot.exists() {
-                staticGameVariables.gameState = gameStates(rawValue: snapshot.value as! String) ?? .NA
+                staticGameVariables.gameState = GameStates(rawValue: snapshot.value as! String) ?? .NA
             } else {
                 PlayerManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).resetPlayer()
             }
 
             switch staticGameVariables.gameState {
             case .NA:
-                playerVariables.currentView = viewStates.TitleScreenView
+                playerVariables.currentView = ViewStates.TitleScreenView
             case .GAME:
-                playerVariables.currentView = viewStates.CityView
+                playerVariables.currentView = ViewStates.GameView
             case .PRE_LOBBY:
                 break
             case .LOBBY:

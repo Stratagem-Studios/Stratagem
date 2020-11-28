@@ -20,13 +20,13 @@ public struct LFGameManager {
                 generateRandomGameCode()
             } else {
                 staticGameVariables.gameCode = gameCode
-                self.ref.child("games").child(staticGameVariables.gameCode).child("game_status").setValue(gameStates.PRE_LOBBY.rawValue)
+                self.ref.child("games").child(staticGameVariables.gameCode).child("game_status").setValue(GameStates.PRE_LOBBY.rawValue)
                 
                 staticGameVariables.leaderName = playerVariables.playerName
                 self.ref.child("games").child(gameCode).child("usernames").setValue([playerVariables.playerName])
                 self.ref.child("games").child(gameCode).child("leader").setValue(playerVariables.playerName)
                 self.ref.child("all_users").child(playerVariables.playerName).child("game_id").setValue(gameCode)
-                self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(playerStates.LOBBY.rawValue)
+                self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(PlayerStates.LOBBY.rawValue)
                 
                 playerVariables.currentView = .CreateGameView
             }
@@ -34,7 +34,7 @@ public struct LFGameManager {
     }
     
     public func createGameWithCode(code: String) {
-        self.ref.child("games").child(staticGameVariables.gameCode).child("game_status").setValue(gameStates.LOBBY.rawValue)
+        self.ref.child("games").child(staticGameVariables.gameCode).child("game_status").setValue(GameStates.LOBBY.rawValue)
         staticGameVariables.gameState = .LOBBY
         playerVariables.currentView = .GameLobbyView
     }
@@ -46,10 +46,10 @@ public struct LFGameManager {
             if snapshot.hasChild(code) {
                 // Check if game is joinable
                 let game_status = snapshot.childSnapshot(forPath: code).childSnapshot(forPath: "game_status").value as! String
-                if game_status == gameStates.LOBBY.rawValue {
+                if game_status == GameStates.LOBBY.rawValue {
                     // Join game
                     self.ref.child("all_users").child(playerVariables.playerName).child("game_id").setValue(code)
-                    self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(playerStates.LOBBY.rawValue)
+                    self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(PlayerStates.LOBBY.rawValue)
                     
                     let gamePlayersRef = ref.child("games").child(code).child("usernames")
                     gamePlayersRef.observeSingleEvent(of: .value) { snapshot in
@@ -79,7 +79,7 @@ public struct LFGameManager {
     
     public func removePlayerFromGame(username: String) {
         ref.child("all_users").child(username).child("game_id").removeValue()
-        self.ref.child("all_users").child(username).child("status").setValue(playerStates.TITLESCREEN.rawValue)
+        self.ref.child("all_users").child(username).child("status").setValue(PlayerStates.TITLESCREEN.rawValue)
         
         // Remove from game
         let gamePlayersRef = ref.child("games").child(staticGameVariables.gameCode).child("usernames")
@@ -97,13 +97,13 @@ public struct LFGameManager {
     public func startGame() {
         if staticGameVariables.leaderName == playerVariables.playerName {
             // Player is the leader
-            self.ref.child("games").child(staticGameVariables.gameCode).child("game_status").setValue(gameStates.GAME.rawValue)
+            self.ref.child("games").child(staticGameVariables.gameCode).child("game_status").setValue(GameStates.GAME.rawValue)
             let gamePlayersRef = ref.child("games").child(staticGameVariables.gameCode).child("usernames")
             gamePlayersRef.observeSingleEvent(of: .value) { snapshot in
                 let enumerator = snapshot.children
                 while let username = enumerator.nextObject() as? DataSnapshot {
                     ref.child("all_users").child(username.value as! String).child("game_id").setValue(staticGameVariables.gameCode)
-                    ref.child("all_users").child(username.value as! String).child("status").setValue(playerStates.GAME.rawValue)
+                    ref.child("all_users").child(username.value as! String).child("status").setValue(PlayerStates.GAME.rawValue)
                 }
             }
         } else {
@@ -118,7 +118,7 @@ public struct LFGameManager {
             let enumerator = snapshot.children
             while let username = enumerator.nextObject() as? DataSnapshot {
                 ref.child("all_users").child(username.value as! String).child("game_id").removeValue()
-                self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(playerStates.TITLESCREEN.rawValue)
+                self.ref.child("all_users").child(playerVariables.playerName).child("status").setValue(PlayerStates.TITLESCREEN.rawValue)
             }
             
             ref.child("games").child(staticGameVariables.gameCode).removeValue()
