@@ -2,7 +2,7 @@
 
 import Combine
 import SceneKit
-import ObjectiveC
+import SpriteKit
 
 enum GameViewLevel {
     case GALAXY, PLANET, CITY
@@ -24,6 +24,8 @@ class GameVariables: ObservableObject {
     @Published var galaxy: GalaxyView
     @Published var galaxyLayout: [PlanetLayout] = []
     
+    @Published var galaxyScene: SKScene?
+    
     func generateGalaxy(){
         var numPlanets: Int
         switch gameType {
@@ -32,9 +34,11 @@ class GameVariables: ObservableObject {
         default:
             numPlanets = 5
         }
-        for i in 0...numPlanets { galaxyLayout.append(PlanetLayout(planetID: i, planet: PlanetView(planetID: i))) }
+        for i in 0...numPlanets {
+            galaxyLayout.append(PlanetLayout(planetID: i, planet: PlanetView(planetID: i)))
+            galaxyLayout[i].planetNode = galaxyLayout[i].planet.planetNode
+        }
     }
-    
     init(){galaxy = GalaxyView()} /// generates our first galaxy. generateGalaxy can be executed again to create new galaxy
 }
 

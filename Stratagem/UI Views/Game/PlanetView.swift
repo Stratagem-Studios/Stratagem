@@ -12,13 +12,19 @@ struct PlanetView : UIViewRepresentable {
     let planet = SCNScene.init()
     var planetView = SCNView()
     
-    func makeUIView(context: Context) -> SCNView {
-        // Make the sphere
+    var planetNode: SCNNode
+    
+    init(planetID: Int) {
         let planetSphere = SCNSphere.init(radius: 10)
-        let planetNode = SCNNode(geometry: planetSphere)
+        self.planetNode = SCNNode(geometry: planetSphere)
         if let planetMask = UIImage(named: "TestMask1"){
             planetSphere.firstMaterial?.diffuse.contents = planetMask
         }
+        self.planetID = planetID
+    }
+    
+    func makeUIView(context: Context) -> SCNView {
+        // Make the sphere
         planet.rootNode.addChildNode(planetNode)
         
         // add an ambient light to the scene
