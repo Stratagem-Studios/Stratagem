@@ -8,13 +8,13 @@ enum PlanetTypes {
 }
 
 struct GalaxyView : View {
-    @EnvironmentObject var gameVars: GameVariables
+    @EnvironmentObject var playerVariables: PlayerVariables
     
     var body: some View {
         Image("Galaxy")
             .onTapGesture {
                 print("g")
-                gameVars.currentGameViewLevel = .PLANET
+                playerVariables.currentGameViewLevel = .PLANET
             }
     }
 }

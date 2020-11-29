@@ -19,6 +19,8 @@ class PlayerVariables: ObservableObject {
     @Published var inlineErrorMessage: String = ""
     @Published var observerRefs: [DatabaseReference] = []
     
+    @Published var currentGameViewLevel = GameViewLevel.PLANET
+    
     init() {
         
     }

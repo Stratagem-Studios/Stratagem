@@ -64,6 +64,7 @@ public struct LFGameListener {
             case .NA:
                 playerVariables.currentView = ViewStates.TitleScreenView
             case .GAME:
+                LFGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).playerInitGame()
                 playerVariables.currentView = ViewStates.GameView
             case .PRE_LOBBY:
                 break

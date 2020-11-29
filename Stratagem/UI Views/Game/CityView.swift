@@ -10,7 +10,6 @@ import SpriteKit
 import SwiftVideoBackground
 
 public struct CityView: View {
-    @EnvironmentObject var gameVars: GameVariables
     @EnvironmentObject var playerVariables: PlayerVariables
     
     var scene: SKScene {

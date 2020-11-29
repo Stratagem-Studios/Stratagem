@@ -15,10 +15,16 @@ public class City {
     /// Tilemap
     var tilemap: SKTilemap?
     
-    /// Initializes city variables (required)
-    func initCity(cityName: String) {
+    /// Initializes city variables (required). If not terrain is provided, create a new city
+    func initCity(cityName: String, terrain: [[Int]]? = nil) {
         self.cityName = cityName
-        createTMXFile()
+        
+        if let terrain = terrain {
+            createTMXFile(terrain: terrain)
+        } else {
+            let terrain = makeCityTerrain()
+            createTMXFile(terrain: terrain)
+        }
     }
     
     /// Try to replace firstTile with secondTile given its global ID
@@ -45,17 +51,19 @@ public class City {
                         cityTerrain![x][y] = cityTile
                     } else {
                         // Build a building, satisfying the building's constraints
-                        let newTileData = tileLayer.getTileData(globalID: secondTileID)!
-                        let newTexture = newTileData.texture!
-                        
-                        newTexture.filteringMode = .nearest
-                        firstTile.texture = newTileData.texture
-                        firstTile.tileData = newTileData
-                        
-                        // Update my cityTerrain array
-                        let cityTile = CityTile()
-                        cityTile.initTile(tile: firstTile, isEditable: true)
-                        cityTerrain![x][y] = cityTile
+                        if firstTile.tileData.properties["isBuildable"]! == "true" {
+                            let newTileData = tileLayer.getTileData(globalID: secondTileID)!
+                            let newTexture = newTileData.texture!
+                            
+                            newTexture.filteringMode = .nearest
+                            firstTile.texture = newTileData.texture
+                            firstTile.tileData = newTileData
+                            
+                            // Update my cityTerrain array
+                            let cityTile = CityTile()
+                            cityTile.initTile(tile: firstTile, isEditable: true)
+                            cityTerrain![x][y] = cityTile
+                        }
                     }
                 }
             }
@@ -84,9 +92,7 @@ public class City {
     }
     
     /// Creates file [cityName].tmx from cityTerrain
-    private func createTMXFile() {
-        let terrain = makeCityTerrain()
-        
+    private func createTMXFile(terrain: [[Int]]) {
         // Copy tsx file
         copyFileToDocumentsFolder(nameForFile: "PrototypePack", extForFile: "tsx")
         

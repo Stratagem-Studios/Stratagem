@@ -59,7 +59,7 @@ public struct CreateGameView: View {
 struct CreateGameView_Preview: PreviewProvider {
     static var previews: some View {
         CreateGameView()
-            .environmentObject(GameVariables())
+            .environmentObject(PlayerVariables())
             .previewLayout(.fixed(width: 896, height: 414))
     }
 }

@@ -4,7 +4,6 @@ import SpriteKit
 public struct JoinGameView: View {
     @EnvironmentObject var playerVariables: PlayerVariables
     @EnvironmentObject var staticGameVariables: StaticGameVariables
-    @EnvironmentObject var gameVariables: GameVariables
     
     @State var enteredCode: String = ""
     
