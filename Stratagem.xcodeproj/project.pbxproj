@@ -73,6 +73,7 @@
 		FFB4A299255CE6A7003298E2 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB4A298255CE6A7003298E2 /* FirebaseHelper.swift */; };
 		FFB4A2A7255D9EA1003298E2 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB4A2A6255D9EA1003298E2 /* PlayerManager.swift */; };
 		FFD9693E255B0505005A1BC7 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = FFD9693D255B0505005A1BC7 /* Podfile */; };
+		FFE69956257409FC00CD8517 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE69955257409FC00CD8517 /* Global.swift */; };
 		FFF2D86C255B88F800CE2990 /* GameLobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2D86B255B88F800CE2990 /* GameLobbyView.swift */; };
 		FFF85E3E255C73B700DFDDC2 /* LFGameListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E3D255C73B700DFDDC2 /* LFGameListener.swift */; };
 		FFF85E41255C73C100DFDDC2 /* HFGamePusher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E40255C73C100DFDDC2 /* HFGamePusher.swift */; };
@@ -155,6 +156,7 @@
 		FFB4A298255CE6A7003298E2 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		FFB4A2A6255D9EA1003298E2 /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
 		FFD9693D255B0505005A1BC7 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		FFE69955257409FC00CD8517 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		FFF2D86B255B88F800CE2990 /* GameLobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLobbyView.swift; sourceTree = "<group>"; };
 		FFF85E3D255C73B700DFDDC2 /* LFGameListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFGameListener.swift; sourceTree = "<group>"; };
 		FFF85E40255C73C100DFDDC2 /* HFGamePusher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFGamePusher.swift; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 				FFF85E49255C744300DFDDC2 /* PlayerVariables.swift */,
 				FFF85E4D255C744E00DFDDC2 /* StaticGameVariables.swift */,
 				CECA773F255E3F1700CE9F69 /* GameVariables.swift */,
+				FFE69955257409FC00CD8517 /* Global.swift */,
 			);
 			path = Variables;
 			sourceTree = "<group>";
@@ -511,7 +514,6 @@
 				FF64B6C825530268006A9F38 /* README.md in Resources */,
 				FF0857702550FC5100F0F220 /* Montserrat-Bold.ttf in Resources */,
 				FF2CF3782571C39E00B71DB8 /* block_sand.png in Resources */,
-				FF078BE2254F3FFE00E9FA7C /* GameScene.sks in Resources */,
 				FF0857762550FC5100F0F220 /* Montserrat-Thin.ttf in Resources */,
 				FFA3FFC525662D7F00CFA406 /* doorClosed_S.png in Resources */,
 				FFD9693E255B0505005A1BC7 /* Podfile in Resources */,
@@ -596,6 +598,7 @@
 				FF5AF90A255E489F00836F03 /* Units.swift in Sources */,
 				FFF85E4A255C744300DFDDC2 /* PlayerVariables.swift in Sources */,
 				CE1004E12569E1B70077941A /* GalaxyView.swift in Sources */,
+				FFE69956257409FC00CD8517 /* Global.swift in Sources */,
 				CE1004BF256856BC0077941A /* PlanetView.swift in Sources */,
 				FF88BDA4256E0B7B00DF0E40 /* CityTile.swift in Sources */,
 				FF012D3B2551B0420017E288 /* TitleText.swift in Sources */,

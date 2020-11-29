@@ -16,7 +16,7 @@ public struct GameLobbyView: View {
                         Image("Star")
                     } else if staticGameVariables.leaderName == playerVariables.playerName {
                         Button(action: {
-                            LFGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).removePlayerFromGame(username: playerName)
+                            Global.lfGameManager!.removePlayerFromGame(username: playerName)
                         }) {
                             Image("Close")
                         }
@@ -33,9 +33,9 @@ public struct GameLobbyView: View {
             HStack {
                 Button(action: {
                     if staticGameVariables.leaderName == playerVariables.playerName {
-                        LFGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).removeGame()
+                        Global.lfGameManager!.removeGame()
                     } else {
-                        LFGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).removePlayerFromGame(username: playerVariables.playerName)
+                        Global.lfGameManager!.removePlayerFromGame(username: playerVariables.playerName)
                     }
                 }) {
                     Text("BACK")
@@ -66,7 +66,7 @@ public struct GameLobbyView: View {
                 Spacer()
                 
                 Button(action: {
-                    LFGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).startGame()
+                    Global.lfGameManager!.startGame()
                 }) {
                     Text("START")
                 }.buttonStyle(BasicButtonStyle())

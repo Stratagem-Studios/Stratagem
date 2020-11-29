@@ -63,7 +63,7 @@ public struct LFGameManager {
                         
                         staticGameVariables.gameCode = code
                         
-                        LFGameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables).listenToAll()
+                        Global.lfGameListener!.listenToAll()
                         playerVariables.currentView = .GameLobbyView
                     }
                 } else {
@@ -162,7 +162,7 @@ public struct LFGameManager {
                 ref.child("game_statuses").child(staticGameVariables.gameCode).removeValue()
             }
             
-            PlayerManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).fetchName()
+            Global.playerManager!.fetchName()
         }
     }
 }
