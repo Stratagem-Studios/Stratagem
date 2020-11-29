@@ -10,7 +10,6 @@
 		1E10A050010A84F42517D3F9 /* Pods_Stratagem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500AA38F10AA677CBCF94516 /* Pods_Stratagem.framework */; };
 		CE1004BF256856BC0077941A /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004BE256856BC0077941A /* PlanetView.swift */; };
 		CE1004E12569E1B70077941A /* GalaxyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004E02569E1B70077941A /* GalaxyView.swift */; };
-		CEB7FD1E2570F8AF00F10E94 /* CityScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7FD1D2570F8AE00F10E94 /* CityScene.swift */; };
 		CEC78654256C1B51001E440F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC78653256C1B51001E440F /* GameView.swift */; };
 		CECA7740255E3F1700CE9F69 /* GameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA773F255E3F1700CE9F69 /* GameVariables.swift */; };
 		CECA7755255E469E00CE9F69 /* GameBoards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA7754255E469E00CE9F69 /* GameBoards.swift */; };
@@ -74,6 +73,9 @@
 		FFB4A2A7255D9EA1003298E2 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB4A2A6255D9EA1003298E2 /* PlayerManager.swift */; };
 		FFD9693E255B0505005A1BC7 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = FFD9693D255B0505005A1BC7 /* Podfile */; };
 		FFE69956257409FC00CD8517 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE69955257409FC00CD8517 /* Global.swift */; };
+		FFE6EE1125746BA300BB677B /* CityScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE1025746BA300BB677B /* CityScene.swift */; };
+		FFE6EE1625746BD000BB677B /* Galaxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE1525746BD000BB677B /* Galaxy.swift */; };
+		FFE6EE1A25746BF800BB677B /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE1925746BF800BB677B /* Planet.swift */; };
 		FFF2D86C255B88F800CE2990 /* GameLobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2D86B255B88F800CE2990 /* GameLobbyView.swift */; };
 		FFF85E3E255C73B700DFDDC2 /* LFGameListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E3D255C73B700DFDDC2 /* LFGameListener.swift */; };
 		FFF85E41255C73C100DFDDC2 /* HFGamePusher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E40255C73C100DFDDC2 /* HFGamePusher.swift */; };
@@ -89,7 +91,6 @@
 		5397A0390D7C1A2EC8CCF6F0 /* Pods-Stratagem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stratagem.debug.xcconfig"; path = "Target Support Files/Pods-Stratagem/Pods-Stratagem.debug.xcconfig"; sourceTree = "<group>"; };
 		CE1004BE256856BC0077941A /* PlanetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		CE1004E02569E1B70077941A /* GalaxyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyView.swift; sourceTree = "<group>"; };
-		CEB7FD1D2570F8AE00F10E94 /* CityScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CityScene.swift; path = "Stratagem/Game Scenes/City/CityScene.swift"; sourceTree = SOURCE_ROOT; };
 		CEC78653256C1B51001E440F /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		CECA773F255E3F1700CE9F69 /* GameVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVariables.swift; sourceTree = "<group>"; };
 		CECA7754255E469E00CE9F69 /* GameBoards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoards.swift; sourceTree = "<group>"; };
@@ -157,6 +158,9 @@
 		FFB4A2A6255D9EA1003298E2 /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
 		FFD9693D255B0505005A1BC7 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		FFE69955257409FC00CD8517 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		FFE6EE1025746BA300BB677B /* CityScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityScene.swift; sourceTree = "<group>"; };
+		FFE6EE1525746BD000BB677B /* Galaxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Galaxy.swift; sourceTree = "<group>"; };
+		FFE6EE1925746BF800BB677B /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		FFF2D86B255B88F800CE2990 /* GameLobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLobbyView.swift; sourceTree = "<group>"; };
 		FFF85E3D255C73B700DFDDC2 /* LFGameListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFGameListener.swift; sourceTree = "<group>"; };
 		FFF85E40255C73C100DFDDC2 /* HFGamePusher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFGamePusher.swift; sourceTree = "<group>"; };
@@ -327,6 +331,7 @@
 		FF88BDA2256E0B4B00DF0E40 /* City */ = {
 			isa = PBXGroup;
 			children = (
+				FFE6EE1025746BA300BB677B /* CityScene.swift */,
 				FF88BDB7256EB24F00DF0E40 /* HudNode.swift */,
 				FF1B13D6256B0B81005158C9 /* City.swift */,
 				FF88BDA3256E0B7B00DF0E40 /* CityTile.swift */,
@@ -389,10 +394,28 @@
 		FFE1000B2551B7F500DD6608 /* Game Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				FFE6EE1325746BA800BB677B /* Galaxy */,
+				FFE6EE1425746BAE00BB677B /* Planet */,
 				FF88BDA2256E0B4B00DF0E40 /* City */,
 				FFA55AC8256C6DA500EB12D9 /* Helpers */,
 			);
 			path = "Game Scenes";
+			sourceTree = "<group>";
+		};
+		FFE6EE1325746BA800BB677B /* Galaxy */ = {
+			isa = PBXGroup;
+			children = (
+				FFE6EE1525746BD000BB677B /* Galaxy.swift */,
+			);
+			path = Galaxy;
+			sourceTree = "<group>";
+		};
+		FFE6EE1425746BAE00BB677B /* Planet */ = {
+			isa = PBXGroup;
+			children = (
+				FFE6EE1925746BF800BB677B /* Planet.swift */,
+			);
+			path = Planet;
 			sourceTree = "<group>";
 		};
 		FFF2D86E255B890900CE2990 /* Pregame */ = {
@@ -413,7 +436,6 @@
 				CE1004E02569E1B70077941A /* GalaxyView.swift */,
 				CE1004BE256856BC0077941A /* PlanetView.swift */,
 				FF40F4702559CF310036E4C7 /* CityView.swift */,
-				CEB7FD1D2570F8AE00F10E94 /* CityScene.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -599,19 +621,21 @@
 				FFF85E4A255C744300DFDDC2 /* PlayerVariables.swift in Sources */,
 				CE1004E12569E1B70077941A /* GalaxyView.swift in Sources */,
 				FFE69956257409FC00CD8517 /* Global.swift in Sources */,
+				FFE6EE1125746BA300BB677B /* CityScene.swift in Sources */,
 				CE1004BF256856BC0077941A /* PlanetView.swift in Sources */,
 				FF88BDA4256E0B7B00DF0E40 /* CityTile.swift in Sources */,
 				FF012D3B2551B0420017E288 /* TitleText.swift in Sources */,
+				FFE6EE1A25746BF800BB677B /* Planet.swift in Sources */,
 				FFA55AC5256C6D9700EB12D9 /* Perlin2D.swift in Sources */,
 				FFB4A299255CE6A7003298E2 /* FirebaseHelper.swift in Sources */,
 				FFFCFAC3255B62B300D03284 /* LFGameManager.swift in Sources */,
 				FF33849F2559A751000EF945 /* TitleScreenView.swift in Sources */,
 				FFF2D86C255B88F800CE2990 /* GameLobbyView.swift in Sources */,
 				FF88BDA7256E0BC100DF0E40 /* CityBuilding.swift in Sources */,
+				FFE6EE1625746BD000BB677B /* Galaxy.swift in Sources */,
 				FF40F4712559CF310036E4C7 /* CityView.swift in Sources */,
 				FFFCFAB9255B296400D03284 /* AppDelegate.swift in Sources */,
 				FF0857492550F39300F0F220 /* ButtonStyles.swift in Sources */,
-				CEB7FD1E2570F8AF00F10E94 /* CityScene.swift in Sources */,
 				FF3789AB255F823B00D30F66 /* ErrorPopup.swift in Sources */,
 				CECA7740255E3F1700CE9F69 /* GameVariables.swift in Sources */,
 				FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */,
