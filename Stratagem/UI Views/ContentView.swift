@@ -4,7 +4,6 @@ import SpriteKit
 struct ContentView: View {
     @EnvironmentObject var playerVariables: PlayerVariables
     @EnvironmentObject var staticGameVariables: StaticGameVariables
-    @EnvironmentObject var gameVars: GameVariables
     
     var body: some View {
         ZStack {

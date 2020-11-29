@@ -6,8 +6,9 @@ import ObjectiveC
 import UIKit
 
 struct PlanetView : UIViewRepresentable {
+    @EnvironmentObject var playerVariables: PlayerVariables
+
     let planetID: Int!
-    @EnvironmentObject var gameVars: GameVariables
     
     let planet = SCNScene.init()
     var planetView = SCNView()
@@ -55,16 +56,16 @@ struct PlanetView : UIViewRepresentable {
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(planetView,gameVars: gameVars, planetID: planetID)
+        Coordinator(planetView, playerVars: playerVariables, planetID: planetID)
     }
     
     class Coordinator: NSObject {
         private let view: SCNView
-        let gameVars: GameVariables
+        let playerVars: PlayerVariables
         let planetID: Int
-        init(_ view: SCNView, gameVars: GameVariables, planetID: Int) {
+        init(_ view: SCNView, playerVars: PlayerVariables, planetID: Int) {
             self.view = view
-            self.gameVars = gameVars
+            self.playerVars = playerVars
             self.planetID = planetID
             super.init()
         }
@@ -77,11 +78,11 @@ struct PlanetView : UIViewRepresentable {
             // check that we clicked on at least one object
             if hitResults.count > 0 {
                 let result: SCNHitTestResult = hitResults[0]
-                let planetLayout = gameVars.galaxyLayout[planetID]
+                let planetLayout = Global.gameVars!.galaxyLayout[planetID]
                 for i in 0..<planetLayout.cityMapping.count {
                     if planetLayout.cityMapping[i].contains(CGPoint(x: p.x, y: p.y)){
-                        gameVars.selectedCity = gameVars.galaxyLayout[planetID].cities[i].city
-                        gameVars.currentGameViewLevel = GameViewLevel.CITY
+                        Global.gameVars!.selectedCity = Global.gameVars!.galaxyLayout[planetID].cities[i]
+                        playerVars.currentGameViewLevel = GameViewLevel.CITY
                     }
                 }
             }

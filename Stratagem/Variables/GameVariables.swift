@@ -12,19 +12,26 @@ enum GameTypes {
     case STANDARD, PLANETRUSH
 }
 
-class GameVariables: ObservableObject {
+struct Global {
+    static var gameVars:GameVariables? = nil
+
+    static func setGames(gameVars: GameVariables) {
+        Global.gameVars = gameVars
+    }
+}
+
+class GameVariables {
     // Used for setup
-    @Published var gameType: GameTypes = GameTypes.STANDARD
+    var gameType: GameTypes = GameTypes.STANDARD
     
     // Directly determines display
-    @Published var selectedPlanet:PlanetView = PlanetView(planetID: 0)
-    @Published var selectedCity: CityView = CityView()
-    @Published var currentGameViewLevel = GameViewLevel.PLANET
+    var selectedPlanet: PlanetView = PlanetView(planetID: 0)
+    var selectedCity: City?
     
-    @Published var galaxy: GalaxyView
-    @Published var galaxyLayout: [PlanetLayout] = []
+    var galaxy: GalaxyView
+    var galaxyLayout: [PlanetLayout] = []
     
-    @Published var galaxyScene: SKScene?
+    var galaxyScene: SKScene?
     
     func generateGalaxy(){
         var numPlanets: Int
@@ -48,7 +55,7 @@ struct PlanetLayout {
     var planetNode: SCNNode?
     
     // Later when city count/position is random these will need to be procedurally generated
-    var cities: [CityLayout] = []
+    var cities: [City] = []
     let cityMapping = [
         CGRect(x: 353, y: 153, width: 167, height: 90),
         CGRect(x: 353, y: 183, width: 144, height: 99),
@@ -59,17 +66,10 @@ struct PlanetLayout {
         self.planet = planet
         self.planetID = planetID
         for i in 0..<cityMapping.count {
-            cities.append(CityLayout())
+            let city = City()
+            city.initCity(cityName: "City Name")
+            cities.append(city)
         }
-    }
-}
-
-struct CityLayout {
-    var city: CityView
-    // This struct will hold the cities variable/stats classes
-    
-    init() {
-        city = CityView()
     }
 }
 

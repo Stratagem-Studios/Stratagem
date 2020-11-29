@@ -111,6 +111,13 @@ public struct LFGameManager {
         }
     }
     
+    /// Called for each player on game start to initalize their own planets/cities
+    public func playerInitGame() {
+        Global.setGames(gameVars: GameVariables())
+        Global.gameVars?.generateGalaxy()
+        Global.gameVars?.selectedPlanet = (Global.gameVars?.galaxyLayout[0].planet)!
+    }
+    
     public func removeGame() {
         // Remove all players from game
         let gamePlayersRef = ref.child("games").child(staticGameVariables.gameCode).child("usernames")

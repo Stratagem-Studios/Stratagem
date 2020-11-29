@@ -1,5 +1,6 @@
 import SpriteKit
 import SKTiled
+import SwiftUI
 
 
 public class CityScene: SKTiledScene {
@@ -9,8 +10,7 @@ public class CityScene: SKTiledScene {
     private let hudNode = HudNode()
     
     public override func didMove(to view: SKView) {
-        print("hi")
-        city.initCity(cityName: "City Name")
+        city = Global.gameVars!.selectedCity!
         
         super.didMove(to: view)
         super.setup(tmxFile: "City")
