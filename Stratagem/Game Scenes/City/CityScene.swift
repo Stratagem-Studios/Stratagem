@@ -9,6 +9,7 @@ public class CityScene: SKTiledScene {
     private let hudNode = HudNode()
     
     public override func didMove(to view: SKView) {
+        print("hi")
         city.initCity(cityName: "City Name")
         
         super.didMove(to: view)
@@ -68,7 +69,7 @@ public class CityScene: SKTiledScene {
                     case .NONE:
                         print(tile)
                     case .BUILD:
-                        city.changeTileAtLoc(firstTile: tile, secondTileID: 4)
+                        city.changeTileAtLoc(firstTile: tile, secondTileID: 8)
                     case .DESTROY:
                         city.changeTileAtLoc(firstTile: tile, secondTileID: 1)
                     }

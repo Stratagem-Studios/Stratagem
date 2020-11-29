@@ -45,17 +45,19 @@ public class City {
                         cityTerrain![x][y] = cityTile
                     } else {
                         // Build a building, satisfying the building's constraints
-                        let newTileData = tileLayer.getTileData(globalID: secondTileID)!
-                        let newTexture = newTileData.texture!
-                        
-                        newTexture.filteringMode = .nearest
-                        firstTile.texture = newTileData.texture
-                        firstTile.tileData = newTileData
-                        
-                        // Update my cityTerrain array
-                        let cityTile = CityTile()
-                        cityTile.initTile(tile: firstTile, isEditable: true)
-                        cityTerrain![x][y] = cityTile
+                        if firstTile.tileData.properties["isBuildable"]! == "true" {
+                            let newTileData = tileLayer.getTileData(globalID: secondTileID)!
+                            let newTexture = newTileData.texture!
+                            
+                            newTexture.filteringMode = .nearest
+                            firstTile.texture = newTileData.texture
+                            firstTile.tileData = newTileData
+                            
+                            // Update my cityTerrain array
+                            let cityTile = CityTile()
+                            cityTile.initTile(tile: firstTile, isEditable: true)
+                            cityTerrain![x][y] = cityTile
+                        }
                     }
                 }
             }

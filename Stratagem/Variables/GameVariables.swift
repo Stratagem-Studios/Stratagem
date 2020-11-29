@@ -34,7 +34,7 @@ class GameVariables: ObservableObject {
         default:
             numPlanets = 5
         }
-        for i in 0...numPlanets {
+        for i in 0..<numPlanets {
             galaxyLayout.append(PlanetLayout(planetID: i, planet: PlanetView(planetID: i)))
             galaxyLayout[i].planetNode = galaxyLayout[i].planet.planetNode
         }
@@ -58,7 +58,7 @@ struct PlanetLayout {
     init(planetID: Int, planet: PlanetView) {
         self.planet = planet
         self.planetID = planetID
-        for i in 0...cityMapping.count {
+        for i in 0..<cityMapping.count {
             cities.append(CityLayout())
         }
     }

@@ -78,7 +78,7 @@ struct PlanetView : UIViewRepresentable {
             if hitResults.count > 0 {
                 let result: SCNHitTestResult = hitResults[0]
                 let planetLayout = gameVars.galaxyLayout[planetID]
-                for i in 0...planetLayout.cityMapping.count - 1 {
+                for i in 0..<planetLayout.cityMapping.count {
                     if planetLayout.cityMapping[i].contains(CGPoint(x: p.x, y: p.y)){
                         gameVars.selectedCity = gameVars.galaxyLayout[planetID].cities[i].city
                         gameVars.currentGameViewLevel = GameViewLevel.CITY
