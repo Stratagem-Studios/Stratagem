@@ -32,7 +32,7 @@ public struct LFGameListener {
                 staticGameVariables.playerNames = playerNames
             } else {
                 // Removed from game
-                PlayerManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).resetPlayer()
+                Global.playerManager!.resetPlayer()
             }
         }
         playerVariables.observerRefs.append(gameUsernameRef)
@@ -45,7 +45,7 @@ public struct LFGameListener {
                 staticGameVariables.leaderName = snapshot.value as! String
             } else {
                 // Game lobby doesn't exist anymore
-                PlayerManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).resetPlayer()
+                Global.playerManager!.resetPlayer()
             }
         }
         playerVariables.observerRefs.append(leaderRef)
@@ -57,14 +57,14 @@ public struct LFGameListener {
             if snapshot.exists() {
                 staticGameVariables.gameState = GameStates(rawValue: snapshot.value as! String) ?? .NA
             } else {
-                PlayerManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).resetPlayer()
+                Global.playerManager!.resetPlayer()
             }
 
             switch staticGameVariables.gameState {
             case .NA:
                 playerVariables.currentView = ViewStates.TitleScreenView
             case .GAME:
-                LFGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).playerInitGame()
+                Global.lfGameManager!.playerInitGame()
                 playerVariables.currentView = ViewStates.GameView
             case .PRE_LOBBY:
                 break

@@ -12,14 +12,6 @@ enum GameTypes {
     case STANDARD, PLANETRUSH
 }
 
-struct Global {
-    static var gameVars:GameVariables? = nil
-
-    static func setGames(gameVars: GameVariables) {
-        Global.gameVars = gameVars
-    }
-}
-
 class GameVariables {
     // Used for setup
     var gameType: GameTypes = GameTypes.STANDARD

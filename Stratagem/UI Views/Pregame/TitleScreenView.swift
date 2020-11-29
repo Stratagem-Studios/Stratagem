@@ -17,7 +17,7 @@ public struct TitleScreenView: View {
                 
                 Button(action: {
                     if playerVariables.playerName != "" {
-                        LFGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).generateRandomGameCode()
+                        Global.lfGameManager!.generateRandomGameCode()
                     } else {
                         playerVariables.errorMessage = "Player not connected yet"
                     }
@@ -71,7 +71,7 @@ public struct TitleScreenView: View {
                         }
                         
                         Button(action: {
-                            PlayerManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).assignName(enteredUsername: enteredUsername)
+                            Global.playerManager!.assignName(enteredUsername: enteredUsername)
                         }, label: {
                             Text("Confirm")
                         })

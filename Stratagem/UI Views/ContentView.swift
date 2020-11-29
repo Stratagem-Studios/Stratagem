@@ -30,8 +30,10 @@ struct ContentView: View {
             }
         }.statusBar(hidden: true)
         .onAppear() {
+            Global.initManagers(playerVariables: playerVariables, staticGameVariables: staticGameVariables)
+            
             // Because we don't have a server, we make new players help remove dead games
-            LFGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables).detectAndRemoveDeadGames()
+            Global.lfGameManager!.detectAndRemoveDeadGames()
             // Then calls fetchName
         }.animation(.default)
     }
