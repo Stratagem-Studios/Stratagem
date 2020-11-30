@@ -77,11 +77,14 @@
 		FFE6EE1125746BA300BB677B /* CityScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE1025746BA300BB677B /* CityScene.swift */; };
 		FFE6EE1625746BD000BB677B /* Galaxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE1525746BD000BB677B /* Galaxy.swift */; };
 		FFE6EE1A25746BF800BB677B /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE1925746BF800BB677B /* Planet.swift */; };
+		FFE6EE2225749C3900BB677B /* Collection+choose.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE2125749C3900BB677B /* Collection+choose.swift */; };
 		FFF2D86C255B88F800CE2990 /* GameLobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2D86B255B88F800CE2990 /* GameLobbyView.swift */; };
 		FFF85E3E255C73B700DFDDC2 /* LFGameListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E3D255C73B700DFDDC2 /* LFGameListener.swift */; };
 		FFF85E41255C73C100DFDDC2 /* HFGamePusher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E40255C73C100DFDDC2 /* HFGamePusher.swift */; };
 		FFF85E4A255C744300DFDDC2 /* PlayerVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E49255C744300DFDDC2 /* PlayerVariables.swift */; };
 		FFF85E4E255C744E00DFDDC2 /* StaticGameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E4D255C744E00DFDDC2 /* StaticGameVariables.swift */; };
+		FFF9DA872575549400C18D8D /* city_names.txt in Resources */ = {isa = PBXBuildFile; fileRef = FFF9DA862575549400C18D8D /* city_names.txt */; };
+		FFF9DA8A25755BD900C18D8D /* planet_names.txt in Resources */ = {isa = PBXBuildFile; fileRef = FFF9DA8925755BD900C18D8D /* planet_names.txt */; };
 		FFFCFAB9255B296400D03284 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAB8255B296400D03284 /* AppDelegate.swift */; };
 		FFFCFABE255B366700D03284 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFFCFABD255B366700D03284 /* GoogleService-Info.plist */; };
 		FFFCFAC3255B62B300D03284 /* LFGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAC2255B62B300D03284 /* LFGameManager.swift */; };
@@ -163,11 +166,14 @@
 		FFE6EE1025746BA300BB677B /* CityScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityScene.swift; sourceTree = "<group>"; };
 		FFE6EE1525746BD000BB677B /* Galaxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Galaxy.swift; sourceTree = "<group>"; };
 		FFE6EE1925746BF800BB677B /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		FFE6EE2125749C3900BB677B /* Collection+choose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+choose.swift"; sourceTree = "<group>"; };
 		FFF2D86B255B88F800CE2990 /* GameLobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLobbyView.swift; sourceTree = "<group>"; };
 		FFF85E3D255C73B700DFDDC2 /* LFGameListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFGameListener.swift; sourceTree = "<group>"; };
 		FFF85E40255C73C100DFDDC2 /* HFGamePusher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFGamePusher.swift; sourceTree = "<group>"; };
 		FFF85E49255C744300DFDDC2 /* PlayerVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVariables.swift; sourceTree = "<group>"; };
 		FFF85E4D255C744E00DFDDC2 /* StaticGameVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticGameVariables.swift; sourceTree = "<group>"; };
+		FFF9DA862575549400C18D8D /* city_names.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = city_names.txt; sourceTree = "<group>"; };
+		FFF9DA8925755BD900C18D8D /* planet_names.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = planet_names.txt; sourceTree = "<group>"; };
 		FFFCFAB8255B296400D03284 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFFCFABD255B366700D03284 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FFFCFAC2255B62B300D03284 /* LFGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFGameManager.swift; sourceTree = "<group>"; };
@@ -207,6 +213,8 @@
 		FF078BBE254F3F8300E9FA7C = {
 			isa = PBXGroup;
 			children = (
+				FFF9DA8925755BD900C18D8D /* planet_names.txt */,
+				FFF9DA862575549400C18D8D /* city_names.txt */,
 				FF64B6C725530268006A9F38 /* README.md */,
 				FF57238E2551BFD900872457 /* .gitattributes */,
 				FF8C4E66254FBAFB00522756 /* .gitignore */,
@@ -231,6 +239,7 @@
 		FF078BC9254F3F8300E9FA7C /* Stratagem */ = {
 			isa = PBXGroup;
 			children = (
+				FFE6EE1F25749C2900BB677B /* Extensions */,
 				FF08575A2550FC1700F0F220 /* Fonts */,
 				FFFCFAB8255B296400D03284 /* AppDelegate.swift */,
 				FF8C4E4E254FB0A200522756 /* Stratagem.entitlements */,
@@ -421,6 +430,14 @@
 			path = Planet;
 			sourceTree = "<group>";
 		};
+		FFE6EE1F25749C2900BB677B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FFE6EE2125749C3900BB677B /* Collection+choose.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		FFF2D86E255B890900CE2990 /* Pregame */ = {
 			isa = PBXGroup;
 			children = (
@@ -532,6 +549,8 @@
 				FF8C4E67254FBAFB00522756 /* .gitignore in Resources */,
 				FF08576E2550FC5100F0F220 /* Montserrat-ExtraLight.ttf in Resources */,
 				FF2CF3772571C39E00B71DB8 /* block_water.png in Resources */,
+				FFF9DA8A25755BD900C18D8D /* planet_names.txt in Resources */,
+				FFF9DA872575549400C18D8D /* city_names.txt in Resources */,
 				FF57238F2551BFD900872457 /* .gitattributes in Resources */,
 				FF078BD2254F3F8800E9FA7C /* Preview Assets.xcassets in Resources */,
 				FFA3FFCA25662D7F00CFA406 /* crate_S.png in Resources */,
@@ -648,6 +667,7 @@
 				FF33849325599EB9000EF945 /* JoinGameView.swift in Sources */,
 				FFB4A2A7255D9EA1003298E2 /* PlayerManager.swift in Sources */,
 				FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */,
+				FFE6EE2225749C3900BB677B /* Collection+choose.swift in Sources */,
 				FF0CAB9A25646250009681C8 /* LoopingVideo.swift in Sources */,
 				FF88BDB8256EB24F00DF0E40 /* HudNode.swift in Sources */,
 				FF65EF1F255DE8D00013C2C4 /* UIExtensions.swift in Sources */,
