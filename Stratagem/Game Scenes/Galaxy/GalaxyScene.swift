@@ -10,8 +10,21 @@ class GalaxyScene: SKScene {
     // Holds the top, right and left panels in that order
     var panelNodes: [SKSpriteNode] = [
         SKSpriteNode(color: UIColor.blue, size: CGSize(width: Global.gameVars!.screenSize!.width, height: 65)),
-        SKSpriteNode(color: UIColor.red, size: CGSize(width: Global.gameVars!.screenSize!.width/3, height: Global.gameVars!.screenSize!.height*17/20)),
-        SKSpriteNode(color: UIColor.green, size: CGSize(width: Global.gameVars!.screenSize!.width*2/3, height: Global.gameVars!.screenSize!.height*17/20))
+        SKSpriteNode(color: UIColor.red, size: CGSize(width: Global.gameVars!.screenSize!.width/3, height: Global.gameVars!.screenSize!.height - 65)),
+        SKSpriteNode(color: UIColor.clear, size: CGSize(width: Global.gameVars!.screenSize!.width*2/3, height: Global.gameVars!.screenSize!.height - 65))
+    ]
+    
+    // accepts the index of the planet and returns a relative position.
+    // .1 = x
+    // .2 = y
+    let indexToPos: [CGFloat : CGFloat] = [
+        0.1 : 0.2, 0.2 : 0.5,
+        1.1 : 0.4, 1.2 : 0.75,
+        2.1 : 0.4, 2.2 : 0.25,
+        3.1 : 0.5, 3.2 : 0.5,
+        4.1 : 0.6, 4.2 : 0.75,
+        5.1 : 0.6, 5.2 : 0.25,
+        6.1 : 0.8, 6.2 : 0.5,
     ]
     
     var planetNodes: [SKSpriteNode] = []
@@ -28,15 +41,24 @@ class GalaxyScene: SKScene {
             addChild(panelNodes[i])
         }
         childNode(withName: "panel0")?.position = CGPoint(x: 0, y: screenSize!.height)
-        childNode(withName: "panel1")?.position = CGPoint(x: 0, y: screenSize!.height)
-        childNode(withName: "panel2")?.position = CGPoint(x: 0, y: screenSize!.height)
+        childNode(withName: "panel1")?.position = CGPoint(x: screenSize!.width*2/3, y: screenSize!.height - 65)
+        childNode(withName: "panel2")?.position = CGPoint(x: 0, y: screenSize!.height - 65)
         
+        // Adds/organizes planet nodes
+        let nodeScreenSize = panelNodes[2].size
         for i in 0..<galaxy!.planets.count{
-            let planet = SKSpriteNode()
+            let planet = SKSpriteNode(imageNamed: "Planet")
             planet.name = "planet" + String(i)
-            planetNodes.append(planet)
+            planet.size = CGSize(width: screenSize!.width/20,height: screenSize!.width/20)
             panelNodes[2].addChild(planet)
+            panelNodes[2].childNode(withName: "planet" + String(i))!.position = CGPoint(
+                x: indexToPos[CGFloat(i) + 0.1]! * nodeScreenSize.width,
+                y: -indexToPos[CGFloat(i) + 0.2]! * nodeScreenSize.height)
+            print(panelNodes[2].childNode(withName: "planet" + String(i))!.position)
+            print(screenSize)
         }
+        
+        // Adds/organizes lines
     }
     
     
