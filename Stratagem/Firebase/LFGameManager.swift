@@ -113,17 +113,76 @@ public struct LFGameManager {
     
     /// Called for each player on game start to initalize their own planets/cities
     public func playerInitGame() {
+        Global.setGames(gameVars: GameVariables())
+
+        let gameRef = self.ref.child("games/\(staticGameVariables.gameCode)")
         if staticGameVariables.leaderName == playerVariables.playerName {
             // If leader, generate the galaxy and all the planets
+            let galaxy = Galaxy()
+            galaxy.generateNewGalaxy()
             
+            var planetOwneri = 0
+            let planetOwners = Array(0..<galaxy.planets.count).choose(staticGameVariables.playerNames.count)
+            for planet in galaxy.planets {
+                // Set owner, giving each player 1 random planet
+                if planetOwners.contains(planet.planetID) {
+                    gameRef.child("planets/\(planet.planetID!)/owner").setValue(staticGameVariables.playerNames[planetOwneri])
+                    planetOwneri += 1
+                } else {
+                    gameRef.child("planets/\(planet.planetID!)/owner").setValue("***NIL***")
+                }
+                // Set city mapping
+                var cityMappingStrings: [String] = []
+                for cityMapping in planet.cityMapping {
+                    cityMappingStrings.append(NSCoder.string(for: cityMapping))
+                }
+                gameRef.child("planets/\(planet.planetID!)/cityMapping").setValue(cityMappingStrings)
+            }
+            
+            // Set galaxy vars
+            gameRef.child("galaxy/planet_locs").setValue(["(0, 0)"])
         }
-        // After leader generates galaxy, fetch changes and generate own city. Own a random planet/city
         
-        Global.setGames(gameVars: GameVariables())
-        let galaxy = Galaxy()
-        galaxy.generateNewGalaxy()
-        Global.gameVars?.galaxy = galaxy
-        Global.gameVars?.selectedPlanet = 0
+        // After leader generates galaxy and planets, fetch changes and generate own city. Own a random planet/city
+        // planets[0].generateNewCity()
+        gameRef.child("galaxy/planet_locs").observeSingleEvent(of: .childAdded, with: { _ in
+            // Fetch data
+            var planets: [Planet] = []
+            var ownedPlanetIDs: [Int] = []
+            gameRef.child("planets").observeSingleEvent(of: .value, with: { snapshot in
+                let enumerator = snapshot.children
+
+                while let planetSnapshot = enumerator.nextObject() as? DataSnapshot {
+                    let planet = Planet(planetID: Int(planetSnapshot.key)!)
+                    if let planetSnapshotValue = planetSnapshot.value as? Dictionary<String, Any> {
+                        planet.owner = planetSnapshotValue["owner"] as? String
+                        
+                        let cityMappingsString = planetSnapshotValue["cityMapping"] as! [Any]
+                        var cityMappings: [CGRect] = []
+                        for cityMapping in cityMappingsString {
+                            cityMappings.append(NSCoder.cgRect(for: cityMapping as! String))
+                        }
+                        planet.cityMapping = cityMappings
+                        
+                        // Generate city on owned planet
+                        if planet.owner == playerVariables.playerName {
+                            planet.generateNewCity()
+                            ownedPlanetIDs.append(planet.planetID)
+                        }
+                        planets.append(planet)
+                    }
+                }
+                
+                // Init galaxy
+                let galaxy = Galaxy()
+                galaxy.planets = planets
+                galaxy.ownedPlanetIDs.append(contentsOf: ownedPlanetIDs)
+                Global.gameVars.galaxy = galaxy
+                Global.gameVars.selectedPlanet = ownedPlanetIDs[0]
+                
+                playerVariables.currentView = .GameView
+            })
+        })
     }
     
     public func removeGame() {

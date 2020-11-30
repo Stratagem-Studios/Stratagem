@@ -15,7 +15,7 @@ struct GameView: View {
                 GalaxyView()
             case .PLANET:
                 ZStack{
-                    PlanetView(planetID: Global.gameVars!.selectedPlanet)
+                    PlanetView(planetID: Global.gameVars!.selectedPlanet!)
                     Image("Galaxy")
                         .position(x: screenSize.topLeft.x + 60, y: screenSize.topLeft.y + 60)
                         .onTapGesture {

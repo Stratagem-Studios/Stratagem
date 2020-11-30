@@ -4,6 +4,9 @@ class Galaxy {
     var planetLocs: [CGPoint] = []
     var planets: [Planet] = []
     
+    /// Player specific
+    var ownedPlanetIDs: [Int] = []
+    
     func generateNewGalaxy(){
         var numPlanets: Int
         
@@ -16,8 +19,5 @@ class Galaxy {
         for i in 0..<numPlanets {
             planets.append(Planet(planetID: i))
         }
-        
-        // only generate one planet for now
-        planets[0].generateNewCity()
     }
 }

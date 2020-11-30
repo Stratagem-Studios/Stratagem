@@ -16,9 +16,9 @@ class GameVariables {
     var gameType: GameTypes = GameTypes.STANDARD
     
     // Directly determines display
-    var selectedPlanet: Int = 0
+    var selectedPlanet: Int?
     var selectedCity: City?
     
-    var galaxy: Galaxy?
+    var galaxy: Galaxy!
 }
 

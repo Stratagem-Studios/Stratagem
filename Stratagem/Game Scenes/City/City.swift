@@ -3,21 +3,25 @@ import SKTiled
 
 public class City {
     /// Unique city name (no spaces)
-    var cityName: String?
+    var cityName: String!
+    
+    /// Owner that has power to edit
+    var owner: String?
     
     /// City size
     let cityWidth: Int = 12
     let cityHeight: Int = 32
     
     /// City terrain, a 2d array of CityTiles
-    var cityTerrain: [[CityTile]]?
+    var cityTerrain: [[CityTile]]!
     
     /// Tilemap
-    var tilemap: SKTilemap?
+    var tilemap: SKTilemap!
     
     /// Initializes city variables (required). If not terrain is provided, create a new city
-    func initCity(cityName: String, terrain: [[Int]]? = nil) {
+    func initCity(cityName: String, owner: String? = nil, terrain: [[Int]]? = nil) {
         self.cityName = cityName
+        self.owner = owner
         
         if let terrain = terrain {
             createTMXFile(terrain: terrain)
@@ -35,7 +39,7 @@ public class City {
                 let y = Int(firstTile.tileCoord!.y)
                 
                 // Constraints that ALL tiles have to respect
-                if cityTerrain![x][y].isEditable == true {
+                if cityTerrain[x][y].isEditable == true {
                     // Destroy a building
                     if firstTile.tileData.properties["isBuilding"]! == "true" {
                         let newTileData = tileLayer.getTileData(globalID: secondTileID)!
@@ -48,7 +52,7 @@ public class City {
                         // Update my cityTerrain array
                         let cityTile = CityTile()
                         cityTile.initTile(tile: firstTile, isEditable: true)
-                        cityTerrain![x][y] = cityTile
+                        cityTerrain[x][y] = cityTile
                     } else {
                         // Build a building, satisfying the building's constraints
                         if firstTile.tileData.properties["isBuildable"]! == "true" {
@@ -62,7 +66,7 @@ public class City {
                             // Update my cityTerrain array
                             let cityTile = CityTile()
                             cityTile.initTile(tile: firstTile, isEditable: true)
-                            cityTerrain![x][y] = cityTile
+                            cityTerrain[x][y] = cityTile
                         }
                     }
                 }
@@ -86,7 +90,7 @@ public class City {
                     isEditable = false
                 }
                 cityTile.initTile(tile: (layer?.tileAt(row, col))!, isEditable: isEditable)
-                cityTerrain![row][col] = cityTile
+                cityTerrain[row][col] = cityTile
             }
         }
     }
