@@ -16,10 +16,10 @@ class GameVariables {
     var gameType: GameTypes = GameTypes.STANDARD
     
     // Directly determines display
-    var selectedPlanet: Int = 0
+    var selectedPlanet: Planet?
     var selectedCity: City?
     
-    var galaxy: Galaxy?
+    var galaxy: Galaxy!
     
     // only here for now, should be migrated
     var screenSize: CGRect?
