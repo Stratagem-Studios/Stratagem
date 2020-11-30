@@ -21,6 +21,7 @@ struct GameView: View {
                         .onTapGesture {
                             playerVariables.currentGameViewLevel = GameViewLevel.GALAXY
                         }
+                        .edgesIgnoringSafeArea(.all)
                 }
             case .CITY:
                 CityView()
