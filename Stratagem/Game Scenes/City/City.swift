@@ -19,7 +19,7 @@ public class City {
     var tilemap: SKTilemap!
     
     /// Initializes city variables (required). If not terrain is provided, create a new city
-    func initCity(cityName: String, owner: String? = nil, terrain: [[Int]]? = nil) {
+    func initCity(cityName: String, owner: String? = nil, terrain: [[Int]]? = nil) -> [[Int]]? {
         self.cityName = cityName
         self.owner = owner
         
@@ -28,7 +28,9 @@ public class City {
         } else {
             let terrain = makeCityTerrain()
             createTMXFile(terrain: terrain)
+            return terrain
         }
+        return nil
     }
     
     /// Try to replace firstTile with secondTile given its global ID

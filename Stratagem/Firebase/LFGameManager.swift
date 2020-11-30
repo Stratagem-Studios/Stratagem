@@ -114,7 +114,7 @@ public struct LFGameManager {
     /// Called for each player on game start to initalize their own planets/cities
     public func playerInitGame() {
         Global.setGames(gameVars: GameVariables())
-
+        
         let gameRef = self.ref.child("games/\(staticGameVariables.gameCode)")
         if staticGameVariables.leaderName == playerVariables.playerName {
             // If leader, generate the galaxy and all the planets
@@ -144,16 +144,17 @@ public struct LFGameManager {
         }
         
         // After leader generates galaxy and planets, fetch changes and generate own city. Own a random planet/city
-        // planets[0].generateNewCity()
         gameRef.child("galaxy/planet_locs").observeSingleEvent(of: .childAdded, with: { _ in
             // Fetch data
             var planets: [Planet] = []
             var ownedPlanetIDs: [Int] = []
             gameRef.child("planets").observeSingleEvent(of: .value, with: { snapshot in
                 let enumerator = snapshot.children
-
+                
                 while let planetSnapshot = enumerator.nextObject() as? DataSnapshot {
                     let planet = Planet(planetID: Int(planetSnapshot.key)!)
+                    planets.append(planet)
+
                     if let planetSnapshotValue = planetSnapshot.value as? Dictionary<String, Any> {
                         planet.owner = planetSnapshotValue["owner"] as? String
                         
@@ -166,21 +167,33 @@ public struct LFGameManager {
                         
                         // Generate city on owned planet
                         if planet.owner == playerVariables.playerName {
-                            planet.generateNewCity()
-                            ownedPlanetIDs.append(planet.planetID)
+                            let cityNames = getListOfCityNames()
+                            gameRef.child("cities").observeSingleEvent(of: .value, with: { snapshot in
+                                while true {
+                                    let cityName = cityNames?.randomElement()
+                                    if !snapshot.hasChild(cityName!) {
+                                        let terrain = planet.generateNewCity(cityName: cityName!)
+                                        
+                                        gameRef.child("/cities/\(planet.cities[0].cityName!)/owner").setValue(playerVariables.playerName)
+                                        Global.hfGamePusher.uploadCityTerrain(cityName: planet.cities[0].cityName!, cityTerrainInt: terrain!)
+                                        ownedPlanetIDs.append(planet.planetID)
+                                        
+                                        
+                                        // Init galaxy
+                                        let galaxy = Galaxy()
+                                        galaxy.planets = planets
+                                        galaxy.ownedPlanetIDs.append(contentsOf: ownedPlanetIDs)
+                                        Global.gameVars.galaxy = galaxy
+                                        Global.gameVars.selectedPlanet = ownedPlanetIDs[0]
+                                        
+                                        playerVariables.currentView = .GameView
+                                        break
+                                    }
+                                }
+                            })
                         }
-                        planets.append(planet)
                     }
                 }
-                
-                // Init galaxy
-                let galaxy = Galaxy()
-                galaxy.planets = planets
-                galaxy.ownedPlanetIDs.append(contentsOf: ownedPlanetIDs)
-                Global.gameVars.galaxy = galaxy
-                Global.gameVars.selectedPlanet = ownedPlanetIDs[0]
-                
-                playerVariables.currentView = .GameView
             })
         })
     }
@@ -231,6 +244,23 @@ public struct LFGameManager {
             
             Global.playerManager!.fetchName()
         }
+    }
+    
+    public func getListOfCityNames() -> [String]? {
+        var cityNames: [String]?
+        
+        do {
+            // This solution assumes  you've got the file in your bundle
+            if let path = Bundle.main.path(forResource: "city_names", ofType: "txt"){
+                let data = try String(contentsOfFile:path, encoding: String.Encoding.utf8)
+                cityNames = data.components(separatedBy: "\n")
+                
+            }
+        } catch let err as NSError {
+            // do something with Error
+            print(err)
+        }
+        return cityNames
     }
 }
 
