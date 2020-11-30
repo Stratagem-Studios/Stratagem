@@ -1,8 +1,8 @@
 import SpriteKit
 
 class Planet {
-    var planetID: Int!
-    var owner: String?
+    var planetName: String!
+    var owner: String!
     
     // Later when city count/position is random these will need to be procedurally generated
     var cities: [City] = []
@@ -12,8 +12,8 @@ class Planet {
         //CGRect(x: 392, y: 148, width: 142, height: 82)
     ]
     
-    init(planetID: Int) {
-        self.planetID = planetID
+    init(planetName: String) {
+        self.planetName = planetName
     }
     
     func generateNewCity(cityName: String) -> [[Int]]? {

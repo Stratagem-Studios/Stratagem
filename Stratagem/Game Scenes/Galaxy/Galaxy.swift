@@ -5,7 +5,7 @@ class Galaxy {
     var planets: [Planet] = []
     
     /// Player specific
-    var ownedPlanetIDs: [Int] = []
+    var ownedPlanetNames: [String] = []
     
     func generateNewGalaxy(){
         var numPlanets: Int
@@ -16,8 +16,12 @@ class Galaxy {
         default:
             numPlanets = 5
         }
+        
+        let planetNames = getListOfNames(fileName: "planet_names")!.choose(numPlanets)
         for i in 0..<numPlanets {
-            planets.append(Planet(planetID: i))
+            var planetName = planetNames[i]
+            planetName.removeLast(2)
+            planets.append(Planet(planetName: planetName))
         }
     }
 }

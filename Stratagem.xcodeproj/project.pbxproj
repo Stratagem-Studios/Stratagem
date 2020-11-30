@@ -83,6 +83,7 @@
 		FFF85E4A255C744300DFDDC2 /* PlayerVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E49255C744300DFDDC2 /* PlayerVariables.swift */; };
 		FFF85E4E255C744E00DFDDC2 /* StaticGameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E4D255C744E00DFDDC2 /* StaticGameVariables.swift */; };
 		FFF9DA872575549400C18D8D /* city_names.txt in Resources */ = {isa = PBXBuildFile; fileRef = FFF9DA862575549400C18D8D /* city_names.txt */; };
+		FFF9DA8A25755BD900C18D8D /* planet_names.txt in Resources */ = {isa = PBXBuildFile; fileRef = FFF9DA8925755BD900C18D8D /* planet_names.txt */; };
 		FFFCFAB9255B296400D03284 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAB8255B296400D03284 /* AppDelegate.swift */; };
 		FFFCFABE255B366700D03284 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFFCFABD255B366700D03284 /* GoogleService-Info.plist */; };
 		FFFCFAC3255B62B300D03284 /* LFGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAC2255B62B300D03284 /* LFGameManager.swift */; };
@@ -170,6 +171,7 @@
 		FFF85E49255C744300DFDDC2 /* PlayerVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVariables.swift; sourceTree = "<group>"; };
 		FFF85E4D255C744E00DFDDC2 /* StaticGameVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticGameVariables.swift; sourceTree = "<group>"; };
 		FFF9DA862575549400C18D8D /* city_names.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = city_names.txt; sourceTree = "<group>"; };
+		FFF9DA8925755BD900C18D8D /* planet_names.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = planet_names.txt; sourceTree = "<group>"; };
 		FFFCFAB8255B296400D03284 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFFCFABD255B366700D03284 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FFFCFAC2255B62B300D03284 /* LFGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFGameManager.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 		FF078BBE254F3F8300E9FA7C = {
 			isa = PBXGroup;
 			children = (
+				FFF9DA8925755BD900C18D8D /* planet_names.txt */,
 				FFF9DA862575549400C18D8D /* city_names.txt */,
 				FF64B6C725530268006A9F38 /* README.md */,
 				FF57238E2551BFD900872457 /* .gitattributes */,
@@ -543,6 +546,7 @@
 				FF8C4E67254FBAFB00522756 /* .gitignore in Resources */,
 				FF08576E2550FC5100F0F220 /* Montserrat-ExtraLight.ttf in Resources */,
 				FF2CF3772571C39E00B71DB8 /* block_water.png in Resources */,
+				FFF9DA8A25755BD900C18D8D /* planet_names.txt in Resources */,
 				FFF9DA872575549400C18D8D /* city_names.txt in Resources */,
 				FF57238F2551BFD900872457 /* .gitattributes in Resources */,
 				FF078BD2254F3F8800E9FA7C /* Preview Assets.xcassets in Resources */,
