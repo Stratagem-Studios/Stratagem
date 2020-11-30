@@ -55,6 +55,8 @@ public class City {
                         let cityTile = CityTile()
                         cityTile.initTile(tile: firstTile, isEditable: true)
                         cityTerrain[x][y] = cityTile
+                        
+                        Global.hfGamePusher.uploadCityTerrain(cityName: cityName, cityTerrain: cityTerrain)
                     } else {
                         // Build a building, satisfying the building's constraints
                         if firstTile.tileData.properties["isBuildable"]! == "true" {
@@ -69,6 +71,8 @@ public class City {
                             let cityTile = CityTile()
                             cityTile.initTile(tile: firstTile, isEditable: true)
                             cityTerrain[x][y] = cityTile
+                            
+                            Global.hfGamePusher.uploadCityTerrain(cityName: cityName, cityTerrain: cityTerrain)
                         }
                     }
                 }
