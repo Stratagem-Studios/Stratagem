@@ -11,11 +11,17 @@ class HudNode : SKNode {
     
     public func setup(city: City, size: CGSize) {
         self.size = size
-        cityNameLabelNode.name = "cityNameLabelNode"
+        cityNameLabelNode.fontName = "Montserrat-Bold"
         cityNameLabelNode.zPosition = 100000
         cityNameLabelNode.text = city.cityName
         cityNameLabelNode.fontSize = 20
-        cityNameLabelNode.position = CGPoint(x: 0, y: size.halfHeight - 25)
+        cityNameLabelNode.position = CGPoint(x: 0, y: size.halfHeight - 30)
+        
+        let cityNameBackground = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: cityNameLabelNode.frame.size.width + 40, height: cityNameLabelNode.frame.size.height + 5)), cornerRadius: 5)
+        cityNameBackground.name = "cityNameBackgroundNode"
+        cityNameBackground.fillColor = UIColor(named: "TitleBackground")!
+        cityNameBackground.position = CGPoint(x: 0, y: size.halfHeight - 23)
+        cityNameBackground.zPosition = 100000 - 1
         
         buildButtonNode.name = "buildButtonNode"
         buildButtonNode.zPosition = 100000
@@ -37,6 +43,8 @@ class HudNode : SKNode {
         borderRectNode.lineWidth = 3
         
         addChild(cityNameLabelNode)
+        addChild(cityNameBackground)
+
         addChild(buildButtonNode)
         addChild(destroyButtonNode)
         addChild(borderRectNode)

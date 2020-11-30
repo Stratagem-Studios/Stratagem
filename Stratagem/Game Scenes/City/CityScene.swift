@@ -6,6 +6,7 @@ import SwiftUI
 public class CityScene: SKTiledScene {
     private var city = City()
     private var cityEditState = CityEditStates.NONE
+    var playerVariables: PlayerVariables?
     
     private let hudNode = HudNode()
     
@@ -41,15 +42,20 @@ public class CityScene: SKTiledScene {
             let tappedHudNodes = hudNode.nodes(at: coordWRTHUD)
             
             var clickedOnHud = false
-            if tappedHudNodes.count > 0 {
-                switch tappedHudNodes[0].name {
+            for tappedHudNode in tappedHudNodes {
+                switch tappedHudNode.name {
+                case "cityNameBackgroundNode":
+                    playerVariables!.currentGameViewLevel = GameViewLevel.PLANET
+                    clickedOnHud = true
+                    break
                 case "buildButtonNode":
                     if cityEditState != CityEditStates.BUILD {
                         changeStateToBuild()
                     } else {
-                       changeStateToNone()
+                        changeStateToNone()
                     }
                     clickedOnHud = true
+                    break
                 case "destroyButtonNode":
                     if cityEditState != CityEditStates.DESTROY {
                         changeStateToDestroy()
@@ -57,6 +63,7 @@ public class CityScene: SKTiledScene {
                         changeStateToNone()
                     }
                     clickedOnHud = true
+                    break
                     
                 default:
                     clickedOnHud = false

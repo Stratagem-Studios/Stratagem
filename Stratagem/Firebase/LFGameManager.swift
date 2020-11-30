@@ -113,9 +113,17 @@ public struct LFGameManager {
     
     /// Called for each player on game start to initalize their own planets/cities
     public func playerInitGame() {
+        if staticGameVariables.leaderName == playerVariables.playerName {
+            // If leader, generate the galaxy and all the planets
+            
+        }
+        // After leader generates galaxy, fetch changes and generate own city. Own a random planet/city
+        
         Global.setGames(gameVars: GameVariables())
-        Global.gameVars?.generateGalaxy()
-        Global.gameVars?.selectedPlanet = (Global.gameVars?.galaxyLayout[0].planet)!
+        let galaxy = Galaxy()
+        galaxy.generateNewGalaxy()
+        Global.gameVars?.galaxy = galaxy
+        Global.gameVars?.selectedPlanet = 0
     }
     
     public func removeGame() {

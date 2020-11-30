@@ -15,6 +15,7 @@ public struct CityView: View {
     var scene: SKScene {
         //let scene = GameScene(fileNamed: "GameScene")
         let scene = CityScene(size: CGSize(width: 200, height: 200))
+        scene.playerVariables = playerVariables
         //if let scene = scene {
             scene.size = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
             //scene.scaleMode = .fill
@@ -31,11 +32,6 @@ public struct CityView: View {
             .onAppear {
                 VideoBackground.shared.pause()
             }
-            
-            // Just for testing purposes
-            .onTapGesture(count: 2, perform: {
-                playerVariables.currentView = .GameView
-            })
     }
 }
 
