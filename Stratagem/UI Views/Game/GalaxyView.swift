@@ -10,12 +10,20 @@ enum PlanetTypes {
 struct GalaxyView : View {
     @EnvironmentObject var playerVariables: PlayerVariables
     
+    var scene: SKScene {
+        let scene = GalaxyScene(size: CGSize(width: 200, height: 200))
+        return scene
+    }
+    
     var body: some View {
-        Image("Galaxy")
-            .onTapGesture {
-                print("g")
-                playerVariables.currentGameViewLevel = .PLANET
-            }
+        VStack{
+            Image("Galaxy")
+                .onTapGesture {
+                    print("g")
+                    playerVariables.currentGameViewLevel = .PLANET
+                }
+            SpriteView(scene: scene).edgesIgnoringSafeArea(.all)
+        }
     }
 }
 

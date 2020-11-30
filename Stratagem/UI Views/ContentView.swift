@@ -23,6 +23,7 @@ struct ContentView: View {
                     .transition(.slide)
             case .GameView:
                 GameView()
+                    .ignoresSafeArea()
             }
             
             if playerVariables.errorMessage != "" {
