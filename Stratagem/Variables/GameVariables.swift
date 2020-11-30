@@ -20,5 +20,8 @@ class GameVariables {
     var selectedCity: City?
     
     var galaxy: Galaxy?
+    
+    // only here for now, should be migrated
+    var screenSize: CGRect?
 }
 

@@ -26,6 +26,8 @@ struct GameView: View {
             case .CITY:
                 CityView()
             }
+        }.onAppear {
+            Global.gameVars?.screenSize = UIScreen.main.bounds
         }
     }
 }
