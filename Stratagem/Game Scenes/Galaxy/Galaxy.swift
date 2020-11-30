@@ -4,10 +4,10 @@ class Galaxy {
     var planetLocs: [CGPoint] = []
     var planets: [Planet] = []
     
-    func generateNewGalaxy(_ gameType: GameTypes){
+    func generateNewGalaxy(){
         var numPlanets: Int
         
-        switch gameType {
+        switch Global.gameVars?.gameType {
         case .STANDARD:
             numPlanets = 7
         default:

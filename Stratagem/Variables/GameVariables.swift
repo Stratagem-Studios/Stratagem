@@ -19,11 +19,6 @@ class GameVariables {
     var selectedPlanet: Int = 0
     var selectedCity: City?
     
-    var galaxy: Galaxy
-        
-    func generateGalaxy(){
-        galaxy.generateNewGalaxy(gameType)
-    }
-    init(){galaxy = Galaxy()} /// generates our first galaxy. generateGalaxy can be executed again to create new galaxy
+    var galaxy: Galaxy?
 }
 

@@ -78,10 +78,10 @@ struct PlanetView : UIViewRepresentable {
             // check that we clicked on at least one object
             if hitResults.count > 0 {
                 let result: SCNHitTestResult = hitResults[0]
-                let planet = Global.gameVars!.galaxy.planets[planetID]
+                let planet = Global.gameVars!.galaxy!.planets[planetID]
                 for i in 0..<planet.cityMapping.count {
                     if planet.cityMapping[i].contains(CGPoint(x: p.x, y: p.y)){
-                        Global.gameVars!.selectedCity = Global.gameVars!.galaxy.planets[planetID].cities[i]
+                        Global.gameVars!.selectedCity = Global.gameVars!.galaxy!.planets[planetID].cities[i]
                         playerVars.currentGameViewLevel = GameViewLevel.CITY
                     }
                 }

@@ -120,7 +120,9 @@ public struct LFGameManager {
         // After leader generates galaxy, fetch changes and generate own city. Own a random planet/city
         
         Global.setGames(gameVars: GameVariables())
-        Global.gameVars?.generateGalaxy()
+        let galaxy = Galaxy()
+        galaxy.generateNewGalaxy()
+        Global.gameVars?.galaxy = galaxy
         Global.gameVars?.selectedPlanet = 0
     }
     
