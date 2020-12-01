@@ -29,7 +29,6 @@ class GameVariables {
     var updater = Updater()
     
     func update(deltaTime: Float){
-        print(deltaTime)
     }
     
 }

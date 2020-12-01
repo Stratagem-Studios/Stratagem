@@ -25,6 +25,12 @@ class GalaxyScene: SKScene {
         5.1 : 0.6, 5.2 : 0.25,
         6.1 : 0.8, 6.2 : 0.5,
     ]
+    // Planet positioning
+    /*
+        2      5
+     1      4      7
+        3      6
+    */
     
     var planetNodes: [SKSpriteNode] = []
     
@@ -49,6 +55,7 @@ class GalaxyScene: SKScene {
             planet.name = "planet" + String(i)
             planet.size = CGSize(width: screenSize!.width/20,height: screenSize!.width/20)
             panelNodes[2].addChild(planet)
+            planetNodes.append(planet)
             panelNodes[2].childNode(withName: "planet" + String(i))!.position = CGPoint(
                 x: indexToPos[CGFloat(i) + 0.1]! * nodeScreenSize.width,
                 y: -indexToPos[CGFloat(i) + 0.2]! * nodeScreenSize.height)
@@ -60,6 +67,7 @@ class GalaxyScene: SKScene {
         
         // Adds/organizes lines
         
+        
         // Creates the top nav bar
         let settings = SKSpriteNode(imageNamed: "Settings")
         settings.size = CGSize(width:65,height:65)
@@ -70,5 +78,16 @@ class GalaxyScene: SKScene {
     }
     
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // We only care about the first touch
+        let node = self.atPoint(touches.first!.location(in: self))
+        print(planetNodes)
+        for i in 0..<planetNodes.count{
+            if "planet" + String(i) == node.name {
+                Global.gameVars.selectedPlanet = Global.gameVars.galaxy.planets[i]
+                Global.playerManager.playerVariables.currentGameViewLevel = .PLANET
+            }
+        }
+    }
 }
 
