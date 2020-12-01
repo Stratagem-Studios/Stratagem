@@ -2,6 +2,7 @@
 
 import SceneKit
 import SpriteKit
+import Combine
 
 enum GameViewLevel {
     case GALAXY, PLANET, CITY
@@ -23,5 +24,13 @@ class GameVariables {
     
     // only here for now, should be migrated
     var screenSize: CGRect?
+    
+    // Updates the game
+    var updater = Updater()
+    
+    func update(currentTime: TimeInterval){
+        print(currentTime)
+    }
+    
 }
 
