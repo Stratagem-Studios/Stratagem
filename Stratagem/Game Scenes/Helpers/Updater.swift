@@ -11,4 +11,7 @@ class Updater: SKScene {
         }
         else {lastTime = Float(currentTime)}
     }
+    override func sceneDidLoad() {
+        backgroundColor = UIColor.clear
+    }
 }
