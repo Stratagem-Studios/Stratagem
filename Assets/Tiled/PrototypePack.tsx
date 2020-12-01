@@ -3,54 +3,44 @@
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <properties>
-   <property name="isBuildable" type="bool" value="true"/>
-   <property name="isBuilding" type="bool" value="false"/>
+   <property name="name" value="grass"/>
+   <property name="type" value="ground"/>
   </properties>
   <image width="256" height="512" source="block_grass.png"/>
  </tile>
  <tile id="1">
-  <properties>
-   <property name="isBuildable" type="bool" value="false"/>
-   <property name="isBuilding" type="bool" value="false"/>
-  </properties>
-  <image width="256" height="512" source="blockAngle_S.png"/>
- </tile>
- <tile id="2">
-  <properties>
-   <property name="isBuildable" type="bool" value="false"/>
-   <property name="isBuilding" type="bool" value="false"/>
-  </properties>
-  <image width="256" height="512" source="crate_S.png"/>
- </tile>
- <tile id="3">
-  <properties>
-   <property name="isBuildable" type="bool" value="false"/>
-   <property name="isBuilding" type="bool" value="false"/>
-  </properties>
-  <image width="256" height="512" source="doorClosed_S.png"/>
- </tile>
- <tile id="4">
-  <image width="256" height="512" source="doorwayRight_S.png"/>
- </tile>
- <tile id="5">
-  <properties>
-   <property name="isBuildable" type="bool" value="false"/>
-   <property name="isBuilding" type="bool" value="false"/>
-  </properties>
+     <properties>
+      <property name="name" value="sand"/>
+      <property name="type" value="ground"/>
+     </properties>
   <image width="256" height="512" source="block_sand.png"/>
  </tile>
- <tile id="6">
-  <properties>
-   <property name="isBuildable" type="bool" value="false"/>
-   <property name="isBuilding" type="bool" value="false"/>
-  </properties>
+ <tile id="2">
+     <properties>
+      <property name="name" value="water"/>
+      <property name="type" value="ground"/>
+     </properties>
   <image width="256" height="512" source="block_water.png"/>
  </tile>
- <tile id="7">
-  <properties>
-   <property name="isBuildable" type="bool" value="false"/>
-   <property name="isBuilding" type="bool" value="true"/>
-  </properties>
-  <image width="256" height="512" source="building.png"/>
+ <tile id="3">
+     <properties>
+      <property name="name" value="simple building"/>
+      <property name="type" value="industrial"/>
+     </properties>
+  <image width="256" height="512" source="building industrial.png"/>
  </tile>
+ <tile id="4">
+     <properties>
+      <property name="name" value="simple residential"/>
+      <property name="type" value="residential"/>
+     </properties>
+  <image width="256" height="512" source="building residential.png"/>
+</tile>
+<tile id="5">
+    <properties>
+     <property name="name" value="simple road"/>
+     <property name="type" value="road"/>
+    </properties>
+ <image width="256" height="512" source="road.png"/>
+</tile>
 </tileset>

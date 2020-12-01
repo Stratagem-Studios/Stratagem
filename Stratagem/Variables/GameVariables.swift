@@ -28,6 +28,7 @@ class GameVariables {
     // Updates the game
     var updater = Updater()
     
+    
     func update(deltaTime: Float){
     }
     
