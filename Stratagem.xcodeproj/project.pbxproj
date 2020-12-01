@@ -11,6 +11,7 @@
 		CE1004BF256856BC0077941A /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004BE256856BC0077941A /* PlanetView.swift */; };
 		CE1004E12569E1B70077941A /* GalaxyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004E02569E1B70077941A /* GalaxyView.swift */; };
 		CE8F1382257488AC0038156C /* GalaxyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1381257488AC0038156C /* GalaxyScene.swift */; };
+		CE8F1394257605D70038156C /* Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1393257605D70038156C /* Updater.swift */; };
 		CEC78654256C1B51001E440F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC78653256C1B51001E440F /* GameView.swift */; };
 		CECA7740255E3F1700CE9F69 /* GameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA773F255E3F1700CE9F69 /* GameVariables.swift */; };
 		CECA7755255E469E00CE9F69 /* GameBoards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA7754255E469E00CE9F69 /* GameBoards.swift */; };
@@ -94,6 +95,7 @@
 		CE1004BE256856BC0077941A /* PlanetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		CE1004E02569E1B70077941A /* GalaxyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyView.swift; sourceTree = "<group>"; };
 		CE8F1381257488AC0038156C /* GalaxyScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyScene.swift; sourceTree = "<group>"; };
+		CE8F1393257605D70038156C /* Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updater.swift; sourceTree = "<group>"; };
 		CEC78653256C1B51001E440F /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		CECA773F255E3F1700CE9F69 /* GameVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVariables.swift; sourceTree = "<group>"; };
 		CECA7754255E469E00CE9F69 /* GameBoards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoards.swift; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				FFA55AC4256C6D9700EB12D9 /* Perlin2D.swift */,
+				CE8F1393257605D70038156C /* Updater.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				FF88BDA4256E0B7B00DF0E40 /* CityTile.swift in Sources */,
 				FF012D3B2551B0420017E288 /* TitleText.swift in Sources */,
 				FFE6EE1A25746BF800BB677B /* Planet.swift in Sources */,
+				CE8F1394257605D70038156C /* Updater.swift in Sources */,
 				FFA55AC5256C6D9700EB12D9 /* Perlin2D.swift in Sources */,
 				FFB4A299255CE6A7003298E2 /* FirebaseHelper.swift in Sources */,
 				FFFCFAC3255B62B300D03284 /* LFGameManager.swift in Sources */,
