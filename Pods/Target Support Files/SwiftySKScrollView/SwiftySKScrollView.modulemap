@@ -1,0 +1,6 @@
+framework module SwiftySKScrollView {
+  umbrella header "SwiftySKScrollView-umbrella.h"
+
+  export *
+  module * { export * }
+}
