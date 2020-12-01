@@ -1,7 +1,7 @@
 // This class is mostly for holding very top level things such as game currency
 
 import SwiftUI
-
+import SpriteKit
 
 struct GameView: View {
     @EnvironmentObject var playerVariables: PlayerVariables
@@ -10,6 +10,9 @@ struct GameView: View {
     
     var body: some View {
         ZStack {
+            // This scene needs to be open to update everthing
+            SpriteView(scene: Global.gameVars.updater)
+            
             switch playerVariables.currentGameViewLevel {
             case .GALAXY:
                 GalaxyView()

@@ -14,9 +14,8 @@ class GalaxyScene: SKScene {
         SKSpriteNode(color: UIColor.clear, size: CGSize(width: Global.gameVars!.screenSize!.width*2/3, height: Global.gameVars!.screenSize!.height - 65))
     ]
     
-    // accepts the index of the planet and returns a relative position.
-    // .1 = x
-    // .2 = y
+    // accepts the index of the planet and returns a relative position. only temp
+    // .1 = x  .2 = y
     let indexToPos: [CGFloat : CGFloat] = [
         0.1 : 0.2, 0.2 : 0.5,
         1.1 : 0.4, 1.2 : 0.75,
@@ -28,7 +27,6 @@ class GalaxyScene: SKScene {
     ]
     
     var planetNodes: [SKSpriteNode] = []
-    
     
     // All the nodes that will be used
     let planetTemplate = SKSpriteNode(imageNamed: "Planet")
@@ -69,10 +67,6 @@ class GalaxyScene: SKScene {
         settings.position = CGPoint(x: screenSize!.width, y: 0)
         panelNodes[0].addChild(settings)
         
-    }
-    
-    override func update(_ currentTime: TimeInterval) {
-        print(currentTime)
     }
     
     
