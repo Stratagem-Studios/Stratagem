@@ -43,7 +43,7 @@ public class City {
                 // Constraints that ALL tiles have to respect
                 if cityTerrain[x][y].isEditable == true {
                     // Destroy a building
-                    if firstTile.tileData.properties["isBuilding"]! == "true" {
+                    if firstTile.tileData.properties["type"]! != "ground" {
                         let newTileData = tileLayer.getTileData(globalID: secondTileID)!
                         let newTexture = newTileData.texture!
                         
@@ -59,7 +59,7 @@ public class City {
                         Global.hfGamePusher.uploadCityTerrain(cityName: cityName, cityTerrain: cityTerrain)
                     } else {
                         // Build a building, satisfying the building's constraints
-                        if firstTile.tileData.properties["isBuildable"]! == "true" {
+                        if firstTile.tileData.properties["type"]! == "ground" {
                             let newTileData = tileLayer.getTileData(globalID: secondTileID)!
                             let newTexture = newTileData.texture!
                             

@@ -86,9 +86,6 @@ class HudNode : SKNode {
     }
     
     private func setupBuildingScrollView(view: UIView, tilemap: SKTilemap) {
-        for i in tilemap.tilesets.first!.globalRange {
-            //print(i)
-        }
         scrollView = SwiftySKScrollView(frame: CGRect(x: 0, y: size.height - 100, width: size.width, height: 100), moveableNode: moveableNode, direction: .horizontal)
         scrollView?.contentSize = CGSize(width: scrollView!.frame.width * 3, height: scrollView!.frame.height) // * 3 makes it three times as wide
         view.addSubview(scrollView!)

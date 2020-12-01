@@ -11,6 +11,9 @@ public class CityScene: SKTiledScene {
     
     private let hudNode = HudNode()
     
+    private var buildSelectedNode: SKNode?
+    private var buildSelectedTiledata: SKTilesetData?
+    
     public override func didMove(to view: SKView) {
         city = Global.gameVars!.selectedCity!
         
@@ -68,9 +71,35 @@ public class CityScene: SKTiledScene {
                         changeStateToNone()
                     }
                     clickedOnHud = true
-                case "buildBuilding: 1":
-                    print("hi")
                 default:
+                    if cityEditState == .BUILD {
+                        if let tappedHudNodeName = tappedHudNode.name {
+                            let tiles = tilemap.tilesets.first!.getTileData(named: tappedHudNodeName)
+                            if tiles.count > 0 {
+                                // Display building stats
+                                
+                                // Toggle
+                                if let buildSelectedNode = buildSelectedNode {
+                                    buildSelectedNode.removeAllChildren()
+                                    self.buildSelectedNode = nil
+                                    self.buildSelectedTiledata = nil
+                                    
+                                    if buildSelectedNode.name != tappedHudNodeName {
+                                        let selectedBorderRect = SKShapeNode(rect: tappedHudNode.frame, cornerRadius: 5)
+                                        tappedHudNode.addChild(selectedBorderRect)
+                                        self.buildSelectedNode = tappedHudNode
+                                        buildSelectedTiledata = tiles[0]
+                                    }
+                                } else {
+                                    let selectedBorderRect = SKShapeNode(rect: tappedHudNode.frame, cornerRadius: 5)
+                                    tappedHudNode.addChild(selectedBorderRect)
+                                    buildSelectedNode = tappedHudNode
+                                    buildSelectedTiledata = tiles[0]
+                                }
+                                clickedOnHud = true
+                            }
+                        }
+                    }
                     break
                 }
                 
@@ -85,7 +114,9 @@ public class CityScene: SKTiledScene {
                     case .NONE:
                         print(tile)
                     case .BUILD:
-                        city.changeTileAtLoc(firstTile: tile, secondTileID: 4)
+                        if let buildSelectedTiledata = buildSelectedTiledata {
+                            city.changeTileAtLoc(firstTile: tile, secondTileID: buildSelectedTiledata.globalID)
+                        }
                     case .DESTROY:
                         city.changeTileAtLoc(firstTile: tile, secondTileID: 1)
                     }
@@ -95,6 +126,10 @@ public class CityScene: SKTiledScene {
     }
     
     private func changeStateToNone() {
+        buildSelectedNode?.removeAllChildren()
+        buildSelectedNode = nil
+        buildSelectedTiledata = nil
+        
         cityEditState = CityEditStates.NONE
         hudNode.noneState()
         highlightUneditableTiles(colorBlendFactor: 0)
