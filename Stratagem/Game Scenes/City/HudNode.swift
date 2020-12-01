@@ -24,7 +24,7 @@ class HudNode : SKNode {
         cityNameLabelNode.fontSize = 20
         cityNameLabelNode.position = CGPoint(x: 0, y: size.halfHeight - 30)
         
-        let cityNameBackground = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: cityNameLabelNode.frame.size.width + 40, height: cityNameLabelNode.frame.size.height + 5)), cornerRadius: 5)
+        let cityNameBackground = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: cityNameLabelNode.frame.size.width + 40, height: cityNameLabelNode.frame.size.height + 10)), cornerRadius: 5)
         cityNameBackground.name = "cityNameBackgroundNode"
         cityNameBackground.fillColor = UIColor(named: "TitleBackground")!
         cityNameBackground.position = CGPoint(x: 0, y: size.halfHeight - 23)
@@ -112,6 +112,7 @@ class HudNode : SKNode {
         
         /// Test sprites page 1
         let sprite1Page1 = SKSpriteNode(texture: tilemap.getTileData(globalID: 1)!.texture, size: CGSize(width: 50, height: 100))
+        sprite1Page1.name = "buildBuilding: 1"
         sprite1Page1.position = CGPoint(x: 0, y: 0)
         page1ScrollView.addChild(sprite1Page1)
                 

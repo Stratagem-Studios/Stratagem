@@ -54,7 +54,6 @@ public class CityScene: SKTiledScene {
                 case "cityNameBackgroundNode":
                     playerVariables!.currentGameViewLevel = GameViewLevel.PLANET
                     clickedOnHud = true
-                    break
                 case "buildButtonNode":
                     if cityEditState != CityEditStates.BUILD {
                         changeStateToBuild()
@@ -62,7 +61,6 @@ public class CityScene: SKTiledScene {
                         changeStateToNone()
                     }
                     clickedOnHud = true
-                    break
                 case "destroyButtonNode":
                     if cityEditState != CityEditStates.DESTROY {
                         changeStateToDestroy()
@@ -70,10 +68,14 @@ public class CityScene: SKTiledScene {
                         changeStateToNone()
                     }
                     clickedOnHud = true
-                    break
-                    
+                case "buildBuilding: 1":
+                    print("hi")
                 default:
-                    clickedOnHud = false
+                    break
+                }
+                
+                if clickedOnHud {
+                    break
                 }
             }
             if !clickedOnHud {
