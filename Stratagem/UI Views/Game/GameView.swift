@@ -11,8 +11,9 @@ struct GameView: View {
     var body: some View {
         ZStack {
             // This scene needs to be open to update everthing
-            SpriteView(scene: Global.gameVars.updater)
+            SpriteView(scene: Global.gameVars.updater,options: [.allowsTransparency])
             
+            // The actual GameView
             switch playerVariables.currentGameViewLevel {
             case .GALAXY:
                 GalaxyView()
@@ -30,7 +31,7 @@ struct GameView: View {
                 CityView()
             }
         }.onAppear {
-            Global.gameVars?.screenSize = UIScreen.main.bounds
+            
         }
     }
     

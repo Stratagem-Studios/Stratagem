@@ -3,6 +3,7 @@
 import SceneKit
 import SpriteKit
 import Combine
+import SwiftUI
 
 enum GameViewLevel {
     case GALAXY, PLANET, CITY
@@ -23,7 +24,7 @@ class GameVariables {
     var galaxy: Galaxy!
     
     // only here for now, should be migrated
-    var screenSize: CGRect?
+    var screenSize = UIScreen.main.bounds
     
     // Updates the game
     var updater = Updater()
