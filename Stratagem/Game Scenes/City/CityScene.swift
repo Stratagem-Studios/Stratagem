@@ -1,5 +1,6 @@
 import SpriteKit
 import SKTiled
+import SwiftySKScrollView
 import SwiftUI
 
 
@@ -30,8 +31,14 @@ public class CityScene: SKTiledScene {
         view.showsFPS = true
         view.showsDrawCount = true
         
-        hudNode.setup(city: city, size: size)
+        hudNode.setup(city: city, size: size, view: view, tilemap: tilemap)
         cameraNode.addToOverlay(hudNode)
+        
+        changeStateToNone()
+    }
+    
+    public override func willMove(from view: SKView) {
+        hudNode.unInit()
     }
     
     /// Called only when user single taps
@@ -87,19 +94,19 @@ public class CityScene: SKTiledScene {
     
     private func changeStateToNone() {
         cityEditState = CityEditStates.NONE
-        hudNode.changeBorderColor(color: .clear)
+        hudNode.noneState()
         highlightUneditableTiles(colorBlendFactor: 0)
     }
     
     private func changeStateToBuild() {
         cityEditState = CityEditStates.BUILD
-        hudNode.changeBorderColor(color: .green)
+        hudNode.buildState(view: view!, tilemap: tilemap)
         highlightUneditableTiles(colorBlendFactor: 0.25)
     }
     
     private func changeStateToDestroy() {
         cityEditState = CityEditStates.DESTROY
-        hudNode.changeBorderColor(color: .red)
+        hudNode.destroyState()
         highlightUneditableTiles(colorBlendFactor: 0.25)
     }
     
