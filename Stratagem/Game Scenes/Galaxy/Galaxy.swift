@@ -24,6 +24,7 @@ class Galaxy {
             planetName.removeLast(2)
             planets.append(Planet(planetName: planetName))
         }
+        
     }
     
     init() {

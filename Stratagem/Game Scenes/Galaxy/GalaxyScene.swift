@@ -45,7 +45,7 @@ class GalaxyScene: SKScene {
         childNode(withName: "panel2")?.position = CGPoint(x: 0, y: screenSize!.height - 65)
         
         // Adds/organizes planet nodes
-        let nodeScreenSize = panelNodes[2].size
+        var nodeScreenSize = panelNodes[2].size
         for i in 0..<galaxy!.planets.count{
             let planet = SKSpriteNode(imageNamed: "Planet")
             planet.name = "planet" + String(i)
@@ -54,11 +54,25 @@ class GalaxyScene: SKScene {
             panelNodes[2].childNode(withName: "planet" + String(i))!.position = CGPoint(
                 x: indexToPos[CGFloat(i) + 0.1]! * nodeScreenSize.width,
                 y: -indexToPos[CGFloat(i) + 0.2]! * nodeScreenSize.height)
-            print(panelNodes[2].childNode(withName: "planet" + String(i))!.position)
-            print(screenSize)
+        }
+        /// for now all the planet locs are static
+        for node in panelNodes[2].children {
+            galaxy?.planetLocs.append(node.position)
         }
         
         // Adds/organizes lines
+        
+        // Creates the top nav bar
+        let settings = SKSpriteNode(imageNamed: "Settings")
+        settings.size = CGSize(width:65,height:65)
+        settings.anchorPoint = CGPoint(x: 1,y: 1)
+        settings.position = CGPoint(x: screenSize!.width, y: 0)
+        panelNodes[0].addChild(settings)
+        
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        print(currentTime)
     }
     
     

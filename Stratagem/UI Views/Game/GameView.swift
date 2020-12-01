@@ -30,4 +30,5 @@ struct GameView: View {
             Global.gameVars?.screenSize = UIScreen.main.bounds
         }
     }
+    
 }
