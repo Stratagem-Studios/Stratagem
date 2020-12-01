@@ -85,7 +85,7 @@ public class CityScene: SKTiledScene {
                     case .NONE:
                         print(tile)
                     case .BUILD:
-                        city.changeTileAtLoc(firstTile: tile, secondTileID: 8)
+                        city.changeTileAtLoc(firstTile: tile, secondTileID: 4)
                     case .DESTROY:
                         city.changeTileAtLoc(firstTile: tile, secondTileID: 1)
                     }

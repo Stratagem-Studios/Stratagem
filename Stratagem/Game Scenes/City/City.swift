@@ -159,9 +159,9 @@ public class City {
                 }
                 let avgTerrainHeight = total / (8 * 8)
                 if avgTerrainHeight <= 0.4 {
-                    rectTerrain[row][col] = 7
+                    rectTerrain[row][col] = 3
                 } else if avgTerrainHeight <= 0.45 {
-                    rectTerrain[row][col] = 6
+                    rectTerrain[row][col] = 2
                 } else if avgTerrainHeight <= 1 {
                     rectTerrain[row][col] = 1
                 }
