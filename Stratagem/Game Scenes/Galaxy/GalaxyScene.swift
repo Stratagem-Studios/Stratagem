@@ -136,10 +136,18 @@ class GalaxyScene: SKScene {
         descriptionPanel.position = CGPoint(x: nodeScreenSize.width, y: nodeScreenSize.height + nodeScreenSize.height/20)
         descriptionPanel.position = CGPoint(x: nodeScreenSize.width/2,y: -nodeScreenSize.height/2)
         descriptionPanel.fillColor = SKColor.white
+        descriptionPanel.name = "descriptionPanel"
         
         let enterButton = SKShapeNode(rectOf: CGSize(width: nodeScreenSize.width * 2/3, height: nodeScreenSize.width/7), cornerRadius: 20)
         enterButton.position = CGPoint(x: 0, y: -nodeScreenSize.height/3)
         enterButton.fillColor = SKColor.gray
+        enterButton.name = "enterButton"
+        let enterText = SKLabelNode(fontNamed: "Montserrat-Bold")
+        enterText.fontSize = screenSize!.height/15
+        enterText.verticalAlignmentMode = .center
+        enterText.name = "enterText"
+        enterText.text = "Visit Planet"
+        enterButton.addChild(enterText)
         descriptionPanel.addChild(enterButton)
         panelNodes[1].addChild(descriptionPanel)
     }
@@ -160,11 +168,17 @@ class GalaxyScene: SKScene {
     }
     
     func selectPlanet (planetInt: Int){
-        selectedPlanet?.color = SKColor.white
+        if selectedPlanet == nil {
+            (panelNodes[1].childNode(withName: "descriptionPanel")?.childNode(withName: "enterButton")?.childNode(withName: "enterText") as! SKLabelNode).fontColor = SKColor.yellow
+            (panelNodes[1].childNode(withName: "descriptionPanel")!.childNode(withName: "enterButton") as! SKShapeNode).fillColor = SKColor.black
+        } else {
+            selectedPlanet?.color = SKColor.white
+        }
         selectedPlanet = planetNodes[planetInt]
         selectedPlanet!.color = SKColor.yellow
         panelNodes[2].childNode(withName: "lineMaster")?.removeAllChildren()
         panelNodes[2].childNode(withName: "lineMaster")?.addChild(lineNodes[planetInt])
+        Global.gameVars.selectedPlanet = Global.gameVars.galaxy.planets[planetInt]
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -179,10 +193,10 @@ class GalaxyScene: SKScene {
                 if (planet.cities.isEmpty){planet.generateNewCity(cityName: "e")}
                 
                 selectPlanet(planetInt: i)
-//                Global.gameVars.selectedPlanet = planet
-//                Global.playerManager.playerVariables.currentGameViewLevel = .PLANET
             } else if node.name == "settings" {
-                
+                /// add settings panel here
+            } else if node.name == "enterButton" || node.name == "enterText" {
+                Global.playerManager.playerVariables.currentGameViewLevel = .PLANET
             }
         }
     }
