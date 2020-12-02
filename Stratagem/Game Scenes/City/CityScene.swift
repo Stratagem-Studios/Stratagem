@@ -39,6 +39,15 @@ public class CityScene: SKTiledScene {
         city.hudNode = hudNode
         
         changeStateToNone()
+        
+        // Updates HUD every 1 sec
+        let wait = SKAction.wait(forDuration: 0.5)
+        let update = SKAction.run({ [self] in
+            hudNode.update()
+        })
+        let seq = SKAction.sequence([update, wait])
+        let repeatActions = SKAction.repeatForever(seq)
+        run(repeatActions)
     }
     
     public override func willMove(from view: SKView) {

@@ -4,15 +4,24 @@ import SceneKit
 import SpriteKit
 import Combine
 
-enum GameViewLevel {
+enum GameViewLevel: String {
     case GALAXY, PLANET, CITY
 }
 
-enum GameTypes {
+enum GameTypes: String {
     case STANDARD, PLANETRUSH
 }
 
+enum ResourceTypes: String {
+    case CREDITS, METAL, POPULATION
+}
+
 class GameVariables {
+    // Resources
+    var population: Int = 1000
+    var credits: Int = 1000
+    var metal: Int = 50
+    
     // Used for setup
     var gameType: GameTypes = GameTypes.STANDARD
     

@@ -5,6 +5,10 @@ import SwiftySKScrollView
 
 class HudNode : SKNode {
     private let cityNameLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
+    private let popLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
+    private let creditsLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
+    private let metalLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
+
     private let buildButtonNode = SKSpriteNode(texture: SKTexture(imageNamed: "Build"))
     private let destroyButtonNode = SKSpriteNode(texture: SKTexture(imageNamed: "Destroy"))
     private let inlineErrorLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
@@ -31,6 +35,63 @@ class HudNode : SKNode {
         cityNameBackground.position = CGPoint(x: 0, y: cityNameLabelNode.frame.height / 2 - 2)
         cityNameBackground.zPosition = -1
         cityNameLabelNode.addChild(cityNameBackground)
+        
+        ///
+        popLabelNode.zPosition = 100000
+        popLabelNode.text = String(Global.gameVars.population)
+        popLabelNode.fontSize = 15
+        popLabelNode.position = CGPoint(x: -size.halfWidth + 75, y: size.halfHeight - 30)
+        
+        let popLabelBackground = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: popLabelNode.frame.size.width + 60, height: popLabelNode.frame.size.height + 10)), cornerRadius: 5)
+        popLabelBackground.name = "popLabelBackground"
+        popLabelBackground.fillColor = UIColor(named: "TitleBackground")!
+        popLabelBackground.position = CGPoint(x: -10, y: popLabelNode.frame.height / 2 - 3)
+        popLabelBackground.zPosition = -1
+        popLabelNode.addChild(popLabelBackground)
+        
+        let popIconNode = SKSpriteNode()
+        popIconNode.texture = SKTexture(imageNamed: "Population")
+        popIconNode.size = CGSize(width: 24, height: 24)
+        popIconNode.position = CGPoint(x: -40, y: popLabelNode.frame.height / 2 - 3)
+        popLabelNode.addChild(popIconNode)
+        
+        ///
+        creditsLabelNode.zPosition = 100000
+        creditsLabelNode.text = String(Global.gameVars.credits)
+        creditsLabelNode.fontSize = 15
+        creditsLabelNode.position = CGPoint(x: -size.halfWidth + 200, y: size.halfHeight - 30)
+        
+        let creditsLabelBackground = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: creditsLabelNode.frame.size.width + 60, height: creditsLabelNode.frame.size.height + 10)), cornerRadius: 5)
+        creditsLabelBackground.name = "creditsLabelBackground"
+        creditsLabelBackground.fillColor = UIColor(named: "TitleBackground")!
+        creditsLabelBackground.position = CGPoint(x: -10, y: creditsLabelNode.frame.height / 2 - 3)
+        creditsLabelBackground.zPosition = -1
+        creditsLabelNode.addChild(creditsLabelBackground)
+        
+        let creditsIconNode = SKSpriteNode()
+        creditsIconNode.texture = SKTexture(imageNamed: "Coin")
+        creditsIconNode.size = CGSize(width: 24, height: 24)
+        creditsIconNode.position = CGPoint(x: -40, y: creditsLabelNode.frame.height / 2 - 3)
+        creditsLabelNode.addChild(creditsIconNode)
+        
+        ///
+        metalLabelNode.zPosition = 100000
+        metalLabelNode.text = String(Global.gameVars.metal)
+        metalLabelNode.fontSize = 15
+        metalLabelNode.position = CGPoint(x: -size.halfWidth + 325, y: size.halfHeight - 30)
+        
+        let metalLabelBackground = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: metalLabelNode.frame.size.width + 60, height: metalLabelNode.frame.size.height + 10)), cornerRadius: 5)
+        metalLabelBackground.name = "metalLabelBackground"
+        metalLabelBackground.fillColor = UIColor(named: "TitleBackground")!
+        metalLabelBackground.position = CGPoint(x: -10, y: metalLabelNode.frame.height / 2 - 3)
+        metalLabelBackground.zPosition = -1
+        metalLabelNode.addChild(metalLabelBackground)
+        
+        let metalIconNode = SKSpriteNode()
+        metalIconNode.texture = SKTexture(imageNamed: "Coin")
+        metalIconNode.size = CGSize(width: 24, height: 24)
+        metalIconNode.position = CGPoint(x: -40, y: metalLabelNode.frame.height / 2 - 3)
+        metalLabelNode.addChild(metalIconNode)
 
         ///
         inlineErrorLabelNode.zPosition = 100000 + 1
@@ -62,6 +123,9 @@ class HudNode : SKNode {
         moveableNode.position = CGPoint(x: 0, y: -size.halfHeight + 75)
         
         addChild(cityNameLabelNode)
+        addChild(popLabelNode)
+        addChild(creditsLabelNode)
+        addChild(metalLabelNode)
         
         addChild(inlineErrorLabelNode)
 
@@ -143,7 +207,17 @@ class HudNode : SKNode {
     }
     
     public func update() {
+        if popLabelNode.text != String(Global.gameVars.population) {
+            popLabelNode.text = String(Global.gameVars.population)
+        }
         
+        if creditsLabelNode.text != String(Global.gameVars.credits) {
+            creditsLabelNode.text = String(Global.gameVars.credits)
+        }
+        
+        if metalLabelNode.text != String(Global.gameVars.metal) {
+            metalLabelNode.text = String(Global.gameVars.metal)
+        }
     }
     
     public func changeBorderColor(color: UIColor) {
