@@ -6,12 +6,14 @@ import SwiftUI
 class GalaxyScene: SKScene {
     private var galaxy = Global.gameVars!.galaxy
     private let screenSize = Global.gameVars?.screenSize
+    var lineNodes: [SKNode] = []
+    var selectedPlanet: SKSpriteNode?
     
     // Holds the top, right and left panels in that order
     var panelNodes: [SKSpriteNode] = [
         SKSpriteNode(color: UIColor.clear, size: CGSize(width: Global.gameVars!.screenSize.width, height: 65)),
-        SKSpriteNode(color: UIColor.blue, size: CGSize(width: Global.gameVars!.screenSize.width*2/5, height: Global.gameVars!.screenSize.height - 65)),
-        SKSpriteNode(color: UIColor.red, size: CGSize(width: Global.gameVars!.screenSize.width*3/5, height: Global.gameVars!.screenSize.height - 65))
+        SKSpriteNode(color: UIColor.clear, size: CGSize(width: Global.gameVars!.screenSize.width*2/5, height: Global.gameVars!.screenSize.height - 65)),
+        SKSpriteNode(color: UIColor.clear, size: CGSize(width: Global.gameVars!.screenSize.width*3/5, height: Global.gameVars!.screenSize.height - 65))
     ]
     
     // accepts the index of the planet and returns a relative position. only temp
@@ -52,8 +54,10 @@ class GalaxyScene: SKScene {
         var nodeScreenSize = panelNodes[2].size
         for i in 0..<galaxy!.planets.count{
             let planet = SKSpriteNode(imageNamed: "Planet")
+            planet.colorBlendFactor = 1
+            planet.color = SKColor.white
             planet.name = "planet" + String(i)
-            planet.size = CGSize(width: screenSize!.height/9,height: screenSize!.height/9)
+            planet.size = CGSize(width: screenSize!.height/8,height: screenSize!.height/8)
             panelNodes[2].addChild(planet)
             planetNodes.append(planet)
             panelNodes[2].childNode(withName: "planet" + String(i))!.position = CGPoint(
@@ -66,7 +70,55 @@ class GalaxyScene: SKScene {
         }
         
         // Adds/organizes lines
-        drawLineBetween(aInt: 1, bInt: 2)
+        let linesMaster = SKNode()
+        linesMaster.name = "lineMaster"
+        panelNodes[2].addChild(linesMaster)
+        for i in 0..<7{
+            let node = SKNode()
+            
+            // This section will shw all the respective lines from each planet
+            switch i {
+            case 0:
+                node.addChild(drawLineBetween(aInt: 0, bInt: 1))
+                node.addChild(drawLineBetween(aInt: 0, bInt: 2))
+                node.addChild(drawLineBetween(aInt: 0, bInt: 3))
+            case 1:
+                node.addChild(drawLineBetween(aInt: 1, bInt: 0))
+                node.addChild(drawLineBetween(aInt: 1, bInt: 2))
+                node.addChild(drawLineBetween(aInt: 1, bInt: 3))
+                node.addChild(drawLineBetween(aInt: 1, bInt: 4))
+            case 2:
+                node.addChild(drawLineBetween(aInt: 2, bInt: 0))
+                node.addChild(drawLineBetween(aInt: 2, bInt: 1))
+                node.addChild(drawLineBetween(aInt: 2, bInt: 3))
+                node.addChild(drawLineBetween(aInt: 2, bInt: 5))
+            case 3:
+                node.addChild(drawLineBetween(aInt: 3, bInt: 0))
+                node.addChild(drawLineBetween(aInt: 3, bInt: 1))
+                node.addChild(drawLineBetween(aInt: 3, bInt: 2))
+                node.addChild(drawLineBetween(aInt: 3, bInt: 4))
+                node.addChild(drawLineBetween(aInt: 3, bInt: 5))
+                node.addChild(drawLineBetween(aInt: 3, bInt: 6))
+            case 4:
+                node.addChild(drawLineBetween(aInt: 4, bInt: 1))
+                node.addChild(drawLineBetween(aInt: 4, bInt: 3))
+                node.addChild(drawLineBetween(aInt: 4, bInt: 5))
+                node.addChild(drawLineBetween(aInt: 4, bInt: 6))
+            case 5:
+                node.addChild(drawLineBetween(aInt: 5, bInt: 2))
+                node.addChild(drawLineBetween(aInt: 5, bInt: 3))
+                node.addChild(drawLineBetween(aInt: 5, bInt: 4))
+                node.addChild(drawLineBetween(aInt: 5, bInt: 6))
+            case 6:
+                node.addChild(drawLineBetween(aInt: 6, bInt: 3))
+                node.addChild(drawLineBetween(aInt: 6, bInt: 4))
+                node.addChild(drawLineBetween(aInt: 6, bInt: 5))
+            default:
+                print("ok buddy")
+            }
+            node.name = "lineHolder" + String(i)
+            lineNodes.append(node)
+        }
                 
         // Creates the top nav bar
         nodeScreenSize = panelNodes[2].size
@@ -87,28 +139,13 @@ class GalaxyScene: SKScene {
         
         let enterButton = SKShapeNode(rectOf: CGSize(width: nodeScreenSize.width * 2/3, height: nodeScreenSize.width/7), cornerRadius: 20)
         enterButton.position = CGPoint(x: 0, y: -nodeScreenSize.height/3)
-                                      
-                                      
-                                      
-                                      
-                                      
-//CGRect(x: -nodeScreenSize.width * 1/3, y: -nodeScreenSize.height/3, width: nodeScreenSize.width * 2/3, height: nodeScreenSize.width/7))
         enterButton.fillColor = SKColor.gray
-//        enterButton.position = CGPoint(x: 0, y: -nodeScreenSize.height*9/10)
-//        let enterSquare = SKShapeNode(rect: CGRect(x: 0, y: 0, width: 100, height: 100))
-//        enterSquare.fillColor = SKColor.gray
-//        let enterText = SKLabelNode()
-//        enterText.position = CGPoint(x: 50,y: 30)
-//        enterButton.addChild(enterSquare)
-//        enterButton.addChild(enterText)
-//        panelNodes[1].addChild(enterButton)
-        
         descriptionPanel.addChild(enterButton)
         panelNodes[1].addChild(descriptionPanel)
     }
     
     // creates the line between planets
-    func drawLineBetween(aInt: Int, bInt: Int){
+    func drawLineBetween(aInt: Int, bInt: Int) -> SKShapeNode{
         // just to make our vars more clear
         let a = planetNodes[aInt]; let b = planetNodes[bInt]
         
@@ -119,28 +156,31 @@ class GalaxyScene: SKScene {
         drawPath.addLine(to: b.position)
         newLine.path = drawPath
         newLine.strokeColor = SKColor.white
-        panelNodes[2].addChild(newLine)
+        return newLine
     }
     
     func selectPlanet (planetInt: Int){
-        let planetNode = planetNodes[planetInt]
-        planetNode.color = SKColor.yellow
+        selectedPlanet?.color = SKColor.white
+        selectedPlanet = planetNodes[planetInt]
+        selectedPlanet!.color = SKColor.yellow
+        panelNodes[2].childNode(withName: "lineMaster")?.removeAllChildren()
+        panelNodes[2].childNode(withName: "lineMaster")?.addChild(lineNodes[planetInt])
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // We only care about the first touch
         let node = self.atPoint(touches.first!.location(in: self))
-        print(planetNodes)
+        print(node)
         for i in 0..<planetNodes.count{
             if "planet" + String(i) == node.name {
                 let planet = Global.gameVars.galaxy.planets[i]
-
                 
                 // If there are no cities generated for the planet, we need to make at least one - this code should be removed later
                 if (planet.cities.isEmpty){planet.generateNewCity(cityName: "e")}
                 
-                Global.gameVars.selectedPlanet = planet
-                Global.playerManager.playerVariables.currentGameViewLevel = .PLANET
+                selectPlanet(planetInt: i)
+//                Global.gameVars.selectedPlanet = planet
+//                Global.playerManager.playerVariables.currentGameViewLevel = .PLANET
             } else if node.name == "settings" {
                 
             }
