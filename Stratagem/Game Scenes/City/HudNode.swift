@@ -45,14 +45,14 @@ class HudNode : SKNode {
         let popLabelBackground = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: popLabelNode.frame.size.width + 60, height: popLabelNode.frame.size.height + 10)), cornerRadius: 5)
         popLabelBackground.name = "popLabelBackground"
         popLabelBackground.fillColor = UIColor(named: "TitleBackground")!
-        popLabelBackground.position = CGPoint(x: -10, y: popLabelNode.frame.height / 2 - 3)
+        popLabelBackground.position = CGPoint(x: -10, y: popLabelNode.frame.height / 2 - 2)
         popLabelBackground.zPosition = -1
         popLabelNode.addChild(popLabelBackground)
         
         let popIconNode = SKSpriteNode()
         popIconNode.texture = SKTexture(imageNamed: "Population")
         popIconNode.size = CGSize(width: 24, height: 24)
-        popIconNode.position = CGPoint(x: -40, y: popLabelNode.frame.height / 2 - 3)
+        popIconNode.position = CGPoint(x: -40, y: popLabelNode.frame.height / 2 - 2)
         popLabelNode.addChild(popIconNode)
         
         ///
@@ -64,14 +64,14 @@ class HudNode : SKNode {
         let creditsLabelBackground = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: creditsLabelNode.frame.size.width + 60, height: creditsLabelNode.frame.size.height + 10)), cornerRadius: 5)
         creditsLabelBackground.name = "creditsLabelBackground"
         creditsLabelBackground.fillColor = UIColor(named: "TitleBackground")!
-        creditsLabelBackground.position = CGPoint(x: -10, y: creditsLabelNode.frame.height / 2 - 3)
+        creditsLabelBackground.position = CGPoint(x: -10, y: creditsLabelNode.frame.height / 2 - 2)
         creditsLabelBackground.zPosition = -1
         creditsLabelNode.addChild(creditsLabelBackground)
         
         let creditsIconNode = SKSpriteNode()
         creditsIconNode.texture = SKTexture(imageNamed: "Coin")
         creditsIconNode.size = CGSize(width: 24, height: 24)
-        creditsIconNode.position = CGPoint(x: -40, y: creditsLabelNode.frame.height / 2 - 3)
+        creditsIconNode.position = CGPoint(x: -40, y: creditsLabelNode.frame.height / 2 - 2)
         creditsLabelNode.addChild(creditsIconNode)
         
         ///
@@ -80,17 +80,17 @@ class HudNode : SKNode {
         metalLabelNode.fontSize = 15
         metalLabelNode.position = CGPoint(x: -size.halfWidth + 325, y: size.halfHeight - 30)
         
-        let metalLabelBackground = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: metalLabelNode.frame.size.width + 60, height: metalLabelNode.frame.size.height + 10)), cornerRadius: 5)
+        let metalLabelBackground = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: metalLabelNode.frame.size.width + 70, height: metalLabelNode.frame.size.height + 10)), cornerRadius: 5)
         metalLabelBackground.name = "metalLabelBackground"
         metalLabelBackground.fillColor = UIColor(named: "TitleBackground")!
-        metalLabelBackground.position = CGPoint(x: -10, y: metalLabelNode.frame.height / 2 - 3)
+        metalLabelBackground.position = CGPoint(x: -20, y: metalLabelNode.frame.height / 2 - 2)
         metalLabelBackground.zPosition = -1
         metalLabelNode.addChild(metalLabelBackground)
         
         let metalIconNode = SKSpriteNode()
-        metalIconNode.texture = SKTexture(imageNamed: "Coin")
-        metalIconNode.size = CGSize(width: 24, height: 24)
-        metalIconNode.position = CGPoint(x: -40, y: metalLabelNode.frame.height / 2 - 3)
+        metalIconNode.texture = SKTexture(imageNamed: "Metal")
+        metalIconNode.size = CGSize(width: 36, height: 18)
+        metalIconNode.position = CGPoint(x: -40, y: metalLabelNode.frame.height / 2 - 2)
         metalLabelNode.addChild(metalIconNode)
 
         ///
