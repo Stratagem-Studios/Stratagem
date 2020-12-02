@@ -18,12 +18,7 @@ struct GalaxyView : View {
     }
     
     var body: some View {
-        SpriteView(scene: scene)
-            .edgesIgnoringSafeArea(.all)
+        SpriteView(scene: scene,options: [.allowsTransparency])
         
     }
-}
-
-struct PlanetAndLines {
-    
 }
