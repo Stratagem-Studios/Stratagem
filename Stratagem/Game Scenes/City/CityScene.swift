@@ -22,7 +22,7 @@ public class CityScene: SKTiledScene {
         super.setup(tmxFile: "City")
         cameraNode.allowGestures = true
         cameraNode.setCameraZoom(0.4)
-        cameraNode.setZoomConstraints(minimum: 0.4, maximum: 0.75)
+        cameraNode.setZoomConstraints(minimum: 0.3, maximum: 0.75)
         cameraNode.showOverlay = true
         
         city.loadTilemap(tilemap)

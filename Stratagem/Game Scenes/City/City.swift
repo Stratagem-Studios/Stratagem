@@ -9,12 +9,12 @@ public class City {
     var owner: String?
     
     /// City size
-    let cityWidth: Int = 12
-    let cityHeight: Int = 32
+    let cityWidth: Int = 20
+    let cityHeight: Int = 20
     
     /// City terrain, a 2d array of CityTiles
     var cityTerrain: [[CityTile]]!
-    /// Should only be used when initting city
+    /// City terrain as an array of Ints. Should only be used when initting and loading city
     var cityTerrainInt: [[Int]]!
     
     /// Tilemap
@@ -96,7 +96,7 @@ public class City {
                 
                 // Add padding tiles around the playable area
                 var isEditable = true
-                if row < 2 || row > cityWidth - 2 || col < 3 || col > cityHeight - 3 {
+                if row < 2 || row >= cityWidth - 2 || col < 2 || col >= cityHeight - 2 {
                     isEditable = false
                 }
                 cityTile.initTile(tile: (layer?.tileAt(row, col))!, isEditable: isEditable)
@@ -128,7 +128,7 @@ public class City {
         }
         layer2 = String(layer2.dropLast(3)) + "\n"
         
-        var text = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<map version=\"1.4\" tiledversion=\"1.4.3\" orientation=\"staggered\" renderorder=\"right-down\" width=\"" + String(cityWidth) + "\" height=\""
+        var text = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<map version=\"1.4\" tiledversion=\"1.4.3\" orientation=\"isometric\" renderorder=\"right-down\" width=\"" + String(cityWidth) + "\" height=\""
         text = text + String(cityHeight) + "\" tilewidth=\"256\" tileheight=\"128\" infinite=\"0\" staggeraxis=\"y\" staggerindex=\"odd\" nextlayerid=\"11\" nextobjectid=\"1\">\n <tileset firstgid=\"1\" source=\"PrototypePack.tsx\"/>\n <layer id=\"8\" name=\"Tile Layer 1\" width=\"" + String(cityWidth) + "\" height=\""
         text = text + String(cityHeight) + "\">\n  <data encoding=\"csv\">\n" + layer1 + "</data>\n </layer>\n <layer id=\"9\" name=\"Tile Layer 2\" width=\"" + String(cityWidth) + "\" height=\"" + String(cityHeight) + "\">\n  <data encoding=\"csv\">\n" + layer2 + "</data>\n </layer>\n</map>\n"
         
@@ -149,7 +149,6 @@ public class City {
         let noisemap = Perlin2D().octaveMatrix(width: 36, height: 36, octaves: 6, persistance: 0.25)
         
         var rectTerrain: [[Int]] = Array(repeating: Array(repeating: 0, count: 36), count: 36)
-        // Downsizes a roughly square larger matrix by taking averages of each submatrix
         for row in 0..<36 {
             for col in 0..<36 {
                 let terrainHeight = noisemap[row][col]
@@ -163,6 +162,7 @@ public class City {
                 }
             }
         }
+        return rectTerrain
         
         var cityTerrain: [[Int]] = Array(repeating: Array(repeating: 0, count: cityHeight), count: cityWidth)
         for row in 0..<cityWidth {
