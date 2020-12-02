@@ -21,6 +21,15 @@ struct ContentView: View {
             case .GameLobbyView:
                 GameLobbyView()
                     .transition(.slide)
+                    .onAppear {
+                        // Starts creating our galaxy
+                        DispatchQueue.global(qos: .background).async {
+                            // creates the galaxy
+                            DispatchQueue.main.async {
+                                // when the galaxy finishes creation
+                            }
+                        }
+                    }
             case .GameView:
                 GameView()
                     .ignoresSafeArea()

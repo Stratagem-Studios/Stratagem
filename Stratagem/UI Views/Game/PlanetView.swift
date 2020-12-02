@@ -15,12 +15,12 @@ struct PlanetView : UIViewRepresentable {
     
     var planetNode: SCNNode
     
+    
     init(planet: Planet) {
         let planetSphere = SCNSphere.init(radius: 10)
         self.planetNode = SCNNode(geometry: planetSphere)
-        if let planetMask = UIImage(named: "TestMask1"){
-            planetSphere.firstMaterial?.diffuse.contents = planetMask
-        }
+        let planetMask: UIImage = planet.generatePlanetMap()
+        planetSphere.firstMaterial?.diffuse.contents = planetMask
         self.planet = planet
     }
     

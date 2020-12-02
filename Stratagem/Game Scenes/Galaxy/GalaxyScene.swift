@@ -8,6 +8,7 @@ class GalaxyScene: SKScene {
     private let screenSize = Global.gameVars?.screenSize
     var lineNodes: [SKNode] = []
     var selectedPlanet: SKSpriteNode?
+    var selectedPlanetColor: SKColor?
     
     // Holds the top, right and left panels in that order
     var panelNodes: [SKSpriteNode] = [
@@ -50,6 +51,7 @@ class GalaxyScene: SKScene {
         childNode(withName: "panel1")?.position = CGPoint(x: screenSize!.width*3/5, y: screenSize!.height - 65)
         childNode(withName: "panel2")?.position = CGPoint(x: 0, y: screenSize!.height - 65)
         
+        
         // Adds/organizes planet nodes
         var nodeScreenSize = panelNodes[2].size
         for i in 0..<galaxy!.planets.count{
@@ -68,6 +70,7 @@ class GalaxyScene: SKScene {
         for node in panelNodes[2].children {
             galaxy?.planetLocs.append(node.position)
         }
+        
         
         // Adds/organizes lines
         let linesMaster = SKNode()
@@ -119,9 +122,10 @@ class GalaxyScene: SKScene {
             node.name = "lineHolder" + String(i)
             lineNodes.append(node)
         }
-                
+        
+        
         // Creates the top nav bar
-        nodeScreenSize = panelNodes[2].size
+        nodeScreenSize = panelNodes[0].size
         let settings = SKSpriteNode(imageNamed: "Settings")
         settings.name = "settings"
         settings.size = CGSize(width:65,height:65)
@@ -133,23 +137,37 @@ class GalaxyScene: SKScene {
         // Sets up part of the description
         nodeScreenSize = panelNodes[1].size
         
-        let descriptionPanel = SKShapeNode(rectOf: CGSize(width: nodeScreenSize.width * 4/5, height: nodeScreenSize.height*9/10), cornerRadius: 60)
+        let descriptionPanel = SKShapeNode(rectOf: CGSize(width: nodeScreenSize.width * 4/5, height: nodeScreenSize.height*9/10), cornerRadius: 30)
         descriptionPanel.position = CGPoint(x: nodeScreenSize.width, y: nodeScreenSize.height + nodeScreenSize.height/20)
         descriptionPanel.position = CGPoint(x: nodeScreenSize.width/2,y: -nodeScreenSize.height/2)
         descriptionPanel.fillColor = SKColor.white
+        descriptionPanel.strokeColor = SKColor.black
         descriptionPanel.name = "descriptionPanel"
         
-        let enterButton = SKShapeNode(rectOf: CGSize(width: nodeScreenSize.width * 2/3, height: nodeScreenSize.width/7), cornerRadius: 20)
+        /// the enter button for visiting a planet
+        let enterButton = SKShapeNode(rectOf: CGSize(width: nodeScreenSize.width * 2/3, height: nodeScreenSize.width/7), cornerRadius: 10)
         enterButton.position = CGPoint(x: 0, y: -nodeScreenSize.height/3)
         enterButton.fillColor = SKColor.gray
         enterButton.name = "enterButton"
         let enterText = SKLabelNode(fontNamed: "Montserrat-Bold")
         enterText.fontSize = screenSize!.height/18
+        enterText.fontColor = SKColor.darkGray
         enterText.verticalAlignmentMode = .center
         enterText.name = "enterText"
         enterText.text = "Visit Planet"
         enterButton.addChild(enterText)
         descriptionPanel.addChild(enterButton)
+        
+        /// The planet, listed at the top of the description panel
+        let planetName = SKLabelNode(fontNamed: "Montserrat-Bold")
+        planetName.fontSize = screenSize!.height/18
+        planetName.fontColor = SKColor.clear
+        planetName.verticalAlignmentMode = .top
+        planetName.position.y = descriptionPanel.frame.height/2 - 10
+        planetName.name = "planetName"
+        planetName.text = "Planet"
+        descriptionPanel.addChild(planetName)
+        
         panelNodes[1].addChild(descriptionPanel)
     }
     
@@ -172,6 +190,7 @@ class GalaxyScene: SKScene {
         if selectedPlanet == nil {
             (panelNodes[1].childNode(withName: "descriptionPanel")?.childNode(withName: "enterButton")?.childNode(withName: "enterText") as! SKLabelNode).fontColor = SKColor.yellow
             (panelNodes[1].childNode(withName: "descriptionPanel")!.childNode(withName: "enterButton") as! SKShapeNode).fillColor = SKColor.black
+            (panelNodes[1].childNode(withName: "descriptionPanel")?.childNode(withName: "planetName") as! SKLabelNode).fontColor = SKColor.green
         } else {
             selectedPlanet?.color = SKColor.white
         }
@@ -179,7 +198,9 @@ class GalaxyScene: SKScene {
         selectedPlanet!.color = SKColor.yellow
         panelNodes[2].childNode(withName: "lineMaster")?.removeAllChildren()
         panelNodes[2].childNode(withName: "lineMaster")?.addChild(lineNodes[planetInt])
+        (panelNodes[1].childNode(withName: "descriptionPanel")?.childNode(withName: "planetName") as! SKLabelNode).text = Global.gameVars.galaxy.planets[planetInt].planetName
         Global.gameVars.selectedPlanet = Global.gameVars.galaxy.planets[planetInt]
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
