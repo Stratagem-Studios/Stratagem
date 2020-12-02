@@ -19,7 +19,6 @@ struct GalaxyView : View {
     
     var body: some View {
         SpriteView(scene: scene,options: [.allowsTransparency])
-            .edgesIgnoringSafeArea(.all)
         
     }
 }

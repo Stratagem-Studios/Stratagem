@@ -9,9 +9,9 @@ class GalaxyScene: SKScene {
     
     // Holds the top, right and left panels in that order
     var panelNodes: [SKSpriteNode] = [
-        SKSpriteNode(color: UIColor.blue, size: CGSize(width: Global.gameVars!.screenSize.width, height: 65)),
-        SKSpriteNode(color: UIColor.red, size: CGSize(width: Global.gameVars!.screenSize.width/3, height: Global.gameVars!.screenSize.height - 65)),
-        SKSpriteNode(color: UIColor.clear, size: CGSize(width: Global.gameVars!.screenSize.width*2/3, height: Global.gameVars!.screenSize.height - 65))
+        SKSpriteNode(color: UIColor.clear, size: CGSize(width: Global.gameVars!.screenSize.width, height: 65)),
+        SKSpriteNode(color: UIColor.blue, size: CGSize(width: Global.gameVars!.screenSize.width*2/5, height: Global.gameVars!.screenSize.height - 65)),
+        SKSpriteNode(color: UIColor.red, size: CGSize(width: Global.gameVars!.screenSize.width*3/5, height: Global.gameVars!.screenSize.height - 65))
     ]
     
     // accepts the index of the planet and returns a relative position. only temp
@@ -45,7 +45,7 @@ class GalaxyScene: SKScene {
             addChild(panelNodes[i])
         }
         childNode(withName: "panel0")?.position = CGPoint(x: 0, y: screenSize!.height)
-        childNode(withName: "panel1")?.position = CGPoint(x: screenSize!.width*2/3, y: screenSize!.height - 65)
+        childNode(withName: "panel1")?.position = CGPoint(x: screenSize!.width*3/5, y: screenSize!.height - 65)
         childNode(withName: "panel2")?.position = CGPoint(x: 0, y: screenSize!.height - 65)
         
         // Adds/organizes planet nodes
@@ -69,6 +69,7 @@ class GalaxyScene: SKScene {
         drawLineBetween(aInt: 1, bInt: 2)
                 
         // Creates the top nav bar
+        nodeScreenSize = panelNodes[2].size
         let settings = SKSpriteNode(imageNamed: "Settings")
         settings.name = "settings"
         settings.size = CGSize(width:65,height:65)
@@ -76,6 +77,34 @@ class GalaxyScene: SKScene {
         settings.position = CGPoint(x: screenSize!.width, y: 0)
         panelNodes[0].addChild(settings)
         
+        // Sets up part of the description
+        nodeScreenSize = panelNodes[1].size
+        
+        let descriptionPanel = SKShapeNode(rectOf: CGSize(width: nodeScreenSize.width * 4/5, height: nodeScreenSize.height*9/10), cornerRadius: 60)
+        descriptionPanel.position = CGPoint(x: nodeScreenSize.width, y: nodeScreenSize.height + nodeScreenSize.height/20)
+        descriptionPanel.position = CGPoint(x: nodeScreenSize.width/2,y: -nodeScreenSize.height/2)
+        descriptionPanel.fillColor = SKColor.white
+        
+        let enterButton = SKShapeNode(rectOf: CGSize(width: nodeScreenSize.width * 2/3, height: nodeScreenSize.width/7), cornerRadius: 20)
+        enterButton.position = CGPoint(x: 0, y: -nodeScreenSize.height/3)
+                                      
+                                      
+                                      
+                                      
+                                      
+//CGRect(x: -nodeScreenSize.width * 1/3, y: -nodeScreenSize.height/3, width: nodeScreenSize.width * 2/3, height: nodeScreenSize.width/7))
+        enterButton.fillColor = SKColor.gray
+//        enterButton.position = CGPoint(x: 0, y: -nodeScreenSize.height*9/10)
+//        let enterSquare = SKShapeNode(rect: CGRect(x: 0, y: 0, width: 100, height: 100))
+//        enterSquare.fillColor = SKColor.gray
+//        let enterText = SKLabelNode()
+//        enterText.position = CGPoint(x: 50,y: 30)
+//        enterButton.addChild(enterSquare)
+//        enterButton.addChild(enterText)
+//        panelNodes[1].addChild(enterButton)
+        
+        descriptionPanel.addChild(enterButton)
+        panelNodes[1].addChild(descriptionPanel)
     }
     
     // creates the line between planets
