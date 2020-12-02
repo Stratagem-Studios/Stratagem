@@ -36,6 +36,7 @@ public class CityScene: SKTiledScene {
         
         hudNode.setup(city: city, size: size, view: view, tilemap: tilemap)
         cameraNode.addToOverlay(hudNode)
+        city.hudNode = hudNode
         
         changeStateToNone()
     }

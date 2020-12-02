@@ -7,6 +7,7 @@ class HudNode : SKNode {
     private let cityNameLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
     private let buildButtonNode = SKSpriteNode(texture: SKTexture(imageNamed: "Build"))
     private let destroyButtonNode = SKSpriteNode(texture: SKTexture(imageNamed: "Destroy"))
+    private let inlineErrorLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
     
     private var borderRectNode = SKShapeNode()
     
@@ -18,7 +19,7 @@ class HudNode : SKNode {
     
     public func setup(city: City, size: CGSize, view: UIView, tilemap: SKTilemap) {
         self.size = size
-        cityNameLabelNode.fontName = "Montserrat-Bold"
+        ///
         cityNameLabelNode.zPosition = 100000
         cityNameLabelNode.text = city.cityName
         cityNameLabelNode.fontSize = 20
@@ -27,9 +28,17 @@ class HudNode : SKNode {
         let cityNameBackground = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: cityNameLabelNode.frame.size.width + 40, height: cityNameLabelNode.frame.size.height + 10)), cornerRadius: 5)
         cityNameBackground.name = "cityNameBackgroundNode"
         cityNameBackground.fillColor = UIColor(named: "TitleBackground")!
-        cityNameBackground.position = CGPoint(x: 0, y: size.halfHeight - 23)
-        cityNameBackground.zPosition = 100000 - 1
+        cityNameBackground.position = CGPoint(x: 0, y: cityNameLabelNode.frame.height / 2 - 2)
+        cityNameBackground.zPosition = -1
+        cityNameLabelNode.addChild(cityNameBackground)
+
+        ///
+        inlineErrorLabelNode.zPosition = 100000 + 1
+        inlineErrorLabelNode.fontSize = 15
+        inlineErrorLabelNode.position = CGPoint(x: 0, y: -size.halfHeight + 80)
+        inlineErrorLabelNode.alpha = 0
         
+        ///
         buildButtonNode.name = "buildButtonNode"
         buildButtonNode.zPosition = 100000
         buildButtonNode.position = CGPoint(x: -1 * size.halfWidth + 50, y: -1 * size.halfHeight + 50)
@@ -53,7 +62,8 @@ class HudNode : SKNode {
         moveableNode.position = CGPoint(x: 0, y: -size.halfHeight + 75)
         
         addChild(cityNameLabelNode)
-        addChild(cityNameBackground)
+        
+        addChild(inlineErrorLabelNode)
 
         addChild(buildButtonNode)
         addChild(destroyButtonNode)
@@ -83,6 +93,28 @@ class HudNode : SKNode {
         moveableNode.isHidden = true
         scrollView?.removeFromSuperview()
         scrollView = nil // nil out reference to deallocate properly
+    }
+    
+    public func inlineErrorMessage(errorMessage: String) {
+        inlineErrorLabelNode.removeAllChildren()
+        inlineErrorLabelNode.text = errorMessage
+        
+        let inlineErrorBackground = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: inlineErrorLabelNode.frame.size.width + 40, height: inlineErrorLabelNode.frame.size.height + 10)), cornerRadius: 5)
+        inlineErrorBackground.fillColor = .black
+        inlineErrorBackground.strokeColor = .black
+        inlineErrorBackground.alpha = 0.75
+        inlineErrorBackground.position = CGPoint(x: 0, y: inlineErrorLabelNode.frame.height / 2 - 2)
+        inlineErrorBackground.zPosition = -1
+        
+        inlineErrorLabelNode.addChild(inlineErrorBackground)
+        inlineErrorLabelNode.alpha = 0
+        
+        let action = SKAction.fadeIn(withDuration: 0.5)
+        let actionWait = SKAction.wait(forDuration: 3)
+        let action2 = SKAction.fadeOut(withDuration: 0.5)
+        
+        let sequence = SKAction.sequence([action, actionWait, action2])
+        inlineErrorLabelNode.run(sequence)
     }
     
     private func setupBuildingScrollView(view: UIView, tilemap: SKTilemap) {

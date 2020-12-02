@@ -2,6 +2,7 @@
 
 import SwiftUI
 import SpriteKit
+import SwiftVideoBackground
 
 struct GameView: View {
     @EnvironmentObject var playerVariables: PlayerVariables
@@ -31,6 +32,7 @@ struct GameView: View {
             }
         }.onAppear {
             Global.gameVars?.screenSize = UIScreen.main.bounds
+            VideoBackground.shared.pause()
         }
     }
     

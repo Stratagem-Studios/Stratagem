@@ -18,6 +18,9 @@ public class City {
     /// Tilemap
     var tilemap: SKTilemap!
     
+    /// Hudnode ref used for error messages
+    var hudNode: HudNode?
+    
     /// Initializes city variables (required). If not terrain is provided, create a new city
     func initCity(cityName: String, owner: String? = nil, terrain: [[Int]]? = nil) -> [[Int]]? {
         self.cityName = cityName
@@ -75,6 +78,8 @@ public class City {
                             Global.hfGamePusher.uploadCityTerrain(cityName: cityName, cityTerrain: cityTerrain)
                         }
                     }
+                } else {
+                    hudNode!.inlineErrorMessage(errorMessage: "Tile is outside of editable map")
                 }
             }
         }
