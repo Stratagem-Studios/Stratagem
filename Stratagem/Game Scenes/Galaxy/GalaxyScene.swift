@@ -129,6 +129,7 @@ class GalaxyScene: SKScene {
         settings.position = CGPoint(x: screenSize!.width, y: 0)
         panelNodes[0].addChild(settings)
         
+        
         // Sets up part of the description
         nodeScreenSize = panelNodes[1].size
         
@@ -143,7 +144,7 @@ class GalaxyScene: SKScene {
         enterButton.fillColor = SKColor.gray
         enterButton.name = "enterButton"
         let enterText = SKLabelNode(fontNamed: "Montserrat-Bold")
-        enterText.fontSize = screenSize!.height/15
+        enterText.fontSize = screenSize!.height/18
         enterText.verticalAlignmentMode = .center
         enterText.name = "enterText"
         enterText.text = "Visit Planet"
