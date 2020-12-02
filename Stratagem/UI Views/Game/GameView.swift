@@ -2,6 +2,7 @@
 
 import SwiftUI
 import SpriteKit
+import SwiftVideoBackground
 
 struct GameView: View {
     @EnvironmentObject var playerVariables: PlayerVariables
@@ -31,7 +32,7 @@ struct GameView: View {
                 CityView()
             }
         }.onAppear {
-            
+            VideoBackground.shared.pause()
         }
     }
     
