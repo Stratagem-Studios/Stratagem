@@ -14,6 +14,8 @@ public class City {
     
     /// City terrain, a 2d array of CityTiles
     var cityTerrain: [[CityTile]]!
+    /// Should only be used when initting city
+    var cityTerrainInt: [[Int]]!
     
     /// Tilemap
     var tilemap: SKTilemap!
@@ -22,18 +24,15 @@ public class City {
     var hudNode: HudNode?
     
     /// Initializes city variables (required). If not terrain is provided, create a new city
-    func initCity(cityName: String, owner: String? = nil, terrain: [[Int]]? = nil) -> [[Int]]? {
+    func initCity(cityName: String, owner: String? = nil, terrain: [[Int]]? = nil) {
         self.cityName = cityName
         self.owner = owner
         
         if let terrain = terrain {
-            createTMXFile(terrain: terrain)
+            cityTerrainInt = terrain
         } else {
-            let terrain = makeCityTerrain()
-            createTMXFile(terrain: terrain)
-            return terrain
+            cityTerrainInt = makeCityTerrain()
         }
-        return nil
     }
     
     /// Try to replace firstTile with secondTile given its global ID
@@ -106,8 +105,8 @@ public class City {
         }
     }
     
-    /// Creates file [cityName].tmx from cityTerrain
-    private func createTMXFile(terrain: [[Int]]) {
+    /// Creates file [cityName].tmx from cityTerrainInt
+    func createTMXFile() {
         // Copy tsx file
         copyFileToDocumentsFolder(nameForFile: "PrototypePack", extForFile: "tsx")
         
@@ -116,7 +115,7 @@ public class City {
         var layer2 = ""
         for row in 0..<cityWidth {
             for col in 0..<cityHeight {
-                layer1 = layer1 + "\(terrain[row][col]),"
+                layer1 = layer1 + "\(cityTerrainInt[row][col]),"
             }
             layer1 = layer1 + " \n"
         }
@@ -147,27 +146,19 @@ public class City {
     
     /// Creates a 2d array of integers representing the tile id using perlin noise
     private func makeCityTerrain() -> [[Int]] {
-        let noisemap = Perlin2D().octaveMatrix(width: 288, height: 288, octaves: 6, persistance: 0.25)
+        let noisemap = Perlin2D().octaveMatrix(width: 36, height: 36, octaves: 6, persistance: 0.25)
         
         var rectTerrain: [[Int]] = Array(repeating: Array(repeating: 0, count: 36), count: 36)
         // Downsizes a roughly square larger matrix by taking averages of each submatrix
         for row in 0..<36 {
             for col in 0..<36 {
-                let x_st = 8 * row
-                let y_st = 8 * col
+                let terrainHeight = noisemap[row][col]
                 
-                var total: CGFloat = 0
-                for x in x_st..<(x_st + 8) {
-                    for y in y_st..<(y_st + 8) {
-                        total = total + noisemap[x][y]
-                    }
-                }
-                let avgTerrainHeight = total / (8 * 8)
-                if avgTerrainHeight <= 0.4 {
+                if terrainHeight <= 0.4 {
                     rectTerrain[row][col] = 3
-                } else if avgTerrainHeight <= 0.45 {
+                } else if terrainHeight <= 0.45 {
                     rectTerrain[row][col] = 2
-                } else if avgTerrainHeight <= 1 {
+                } else if terrainHeight <= 1 {
                     rectTerrain[row][col] = 1
                 }
             }

@@ -17,12 +17,12 @@ class Planet {
         self.planetName = planetName
     }
     
-    func generateNewCity(cityName: String) -> [[Int]]? {
+    func generateNewCity(cityName: String) -> City {
         let city = City()
-        let terrain = city.initCity(cityName: cityName)
+        city.initCity(cityName: cityName)
         cities.append(city)
         
-        return terrain
+        return city
     }
 }
 

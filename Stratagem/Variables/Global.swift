@@ -16,7 +16,6 @@ struct Global {
         Global.hfGamePusher = HFGamePusher(playerVariables: playerVariables, staticGameVariables: staticGameVariables)
     }
     static func setGames(gameVars: GameVariables) {
-        print("e")
         Global.gameVars = gameVars
     }
 }

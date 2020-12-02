@@ -16,6 +16,7 @@ public class CityScene: SKTiledScene {
     
     public override func didMove(to view: SKView) {
         city = Global.gameVars!.selectedCity!
+        city.createTMXFile()
         
         super.didMove(to: view)
         super.setup(tmxFile: "City")
