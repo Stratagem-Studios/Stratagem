@@ -70,6 +70,7 @@ public class CityScene: SKTiledScene {
                     clickedOnHud = true
                 case "buildButtonNode":
                     if cityEditState != CityEditStates.BUILD {
+                        changeStateToNone()
                         changeStateToBuild()
                     } else {
                         changeStateToNone()
@@ -77,6 +78,7 @@ public class CityScene: SKTiledScene {
                     clickedOnHud = true
                 case "destroyButtonNode":
                     if cityEditState != CityEditStates.DESTROY {
+                        changeStateToNone()
                         changeStateToDestroy()
                     } else {
                         changeStateToNone()

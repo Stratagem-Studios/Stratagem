@@ -11,14 +11,44 @@ public class CityTile {
     /// Optional building on tile
     var building: CityBuilding?
     
-    func initTile(tile: SKTile, isEditable: Bool) {
+    /// Try to init CityTile at tile, returns false if not a proper location
+    func initTile(tile: SKTile, cityTerrain: [[CityTile]]?, isEditable: Bool) -> Bool {
         self.tile = tile
         self.isEditable = isEditable
-        tileCreateBuilding()
+        return tileGetBuilding(tile: tile, cityTerrain: cityTerrain)
     }
     
-    private func tileCreateBuilding() {
-        
+    private func tileGetBuilding(tile: SKTile, cityTerrain: [[CityTile]]?) -> Bool {
+        let properties = tile.tileData.properties
+        if properties["type"] != "ground" {
+            // Tile is a building, which all have costs
+            let creditsCost = properties["CREDITS"]!
+            let metalCost = properties["METAL"]!
+            
+            var building: CityBuilding?
+            switch properties["type"] {
+            case "road":
+                building = Road(cost: [.CREDITS: Int(creditsCost)!, .METAL: Int(metalCost)!])
+            case "residential":
+                break
+            case "industrial":
+                break
+            case "military":
+                break
+            default:
+                break
+            }
+            
+            if let building = building {
+                if building.satisfiesConstraints(cityTerrain: cityTerrain!) {
+                    self.building = building
+                    return true
+                } else {
+                    return false
+                }
+            }
+        }
+        return true
     }
 }
 

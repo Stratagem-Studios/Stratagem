@@ -24,6 +24,8 @@
  </tile>
  <tile id="3">
   <properties>
+      <property name="CREDITS" value="300"/>
+      <property name="METAL" value="10"/>
    <property name="name" value="simple building"/>
    <property name="type" value="industrial"/>
   </properties>
@@ -31,6 +33,8 @@
  </tile>
  <tile id="4">
   <properties>
+  <property name="CREDITS" value="100"/>
+  <property name="METAL" value="10"/>
    <property name="name" value="simple residential"/>
    <property name="type" value="residential"/>
   </properties>
@@ -38,7 +42,7 @@
  </tile>
  <tile id="5">
   <properties>
-   <property name="CREDITS" value="100"/>
+   <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
    <property name="name" value="simple road"/>
    <property name="type" value="road"/>
