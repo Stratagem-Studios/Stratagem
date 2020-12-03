@@ -11,7 +11,9 @@ public class CityBuilding {
         self.costs = cost
     }
     
-    func satisfiesConstraints(cityTerrain: [[CityTile]]) -> Bool {
-        return true
+    func satisfiesConstraints(coords: CGPoint, newTileData: SKTilesetData, cityTerrain: [[CityTile]]) -> String {
+        return "true"
     }
+    
+    func update(_ currentTime: TimeInterval) {}
 }

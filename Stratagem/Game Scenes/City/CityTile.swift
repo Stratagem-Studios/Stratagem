@@ -12,25 +12,26 @@ public class CityTile {
     var building: CityBuilding?
     
     /// Try to init CityTile at tile, returns false if not a proper location
-    func initTile(tile: SKTile, cityTerrain: [[CityTile]]?, isEditable: Bool) -> Bool {
+    func initTile(tile: SKTile, newTileData: SKTilesetData, cityTerrain: [[CityTile]]?, isEditable: Bool) -> String {
         self.tile = tile
         self.isEditable = isEditable
-        return tileGetBuilding(tile: tile, cityTerrain: cityTerrain)
+        return tileGetBuilding(prevTile: tile, newTileData: newTileData, cityTerrain: cityTerrain)
     }
     
-    private func tileGetBuilding(tile: SKTile, cityTerrain: [[CityTile]]?) -> Bool {
-        let properties = tile.tileData.properties
+    private func tileGetBuilding(prevTile: SKTile, newTileData: SKTilesetData, cityTerrain: [[CityTile]]?) -> String {
+        let properties = newTileData.properties
         if properties["type"] != "ground" {
             // Tile is a building, which all have costs
             let creditsCost = properties["CREDITS"]!
             let metalCost = properties["METAL"]!
+            let costs = [ResourceTypes.CREDITS: Int(creditsCost)!, ResourceTypes.METAL: Int(metalCost)!]
             
             var building: CityBuilding?
             switch properties["type"] {
             case "road":
-                building = Road(cost: [.CREDITS: Int(creditsCost)!, .METAL: Int(metalCost)!])
+                building = Road(cost: costs)
             case "residential":
-                break
+                building = ResidentialBuilding(cost: costs, popRate: CGFloat(Double(properties["popRate"]!)!), popCap: Int(properties["popCap"]!)!)
             case "industrial":
                 break
             case "military":
@@ -40,15 +41,16 @@ public class CityTile {
             }
             
             if let building = building {
-                if building.satisfiesConstraints(cityTerrain: cityTerrain!) {
+                let message = building.satisfiesConstraints(coords: prevTile.tileCoord!, newTileData: newTileData, cityTerrain: cityTerrain!)
+                if message == "true" {
                     self.building = building
-                    return true
+                    return "true"
                 } else {
-                    return false
+                    return message
                 }
             }
         }
-        return true
+        return "true"
     }
 }
 

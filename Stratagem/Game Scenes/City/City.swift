@@ -23,6 +23,14 @@ public class City {
     /// Hudnode ref used for error messages
     var hudNode: HudNode?
     
+    /// Stats
+    var pop: CGFloat = 1000
+    var basePopRate: CGFloat = 0.005 // 0.05% growth every second
+    var basePopCap: Int = 3000
+    
+    var credits: Int = 1000
+    var metal: Int = 50
+    
     /// Initializes city variables (required). If not terrain is provided, create a new city
     func initCity(cityName: String, owner: String? = nil, terrain: [[Int]]? = nil) {
         self.cityName = cityName
@@ -33,6 +41,10 @@ public class City {
         } else {
             cityTerrainInt = makeCityTerrain()
         }
+    }
+    
+    func update(deltaTime: Float) {
+        pop = CGFloat.minimum(pop + pop * basePopRate * CGFloat(deltaTime), CGFloat(basePopCap))
     }
     
     /// Try to replace firstTile with secondTile given its global ID
@@ -47,16 +59,17 @@ public class City {
                     // Destroy a building
                     if firstTile.tileData.properties["type"]! != "ground" {
                         let newTileData = tileLayer.getTileData(globalID: secondTileID)!
-                        let newTexture = newTileData.texture!
                         
-                        newTexture.filteringMode = .nearest
-                        firstTile.texture = newTileData.texture
-                        firstTile.tileData = newTileData
-                        
-                        // Update my cityTerrain array
                         let cityTile = CityTile()
-                        let success = cityTile.initTile(tile: firstTile, cityTerrain: cityTerrain, isEditable: true)
-                        if success {
+                        let message = cityTile.initTile(tile: firstTile, newTileData: newTileData, cityTerrain: cityTerrain, isEditable: true)
+                        if message == "true" {
+                            let newTexture = newTileData.texture!
+                            
+                            newTexture.filteringMode = .nearest
+                            firstTile.texture = newTileData.texture
+                            firstTile.tileData = newTileData
+                            
+                            // Update my cityTerrain array
                             cityTerrain[x][y] = cityTile
                             
                             Global.hfGamePusher.uploadCityTerrain(cityName: cityName, cityTerrain: cityTerrain)
@@ -66,22 +79,21 @@ public class City {
                     } else if firstTile.tileData.properties["type"]! == "ground" {
                         // Build a building, satisfying the building's constraints
                         let cityTile = CityTile()
-                        // Temporarily change tileData to new tile to see if it'll work
-                        let prevTileData = firstTile.tileData
-                        firstTile.tileData = tileLayer.getTileData(globalID: secondTileID)!
+                        let newTileData = tileLayer.getTileData(globalID: secondTileID)!
                         
-                        let success = cityTile.initTile(tile: firstTile, cityTerrain: cityTerrain, isEditable: true)
+                        let message = cityTile.initTile(tile: firstTile, newTileData: newTileData, cityTerrain: cityTerrain, isEditable: true)
                         
-                        if success {
+                        if message == "true" {
                             // If it's a building, check if player has the resources and then subtract it
                             if let building = cityTile.building {
                                 let deductedFunds = tryDeductFunds(costs: building.costs)
                                 
                                 if deductedFunds {
-                                    let newTexture = firstTile.tileData.texture!
+                                    let newTexture = newTileData.texture!
                                     
                                     newTexture.filteringMode = .nearest
-                                    firstTile.texture = firstTile.tileData.texture
+                                    firstTile.texture = newTileData.texture
+                                    firstTile.tileData = newTileData
                                     
                                     // Update my cityTerrain array
                                     cityTerrain[x][y] = cityTile
@@ -89,15 +101,12 @@ public class City {
                                     Global.hfGamePusher.uploadCityTerrain(cityName: cityName, cityTerrain: cityTerrain)
                                 } else {
                                     hudNode!.inlineErrorMessage(errorMessage: "Insufficient funds")
-                                    firstTile.tileData = prevTileData
                                 }
                             } else {
                                 hudNode!.inlineErrorMessage(errorMessage: "Not a building")
-                                firstTile.tileData = prevTileData
                             }
                         } else {
-                            hudNode!.inlineErrorMessage(errorMessage: "Unable to place tile")
-                            firstTile.tileData = prevTileData
+                            hudNode!.inlineErrorMessage(errorMessage: message)
                         }
                     }
                 } else {
@@ -113,11 +122,11 @@ public class City {
         for (type, cost) in costs {
             switch type {
             case .CREDITS:
-                if Global.gameVars.credits < cost {
+                if credits < cost {
                     sufficientFunds = false
                 }
             case .METAL:
-                if Global.gameVars.metal < cost {
+                if metal < cost {
                     sufficientFunds = false
                 }
             case .POPULATION:
@@ -130,9 +139,9 @@ public class City {
             for (type, cost) in costs {
                 switch type {
                 case .CREDITS:
-                    Global.gameVars.credits -= cost
+                    credits -= cost
                 case .METAL:
-                    Global.gameVars.metal -= cost
+                    metal -= cost
                 case .POPULATION:
                     break
                 }
@@ -159,7 +168,9 @@ public class City {
                 if row < 2 || row >= cityWidth - 2 || col < 2 || col >= cityHeight - 2 {
                     isEditable = false
                 }
-                cityTile.initTile(tile: (layer?.tileAt(row, col))!, cityTerrain: nil, isEditable: isEditable)
+                
+                let tile = (layer?.tileAt(row, col))!
+                cityTile.initTile(tile: tile, newTileData: tile.tileData, cityTerrain: nil, isEditable: isEditable)
                 cityTerrain[row][col] = cityTile
             }
         }

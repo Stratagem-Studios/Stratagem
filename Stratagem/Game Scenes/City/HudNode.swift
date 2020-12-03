@@ -20,8 +20,10 @@ class HudNode : SKNode {
     let moveableNode = SKNode()
 
     private var size: CGSize = CGSize(width: 0, height: 0)
+    private var city: City?
     
     public func setup(city: City, size: CGSize, view: UIView, tilemap: SKTilemap) {
+        self.city = city
         self.size = size
         ///
         cityNameLabelNode.zPosition = 100000
@@ -38,7 +40,7 @@ class HudNode : SKNode {
         
         ///
         popLabelNode.zPosition = 100000
-        popLabelNode.text = String(Global.gameVars.population)
+        popLabelNode.text = String(Int(self.city!.pop))
         popLabelNode.fontSize = 15
         popLabelNode.position = CGPoint(x: -size.halfWidth + 75, y: size.halfHeight - 30)
         
@@ -57,7 +59,7 @@ class HudNode : SKNode {
         
         ///
         creditsLabelNode.zPosition = 100000
-        creditsLabelNode.text = String(Global.gameVars.credits)
+        creditsLabelNode.text = String(self.city!.credits)
         creditsLabelNode.fontSize = 15
         creditsLabelNode.position = CGPoint(x: -size.halfWidth + 200, y: size.halfHeight - 30)
         
@@ -76,7 +78,7 @@ class HudNode : SKNode {
         
         ///
         metalLabelNode.zPosition = 100000
-        metalLabelNode.text = String(Global.gameVars.metal)
+        metalLabelNode.text = String(self.city!.metal)
         metalLabelNode.fontSize = 15
         metalLabelNode.position = CGPoint(x: -size.halfWidth + 325, y: size.halfHeight - 30)
         
@@ -207,16 +209,16 @@ class HudNode : SKNode {
     }
     
     public func update() {
-        if popLabelNode.text != String(Global.gameVars.population) {
-            popLabelNode.text = String(Global.gameVars.population)
+        if popLabelNode.text != String(Int(city!.pop)) {
+            popLabelNode.text = String(Int(city!.pop))
         }
         
-        if creditsLabelNode.text != String(Global.gameVars.credits) {
-            creditsLabelNode.text = String(Global.gameVars.credits)
+        if creditsLabelNode.text != String(city!.credits) {
+            creditsLabelNode.text = String(city!.credits)
         }
         
-        if metalLabelNode.text != String(Global.gameVars.metal) {
-            metalLabelNode.text = String(Global.gameVars.metal)
+        if metalLabelNode.text != String(city!.metal) {
+            metalLabelNode.text = String(city!.metal)
         }
     }
     
