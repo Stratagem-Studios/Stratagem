@@ -44,7 +44,16 @@ public class City {
     }
     
     func update(deltaTime: Float) {
-        pop = CGFloat.minimum(pop + pop * basePopRate * CGFloat(deltaTime), CGFloat(basePopCap))
+        var totalPopRate = basePopRate
+        var totalPopCap = basePopCap
+        if let cityTerrain = cityTerrain {
+            for cityTile in cityTerrain.joined().filter({ $0.tileType == .RESIDENTIAL }) {
+                totalPopCap += (cityTile.building as? ResidentialBuilding)!.popCap
+                totalPopRate += (cityTile.building as? ResidentialBuilding)!.popRate
+            }
+            
+            pop = CGFloat.minimum(pop + pop * totalPopRate * CGFloat(deltaTime), CGFloat(totalPopCap))
+        }
     }
     
     /// Try to replace firstTile with secondTile given its global ID

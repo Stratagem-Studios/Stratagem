@@ -4,6 +4,7 @@ import SKTiled
 public class CityTile {
     /// Tile
     var tile: SKTile?
+    var tileType: CityTileType = .GROUND
     
     /// Tile is in player modifiable spot
     var isEditable: Bool?
@@ -27,10 +28,13 @@ public class CityTile {
             let costs = [ResourceTypes.CREDITS: Int(creditsCost)!, ResourceTypes.METAL: Int(metalCost)!]
             
             var building: CityBuilding?
+            var tileType: CityTileType?
             switch properties["type"] {
             case "road":
+                tileType = .ROAD
                 building = Road(cost: costs)
             case "residential":
+                tileType = .RESIDENTIAL
                 building = ResidentialBuilding(cost: costs, popRate: CGFloat(Double(properties["popRate"]!)!), popCap: Int(properties["popCap"]!)!)
             case "industrial":
                 break
@@ -44,6 +48,7 @@ public class CityTile {
                 let message = building.satisfiesConstraints(coords: prevTile.tileCoord!, newTileData: newTileData, cityTerrain: cityTerrain!)
                 if message == "true" {
                     self.building = building
+                    self.tileType = tileType!
                     return "true"
                 } else {
                     return message
@@ -55,7 +60,7 @@ public class CityTile {
 }
 
 enum CityTileType : String {
-    case GROUND, BUILDING
+    case GROUND, ROAD, RESIDENTIAL, INDUSTRIAL, MILITARY
 }
 
 enum GroundTileType : String {

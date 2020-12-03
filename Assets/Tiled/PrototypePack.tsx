@@ -35,7 +35,7 @@
   <properties>
   <property name="CREDITS" value="100"/>
   <property name="METAL" value="10"/>
-  <property name="popRate" value="0.003"/>
+  <property name="popRate" value="0.001"/>
   <property name="popCap" value="5000"/>
    <property name="name" value="simple residential"/>
    <property name="type" value="residential"/>
