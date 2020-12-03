@@ -172,10 +172,11 @@ public struct LFGameManager {
                                 while true {
                                     let cityName = potentialCityNames?.randomElement()
                                     if !snapshot.hasChild(cityName!) {
-                                        let terrain = planet.generateNewCity(cityName: cityName!)
+                                        let city = planet.generateNewCity(cityName: cityName!)
+                                        city.owner = playerVariables.playerName
                                         
-                                        gameRef.child("/cities/\(planet.cities[0].cityName!)/owner").setValue(playerVariables.playerName)
-                                        Global.hfGamePusher.uploadCityTerrain(cityName: planet.cities[0].cityName!, cityTerrainInt: terrain!)
+                                        gameRef.child("/cities/\(city.cityName!)/owner").setValue(playerVariables.playerName)
+                                        Global.hfGamePusher.uploadCityTerrain(cityName: city.cityName!, cityTerrainInt: city.cityTerrainInt)
                                         ownedPlanetNames.append(planet.planetName)
                                         
                                         
@@ -185,6 +186,7 @@ public struct LFGameManager {
                                         galaxy.ownedPlanetNames.append(contentsOf: ownedPlanetNames)
                                         Global.gameVars.galaxy = galaxy
                                         Global.gameVars.selectedPlanet = planet
+                                        Global.gameVars.ownedCities.append(city)
                                         
                                         playerVariables.currentView = .GameView
                                         break

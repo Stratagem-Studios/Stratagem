@@ -16,12 +16,13 @@ public class CityScene: SKTiledScene {
     
     public override func didMove(to view: SKView) {
         city = Global.gameVars!.selectedCity!
+        city.createTMXFile()
         
         super.didMove(to: view)
         super.setup(tmxFile: "City")
         cameraNode.allowGestures = true
         cameraNode.setCameraZoom(0.4)
-        cameraNode.setZoomConstraints(minimum: 0.4, maximum: 0.75)
+        cameraNode.setZoomConstraints(minimum: 0.3, maximum: 0.75)
         cameraNode.showOverlay = true
         
         city.loadTilemap(tilemap)
@@ -36,8 +37,18 @@ public class CityScene: SKTiledScene {
         
         hudNode.setup(city: city, size: size, view: view, tilemap: tilemap)
         cameraNode.addToOverlay(hudNode)
+        city.hudNode = hudNode
         
         changeStateToNone()
+        
+        // Updates HUD every 1 sec
+        let wait = SKAction.wait(forDuration: 0.5)
+        let update = SKAction.run({ [self] in
+            hudNode.update()
+        })
+        let seq = SKAction.sequence([update, wait])
+        let repeatActions = SKAction.repeatForever(seq)
+        run(repeatActions)
     }
     
     public override func willMove(from view: SKView) {
@@ -59,6 +70,7 @@ public class CityScene: SKTiledScene {
                     clickedOnHud = true
                 case "buildButtonNode":
                     if cityEditState != CityEditStates.BUILD {
+                        changeStateToNone()
                         changeStateToBuild()
                     } else {
                         changeStateToNone()
@@ -66,6 +78,7 @@ public class CityScene: SKTiledScene {
                     clickedOnHud = true
                 case "destroyButtonNode":
                     if cityEditState != CityEditStates.DESTROY {
+                        changeStateToNone()
                         changeStateToDestroy()
                     } else {
                         changeStateToNone()

@@ -5,12 +5,16 @@ import SpriteKit
 import Combine
 import SwiftUI
 
-enum GameViewLevel {
+enum GameViewLevel: String {
     case GALAXY, PLANET, CITY
 }
 
-enum GameTypes {
+enum GameTypes: String {
     case STANDARD, PLANETRUSH
+}
+
+enum ResourceTypes: String {
+    case CREDITS, METAL, POPULATION
 }
 
 class GameVariables {
@@ -22,6 +26,7 @@ class GameVariables {
     var selectedCity: City?
     
     var galaxy: Galaxy!
+    var ownedCities: [City] = []
     
     // only here for now, should be migrated
     var screenSize = UIScreen.main.bounds
@@ -31,6 +36,10 @@ class GameVariables {
     
     
     func update(deltaTime: Float){
+        // Update population numbers per city
+        for city in ownedCities {
+            city.update(deltaTime: deltaTime)
+        }
     }
     
 }

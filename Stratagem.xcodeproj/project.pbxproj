@@ -50,6 +50,10 @@
 		FF33849F2559A751000EF945 /* TitleScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33849E2559A751000EF945 /* TitleScreenView.swift */; };
 		FF3789AB255F823B00D30F66 /* ErrorPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3789AA255F823B00D30F66 /* ErrorPopup.swift */; };
 		FF40F4712559CF310036E4C7 /* CityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF40F4702559CF310036E4C7 /* CityView.swift */; };
+		FF49D7022577E9EE006A282E /* Road.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49D7012577E9EE006A282E /* Road.swift */; };
+		FF49D7052577EA01006A282E /* ResidentialBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49D7042577EA01006A282E /* ResidentialBuilding.swift */; };
+		FF49D7092577EA18006A282E /* IndustrialBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49D7082577EA18006A282E /* IndustrialBuilding.swift */; };
+		FF49D70C2577EA22006A282E /* MilitaryBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49D70B2577EA22006A282E /* MilitaryBuilding.swift */; };
 		FF57238F2551BFD900872457 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = FF57238E2551BFD900872457 /* .gitattributes */; };
 		FF5AF90A255E489F00836F03 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AF909255E489F00836F03 /* Units.swift */; };
 		FF64B6C825530268006A9F38 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FF64B6C725530268006A9F38 /* README.md */; };
@@ -137,6 +141,10 @@
 		FF33849E2559A751000EF945 /* TitleScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScreenView.swift; sourceTree = "<group>"; };
 		FF3789AA255F823B00D30F66 /* ErrorPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPopup.swift; sourceTree = "<group>"; };
 		FF40F4702559CF310036E4C7 /* CityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityView.swift; sourceTree = "<group>"; };
+		FF49D7012577E9EE006A282E /* Road.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Road.swift; sourceTree = "<group>"; };
+		FF49D7042577EA01006A282E /* ResidentialBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidentialBuilding.swift; sourceTree = "<group>"; };
+		FF49D7082577EA18006A282E /* IndustrialBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndustrialBuilding.swift; sourceTree = "<group>"; };
+		FF49D70B2577EA22006A282E /* MilitaryBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilitaryBuilding.swift; sourceTree = "<group>"; };
 		FF57238E2551BFD900872457 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
 		FF5AF909255E489F00836F03 /* Units.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Units.swift; path = Instantiatable/Units.swift; sourceTree = "<group>"; };
 		FF64B6C725530268006A9F38 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -337,6 +345,17 @@
 			path = "Helper Views";
 			sourceTree = "<group>";
 		};
+		FF49D7002577E9C1006A282E /* Buildings */ = {
+			isa = PBXGroup;
+			children = (
+				FF49D7012577E9EE006A282E /* Road.swift */,
+				FF49D7042577EA01006A282E /* ResidentialBuilding.swift */,
+				FF49D7082577EA18006A282E /* IndustrialBuilding.swift */,
+				FF49D70B2577EA22006A282E /* MilitaryBuilding.swift */,
+			);
+			path = Buildings;
+			sourceTree = "<group>";
+		};
 		FF88BDA2256E0B4B00DF0E40 /* City */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,6 +364,7 @@
 				FF1B13D6256B0B81005158C9 /* City.swift */,
 				FF88BDA3256E0B7B00DF0E40 /* CityTile.swift */,
 				FF88BDA6256E0BC100DF0E40 /* CityBuilding.swift */,
+				FF49D7002577E9C1006A282E /* Buildings */,
 			);
 			path = City;
 			sourceTree = "<group>";
@@ -632,6 +652,7 @@
 				CECA7755255E469E00CE9F69 /* GameBoards.swift in Sources */,
 				FF9D7D69256574890076C8DF /* HFGameListener.swift in Sources */,
 				FF1B13D7256B0B81005158C9 /* City.swift in Sources */,
+				FF49D7022577E9EE006A282E /* Road.swift in Sources */,
 				FFAD01DE255AE84600BA2907 /* CreateGameView.swift in Sources */,
 				FF8C4E6C254FBCBD00522756 /* (null) in Sources */,
 				FF5AF90A255E489F00836F03 /* Units.swift in Sources */,
@@ -647,10 +668,12 @@
 				FFA55AC5256C6D9700EB12D9 /* Perlin2D.swift in Sources */,
 				FFB4A299255CE6A7003298E2 /* FirebaseHelper.swift in Sources */,
 				FFFCFAC3255B62B300D03284 /* LFGameManager.swift in Sources */,
+				FF49D7052577EA01006A282E /* ResidentialBuilding.swift in Sources */,
 				FF33849F2559A751000EF945 /* TitleScreenView.swift in Sources */,
 				FFF2D86C255B88F800CE2990 /* GameLobbyView.swift in Sources */,
 				FF88BDA7256E0BC100DF0E40 /* CityBuilding.swift in Sources */,
 				FFE6EE1625746BD000BB677B /* Galaxy.swift in Sources */,
+				FF49D7092577EA18006A282E /* IndustrialBuilding.swift in Sources */,
 				CE8F1382257488AC0038156C /* GalaxyScene.swift in Sources */,
 				FF40F4712559CF310036E4C7 /* CityView.swift in Sources */,
 				FFFCFAB9255B296400D03284 /* AppDelegate.swift in Sources */,
@@ -660,6 +683,7 @@
 				FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */,
 				FF96B533255DCB6E00E5F8D4 /* VisualEffectView.swift in Sources */,
 				FFF85E3E255C73B700DFDDC2 /* LFGameListener.swift in Sources */,
+				FF49D70C2577EA22006A282E /* MilitaryBuilding.swift in Sources */,
 				FF33849325599EB9000EF945 /* JoinGameView.swift in Sources */,
 				FFB4A2A7255D9EA1003298E2 /* PlayerManager.swift in Sources */,
 				FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */,

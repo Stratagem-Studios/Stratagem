@@ -779,8 +779,8 @@ extension SKTiledSceneCamera {
         guard let scene = self.scene as? SKTiledScene else { return CGPoint(x: 0, y: 0)}
 
         let left = 0
-        let right = -300
-        let top = -200
+        let right = 0
+        let top = 0
         let bottom = 0
         
         var minPanX = (scene.size.halfWidth * zoom)
