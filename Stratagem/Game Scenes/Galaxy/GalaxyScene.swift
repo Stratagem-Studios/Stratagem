@@ -212,7 +212,14 @@ class GalaxyScene: SKScene {
                 let planet = Global.gameVars.galaxy.planets[i]
                 
                 // If there are no cities generated for the planet, we need to make at least one - this code should be removed later
-                if (planet.cities.isEmpty){planet.generateNewCity(cityName: "e")}
+                // Starts creating our galaxy
+                DispatchQueue.global(qos: .background).async {
+                    // creates the galaxy
+                    if (planet.cities.isEmpty){planet.generateNewCity(cityName: "e")}
+                    DispatchQueue.main.async {
+                        // when the galaxy finishes creation
+                    }
+                }
                 
                 selectPlanet(planetInt: i)
             } else if node.name == "settings" {
