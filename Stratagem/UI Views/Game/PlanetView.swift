@@ -79,7 +79,7 @@ struct PlanetView : UIViewRepresentable {
             if hitResults.count > 0 {
                 let result: SCNHitTestResult = hitResults[0]
 
-                print(result.textureCoordinates(withMappingChannel: 0))
+                print(planet.cityMapping ,result.textureCoordinates(withMappingChannel: 0))
                 for i in 0..<planet.cityMapping.count {
                     if planet.cityMapping[i].contains(result.textureCoordinates(withMappingChannel: 0)){
                         Global.gameVars!.selectedCity = planet.cities[i]
