@@ -1,8 +1,14 @@
-//
-//  Road.swift
-//  Stratagem
-//
-//  Created by 64004080 on 12/2/20.
-//
+import SpriteKit
+import SKTiled
 
-import Foundation
+public class Road: CityBuilding {
+    
+    /// Can place a road on any grass tile
+    override func satisfiesConstraints(coords: CGPoint, newTileData: SKTilesetData, cityTerrain: [[CityTile]]) -> String {
+        if cityTerrain[Int(coords.x)][Int(coords.y)].tile!.tileData.properties["name"] == "grass" {
+            return "true"
+        }
+        
+        return "false"
+    }
+}

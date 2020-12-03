@@ -9,11 +9,13 @@ public class City {
     var owner: String?
     
     /// City size
-    let cityWidth: Int = 12
-    let cityHeight: Int = 32
+    let cityWidth: Int = 20
+    let cityHeight: Int = 20
     
     /// City terrain, a 2d array of CityTiles
     var cityTerrain: [[CityTile]]!
+    /// City terrain as an array of Ints. Should only be used when initting and loading city
+    var cityTerrainInt: [[Int]]!
     
     /// Tilemap
     var tilemap: SKTilemap!
@@ -21,19 +23,37 @@ public class City {
     /// Hudnode ref used for error messages
     var hudNode: HudNode?
     
+    /// Stats
+    var pop: CGFloat = 1000
+    var basePopRate: CGFloat = 0.005 // 0.05% growth every second
+    var basePopCap: Int = 3000
+    
+    var credits: Int = 1000
+    var metal: Int = 50
+    
     /// Initializes city variables (required). If not terrain is provided, create a new city
-    func initCity(cityName: String, owner: String? = nil, terrain: [[Int]]? = nil) -> [[Int]]? {
+    func initCity(cityName: String, owner: String? = nil, terrain: [[Int]]? = nil) {
         self.cityName = cityName
         self.owner = owner
         
         if let terrain = terrain {
-            createTMXFile(terrain: terrain)
+            cityTerrainInt = terrain
         } else {
-            let terrain = makeCityTerrain()
-            createTMXFile(terrain: terrain)
-            return terrain
+            cityTerrainInt = makeCityTerrain()
         }
-        return nil
+    }
+    
+    func update(deltaTime: Float) {
+        var totalPopRate = basePopRate
+        var totalPopCap = basePopCap
+        if let cityTerrain = cityTerrain {
+            for cityTile in cityTerrain.joined().filter({ $0.tileType == .RESIDENTIAL }) {
+                totalPopCap += (cityTile.building as? ResidentialBuilding)!.popCap
+                totalPopRate += (cityTile.building as? ResidentialBuilding)!.popRate
+            }
+            
+            pop = CGFloat.minimum(pop + pop * totalPopRate * CGFloat(deltaTime), CGFloat(totalPopCap))
+        }
     }
     
     /// Try to replace firstTile with secondTile given its global ID
@@ -48,22 +68,10 @@ public class City {
                     // Destroy a building
                     if firstTile.tileData.properties["type"]! != "ground" {
                         let newTileData = tileLayer.getTileData(globalID: secondTileID)!
-                        let newTexture = newTileData.texture!
                         
-                        newTexture.filteringMode = .nearest
-                        firstTile.texture = newTileData.texture
-                        firstTile.tileData = newTileData
-                        
-                        // Update my cityTerrain array
                         let cityTile = CityTile()
-                        cityTile.initTile(tile: firstTile, isEditable: true)
-                        cityTerrain[x][y] = cityTile
-                        
-                        Global.hfGamePusher.uploadCityTerrain(cityName: cityName, cityTerrain: cityTerrain)
-                    } else {
-                        // Build a building, satisfying the building's constraints
-                        if firstTile.tileData.properties["type"]! == "ground" {
-                            let newTileData = tileLayer.getTileData(globalID: secondTileID)!
+                        let message = cityTile.initTile(tile: firstTile, newTileData: newTileData, cityTerrain: cityTerrain, isEditable: true)
+                        if message == "true" {
                             let newTexture = newTileData.texture!
                             
                             newTexture.filteringMode = .nearest
@@ -71,11 +79,43 @@ public class City {
                             firstTile.tileData = newTileData
                             
                             // Update my cityTerrain array
-                            let cityTile = CityTile()
-                            cityTile.initTile(tile: firstTile, isEditable: true)
                             cityTerrain[x][y] = cityTile
                             
                             Global.hfGamePusher.uploadCityTerrain(cityName: cityName, cityTerrain: cityTerrain)
+                        } else {
+                            hudNode!.inlineErrorMessage(errorMessage: "Unable to place tile")
+                        }
+                    } else if firstTile.tileData.properties["type"]! == "ground" {
+                        // Build a building, satisfying the building's constraints
+                        let cityTile = CityTile()
+                        let newTileData = tileLayer.getTileData(globalID: secondTileID)!
+                        
+                        let message = cityTile.initTile(tile: firstTile, newTileData: newTileData, cityTerrain: cityTerrain, isEditable: true)
+                        
+                        if message == "true" {
+                            // If it's a building, check if player has the resources and then subtract it
+                            if let building = cityTile.building {
+                                let deductedFunds = tryDeductFunds(costs: building.costs)
+                                
+                                if deductedFunds {
+                                    let newTexture = newTileData.texture!
+                                    
+                                    newTexture.filteringMode = .nearest
+                                    firstTile.texture = newTileData.texture
+                                    firstTile.tileData = newTileData
+                                    
+                                    // Update my cityTerrain array
+                                    cityTerrain[x][y] = cityTile
+                                    
+                                    Global.hfGamePusher.uploadCityTerrain(cityName: cityName, cityTerrain: cityTerrain)
+                                } else {
+                                    hudNode!.inlineErrorMessage(errorMessage: "Insufficient funds")
+                                }
+                            } else {
+                                hudNode!.inlineErrorMessage(errorMessage: "Not a building")
+                            }
+                        } else {
+                            hudNode!.inlineErrorMessage(errorMessage: message)
                         }
                     }
                 } else {
@@ -83,6 +123,43 @@ public class City {
                 }
             }
         }
+    }
+    
+    /// Tries to deduct funds from gamevars. Returns true if they had enough funds
+    func tryDeductFunds(costs: [ResourceTypes: Int]) -> Bool {
+        var sufficientFunds = true
+        for (type, cost) in costs {
+            switch type {
+            case .CREDITS:
+                if credits < cost {
+                    sufficientFunds = false
+                }
+            case .METAL:
+                if metal < cost {
+                    sufficientFunds = false
+                }
+            case .POPULATION:
+                break
+            }
+        }
+        
+        // Now subtract it
+        if sufficientFunds {
+            for (type, cost) in costs {
+                switch type {
+                case .CREDITS:
+                    credits -= cost
+                case .METAL:
+                    metal -= cost
+                case .POPULATION:
+                    break
+                }
+                hudNode!.update()
+            }
+        } else {
+            return false
+        }
+        return true
     }
     
     // Creates CityTiles from a tilemap and loads it into cityTerrain
@@ -97,17 +174,19 @@ public class City {
                 
                 // Add padding tiles around the playable area
                 var isEditable = true
-                if row < 2 || row > cityWidth - 2 || col < 3 || col > cityHeight - 3 {
+                if row < 2 || row >= cityWidth - 2 || col < 2 || col >= cityHeight - 2 {
                     isEditable = false
                 }
-                cityTile.initTile(tile: (layer?.tileAt(row, col))!, isEditable: isEditable)
+                
+                let tile = (layer?.tileAt(row, col))!
+                cityTile.initTile(tile: tile, newTileData: tile.tileData, cityTerrain: nil, isEditable: isEditable)
                 cityTerrain[row][col] = cityTile
             }
         }
     }
     
-    /// Creates file [cityName].tmx from cityTerrain
-    private func createTMXFile(terrain: [[Int]]) {
+    /// Creates file [cityName].tmx from cityTerrainInt
+    func createTMXFile() {
         // Copy tsx file
         copyFileToDocumentsFolder(nameForFile: "PrototypePack", extForFile: "tsx")
         
@@ -116,7 +195,7 @@ public class City {
         var layer2 = ""
         for row in 0..<cityWidth {
             for col in 0..<cityHeight {
-                layer1 = layer1 + "\(terrain[row][col]),"
+                layer1 = layer1 + "\(cityTerrainInt[row][col]),"
             }
             layer1 = layer1 + " \n"
         }
@@ -129,7 +208,7 @@ public class City {
         }
         layer2 = String(layer2.dropLast(3)) + "\n"
         
-        var text = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<map version=\"1.4\" tiledversion=\"1.4.3\" orientation=\"staggered\" renderorder=\"right-down\" width=\"" + String(cityWidth) + "\" height=\""
+        var text = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<map version=\"1.4\" tiledversion=\"1.4.3\" orientation=\"isometric\" renderorder=\"right-down\" width=\"" + String(cityWidth) + "\" height=\""
         text = text + String(cityHeight) + "\" tilewidth=\"256\" tileheight=\"128\" infinite=\"0\" staggeraxis=\"y\" staggerindex=\"odd\" nextlayerid=\"11\" nextobjectid=\"1\">\n <tileset firstgid=\"1\" source=\"PrototypePack.tsx\"/>\n <layer id=\"8\" name=\"Tile Layer 1\" width=\"" + String(cityWidth) + "\" height=\""
         text = text + String(cityHeight) + "\">\n  <data encoding=\"csv\">\n" + layer1 + "</data>\n </layer>\n <layer id=\"9\" name=\"Tile Layer 2\" width=\"" + String(cityWidth) + "\" height=\"" + String(cityHeight) + "\">\n  <data encoding=\"csv\">\n" + layer2 + "</data>\n </layer>\n</map>\n"
         
@@ -147,44 +226,23 @@ public class City {
     
     /// Creates a 2d array of integers representing the tile id using perlin noise
     private func makeCityTerrain() -> [[Int]] {
-        let noisemap = Perlin2D().octaveMatrix(width: 288, height: 288, octaves: 6, persistance: 0.25)
+        let noisemap = Perlin2D().octaveMatrix(width: 36, height: 36, octaves: 6, persistance: 0.25)
         
         var rectTerrain: [[Int]] = Array(repeating: Array(repeating: 0, count: 36), count: 36)
-        // Downsizes a roughly square larger matrix by taking averages of each submatrix
         for row in 0..<36 {
             for col in 0..<36 {
-                let x_st = 8 * row
-                let y_st = 8 * col
+                let terrainHeight = noisemap[row][col]
                 
-                var total: CGFloat = 0
-                for x in x_st..<(x_st + 8) {
-                    for y in y_st..<(y_st + 8) {
-                        total = total + noisemap[x][y]
-                    }
-                }
-                let avgTerrainHeight = total / (8 * 8)
-                if avgTerrainHeight <= 0.4 {
+                if terrainHeight <= 0.4 {
                     rectTerrain[row][col] = 3
-                } else if avgTerrainHeight <= 0.45 {
+                } else if terrainHeight <= 0.45 {
                     rectTerrain[row][col] = 2
-                } else if avgTerrainHeight <= 1 {
+                } else if terrainHeight <= 1 {
                     rectTerrain[row][col] = 1
                 }
             }
         }
-        
-        var cityTerrain: [[Int]] = Array(repeating: Array(repeating: 0, count: cityHeight), count: cityWidth)
-        for row in 0..<cityWidth {
-            let row2 = row * 2
-            
-            for i in 0..<2 {
-                for col in 0..<(cityHeight / 2) {
-                    let col2 = col * 2 + i
-                    cityTerrain[row][col2] = rectTerrain[row2][col]
-                }
-            }
-        }
-        return cityTerrain
+        return rectTerrain
     }
     
     private func copyFileToDocumentsFolder(nameForFile: String, extForFile: String) {

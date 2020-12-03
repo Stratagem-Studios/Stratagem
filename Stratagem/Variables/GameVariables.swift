@@ -18,11 +18,6 @@ enum ResourceTypes: String {
 }
 
 class GameVariables {
-    // Resources
-    var population: Int = 1000
-    var credits: Int = 1000
-    var metal: Int = 50
-    
     // Used for setup
     var gameType: GameTypes = GameTypes.STANDARD
     
@@ -31,6 +26,7 @@ class GameVariables {
     var selectedCity: City?
     
     var galaxy: Galaxy!
+    var ownedCities: [City] = []
     
     // only here for now, should be migrated
     var screenSize = UIScreen.main.bounds
@@ -40,6 +36,10 @@ class GameVariables {
     
     
     func update(deltaTime: Float){
+        // Update population numbers per city
+        for city in ownedCities {
+            city.update(deltaTime: deltaTime)
+        }
     }
     
 }

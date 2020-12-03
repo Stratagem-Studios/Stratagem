@@ -155,8 +155,8 @@ public class Perlin2D: NSObject {
             var row:[CGFloat] = []
             
             for y in (0...height) {
-                let cx:CGFloat = CGFloat(x)/50
-                let cy:CGFloat = CGFloat(y)/50
+                let cx:CGFloat = CGFloat(x)/10
+                let cy:CGFloat = CGFloat(y)/10
                 
                 //We decide to use 8 octaves and 0.25 to generate our map. You can change these too
                 let p = octaveNoise(x: cx, y: cy, octaves: octaves, persistence: persistance)

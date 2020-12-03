@@ -16,12 +16,13 @@ public class CityScene: SKTiledScene {
     
     public override func didMove(to view: SKView) {
         city = Global.gameVars!.selectedCity!
+        city.createTMXFile()
         
         super.didMove(to: view)
         super.setup(tmxFile: "City")
         cameraNode.allowGestures = true
         cameraNode.setCameraZoom(0.4)
-        cameraNode.setZoomConstraints(minimum: 0.4, maximum: 0.75)
+        cameraNode.setZoomConstraints(minimum: 0.3, maximum: 0.75)
         cameraNode.showOverlay = true
         
         city.loadTilemap(tilemap)
@@ -69,6 +70,7 @@ public class CityScene: SKTiledScene {
                     clickedOnHud = true
                 case "buildButtonNode":
                     if cityEditState != CityEditStates.BUILD {
+                        changeStateToNone()
                         changeStateToBuild()
                     } else {
                         changeStateToNone()
@@ -76,6 +78,7 @@ public class CityScene: SKTiledScene {
                     clickedOnHud = true
                 case "destroyButtonNode":
                     if cityEditState != CityEditStates.DESTROY {
+                        changeStateToNone()
                         changeStateToDestroy()
                     } else {
                         changeStateToNone()
