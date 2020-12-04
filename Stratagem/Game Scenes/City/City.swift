@@ -52,6 +52,7 @@ public class City {
             
             let pop = resources[.POPULATION]!
             resources[.POPULATION] = CGFloat.minimum(pop + pop * totalPopRate * CGFloat(deltaTime), CGFloat(totalPopCap))
+            resourcesCap[.POPULATION] = totalPopCap
         }
         
         // Industrial

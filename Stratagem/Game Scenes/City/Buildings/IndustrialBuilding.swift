@@ -10,9 +10,6 @@ public class IndustrialBuilding: CityBuilding {
     var consumes: [ResourceTypes: CGFloat]
     var produces: [ResourceTypes: CGFloat]
     
-    // Specific tile this building goes on?
-    var restrictedTile: String = "grass"
-    
     init(cost: [ResourceTypes: CGFloat], properties: Dictionary<String, String>) {
         var consumes: [ResourceTypes: CGFloat] = [:]
         var produces: [ResourceTypes: CGFloat] = [:]
@@ -28,26 +25,24 @@ public class IndustrialBuilding: CityBuilding {
         self.consumes = consumes
         self.produces = produces
         
-        if let restriction = properties["restriction"] {
-            self.restrictedTile = restriction
-        }
-        
         super.init(cost: cost)
     }
     
     /// Can place a building next to a road and check restriction
     override func satisfiesConstraints(coords: CGPoint, newTileData: SKTilesetData, cityTerrain: [[CityTile]]) -> String {
-        let x = Int(coords.x)
-        let y = Int(coords.y)
-        
-        if cityTerrain[x][y].tile!.tileData.properties["name"] == restrictedTile {
-            if cityTerrain[x + 1][y].building is Road || cityTerrain[x - 1][y].building is Road || cityTerrain[x][y + 1].building is Road || cityTerrain[x][y - 1].building is Road {
-                return "true"
-            } else {
-                return "Must place building adjacent to a road"
-            }
+        // Check for appropriate tile
+        let message = super.satisfiesConstraints(coords: coords, newTileData: newTileData, cityTerrain: cityTerrain)
+        if message != "true" {
+            return message
         }
         
-        return "Must place building on a \(restrictedTile) tile"
+        let x = Int(coords.x)
+        let y = Int(coords.y)
+        if cityTerrain[x + 1][y].building is Road || cityTerrain[x - 1][y].building is Road || cityTerrain[x][y + 1].building is Road || cityTerrain[x][y - 1].building is Road {
+            return "true"
+        } else {
+            return "Must place building adjacent to a road"
+        }
+        
     }
 }

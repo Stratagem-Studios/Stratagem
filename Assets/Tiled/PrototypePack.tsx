@@ -43,6 +43,7 @@
       <property name="CREDITS" value="300"/>
       <property name="METAL" value="10"/>
       <property name="CONSUMES METAL" value="2"/>
+    <property name="onTile" value="[sand, grass, iron, oil]"/>
    <property name="name" value="simple building"/>
    <property name="type" value="industrial"/>
   </properties>
@@ -53,7 +54,7 @@
       <property name="CREDITS" value="300"/>
       <property name="METAL" value="10"/>
       <property name="PRODUCES METAL" value="3"/>
-   <property name="restriction" value="iron"/>
+      <property name="onTile" value="[iron]"/>
    <property name="name" value="iron miner"/>
    <property name="type" value="industrial"/>
   </properties>
@@ -64,6 +65,7 @@
   <properties>
   <property name="CREDITS" value="100"/>
   <property name="METAL" value="10"/>
+  <property name="onTile" value="[sand, grass, iron, oil]"/>
   <property name="popRate" value="0.001"/>
   <property name="popCap" value="5000"/>
    <property name="name" value="simple residential"/>
@@ -76,6 +78,7 @@
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
+   <property name="onTile" value="[sand, grass, iron, oil]"/>
    <property name="name" value="simple road"/>
    <property name="type" value="road"/>
   </properties>
