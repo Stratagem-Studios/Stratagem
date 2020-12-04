@@ -98,7 +98,7 @@ class HudNode : SKNode {
         ///
         inlineErrorLabelNode.zPosition = 100000 + 1
         inlineErrorLabelNode.fontSize = 15
-        inlineErrorLabelNode.position = CGPoint(x: 0, y: -size.halfHeight + 80)
+        inlineErrorLabelNode.position = CGPoint(x: 0, y: -size.halfHeight + 150)
         inlineErrorLabelNode.alpha = 0
         
         ///
@@ -110,7 +110,7 @@ class HudNode : SKNode {
         destroyButtonNode.name = "destroyButtonNode"
         destroyButtonNode.zPosition = 100000
         destroyButtonNode.position = CGPoint(x: -size.halfWidth + 125, y: -size.halfHeight + 50)
-        destroyButtonNode.size = CGSize(width: 75, height: 75)
+        destroyButtonNode.size = CGSize(width: 42, height: 42)
         
         borderRectNode = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: size.width, height: size.height)))
         borderRectNode.name = "borderRectNode"

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>construction-24px</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="construction-24px">
+            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+            <g id="Group" transform="translate(2.000000, 2.000000)" fill="#000000" fill-rule="nonzero" stroke="#FFFFFF" stroke-width="0.5">
+                <rect id="Rectangle" transform="translate(15.841445, 15.109317) rotate(-45.000000) translate(-15.841445, -15.109317) " x="14.3414594" y="10.8693577" width="2.99997123" height="8.47991868"></rect>
+                <path d="M15.5,8 C17.43,8 19,6.43 19,4.5 C19,3.92 18.84,3.38 18.59,2.9 L15.89,5.6 L14.4,4.11 L17.1,1.41 C16.62,1.16 16.08,1 15.5,1 C13.57,1 12,2.57 12,4.5 C12,4.91 12.08,5.3 12.21,5.66 L10.36,7.51 L8.58,5.73 L9.29,5.02 L7.88,3.61 L10,1.49 C8.83,0.32 6.93,0.32 5.76,1.49 L2.22,5.03 L3.63,6.44 L0.81,6.44 L0.1,7.15 L3.64,10.69 L4.35,9.98 L4.35,7.15 L5.76,8.56 L6.47,7.85 L8.25,9.63 L0.84,17.04 L2.96,19.16 L14.34,7.79 C14.7,7.92 15.09,8 15.5,8 Z" id="Path"></path>
+            </g>
+        </g>
+    </g>
+</svg>
