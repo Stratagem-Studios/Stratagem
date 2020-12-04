@@ -226,11 +226,13 @@ public class City {
     
     /// Creates a 2d array of integers representing the tile id using perlin noise
     private func makeCityTerrain() -> [[Int]] {
-        let noisemap = Perlin2D().octaveMatrix(width: 36, height: 36, octaves: 6, persistance: 0.25)
+        let noisemap = Perlin2D().octaveMatrix(width: cityWidth, height: cityHeight, scale: 10, octaves: 6, persistance: 0.25)
+        let resourceNoiseMap = Perlin2D().octaveMatrix(width: cityWidth, height: cityHeight, scale: 15, octaves: 6, persistance: 0.25)
         
-        var rectTerrain: [[Int]] = Array(repeating: Array(repeating: 0, count: 36), count: 36)
-        for row in 0..<36 {
-            for col in 0..<36 {
+        // Baseline terrain with grass, sand, and water tiles. Then add resource tiles
+        var rectTerrain: [[Int]] = Array(repeating: Array(repeating: 0, count: cityHeight), count: cityWidth)
+        for row in 0..<cityWidth {
+            for col in 0..<cityHeight {
                 let terrainHeight = noisemap[row][col]
                 
                 if terrainHeight <= 0.4 {
@@ -238,7 +240,17 @@ public class City {
                 } else if terrainHeight <= 0.45 {
                     rectTerrain[row][col] = 2
                 } else if terrainHeight <= 1 {
-                    rectTerrain[row][col] = 1
+                    // If there's a resource tile, add that instead of grass
+                    if resourceNoiseMap[row][col] < 0.3 {
+                        // Iron
+                        rectTerrain[row][col] = 5
+                    } else if resourceNoiseMap[row][col] < 0.7 {
+                        // Grass
+                        rectTerrain[row][col] = 1
+                    } else if resourceNoiseMap[row][col] <= 1 {
+                        // Oil
+                        rectTerrain[row][col] = 4
+                    }
                 }
             }
         }
