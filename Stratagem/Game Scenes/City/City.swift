@@ -24,12 +24,9 @@ public class City {
     var hudNode: HudNode?
     
     /// Stats
-    var pop: CGFloat = 1000
+    var resources: [ResourceTypes: CGFloat] = [.POPULATION: 1000, .CREDITS: 1000, .METAL: 50]
+    var resourcesCap: [ResourceTypes: CGFloat] = [.POPULATION: 3000, .CREDITS: 100000, .METAL: 500]
     var basePopRate: CGFloat = 0.005 // 0.05% growth every second
-    var basePopCap: Int = 3000
-    
-    var credits: Int = 1000
-    var metal: Int = 50
     
     /// Initializes city variables (required). If not terrain is provided, create a new city
     func initCity(cityName: String, owner: String? = nil, terrain: [[Int]]? = nil) {
@@ -44,15 +41,25 @@ public class City {
     }
     
     func update(deltaTime: Float) {
+        // Residential
         var totalPopRate = basePopRate
-        var totalPopCap = basePopCap
+        var totalPopCap = resourcesCap[.POPULATION]!
         if let cityTerrain = cityTerrain {
             for cityTile in cityTerrain.joined().filter({ $0.tileType == .RESIDENTIAL }) {
-                totalPopCap += (cityTile.building as? ResidentialBuilding)!.popCap
-                totalPopRate += (cityTile.building as? ResidentialBuilding)!.popRate
+                totalPopCap += CGFloat((cityTile.building as! ResidentialBuilding).popCap)
+                totalPopRate += (cityTile.building as! ResidentialBuilding).popRate
             }
             
-            pop = CGFloat.minimum(pop + pop * totalPopRate * CGFloat(deltaTime), CGFloat(totalPopCap))
+            let pop = resources[.POPULATION]!
+            resources[.POPULATION] = CGFloat.minimum(pop + pop * totalPopRate * CGFloat(deltaTime), CGFloat(totalPopCap))
+        }
+        
+        // Industrial
+        if let cityTerrain = cityTerrain {
+            for cityTile in cityTerrain.joined().filter({ $0.tileType == .INDUSTRIAL }) {
+                _ = tryDeductFunds(costs: (cityTile.building as! IndustrialBuilding).consumes, deltaTime: CGFloat(deltaTime))
+                tryAddFunds(funds: (cityTile.building as! IndustrialBuilding).produces, deltaTime: CGFloat(deltaTime))
+            }
         }
     }
     
@@ -126,40 +133,32 @@ public class City {
     }
     
     /// Tries to deduct funds from gamevars. Returns true if they had enough funds
-    func tryDeductFunds(costs: [ResourceTypes: Int]) -> Bool {
+    func tryDeductFunds(costs: [ResourceTypes: CGFloat], deltaTime: CGFloat = 1) -> Bool {
         var sufficientFunds = true
         for (type, cost) in costs {
-            switch type {
-            case .CREDITS:
-                if credits < cost {
-                    sufficientFunds = false
-                }
-            case .METAL:
-                if metal < cost {
-                    sufficientFunds = false
-                }
-            case .POPULATION:
-                break
+            if resources[type]! < cost * deltaTime {
+                sufficientFunds = false
             }
         }
+        
         
         // Now subtract it
         if sufficientFunds {
             for (type, cost) in costs {
-                switch type {
-                case .CREDITS:
-                    credits -= cost
-                case .METAL:
-                    metal -= cost
-                case .POPULATION:
-                    break
-                }
+                resources[type]! -= cost * deltaTime
                 hudNode!.update()
             }
         } else {
             return false
         }
         return true
+    }
+    
+    /// Tries to add funds from gamevars.
+    func tryAddFunds(funds: [ResourceTypes: CGFloat], deltaTime: CGFloat = 1) {
+        for (type, fund) in funds {
+            resources[type]! = min(fund * deltaTime + resources[type]!, resourcesCap[type]!)
+        }
     }
     
     // Creates CityTiles from a tilemap and loads it into cityTerrain
@@ -226,30 +225,41 @@ public class City {
     
     /// Creates a 2d array of integers representing the tile id using perlin noise
     private func makeCityTerrain() -> [[Int]] {
-        let noisemap = Perlin2D().octaveMatrix(width: cityWidth, height: cityHeight, scale: 10, octaves: 6, persistance: 0.25)
-        let resourceNoiseMap = Perlin2D().octaveMatrix(width: cityWidth, height: cityHeight, scale: 15, octaves: 6, persistance: 0.25)
-        
-        // Baseline terrain with grass, sand, and water tiles. Then add resource tiles
+        // Make sure the user doesn't get too unlucky
+        var numResourceTiles = 0
         var rectTerrain: [[Int]] = Array(repeating: Array(repeating: 0, count: cityHeight), count: cityWidth)
-        for row in 0..<cityWidth {
-            for col in 0..<cityHeight {
-                let terrainHeight = noisemap[row][col]
-                
-                if terrainHeight <= 0.4 {
-                    rectTerrain[row][col] = 3
-                } else if terrainHeight <= 0.45 {
-                    rectTerrain[row][col] = 2
-                } else if terrainHeight <= 1 {
-                    // If there's a resource tile, add that instead of grass
-                    if resourceNoiseMap[row][col] < 0.3 {
-                        // Iron
-                        rectTerrain[row][col] = 5
-                    } else if resourceNoiseMap[row][col] < 0.7 {
-                        // Grass
-                        rectTerrain[row][col] = 1
-                    } else if resourceNoiseMap[row][col] <= 1 {
-                        // Oil
-                        rectTerrain[row][col] = 4
+        let noisemap = Perlin2D().octaveMatrix(width: cityWidth, height: cityHeight, scale: 10, octaves: 6, persistance: 0.25)
+        while numResourceTiles < 6 {
+            numResourceTiles = 0
+            let resourceNoiseMap = Perlin2D().octaveMatrix(width: cityWidth, height: cityHeight, scale: 15, octaves: 6, persistance: 0.25)
+            
+            // Baseline terrain with grass, sand, and water tiles. Then add resource tiles
+            for row in 0..<cityWidth {
+                for col in 0..<cityHeight {
+                    let terrainHeight = noisemap[row][col]
+                    
+                    if terrainHeight <= 0.4 {
+                        rectTerrain[row][col] = 3
+                    } else if terrainHeight <= 0.45 {
+                        rectTerrain[row][col] = 2
+                    } else if terrainHeight <= 1 {
+                        // If there's a resource tile, add that instead of grass
+                        if resourceNoiseMap[row][col] < 0.35 {
+                            // Iron
+                            rectTerrain[row][col] = 5
+                            if !(row < 2 || row >= cityWidth - 2 || col < 2 || col >= cityHeight - 2) {
+                                numResourceTiles += 1
+                            }
+                        } else if resourceNoiseMap[row][col] < 0.7 {
+                            // Grass
+                            rectTerrain[row][col] = 1
+                        } else if resourceNoiseMap[row][col] <= 1 {
+                            // Oil
+                            rectTerrain[row][col] = 4
+                            if !(row < 2 || row >= cityWidth - 2 || col < 2 || col >= cityHeight - 2) {
+                                numResourceTiles += 1
+                            }
+                        }
                     }
                 }
             }

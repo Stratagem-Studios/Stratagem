@@ -98,13 +98,13 @@ public class CityScene: SKTiledScene {
                                     self.buildSelectedTiledata = nil
                                     
                                     if buildSelectedNode.name != tappedHudNodeName {
-                                        let selectedBorderRect = SKShapeNode(rect: tappedHudNode.frame, cornerRadius: 5)
+                                        let selectedBorderRect = SKShapeNode(rect: CGRect(x: -25, y: -50, width: 50, height: 100), cornerRadius: 5)
                                         tappedHudNode.addChild(selectedBorderRect)
                                         self.buildSelectedNode = tappedHudNode
                                         buildSelectedTiledata = tiles[0]
                                     }
                                 } else {
-                                    let selectedBorderRect = SKShapeNode(rect: tappedHudNode.frame, cornerRadius: 5)
+                                    let selectedBorderRect = SKShapeNode(rect: CGRect(x: -25, y: -50, width: 50, height: 100), cornerRadius: 5)
                                     tappedHudNode.addChild(selectedBorderRect)
                                     buildSelectedNode = tappedHudNode
                                     buildSelectedTiledata = tiles[0]

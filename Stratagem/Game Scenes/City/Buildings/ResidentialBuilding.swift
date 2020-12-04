@@ -6,9 +6,9 @@ public class ResidentialBuilding: CityBuilding {
     var popRate: CGFloat
     var popCap: Int
     
-    init(cost: [ResourceTypes: Int], popRate: CGFloat, popCap: Int) {
-        self.popRate = popRate
-        self.popCap = popCap
+    init(cost: [ResourceTypes: CGFloat], properties: Dictionary<String, String>) {
+        self.popRate = CGFloat(Double(properties["popRate"]!)!)
+        self.popCap = Int(properties["popCap"]!)!
         super.init(cost: cost)
     }
     

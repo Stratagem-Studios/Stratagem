@@ -83,6 +83,7 @@
 		FFE6EE2225749C3900BB677B /* Collection+choose.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE2125749C3900BB677B /* Collection+choose.swift */; };
 		FFF0358D2579A2200069F5F0 /* iron.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF0358B2579A2200069F5F0 /* iron.png */; };
 		FFF0358E2579A2200069F5F0 /* oil.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF0358C2579A2200069F5F0 /* oil.png */; };
+		FFF03591257A889C0069F5F0 /* iron miner.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF03590257A889C0069F5F0 /* iron miner.png */; };
 		FFF2D86C255B88F800CE2990 /* GameLobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2D86B255B88F800CE2990 /* GameLobbyView.swift */; };
 		FFF85E3E255C73B700DFDDC2 /* LFGameListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E3D255C73B700DFDDC2 /* LFGameListener.swift */; };
 		FFF85E41255C73C100DFDDC2 /* HFGamePusher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E40255C73C100DFDDC2 /* HFGamePusher.swift */; };
@@ -177,6 +178,7 @@
 		FFE6EE2125749C3900BB677B /* Collection+choose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+choose.swift"; sourceTree = "<group>"; };
 		FFF0358B2579A2200069F5F0 /* iron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iron.png; sourceTree = "<group>"; };
 		FFF0358C2579A2200069F5F0 /* oil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oil.png; sourceTree = "<group>"; };
+		FFF03590257A889C0069F5F0 /* iron miner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iron miner.png"; sourceTree = "<group>"; };
 		FFF2D86B255B88F800CE2990 /* GameLobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLobbyView.swift; sourceTree = "<group>"; };
 		FFF85E3D255C73B700DFDDC2 /* LFGameListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFGameListener.swift; sourceTree = "<group>"; };
 		FFF85E40255C73C100DFDDC2 /* HFGamePusher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFGamePusher.swift; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 		FFA3FFB725662A6800CFA406 /* Tiled */ = {
 			isa = PBXGroup;
 			children = (
+				FFF03590257A889C0069F5F0 /* iron miner.png */,
 				FFF0358B2579A2200069F5F0 /* iron.png */,
 				FFF0358C2579A2200069F5F0 /* oil.png */,
 				FFDCC4C825769B6E00D880B3 /* building industrial.png */,
@@ -586,6 +589,7 @@
 				FFD9693E255B0505005A1BC7 /* Podfile in Resources */,
 				FF08577C2550FC5100F0F220 /* Montserrat-Regular.ttf in Resources */,
 				FF0857752550FC5100F0F220 /* Montserrat-SemiBoldItalic.ttf in Resources */,
+				FFF03591257A889C0069F5F0 /* iron miner.png in Resources */,
 				FFA3FFBC25662C0B00CFA406 /* PrototypePack.tsx in Resources */,
 				FFFCFABE255B366700D03284 /* GoogleService-Info.plist in Resources */,
 				FF0857782550FC5100F0F220 /* Montserrat-BoldItalic.ttf in Resources */,

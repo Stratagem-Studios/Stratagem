@@ -40,7 +40,7 @@ class HudNode : SKNode {
         
         ///
         popLabelNode.zPosition = 100000
-        popLabelNode.text = String(Int(self.city!.pop))
+        popLabelNode.text = String(Int(self.city!.resources[.POPULATION]!))
         popLabelNode.fontSize = 15
         popLabelNode.position = CGPoint(x: -size.halfWidth + 75, y: size.halfHeight - 30)
         
@@ -59,7 +59,7 @@ class HudNode : SKNode {
         
         ///
         creditsLabelNode.zPosition = 100000
-        creditsLabelNode.text = String(self.city!.credits)
+        creditsLabelNode.text = String(Int(self.city!.resources[.CREDITS]!))
         creditsLabelNode.fontSize = 15
         creditsLabelNode.position = CGPoint(x: -size.halfWidth + 200, y: size.halfHeight - 30)
         
@@ -78,7 +78,7 @@ class HudNode : SKNode {
         
         ///
         metalLabelNode.zPosition = 100000
-        metalLabelNode.text = String(self.city!.metal)
+        metalLabelNode.text = String(Int(self.city!.resources[.METAL]!))
         metalLabelNode.fontSize = 15
         metalLabelNode.position = CGPoint(x: -size.halfWidth + 325, y: size.halfHeight - 30)
         
@@ -209,16 +209,16 @@ class HudNode : SKNode {
     }
     
     public func update() {
-        if popLabelNode.text != String(Int(city!.pop)) {
-            popLabelNode.text = String(Int(city!.pop))
+        if popLabelNode.text != String(Int(city!.resources[.POPULATION]!)) {
+            popLabelNode.text = String(Int(city!.resources[.POPULATION]!))
         }
         
-        if creditsLabelNode.text != String(city!.credits) {
-            creditsLabelNode.text = String(city!.credits)
+        if creditsLabelNode.text != String(Int(city!.resources[.CREDITS]!)) {
+            creditsLabelNode.text = String(Int(city!.resources[.CREDITS]!))
         }
         
-        if metalLabelNode.text != String(city!.metal) {
-            metalLabelNode.text = String(city!.metal)
+        if metalLabelNode.text != String(Int(city!.resources[.METAL]!)) {
+            metalLabelNode.text = String(Int(city!.resources[.METAL]!))
         }
     }
     

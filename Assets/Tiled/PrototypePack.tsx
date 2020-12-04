@@ -42,10 +42,22 @@
   <properties>
       <property name="CREDITS" value="300"/>
       <property name="METAL" value="10"/>
+      <property name="CONSUMES METAL" value="2"/>
    <property name="name" value="simple building"/>
    <property name="type" value="industrial"/>
   </properties>
   <image width="256" height="512" source="building industrial.png"/>
+ </tile>
+ <tile id="31">
+  <properties>
+      <property name="CREDITS" value="300"/>
+      <property name="METAL" value="10"/>
+      <property name="PRODUCES METAL" value="3"/>
+   <property name="restriction" value="iron"/>
+   <property name="name" value="iron miner"/>
+   <property name="type" value="industrial"/>
+  </properties>
+  <image width="256" height="512" source="iron miner.png"/>
  </tile>
  <!-- Residential tiles -->
  <tile id="60">

@@ -2,12 +2,12 @@ import SpriteKit
 import SKTiled
 
 public class CityBuilding {
-    var costs: [ResourceTypes: Int]
+    var costs: [ResourceTypes: CGFloat]
     
     var width = 1
     var height = 1
     
-    init(cost: [ResourceTypes: Int]) {
+    init(cost: [ResourceTypes: CGFloat]) {
         self.costs = cost
     }
     
