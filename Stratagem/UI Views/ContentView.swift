@@ -1,5 +1,6 @@
 import SwiftUI
 import SpriteKit
+import Firebase
 
 struct ContentView: View {
     @EnvironmentObject var playerVariables: PlayerVariables
@@ -33,9 +34,23 @@ struct ContentView: View {
         .onAppear() {
             Global.initManagers(playerVariables: playerVariables, staticGameVariables: staticGameVariables)
             
-            // Because we don't have a server, we make new players help remove dead games
-            Global.lfGameManager!.detectAndRemoveDeadGames()
-            // Then calls fetchName
+            // Verify they're up to date
+            Database.database().reference().child("app_version").observeSingleEvent(of: .value, with: { snapshot in
+                let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+                let build = Bundle.main.infoDictionary?["CFBundleVersion"] as! String
+                
+                #if DEBUG
+                Global.lfGameManager!.detectAndRemoveDeadGames()
+                #else
+                
+                if snapshot.value as! String == (version + " " + build) {
+                    // Because we don't have a server, we make new players help remove dead games, then calls fetchName
+                    Global.lfGameManager!.detectAndRemoveDeadGames()
+                } else {
+                    playerVariables.errorMessage = "Please update to the newest version"
+                }
+                #endif
+            })
         }.animation(.default)
     }
 }
