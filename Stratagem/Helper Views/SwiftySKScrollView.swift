@@ -53,6 +53,8 @@ public class SwiftySKScrollView: UIScrollView {
     /// Moveable node
     private let moveableNode: SKNode
     
+    private let hudNode: HudNode
+    
     /// Scroll direction
     private let direction: ScrollDirection
     
@@ -72,10 +74,11 @@ public class SwiftySKScrollView: UIScrollView {
     /// - parameter frame: The frame of the scroll view
     /// - parameter moveableNode: The moveable node that will contain all the sprites to be moved by the scrollview
     /// - parameter scrollDirection: The scroll direction of the scrollView.
-    public init(frame: CGRect, moveableNode: SKNode, direction: ScrollDirection, indicatorPosition: ScrollIndicatorPosition = .bottom) {
+    init(frame: CGRect, moveableNode: SKNode, direction: ScrollDirection, indicatorPosition: ScrollIndicatorPosition = .bottom, hudNode: HudNode, size: CGSize) {
         self.moveableNode = moveableNode
         self.direction = direction
         self.indicatorPosition = indicatorPosition
+        self.hudNode = hudNode
         super.init(frame: frame)
         
         if let scene = moveableNode.scene {
@@ -94,10 +97,57 @@ public class SwiftySKScrollView: UIScrollView {
         
         guard direction == .horizontal else { return }
         transform = CGAffineTransform(scaleX: -1, y: indicatorPosition == .bottom ? 1 : -1)
+        
+        // Add boxes around page selector
+        let buildingTypes = ["road", "residential", "industrial"]
+        
+        for (i, buildingType) in buildingTypes.enumerated() {
+            let selectedBorderRect = SKShapeNode(rect: CGRect(x: -20, y: -20, width: 40, height: 40), cornerRadius: 5)
+            selectedBorderRect.name = "RECT \(buildingType)"
+            selectedBorderRect.zPosition = 100000 - 1
+            selectedBorderRect.position = CGPoint(x: i * 100 - 100, y: Int(-size.halfHeight) + 150)
+            selectedBorderRect.alpha = 0
+            
+            hudNode.addChild(selectedBorderRect)
+        }
+    }
+    
+    deinit {
+        let buildingTypes = ["road", "residential", "industrial"]
+        
+        for buildingType in buildingTypes {
+            let nodeRect = hudNode.childNode(withName: "RECT \(buildingType)")
+            nodeRect?.removeFromParent()
+            
+            let nodeButton = hudNode.childNode(withName: "BUTTON \(buildingType)")
+            nodeButton?.removeFromParent()
+        }
     }
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private var prevBuildingType: String?
+    
+    /// Given a buildingType, turns on border for that and turns off border for previous
+    public func activateBorderButton(buildingType: String) {
+        if let prevBuildingType = prevBuildingType {
+            if prevBuildingType != buildingType {
+                let fadeIn = SKAction.fadeIn(withDuration: 0.5)
+                hudNode.childNode(withName: "RECT \(buildingType)")!.run(fadeIn)
+                
+                let fadeOut = SKAction.fadeOut(withDuration: 0.5)
+                hudNode.childNode(withName: "RECT \(prevBuildingType)")!.run(fadeOut)
+                
+                self.prevBuildingType = buildingType
+            }
+        } else {
+            let fadeIn = SKAction.fadeIn(withDuration: 0.5)
+            hudNode.childNode(withName: "RECT \(buildingType)")!.run(fadeIn)
+            
+            prevBuildingType = buildingType
+        }
     }
 }
     
@@ -183,6 +233,14 @@ extension SwiftySKScrollView: UIScrollViewDelegate {
             moveableNode.position.x = scrollView.contentOffset.x
         } else {
             moveableNode.position.y = scrollView.contentOffset.y
+        }
+
+        if scrollView.contentOffset.x >= frame.width * 2 {
+            activateBorderButton(buildingType: "road")
+        } else if scrollView.contentOffset.x >= frame.width * 1 {
+            activateBorderButton(buildingType: "residential")
+        } else if scrollView.contentOffset.x >= frame.width * 0 {
+            activateBorderButton(buildingType: "industrial")
         }
     }
 }

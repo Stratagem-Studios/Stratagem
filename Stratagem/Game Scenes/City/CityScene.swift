@@ -1,6 +1,5 @@
 import SpriteKit
 import SKTiled
-import SwiftySKScrollView
 import SwiftUI
 
 
@@ -87,32 +86,44 @@ public class CityScene: SKTiledScene {
                 default:
                     if cityEditState == .BUILD {
                         if let tappedHudNodeName = tappedHudNode.name {
-                            let tiles = tilemap.tilesets.first!.getTileData(named: tappedHudNodeName)
-                            if tiles.count > 0 {
-                                // Toggle
-                                if let buildSelectedNode = buildSelectedNode {
-                                    buildSelectedNode.removeAllChildren()
-                                    self.buildSelectedNode = nil
-                                    self.buildSelectedTiledata = nil
-                                    hudNode.selectedBuildingScrollViewPopupNode.hidePopup()
-                                    
-                                    if buildSelectedNode.name != tappedHudNodeName {
+                            switch tappedHudNodeName {
+                            case "BUTTON road":
+                                hudNode.scrollView!.setContentOffset(CGPoint(x: 0 + hudNode.scrollView!.frame.width * 2, y: 0), animated: true)
+                                clickedOnHud = true
+                            case "BUTTON residential":
+                                hudNode.scrollView!.setContentOffset(CGPoint(x: 0 + hudNode.scrollView!.frame.width * 1, y: 0), animated: true)
+                                clickedOnHud = true
+                            case "BUTTON industrial":
+                                hudNode.scrollView!.setContentOffset(CGPoint(x: 0 + hudNode.scrollView!.frame.width * 0, y: 0), animated: true)
+                                clickedOnHud = true
+                            default:
+                                let tiles = tilemap.tilesets.first!.getTileData(named: tappedHudNodeName)
+                                if tiles.count > 0 {
+                                    // Toggle
+                                    if let buildSelectedNode = buildSelectedNode {
+                                        buildSelectedNode.removeAllChildren()
+                                        self.buildSelectedNode = nil
+                                        self.buildSelectedTiledata = nil
+                                        hudNode.selectedBuildingScrollViewPopupNode.hidePopup()
+                                        
+                                        if buildSelectedNode.name != tappedHudNodeName {
+                                            let selectedBorderRect = SKShapeNode(rect: CGRect(x: -25, y: -50, width: 50, height: 100), cornerRadius: 5)
+                                            tappedHudNode.addChild(selectedBorderRect)
+                                            self.buildSelectedNode = tappedHudNode
+                                            buildSelectedTiledata = tiles[0]
+                                            
+                                            hudNode.selectedBuildingScrollViewPopupNode.showPopup(size: size, tileData: buildSelectedTiledata!)
+                                        }
+                                    } else {
                                         let selectedBorderRect = SKShapeNode(rect: CGRect(x: -25, y: -50, width: 50, height: 100), cornerRadius: 5)
                                         tappedHudNode.addChild(selectedBorderRect)
-                                        self.buildSelectedNode = tappedHudNode
+                                        buildSelectedNode = tappedHudNode
                                         buildSelectedTiledata = tiles[0]
                                         
                                         hudNode.selectedBuildingScrollViewPopupNode.showPopup(size: size, tileData: buildSelectedTiledata!)
                                     }
-                                } else {
-                                    let selectedBorderRect = SKShapeNode(rect: CGRect(x: -25, y: -50, width: 50, height: 100), cornerRadius: 5)
-                                    tappedHudNode.addChild(selectedBorderRect)
-                                    buildSelectedNode = tappedHudNode
-                                    buildSelectedTiledata = tiles[0]
-                                    
-                                    hudNode.selectedBuildingScrollViewPopupNode.showPopup(size: size, tileData: buildSelectedTiledata!)
+                                    clickedOnHud = true
                                 }
-                                clickedOnHud = true
                             }
                         }
                     }
