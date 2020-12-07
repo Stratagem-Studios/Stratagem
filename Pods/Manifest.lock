@@ -31,13 +31,11 @@ PODS:
   - PromisesObjC (1.2.11)
   - SKTiled (1.22)
   - SwiftVideoBackground (3.4.0)
-  - SwiftySKScrollView (2.4.1)
 
 DEPENDENCIES:
   - Firebase/Database
   - SKTiled (from `https://github.com/andrewpeng02/SKTiled.git`, commit `cd65692d521ecac1835c224b6a7e6ad52a5758d2`)
   - SwiftVideoBackground
-  - SwiftySKScrollView
 
 SPEC REPOS:
   trunk:
@@ -51,7 +49,6 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - SwiftVideoBackground
-    - SwiftySKScrollView
 
 EXTERNAL SOURCES:
   SKTiled:
@@ -75,8 +72,7 @@ SPEC CHECKSUMS:
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   SKTiled: 8d90e6c9521a43c3f73985149e85d75ea751dc9b
   SwiftVideoBackground: 826e0567c737ded2a211aa309e9951c643695e8f
-  SwiftySKScrollView: 1eef3b4c29ee142f383416ee174ecdbbbc45b354
 
-PODFILE CHECKSUM: bea4ecefeef106b55ff2dc7464d5d5cce1d23c63
+PODFILE CHECKSUM: 37f26601b37f1022eac08036a1deb343108e6124
 
 COCOAPODS: 1.10.0

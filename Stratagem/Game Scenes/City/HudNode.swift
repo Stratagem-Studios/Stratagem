@@ -1,6 +1,5 @@
 import SpriteKit
 import SKTiled
-import SwiftySKScrollView
 
 
 class HudNode : SKNode {
@@ -100,7 +99,7 @@ class HudNode : SKNode {
         ///
         inlineErrorLabelNode.zPosition = 100000 + 1
         inlineErrorLabelNode.fontSize = 15
-        inlineErrorLabelNode.position = CGPoint(x: 0, y: -size.halfHeight + 150)
+        inlineErrorLabelNode.position = CGPoint(x: 0, y: -size.halfHeight + 200)
         inlineErrorLabelNode.alpha = 0
         
         ///
@@ -126,7 +125,7 @@ class HudNode : SKNode {
         moveableNode.zPosition = 100000
         moveableNode.position = CGPoint(x: 0, y: -size.halfHeight + 75)
         
-        selectedBuildingScrollViewPopupNode.position = CGPoint(x: size.halfWidth - 175, y: size.halfHeight - 300)
+        selectedBuildingScrollViewPopupNode.position = CGPoint(x: size.halfWidth - 175, y: 0)
         selectedBuildingScrollViewPopupNode.zPosition = 100000
         
         addChild(cityNameLabelNode)
@@ -192,7 +191,7 @@ class HudNode : SKNode {
     }
     
     private func setupBuildingScrollView(view: UIView, tilemap: SKTilemap) {
-        scrollView = SwiftySKScrollView(frame: CGRect(x: 0, y: size.height - 100, width: size.width, height: 100), moveableNode: moveableNode, direction: .horizontal)
+        scrollView = SwiftySKScrollView(frame: CGRect(x: 0, y: size.height - 100, width: size.width, height: 100), moveableNode: moveableNode, direction: .horizontal, hudNode: self, size: size)
         scrollView?.contentSize = CGSize(width: scrollView!.frame.width * 3, height: scrollView!.frame.height) // * 3 makes it three times as wide
         view.addSubview(scrollView!)
         scrollView?.setContentOffset(CGPoint(x: 0 + scrollView!.frame.width * 2, y: 0), animated: false)
@@ -207,17 +206,22 @@ class HudNode : SKNode {
             pageScrollView.position = CGPoint(x: frame.midX - (scrollView.frame.width * (buildingTypes.count - 1 - i)), y: frame.midY)
             moveableNode.addChild(pageScrollView)
             
+            // Texture nodes
             for (j, tile) in tilemap.tilesets.first!.getTileData(withProperty: "type", buildingType).enumerated() {
                 let sprite = SKSpriteNode(texture: tile.texture, size: CGSize(width: 50, height: 100))
                 sprite.name = tile.name
                 sprite.position = CGPoint(x: j * 100, y: 0)
                 pageScrollView.addChild(sprite)
             }
+            
+            // Button to switch pages nodes
+            let button1 = SKSpriteNode(texture: SKTexture(imageNamed: buildingType))
+            button1.name = "BUTTON \(buildingType)"
+            button1.size = CGSize(width: 36, height: 36)
+            button1.position = CGPoint(x: i * 100 - 100, y: -size.halfHeight + 150)
+            button1.zPosition = 100000
+            addChild(button1)
         }
-    }
-    
-    public func showSelectedBuildingOnScrollViewPopup(buildSelectedTiledata: SKTilesetData) {
-        
     }
     
     public func update() {
@@ -250,7 +254,7 @@ class SelectedBuildingScrollViewPopupNode: SKNode {
     public func setup(size: CGSize, tileData: SKTilesetData) {
         popupNode.removeAllChildren()
         
-        let popupBackgroundNode = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: 300, height: size.halfHeight + 100)), cornerRadius: 5)
+        let popupBackgroundNode = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: 250, height: size.halfHeight + 100)), cornerRadius: 10)
         popupBackgroundNode.name = "popLabelBackground"
         popupBackgroundNode.fillColor = .black
         popupBackgroundNode.alpha = 0.5
