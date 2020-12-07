@@ -23,6 +23,7 @@ class Galaxy {
             var planetName = planetNames[i]
             planetName.removeLast(2)
             planets.append(Planet(planetName: planetName))
+            planets[i].generateNewCity(cityName: "f")
         }
         
     }

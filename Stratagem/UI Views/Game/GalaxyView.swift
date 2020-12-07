@@ -11,7 +11,7 @@ struct GalaxyView : View {
     @EnvironmentObject var playerVariables: PlayerVariables
     
     var scene: SKScene {
-        let scene = GalaxyScene(size: CGSize(width: 200, height: 200))
+        let scene = GalaxyScene(size: CGSize(width: 10, height: 10))
         scene.size = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
         scene.backgroundColor = UIColor.clear
         return scene
