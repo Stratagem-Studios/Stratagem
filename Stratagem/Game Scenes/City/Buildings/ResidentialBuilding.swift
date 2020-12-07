@@ -6,24 +6,26 @@ public class ResidentialBuilding: CityBuilding {
     var popRate: CGFloat
     var popCap: Int
     
-    init(cost: [ResourceTypes: Int], popRate: CGFloat, popCap: Int) {
-        self.popRate = popRate
-        self.popCap = popCap
+    init(cost: [ResourceTypes: CGFloat], properties: Dictionary<String, String>) {
+        self.popRate = CGFloat(Double(properties["popRate"]!)!)
+        self.popCap = Int(properties["popCap"]!)!
         super.init(cost: cost)
     }
     
     /// Can place a road on any grass tile next to a road tile
     override func satisfiesConstraints(coords: CGPoint, newTileData: SKTilesetData, cityTerrain: [[CityTile]]) -> String {
-        let x = Int(coords.x)
-        let y = Int(coords.y)
-        if cityTerrain[x][y].tile!.tileData.properties["name"] == "grass" {
-            if cityTerrain[x + 1][y].building is Road || cityTerrain[x - 1][y].building is Road || cityTerrain[x][y + 1].building is Road || cityTerrain[x][y - 1].building is Road {
-                return "true"
-            } else {
-                return "Must place building adjacent to a road"
-            }
+        // Check for appropriate tile
+        let message = super.satisfiesConstraints(coords: coords, newTileData: newTileData, cityTerrain: cityTerrain)
+        if message != "true" {
+            return message
         }
         
-        return "Must place building on a grass tile"
+        let x = Int(coords.x)
+        let y = Int(coords.y)
+        if cityTerrain[x + 1][y].building is Road || cityTerrain[x - 1][y].building is Road || cityTerrain[x][y + 1].building is Road || cityTerrain[x][y - 1].building is Road {
+            return "true"
+        } else {
+            return "Must place building adjacent to a road"
+        }
     }
 }

@@ -81,6 +81,9 @@
 		FFE6EE1625746BD000BB677B /* Galaxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE1525746BD000BB677B /* Galaxy.swift */; };
 		FFE6EE1A25746BF800BB677B /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE1925746BF800BB677B /* Planet.swift */; };
 		FFE6EE2225749C3900BB677B /* Collection+choose.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE2125749C3900BB677B /* Collection+choose.swift */; };
+		FFF0358D2579A2200069F5F0 /* iron.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF0358B2579A2200069F5F0 /* iron.png */; };
+		FFF0358E2579A2200069F5F0 /* oil.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF0358C2579A2200069F5F0 /* oil.png */; };
+		FFF03591257A889C0069F5F0 /* iron miner.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF03590257A889C0069F5F0 /* iron miner.png */; };
 		FFF2D86C255B88F800CE2990 /* GameLobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2D86B255B88F800CE2990 /* GameLobbyView.swift */; };
 		FFF85E3E255C73B700DFDDC2 /* LFGameListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E3D255C73B700DFDDC2 /* LFGameListener.swift */; };
 		FFF85E41255C73C100DFDDC2 /* HFGamePusher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E40255C73C100DFDDC2 /* HFGamePusher.swift */; };
@@ -173,6 +176,9 @@
 		FFE6EE1525746BD000BB677B /* Galaxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Galaxy.swift; sourceTree = "<group>"; };
 		FFE6EE1925746BF800BB677B /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		FFE6EE2125749C3900BB677B /* Collection+choose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+choose.swift"; sourceTree = "<group>"; };
+		FFF0358B2579A2200069F5F0 /* iron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iron.png; sourceTree = "<group>"; };
+		FFF0358C2579A2200069F5F0 /* oil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oil.png; sourceTree = "<group>"; };
+		FFF03590257A889C0069F5F0 /* iron miner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iron miner.png"; sourceTree = "<group>"; };
 		FFF2D86B255B88F800CE2990 /* GameLobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLobbyView.swift; sourceTree = "<group>"; };
 		FFF85E3D255C73B700DFDDC2 /* LFGameListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFGameListener.swift; sourceTree = "<group>"; };
 		FFF85E40255C73C100DFDDC2 /* HFGamePusher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFGamePusher.swift; sourceTree = "<group>"; };
@@ -397,6 +403,9 @@
 		FFA3FFB725662A6800CFA406 /* Tiled */ = {
 			isa = PBXGroup;
 			children = (
+				FFF03590257A889C0069F5F0 /* iron miner.png */,
+				FFF0358B2579A2200069F5F0 /* iron.png */,
+				FFF0358C2579A2200069F5F0 /* oil.png */,
 				FFDCC4C825769B6E00D880B3 /* building industrial.png */,
 				FFDCC4C725769B6E00D880B3 /* building residential.png */,
 				FFDCC4C625769B6E00D880B3 /* road.png */,
@@ -566,6 +575,7 @@
 				FF8C4E67254FBAFB00522756 /* .gitignore in Resources */,
 				FF08576E2550FC5100F0F220 /* Montserrat-ExtraLight.ttf in Resources */,
 				FFDCC4C925769B6F00D880B3 /* road.png in Resources */,
+				FFF0358E2579A2200069F5F0 /* oil.png in Resources */,
 				FF2CF3772571C39E00B71DB8 /* block_water.png in Resources */,
 				FFF9DA8A25755BD900C18D8D /* planet_names.txt in Resources */,
 				FFF9DA872575549400C18D8D /* city_names.txt in Resources */,
@@ -579,6 +589,7 @@
 				FFD9693E255B0505005A1BC7 /* Podfile in Resources */,
 				FF08577C2550FC5100F0F220 /* Montserrat-Regular.ttf in Resources */,
 				FF0857752550FC5100F0F220 /* Montserrat-SemiBoldItalic.ttf in Resources */,
+				FFF03591257A889C0069F5F0 /* iron miner.png in Resources */,
 				FFA3FFBC25662C0B00CFA406 /* PrototypePack.tsx in Resources */,
 				FFFCFABE255B366700D03284 /* GoogleService-Info.plist in Resources */,
 				FF0857782550FC5100F0F220 /* Montserrat-BoldItalic.ttf in Resources */,
@@ -591,6 +602,7 @@
 				FF08576F2550FC5100F0F220 /* Montserrat-ExtraBold.ttf in Resources */,
 				FF08577A2550FC5100F0F220 /* Montserrat-Light.ttf in Resources */,
 				FF08577D2550FC5100F0F220 /* Montserrat-BlackItalic.ttf in Resources */,
+				FFF0358D2579A2200069F5F0 /* iron.png in Resources */,
 				FF0857722550FC5100F0F220 /* Montserrat-LightItalic.ttf in Resources */,
 				FF0857772550FC5100F0F220 /* Montserrat-Black.ttf in Resources */,
 				FF078BCF254F3F8800E9FA7C /* Assets.xcassets in Resources */,
