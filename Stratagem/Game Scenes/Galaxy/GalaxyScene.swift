@@ -74,6 +74,7 @@ class GalaxyScene: SKScene {
         
         // Adds/organizes lines
         let linesMaster = SKNode()
+        linesMaster.zPosition = -1
         linesMaster.name = "lineMaster"
         panelNodes[2].addChild(linesMaster)
         for i in 0..<7{
@@ -216,7 +217,7 @@ class GalaxyScene: SKScene {
                 selectPlanet(planetInt: i)
             } else if node.name == "settings" {
                 /// add settings panel here
-            } else if node.name == "enterButton" || node.name == "enterText" {
+            } else if (node.name == "enterButton" || node.name == "enterText") && selectedPlanet != nil {
                 Global.playerManager.playerVariables.currentGameViewLevel = .PLANET
             }
         }

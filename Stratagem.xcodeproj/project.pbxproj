@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE1004BF256856BC0077941A /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004BE256856BC0077941A /* PlanetView.swift */; };
+		CE1004BF256856BC0077941A /* PlanetSphereView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004BE256856BC0077941A /* PlanetSphereView.swift */; };
 		CE1004E12569E1B70077941A /* GalaxyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004E02569E1B70077941A /* GalaxyView.swift */; };
 		CE2B4E3D257FCDAC00A4A146 /* Pods_Stratagem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500AA38F10AA677CBCF94516 /* Pods_Stratagem.framework */; };
-		CE2B4E3E257FCDAC00A4A146 /* Pods_Stratagem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 500AA38F10AA677CBCF94516 /* Pods_Stratagem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CE2B4E6B257FEA1100A4A146 /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B4E6A257FEA1100A4A146 /* PlanetView.swift */; };
 		CE8F1382257488AC0038156C /* GalaxyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1381257488AC0038156C /* GalaxyScene.swift */; };
 		CE8F1394257605D70038156C /* Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1393257605D70038156C /* Updater.swift */; };
 		CEC3A8DE257960840009E3DC /* PlanetMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC3A8DD257960840009E3DC /* PlanetMap.swift */; };
@@ -98,25 +98,12 @@
 		FFFCFAC3255B62B300D03284 /* LFGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAC2255B62B300D03284 /* LFGameManager.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		CE2B4E3F257FCDAC00A4A146 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				CE2B4E3E257FCDAC00A4A146 /* Pods_Stratagem.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		500AA38F10AA677CBCF94516 /* Pods_Stratagem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stratagem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5397A0390D7C1A2EC8CCF6F0 /* Pods-Stratagem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stratagem.debug.xcconfig"; path = "Target Support Files/Pods-Stratagem/Pods-Stratagem.debug.xcconfig"; sourceTree = "<group>"; };
-		CE1004BE256856BC0077941A /* PlanetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
+		CE1004BE256856BC0077941A /* PlanetSphereView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetSphereView.swift; sourceTree = "<group>"; };
 		CE1004E02569E1B70077941A /* GalaxyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyView.swift; sourceTree = "<group>"; };
+		CE2B4E6A257FEA1100A4A146 /* PlanetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		CE8F1381257488AC0038156C /* GalaxyScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyScene.swift; sourceTree = "<group>"; };
 		CE8F1393257605D70038156C /* Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updater.swift; sourceTree = "<group>"; };
 		CEC3A8DD257960840009E3DC /* PlanetMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetMap.swift; sourceTree = "<group>"; };
@@ -175,7 +162,6 @@
 		FF8C4E4E254FB0A200522756 /* Stratagem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stratagem.entitlements; sourceTree = "<group>"; };
 		FF8C4E51254FB11800522756 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		FF8C4E66254FBAFB00522756 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		FF8C4E6B254FBCBD00522756 /* SaveData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SaveData.xcdatamodel; sourceTree = "<group>"; };
 		FF96B532255DCB6E00E5F8D4 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		FF9D7D68256574890076C8DF /* HFGameListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFGameListener.swift; sourceTree = "<group>"; };
 		FFA3FFB825662A9500CFA406 /* Prototype.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Prototype.tmx; sourceTree = "<group>"; };
@@ -281,7 +267,6 @@
 				FF3789A9255F81CE00D30F66 /* Helper Views */,
 				FFFCFAC1255B629700D03284 /* Firebase */,
 				FF078BCE254F3F8800E9FA7C /* Assets.xcassets */,
-				FF8C4E4D254FB04200522756 /* Core Data */,
 				FF078BD0254F3F8800E9FA7C /* Preview Content */,
 				FF078BD3254F3F8800E9FA7C /* Info.plist */,
 				FFFCFABD255B366700D03284 /* GoogleService-Info.plist */,
@@ -393,14 +378,6 @@
 			path = City;
 			sourceTree = "<group>";
 		};
-		FF8C4E4D254FB04200522756 /* Core Data */ = {
-			isa = PBXGroup;
-			children = (
-				FF8C4E6A254FBCBD00522756 /* SaveData.xcdatamodeld */,
-			);
-			path = "Core Data";
-			sourceTree = "<group>";
-		};
 		FF8C4E50254FB11800522756 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -470,6 +447,7 @@
 			isa = PBXGroup;
 			children = (
 				FFE6EE1925746BF800BB677B /* Planet.swift */,
+				CE1004BE256856BC0077941A /* PlanetSphereView.swift */,
 				CEC3A8DD257960840009E3DC /* PlanetMap.swift */,
 			);
 			path = Planet;
@@ -498,8 +476,8 @@
 			isa = PBXGroup;
 			children = (
 				CEC78653256C1B51001E440F /* GameView.swift */,
+				CE2B4E6A257FEA1100A4A146 /* PlanetView.swift */,
 				CE1004E02569E1B70077941A /* GalaxyView.swift */,
-				CE1004BE256856BC0077941A /* PlanetView.swift */,
 				FF40F4702559CF310036E4C7 /* CityView.swift */,
 			);
 			path = Game;
@@ -541,7 +519,6 @@
 				FF078BC4254F3F8300E9FA7C /* Frameworks */,
 				FF078BC5254F3F8300E9FA7C /* Resources */,
 				096D843C7868507D5B2BABF3 /* [CP] Embed Pods Frameworks */,
-				CE2B4E3F257FCDAC00A4A146 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -692,7 +669,7 @@
 				CE1004E12569E1B70077941A /* GalaxyView.swift in Sources */,
 				FFE69956257409FC00CD8517 /* Global.swift in Sources */,
 				FFE6EE1125746BA300BB677B /* CityScene.swift in Sources */,
-				CE1004BF256856BC0077941A /* PlanetView.swift in Sources */,
+				CE1004BF256856BC0077941A /* PlanetSphereView.swift in Sources */,
 				FF88BDA4256E0B7B00DF0E40 /* CityTile.swift in Sources */,
 				FF012D3B2551B0420017E288 /* TitleText.swift in Sources */,
 				FFE6EE1A25746BF800BB677B /* Planet.swift in Sources */,
@@ -707,6 +684,7 @@
 				FF88BDA7256E0BC100DF0E40 /* CityBuilding.swift in Sources */,
 				FFE6EE1625746BD000BB677B /* Galaxy.swift in Sources */,
 				FF49D7092577EA18006A282E /* IndustrialBuilding.swift in Sources */,
+				CE2B4E6B257FEA1100A4A146 /* PlanetView.swift in Sources */,
 				FFD4AE5B257E8A93000BACEE /* SwiftySKScrollView.swift in Sources */,
 				CE8F1382257488AC0038156C /* GalaxyScene.swift in Sources */,
 				FF40F4712559CF310036E4C7 /* CityView.swift in Sources */,
@@ -924,19 +902,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		FF8C4E6A254FBCBD00522756 /* SaveData.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				FF8C4E6B254FBCBD00522756 /* SaveData.xcdatamodel */,
-			);
-			currentVersion = FF8C4E6B254FBCBD00522756 /* SaveData.xcdatamodel */;
-			path = SaveData.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = FF078BBF254F3F8300E9FA7C /* Project object */;
 }
