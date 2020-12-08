@@ -117,7 +117,7 @@ class GalaxyScene: SKScene {
                 node.addChild(drawLineBetween(aInt: 6, bInt: 4))
                 node.addChild(drawLineBetween(aInt: 6, bInt: 5))
             default:
-                print("ok buddy")
+                print("Line attempted to be drawn between planet int that should not exist. check GalaxyScene.swift")
             }
             node.name = "lineHolder" + String(i)
             lineNodes.append(node)
@@ -206,7 +206,6 @@ class GalaxyScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // We only care about the first touch
         let node = self.atPoint(touches.first!.location(in: self))
-        print(node)
         for i in 0..<planetNodes.count{
             if "planet" + String(i) == node.name {
                 let planet = Global.gameVars.galaxy.planets[i]

@@ -39,10 +39,9 @@ class Planet {
                 }
             } else {isOverlapping = false}
         }
-//        planetMap.generateCitySprite(loc: spawnPoint!)
+        let citySize = planetMap.generateCitySprite(loc: spawnPoint!)
         cityLocs.append(spawnPoint!)
-        cityMapping.append(CGRect(x: spawnPoint!.x/1000 - 0.075, y: spawnPoint!.y/1000 - 0.075, width: 150/1000, height: 150/1000))
-        planetMap.generateCitySprite(loc: spawnPoint!)
+        cityMapping.append(citySize)
         return city
     }
     

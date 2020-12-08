@@ -163,8 +163,13 @@ public struct LFGameManager {
                         for cityMapping in cityMappingsString {
                             cityMappings.append(NSCoder.cgRect(for: cityMapping as! String))
                         }
-                        planet.cityMapping = cityMappings
+//===========================================================
+                    // cityMappings adds one city to the mapping section that was not generated per planet.generateCity, and does not add the sprite or a city class to planet.cities
+                    // cityMappings changes the cityMapping to incorrectly reflect thier positions
                         
+                        // planet.cityMapping = cityMappings
+                        
+//===========================================================
                         // Generate city on owned planet
                         if planet.owner == playerVariables.playerName {
                             let potentialCityNames = getListOfNames(fileName: "city_names")
