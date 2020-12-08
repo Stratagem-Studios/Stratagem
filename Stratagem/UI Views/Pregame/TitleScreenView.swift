@@ -27,7 +27,11 @@ public struct TitleScreenView: View {
                 .padding(.bottom, 10)
                 
                 Button(action: {
-                    playerVariables.currentView = .JoinGameView
+                    if playerVariables.playerName != "" {
+                        playerVariables.currentView = .JoinGameView
+                    } else {
+                        playerVariables.errorMessage = "Player not connected yet"
+                    }
                 }) {
                     Text("JOIN")
                 }.buttonStyle(BasicButtonStyle())

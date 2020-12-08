@@ -25,7 +25,7 @@ public class CityTile {
             // Tile is a building, which all have costs
             let creditsCost = properties["CREDITS"]!
             let metalCost = properties["METAL"]!
-            let costs = [ResourceTypes.CREDITS: Int(creditsCost)!, ResourceTypes.METAL: Int(metalCost)!]
+            let costs = [ResourceTypes.CREDITS: CGFloat(Float(creditsCost)!), ResourceTypes.METAL: CGFloat(Float(metalCost)!)]
             
             var building: CityBuilding?
             var tileType: CityTileType?
@@ -35,9 +35,10 @@ public class CityTile {
                 building = Road(cost: costs)
             case "residential":
                 tileType = .RESIDENTIAL
-                building = ResidentialBuilding(cost: costs, popRate: CGFloat(Double(properties["popRate"]!)!), popCap: Int(properties["popCap"]!)!)
+                building = ResidentialBuilding(cost: costs, properties: properties)
             case "industrial":
-                break
+                tileType = .INDUSTRIAL
+                building = IndustrialBuilding(cost: costs, properties: properties)
             case "military":
                 break
             default:

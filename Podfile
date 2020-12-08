@@ -9,7 +9,6 @@ target 'Stratagem' do
   pod 'Firebase/Database'
   pod 'SwiftVideoBackground'
   pod 'SKTiled', :git => 'https://github.com/andrewpeng02/SKTiled.git', :commit => 'cd65692d521ecac1835c224b6a7e6ad52a5758d2'
-  pod 'SwiftySKScrollView'
 
   post_install do |installer|
       installer.pods_project.targets.each do |target|

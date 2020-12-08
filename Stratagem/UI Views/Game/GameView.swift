@@ -33,7 +33,7 @@ struct GameView: View {
                 CityView()
             }
         }.onAppear {
-            VideoBackground.shared.pause()
+            //VideoBackground.shared.pause()
         }
     }
     

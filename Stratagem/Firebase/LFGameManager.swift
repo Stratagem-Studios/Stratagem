@@ -216,7 +216,6 @@ public struct LFGameManager {
             }
             
             ref.child("games").child(staticGameVariables.gameCode).removeValue()
-            ref.child("game_statuses").child(staticGameVariables.gameCode).removeValue()
             playerVariables.currentView = .TitleScreenView
         }
     }
@@ -246,7 +245,6 @@ public struct LFGameManager {
             
             for removeGameCode in allGameCodes {
                 ref.child("games").child(removeGameCode).removeValue()
-                ref.child("game_statuses").child(staticGameVariables.gameCode).removeValue()
             }
             
             Global.playerManager!.fetchName()

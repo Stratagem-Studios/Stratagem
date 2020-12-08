@@ -13,7 +13,7 @@ enum GameTypes: String {
     case STANDARD, PLANETRUSH
 }
 
-enum ResourceTypes: String {
+enum ResourceTypes: String, CaseIterable {
     case CREDITS, METAL, POPULATION
 }
 
