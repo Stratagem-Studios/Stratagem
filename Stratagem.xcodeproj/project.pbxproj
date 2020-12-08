@@ -13,7 +13,6 @@
 		CE8F1382257488AC0038156C /* GalaxyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1381257488AC0038156C /* GalaxyScene.swift */; };
 		CE8F1394257605D70038156C /* Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1393257605D70038156C /* Updater.swift */; };
 		CEC3A8DE257960840009E3DC /* PlanetMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC3A8DD257960840009E3DC /* PlanetMap.swift */; };
-		CEC3A8FF257AF54F0009E3DC /* PlanetScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC3A8FE257AF54F0009E3DC /* PlanetScene.swift */; };
 		CEC78654256C1B51001E440F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC78653256C1B51001E440F /* GameView.swift */; };
 		CECA7740255E3F1700CE9F69 /* GameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA773F255E3F1700CE9F69 /* GameVariables.swift */; };
 		CECA7755255E469E00CE9F69 /* GameBoards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA7754255E469E00CE9F69 /* GameBoards.swift */; };
@@ -103,7 +102,6 @@
 		CE8F1381257488AC0038156C /* GalaxyScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyScene.swift; sourceTree = "<group>"; };
 		CE8F1393257605D70038156C /* Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updater.swift; sourceTree = "<group>"; };
 		CEC3A8DD257960840009E3DC /* PlanetMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetMap.swift; sourceTree = "<group>"; };
-		CEC3A8FE257AF54F0009E3DC /* PlanetScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetScene.swift; sourceTree = "<group>"; };
 		CEC78653256C1B51001E440F /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		CECA773F255E3F1700CE9F69 /* GameVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVariables.swift; sourceTree = "<group>"; };
 		CECA7754255E469E00CE9F69 /* GameBoards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoards.swift; sourceTree = "<group>"; };
@@ -447,7 +445,6 @@
 			isa = PBXGroup;
 			children = (
 				FFE6EE1925746BF800BB677B /* Planet.swift */,
-				CEC3A8FE257AF54F0009E3DC /* PlanetScene.swift */,
 				CEC3A8DD257960840009E3DC /* PlanetMap.swift */,
 			);
 			path = Planet;
@@ -694,7 +691,6 @@
 				FF33849325599EB9000EF945 /* JoinGameView.swift in Sources */,
 				FFB4A2A7255D9EA1003298E2 /* PlayerManager.swift in Sources */,
 				FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */,
-				CEC3A8FF257AF54F0009E3DC /* PlanetScene.swift in Sources */,
 				FFE6EE2225749C3900BB677B /* Collection+choose.swift in Sources */,
 				FF0CAB9A25646250009681C8 /* LoopingVideo.swift in Sources */,
 				FF88BDB8256EB24F00DF0E40 /* HudNode.swift in Sources */,

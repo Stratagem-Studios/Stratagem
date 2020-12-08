@@ -17,10 +17,10 @@ class Planet {
     
     /// loc on a 1 x 1, used for planet mapping
     var cityMapping: [CGRect] = []
-    
-    let planetScene = PlanetScene()
+    var planetMap = PlanetMap(size: CGSize(width: 1000, height: 1000))
     
     init(planetName: String) {
+        generateNewCity(cityName: "e")
         self.planetName = planetName
     }
     
@@ -42,6 +42,7 @@ class Planet {
 //        planetMap.generateCitySprite(loc: spawnPoint!)
         cityLocs.append(spawnPoint!)
         cityMapping.append(CGRect(x: spawnPoint!.x/1000 - 0.075, y: spawnPoint!.y/1000 - 0.075, width: 150/1000, height: 150/1000))
+        planetMap.generateCitySprite(loc: spawnPoint!)
         return city
     }
     
