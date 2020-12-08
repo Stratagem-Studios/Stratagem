@@ -190,7 +190,7 @@ class GalaxyScene: SKScene {
         if selectedPlanet == nil {
             (panelNodes[1].childNode(withName: "descriptionPanel")?.childNode(withName: "enterButton")?.childNode(withName: "enterText") as! SKLabelNode).fontColor = SKColor.yellow
             (panelNodes[1].childNode(withName: "descriptionPanel")!.childNode(withName: "enterButton") as! SKShapeNode).fillColor = SKColor.black
-            (panelNodes[1].childNode(withName: "descriptionPanel")?.childNode(withName: "planetName") as! SKLabelNode).fontColor = SKColor.green
+            (panelNodes[1].childNode(withName: "descriptionPanel")?.childNode(withName: "planetName") as! SKLabelNode).fontColor = SKColor.systemGreen
         } else {
             selectedPlanet?.color = SKColor.white
         }
