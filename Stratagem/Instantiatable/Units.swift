@@ -1,14 +1,7 @@
-//
-//  Units.swift
-//
-//
-//  Created by 90306997 on 11/11/20.
-//
-
 import Foundation
 
 public enum UnitType {
-    case swordsman, archer, knight
+    case SWORDSMAN, ARCHER, KNIGHT, FIGHTER
 }
 
 class Unit {
@@ -26,21 +19,27 @@ class Unit {
         self.position = position
         
         switch unitType {
-        case.swordsman :
+        case.SWORDSMAN :
             health = 100
             damage = 10
             range = 20
             moveSpeed = 30
             attackSpeed = 15
             
-        case.archer :
+        case.ARCHER :
             health = 100
             damage = 10
             range = 20
             moveSpeed = 30
             attackSpeed = 15
             
-        case.knight :
+        case.KNIGHT :
+            health = 100
+            damage = 10
+            range = 20
+            moveSpeed = 30
+            attackSpeed = 15
+        case.FIGHTER :
             health = 100
             damage = 10
             range = 20

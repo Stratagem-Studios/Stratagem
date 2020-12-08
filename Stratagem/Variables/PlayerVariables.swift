@@ -17,7 +17,7 @@ class PlayerVariables: ObservableObject {
     @Published var currentView: ViewStates = .TitleScreenView
     @Published var observerRefs: [DatabaseReference] = []
     
-    @Published var currentGameViewLevel = GameViewLevel.PLANET
+    @Published var currentGameViewLevel = GameViewLevel.GALAXY
     
     // Error popup for swiftui
     @Published var errorMessage: String = ""

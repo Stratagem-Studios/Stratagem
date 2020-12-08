@@ -3,6 +3,7 @@
 import SwiftUI
 import SpriteKit
 import SwiftVideoBackground
+import SceneKit
 
 struct GameView: View {
     @EnvironmentObject var playerVariables: PlayerVariables

@@ -19,9 +19,9 @@ class GameBoard {
     var gameBoard = gameBoardEmpty
     
     // These variables hold lists of the players units
-    var player1Units = playerUnits(unitEnums: [UnitType.swordsman, UnitType.swordsman],
+    var player1Units = playerUnits(unitEnums: [UnitType.SWORDSMAN, UnitType.SWORDSMAN],
                                    unitPosition: [[0,0],[0,1]] as [[Int]] )
-    var player2Units = playerUnits(unitEnums: [UnitType.swordsman, UnitType.swordsman],
+    var player2Units = playerUnits(unitEnums: [UnitType.SWORDSMAN, UnitType.SWORDSMAN],
                                    unitPosition: [[0,0],[0,1]] as [[Int]] )
     
     func TileTypeToGroup(tileType: TileType) -> SKTileGroup {
@@ -45,7 +45,7 @@ struct playerUnits {
     var unitArray: [Unit]
     
     init(unitEnums: [UnitType], unitPosition: [[Int]]){
-        unitArray = [Unit(unitType: UnitType.swordsman, position: [10,10])]
+        unitArray = [Unit(unitType: UnitType.SWORDSMAN, position: [10,10])]
         for i in 0..<unitEnums.count {
             unitArray.append(
                 Unit(unitType: unitEnums[i], position: unitPosition[i])
