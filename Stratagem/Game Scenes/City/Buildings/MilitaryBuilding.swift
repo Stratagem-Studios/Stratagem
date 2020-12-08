@@ -1,8 +1,7 @@
-//
-//  MilitaryBuilding.swift
-//  Stratagem
-//
-//  Created by 64004080 on 12/2/20.
-//
+import SpriteKit
+import SKTiled
 
-import Foundation
+/// User selects units and military building creates them
+public class MilitaryBuilding: CityBuilding {
+    
+}
