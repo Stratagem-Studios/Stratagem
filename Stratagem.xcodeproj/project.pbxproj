@@ -193,16 +193,6 @@
 		FFFCFAC2255B62B300D03284 /* LFGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFGameManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFrameworksBuildPhase section */
-		FF078BC4254F3F8300E9FA7C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
 /* Begin PBXGroup section */
 		59B0506723D59354ED7DAD04 /* Pods */ = {
 			isa = PBXGroup;
@@ -521,7 +511,6 @@
 			buildPhases = (
 				0676AD30B3BC9A9FFD7E244E /* [CP] Check Pods Manifest.lock */,
 				FF078BC3254F3F8300E9FA7C /* Sources */,
-				FF078BC4254F3F8300E9FA7C /* Frameworks */,
 				FF078BC5254F3F8300E9FA7C /* Resources */,
 				096D843C7868507D5B2BABF3 /* [CP] Embed Pods Frameworks */,
 			);
