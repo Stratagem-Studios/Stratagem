@@ -9,7 +9,6 @@ Brahe
 Lipperhey
 Janssen
 Harriot
-√Ügir
 Amateru
 Dagon
 Tadmor
@@ -67,7 +66,7 @@ Mintome
 Neri
 Toge
 Iolaus
-Koyopa'
+Koyopa
 Independance
 Ixbalanqu
 Victoriapeak

@@ -5,9 +5,7 @@ class Galaxy {
     var planets: [Planet] = []
     var galaxyScene: GalaxyScene!
     
-    /// Player specific
-    var ownedPlanetNames: [String] = []
-    
+    /// Generates all the planets and cities in a galaxy
     func generateNewGalaxy(){
         var numPlanets: Int
         switch Global.gameVars?.gameType {
@@ -17,15 +15,21 @@ class Galaxy {
             numPlanets = 5
         }
         
-        let planetNames = getListOfNames(fileName: "planet_names")!.choose(numPlanets)
-
-        for i in 0..<numPlanets {
-            var planetName = planetNames[i]
-            planetName.removeLast(2)
-            planets.append(Planet(planetName: planetName))
-            planets[i].generateNewCity(cityName: "f")
-        }
+        let potentialPlanetNames = getListOfNames(fileName: "planet_names")!.shuffled()
+        let potentialCityNames = getListOfNames(fileName: "city_names")!.shuffled()
         
+        var j = 0
+        for i in 0..<numPlanets {
+            var planetName = potentialPlanetNames[i]
+            planetName.removeLast(2) // removes the \r
+            
+            let planet = Planet(planetName: planetName)
+            
+            let numCities = Int.random(in: 1..<4)
+            planet.generateAllCities(cityNames: Array(potentialCityNames[j..<j+numCities]))
+            planets.append(planet)
+            j += numCities
+        }
     }
     
     init() {

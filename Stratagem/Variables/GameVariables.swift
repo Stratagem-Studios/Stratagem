@@ -13,11 +13,14 @@ enum GameTypes: String {
     case STANDARD, PLANETRUSH
 }
 
-enum ResourceTypes: String, CaseIterable {
+public enum ResourceTypes: String, CaseIterable, Codable {
     case CREDITS, METAL, POPULATION
 }
 
 class GameVariables {
+    /// Set to true if player is leader and they have finished generating galaxy
+    var finishedGeneratingGalaxy = false
+    
     // Used for setup
     var gameType: GameTypes = GameTypes.STANDARD
     
@@ -26,7 +29,6 @@ class GameVariables {
     var selectedCity: City?
     
     var galaxy: Galaxy!
-    var ownedCities: [City] = []
     
     // only here for now, should be migrated
     var screenSize = UIScreen.main.bounds
@@ -35,10 +37,10 @@ class GameVariables {
     var updater = Updater()
     
     
-    func update(deltaTime: Float){
+    func update(deltaTime: CGFloat){
         // Update population numbers per city
-        for city in ownedCities {
-            city.update(deltaTime: deltaTime)
+        for planet in Global.gameVars.galaxy.planets.filter({$0.owner == Global.playerVariables.playerName}) {
+            planet.update(deltaTime: deltaTime)
         }
     }
     

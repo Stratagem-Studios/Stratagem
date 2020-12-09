@@ -66,7 +66,11 @@ public struct GameLobbyView: View {
                 Spacer()
                 
                 Button(action: {
-                    Global.lfGameManager!.startGame()
+                    if Global.gameVars!.finishedGeneratingGalaxy {
+                        Global.lfGameManager!.startGame()
+                    } else {
+                        Global.playerVariables.errorMessage = "Please wait until the game has finished generating the galaxy"
+                    }
                 }) {
                     Text("START")
                 }.buttonStyle(BasicButtonStyle())

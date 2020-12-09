@@ -81,6 +81,7 @@
 		FFE6EE1625746BD000BB677B /* Galaxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE1525746BD000BB677B /* Galaxy.swift */; };
 		FFE6EE1A25746BF800BB677B /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE1925746BF800BB677B /* Planet.swift */; };
 		FFE6EE2225749C3900BB677B /* Collection+choose.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE2125749C3900BB677B /* Collection+choose.swift */; };
+		FFE76E2425809226001525F3 /* robot factory.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE76E2325809225001525F3 /* robot factory.png */; };
 		FFF0358D2579A2200069F5F0 /* iron.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF0358B2579A2200069F5F0 /* iron.png */; };
 		FFF0358E2579A2200069F5F0 /* oil.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF0358C2579A2200069F5F0 /* oil.png */; };
 		FFF03591257A889C0069F5F0 /* iron miner.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF03590257A889C0069F5F0 /* iron miner.png */; };
@@ -178,6 +179,7 @@
 		FFE6EE1525746BD000BB677B /* Galaxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Galaxy.swift; sourceTree = "<group>"; };
 		FFE6EE1925746BF800BB677B /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		FFE6EE2125749C3900BB677B /* Collection+choose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+choose.swift"; sourceTree = "<group>"; };
+		FFE76E2325809225001525F3 /* robot factory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "robot factory.png"; sourceTree = "<group>"; };
 		FFF0358B2579A2200069F5F0 /* iron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iron.png; sourceTree = "<group>"; };
 		FFF0358C2579A2200069F5F0 /* oil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oil.png; sourceTree = "<group>"; };
 		FFF03590257A889C0069F5F0 /* iron miner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iron miner.png"; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 		FFA3FFB725662A6800CFA406 /* Tiled */ = {
 			isa = PBXGroup;
 			children = (
+				FFE76E2325809225001525F3 /* robot factory.png */,
 				FFF03590257A889C0069F5F0 /* iron miner.png */,
 				FFF0358B2579A2200069F5F0 /* iron.png */,
 				FFF0358C2579A2200069F5F0 /* oil.png */,
@@ -579,6 +582,7 @@
 				FF0857762550FC5100F0F220 /* Montserrat-Thin.ttf in Resources */,
 				FFD9693E255B0505005A1BC7 /* Podfile in Resources */,
 				FF08577C2550FC5100F0F220 /* Montserrat-Regular.ttf in Resources */,
+				FFE76E2425809226001525F3 /* robot factory.png in Resources */,
 				FF0857752550FC5100F0F220 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				FFF03591257A889C0069F5F0 /* iron miner.png in Resources */,
 				FFA3FFBC25662C0B00CFA406 /* PrototypePack.tsx in Resources */,
