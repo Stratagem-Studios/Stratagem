@@ -160,6 +160,7 @@ class HudNode : SKNode {
         setupBuildingScrollView(view: view, tilemap: tilemap)
     }
     
+    
     public func destroyState() {
         changeBorderColor(color: .red)
         
