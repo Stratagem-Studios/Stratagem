@@ -21,7 +21,7 @@ class HudNode : SKNode {
     let moveableNode = SKNode()
 
     private var size: CGSize = CGSize(width: 0, height: 0)
-    private var city: City?
+    private weak var city: City?
     
     public func setup(city: City, size: CGSize, view: UIView, tilemap: SKTilemap) {
         self.city = city

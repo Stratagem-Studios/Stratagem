@@ -4,11 +4,11 @@ import SwiftUI
 
 
 public class CityScene: SKTiledScene {
-    private var city: City?
+    private weak var city: City?
     private var cityEditState = CityEditStates.NONE
-    var playerVariables = Global.playerVariables 
+    weak var playerVariables = Global.playerVariables
     
-    private let hudNode = HudNode()
+    private var hudNode = HudNode()
     
     private var buildSelectedNode: SKNode?
     private var buildSelectedTiledata: SKTilesetData?
@@ -25,7 +25,6 @@ public class CityScene: SKTiledScene {
         cameraNode.showOverlay = true
 
         city!.loadTilemap(tilemap)
-        print(city?.cityTerrain.count)
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sceneTapped(_:)))
         self.view!.addGestureRecognizer(tapGestureRecognizer)
@@ -40,7 +39,6 @@ public class CityScene: SKTiledScene {
         city!.hudNode = hudNode
 
         changeStateToNone()
-        
     }
     
     public override func willMove(from view: SKView) {
