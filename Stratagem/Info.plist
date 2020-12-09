@@ -40,6 +40,8 @@
 		<key>UIColorName</key>
 		<string>BlackColor</string>
 	</dict>
+	<key>UILaunchStoryboardName</key>
+	<string>BlackColor</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

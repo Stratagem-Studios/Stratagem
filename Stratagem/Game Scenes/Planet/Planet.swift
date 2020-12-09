@@ -16,7 +16,13 @@ class Planet {
     var cityMapping: [CGRect] = [] // Firebase
     var planetMap = PlanetMap(size: CGSize(width: 1000, height: 1000))
     
+    let planetSphere = SCNSphere.init(radius: 10)
+    var planetNode: SCNNode?
+    var planetLight: SCNNode?
+    var cameraOrbit: SCNNode?
+    
     init(planetName: String) {
+        generatePlanetNode()
         self.planetName = planetName
     }
     
@@ -49,6 +55,28 @@ class Planet {
             cityLocs.append(spawnPoint!)
             cityMapping.append(citySize)
         }
+    }
+    func generatePlanetNode() {
+        planetNode = SCNNode(geometry: planetSphere)
+        
+        planetSphere.firstMaterial?.diffuse.contents = planetMap
+        
+        cameraOrbit = SCNNode()
+        cameraOrbit!.camera = SCNCamera()
+        
+        cameraOrbit!.position = SCNVector3(0,0,22)
+        
+        // Make the sphere
+        
+        // add an ambient light to the scene
+        planetLight = SCNNode()
+        planetLight!.light = SCNLight()
+        planetLight!.light!.type = .ambient
+        planetLight!.light!.color = UIColor.gray
+    }
+    
+    func updatePlanet(){
+        planetSphere.firstMaterial?.diffuse.contents = planetMap
     }
     
     func generateAllCitySprites() {

@@ -19,10 +19,10 @@ public class City {
     var cityTerrainInt: [[Int]]! // Firebase
     
     /// Tilemap
-    var tilemap: SKTilemap!
+    weak var tilemap: SKTilemap!
     
     /// Hudnode ref used for error messages
-    var hudNode: HudNode?
+    weak var hudNode: HudNode?
     
     /// Stats
     var resources: [ResourceTypes: CGFloat] = [.POPULATION: 1000, .CREDITS: 1000, .METAL: 50] // Firebase

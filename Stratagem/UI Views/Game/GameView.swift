@@ -20,15 +20,7 @@ struct GameView: View {
             case .GALAXY:
                 GalaxyView()
             case .PLANET:
-                ZStack{
-                    PlanetView(planet: Global.gameVars!.selectedPlanet!)
-                    Image("Galaxy")
-                        .position(x: screenSize.topLeft.x + 60, y: screenSize.topLeft.y + 60)
-                        .onTapGesture {
-                            playerVariables.currentGameViewLevel = GameViewLevel.GALAXY
-                        }
-                        .edgesIgnoringSafeArea(.all)
-                }
+                PlanetView()
             case .CITY:
                 CityView()
             }

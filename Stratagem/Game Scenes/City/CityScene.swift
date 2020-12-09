@@ -4,40 +4,40 @@ import SwiftUI
 
 
 public class CityScene: SKTiledScene {
-    private var city = City()
+    private weak var city: City?
     private var cityEditState = CityEditStates.NONE
-    var playerVariables: PlayerVariables?
+    weak var playerVariables = Global.playerVariables
     
-    private let hudNode = HudNode()
+    private var hudNode = HudNode()
     
     private var buildSelectedNode: SKNode?
     private var buildSelectedTiledata: SKTilesetData?
     
     public override func didMove(to view: SKView) {
         city = Global.gameVars!.selectedCity!
-        city.createTMXFile()
-        
+        city!.createTMXFile()
+
         super.didMove(to: view)
         super.setup(tmxFile: "City")
         cameraNode.allowGestures = true
         cameraNode.setCameraZoom(0.4)
         cameraNode.setZoomConstraints(minimum: 0.3, maximum: 0.75)
         cameraNode.showOverlay = true
-        
-        city.loadTilemap(tilemap)
-        
+
+        city!.loadTilemap(tilemap)
+
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sceneTapped(_:)))
         self.view!.addGestureRecognizer(tapGestureRecognizer)
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(scenePan(_:)))
         self.view!.addGestureRecognizer(panGestureRecognizer)
-        
+
         view.showsFPS = true
         view.showsDrawCount = true
-        
-        hudNode.setup(city: city, size: size, view: view, tilemap: tilemap)
+
+        hudNode.setup(city: city!, size: size, view: view, tilemap: tilemap)
         cameraNode.addToOverlay(hudNode)
-        city.hudNode = hudNode
-        
+        city!.hudNode = hudNode
+
         changeStateToNone()
         
         // Updates HUD every 1 sec
@@ -55,6 +55,7 @@ public class CityScene: SKTiledScene {
     public override func willMove(from view: SKView) {
         hudNode.unInit()
     }
+    
     
     /// Called only when user single taps
     @objc public func sceneTapped(_ recognizer: UITapGestureRecognizer) {
@@ -149,10 +150,10 @@ public class CityScene: SKTiledScene {
                         }
                     case .BUILD:
                         if let buildSelectedTiledata = buildSelectedTiledata {
-                            city.changeTileAtLoc(firstTile: tile, secondTileID: buildSelectedTiledata.globalID)
+                            city!.changeTileAtLoc(firstTile: tile, secondTileID: buildSelectedTiledata.globalID)
                         }
                     case .DESTROY:
-                        city.changeTileAtLoc(firstTile: tile, secondTileID: 1)
+                        city!.changeTileAtLoc(firstTile: tile, secondTileID: 1)
                     }
                 }
             }
@@ -187,7 +188,7 @@ public class CityScene: SKTiledScene {
     }
     
     private func highlightUneditableTiles(colorBlendFactor: CGFloat) {
-        for cityTile in city.cityTerrain!.joined() {
+        for cityTile in city!.cityTerrain!.joined() {
             if !cityTile.isEditable! {
                 let tile = cityTile.tile
                 let action = SKAction.colorize(with: .black, colorBlendFactor: colorBlendFactor, duration: 1)
