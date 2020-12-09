@@ -21,7 +21,6 @@ class Galaxy {
 
         for i in 0..<numPlanets {
             var planetName = planetNames[i]
-            planetName.removeLast(2)
             planets.append(Planet(planetName: planetName))
             planets[i].generateNewCity(cityName: "f")
         }
