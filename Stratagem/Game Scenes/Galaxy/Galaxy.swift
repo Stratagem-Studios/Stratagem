@@ -15,13 +15,19 @@ class Galaxy {
             numPlanets = 5
         }
         
-        let potentialPlanetNames = getListOfNames(fileName: "planet_names")!.shuffled()
-        let potentialCityNames = getListOfNames(fileName: "city_names")!.shuffled()
+        // the last line of the .txt file is a blank space and causes a crash if chosen
+        var potentialPlanetNames = getListOfNames(fileName: "planet_names")!
+        potentialPlanetNames.removeLast()
+        potentialPlanetNames.shuffle()
+        var potentialCityNames = getListOfNames(fileName: "city_names")!
+        potentialCityNames.removeLast()
+        potentialCityNames.shuffle()
+        
         
         var j = 0
         for i in 0..<numPlanets {
             var planetName = potentialPlanetNames[i]
-            planetName.removeLast(2) // removes the \r
+            planetName.removeLast() // removes the \r
             
             let planet = Planet(planetName: planetName)
             
