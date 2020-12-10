@@ -3,7 +3,8 @@ struct Global {
     static var lfGameManager: LFGameManager! = nil
     static var lfGameListener: LFGameListener! = nil
     static var hfGamePusher: HFGamePusher! = nil
-    
+    static var hfGameListener: HFGameListener! = nil
+
     static var playerVariables: PlayerVariables! = nil
     static var staticGameVariables: StaticGameVariables! = nil
 
@@ -14,7 +15,8 @@ struct Global {
         Global.lfGameManager = LFGameManager(playerVariables: playerVariables, staticGameVariables: staticGameVariables)
         Global.lfGameListener = LFGameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables)
         Global.hfGamePusher = HFGamePusher(playerVariables: playerVariables, staticGameVariables: staticGameVariables)
-        
+        Global.hfGameListener = HFGameListener(playerVariables: playerVariables, staticGameVariables: staticGameVariables)
+
         self.playerVariables = playerVariables
         self.staticGameVariables = staticGameVariables
     }
