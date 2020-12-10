@@ -15,14 +15,10 @@ class Galaxy {
             numPlanets = 5
         }
         
-        // the last line of the .txt file is a blank space and causes a crash if chosen
-        var potentialPlanetNames = getListOfNames(fileName: "planet_names")!
-        potentialPlanetNames.removeLast()
-        potentialPlanetNames.shuffle()
-        var potentialCityNames = getListOfNames(fileName: "city_names")!
-        potentialCityNames.removeLast()
-        potentialCityNames.shuffle()
-        
+        var potentialPlanetNames = getListOfNames(fileName: "planet_names")!.shuffled()
+        var potentialCityNames = getListOfNames(fileName: "city_names")!.shuffled()
+        potentialPlanetNames.remove(object: "")
+        potentialCityNames.remove(object: "")
         
         var j = 0
         for i in 0..<numPlanets {

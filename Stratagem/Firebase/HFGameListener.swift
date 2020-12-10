@@ -28,18 +28,44 @@ public struct HFGameListener {
                             cityTerrain[x][y] = cityTerrainFlattened[x * city.cityWidth + y]
                         }
                     }
+                    
+                    if city.owner != Global.playerVariables.playerName {
+                        city.resources = resourceStringToDict(input: cityInfo["resources"] as! String)
+                    }
                 }
             }
         })
         playerVariables.observerRefs.append(citiesRef)
     }
     
-    /*
-    func resourceStringToDict(text: String) -> [ResourceTypes: CGFloat] {
-        print(text)
-        let resources: [ResourceTypes: CGFloat] = [:]
+    
+    func resourceStringToDict(input: String) -> [ResourceTypes: CGFloat] {
+        let text = input.replacingOccurrences(of: "]", with: ",")
+        let regex = try! NSRegularExpression(pattern:"\"(.*?)\"", options: [])
+        var resourceNames = [String]()
+
+        regex.enumerateMatches(in: text, options: [], range: NSMakeRange(0, text.utf16.count)) { result, flags, stop in
+            if let r = result?.range(at: 1), let range = Range(r, in: text) {
+                resourceNames.append(String(text[range]))
+            }
+        }
+        
+        let regexVals = try! NSRegularExpression(pattern:",(.*?),", options: [])
+        var resourceValues = [CGFloat]()
+
+        regexVals.enumerateMatches(in: text, options: [], range: NSMakeRange(0, text.utf16.count)) { result, flags, stop in
+            if let r = result?.range(at: 1), let range = Range(r, in: text) {
+                resourceValues.append(CGFloat(Float(text[range])!))
+            }
+        }
+        
+        var resources: [ResourceTypes: CGFloat] = [:]
+        for (i, resourceName) in resourceNames.enumerated() {
+            resources[ResourceTypes(rawValue: resourceName)!] = resourceValues[i]
+        }
+
         return resources
     }
- */
+ 
 
 }

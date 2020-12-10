@@ -69,7 +69,6 @@ public struct LFGameManager {
                     
                     // Resources
                     Global.hfGamePusher.uploadResources(cityName: city.cityName!, name: "resources", resources: city.resources)
-                    Global.hfGamePusher.uploadResources(cityName: city.cityName!, name: "resourcesCap", resources: city.resourcesCap)
                 }
             }
             
