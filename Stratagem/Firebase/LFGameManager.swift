@@ -259,6 +259,7 @@ public struct LFGameManager {
                 Global.gameVars.selectedCity = ownedCity!
                 
                 playerVariables.currentView = .GameView
+                Global.hfGameListener.listenToAll()
             })
         })
     }
