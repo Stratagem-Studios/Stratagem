@@ -39,6 +39,7 @@ class Unit {
             range = 20
             moveSpeed = 30
             attackSpeed = 15
+            
         case.FIGHTER :
             health = 100
             damage = 10

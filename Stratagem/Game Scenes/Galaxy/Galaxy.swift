@@ -23,7 +23,7 @@ class Galaxy {
         var j = 0
         for i in 0..<numPlanets {
             var planetName = potentialPlanetNames[i]
-            planetName.removeLast(2) // removes the \r
+            planetName.removeLast() // removes the \r
             
             let planet = Planet(planetName: planetName)
             
