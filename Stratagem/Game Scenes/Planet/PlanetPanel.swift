@@ -10,6 +10,9 @@ class PlanetPanel: SKScene {
     private let creditsLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
     private let metalLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
     private let cityNameNode = SKLabelNode(fontNamed: "Montserrat-Bold")
+    private let brawlerLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
+    private let sniperLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
+    private let fighterLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
     
     private let descriptionPanel = SKShapeNode(rectOf: CGSize(width: UIScreen.main.bounds.size.width/3, height: UIScreen.main.bounds.size.height), cornerRadius: 50)
     
@@ -102,9 +105,62 @@ class PlanetPanel: SKScene {
         descriptionPanel.addChild(enterButton)
         
         //========
+        sniperLabelNode.zPosition = 100
+        sniperLabelNode.text = "???"
+        sniperLabelNode.fontSize = 15
+        sniperLabelNode.position = CGPoint(x: panelSize.halfWidth/3, y: size.halfHeight*2/3)
         
+        let sniperLabelBackground = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: sniperLabelNode.frame.size.width + 60, height: sniperLabelNode.frame.size.height + 10)), cornerRadius: 5)
+        sniperLabelBackground.name = "brawlerLabelBackground"
+        sniperLabelBackground.fillColor = UIColor.systemPink
+        sniperLabelBackground.position = CGPoint(x: -10, y: sniperLabelNode.frame.height / 2 - 2)
+        sniperLabelBackground.zPosition = -1
+        sniperLabelNode.addChild(sniperLabelBackground)
         
+        let sniperIconNode = SKSpriteNode()
+        sniperIconNode.texture = SKTexture(imageNamed: "AlliedBrawler")
+        sniperIconNode.size = CGSize(width: 24, height: 24)
+        sniperIconNode.position = CGPoint(x: -40, y: sniperLabelNode.frame.height / 2 - 2)
+        sniperLabelNode.addChild(sniperIconNode)
+        descriptionPanel.addChild(sniperLabelNode)
         
+        fighterLabelNode.zPosition = 100
+        fighterLabelNode.text = "???"
+        fighterLabelNode.fontSize = 15
+        fighterLabelNode.position = CGPoint(x: panelSize.halfWidth/3, y: size.halfHeight*2/3 - metalLabelNode.frame.height * 2)
+        
+        let fighterLabelBackground = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: fighterLabelNode.frame.size.width + 60, height: fighterLabelNode.frame.size.height + 10)), cornerRadius: 5)
+        fighterLabelBackground.name = "brawlerLabelBackground"
+        fighterLabelBackground.fillColor = UIColor.systemPink
+        fighterLabelBackground.position = CGPoint(x: -10, y: fighterLabelNode.frame.height / 2 - 2)
+        fighterLabelBackground.zPosition = -1
+        fighterLabelNode.addChild(fighterLabelBackground)
+        
+        let fighterIconNode = SKSpriteNode()
+        fighterIconNode.texture = SKTexture(imageNamed: "AlliedBrawler")
+        fighterIconNode.size = CGSize(width: 24, height: 24)
+        fighterIconNode.position = CGPoint(x: -40, y: fighterLabelNode.frame.height / 2 - 2)
+        fighterLabelNode.addChild(fighterIconNode)
+        descriptionPanel.addChild(fighterLabelNode)
+        
+        brawlerLabelNode.zPosition = 100
+        brawlerLabelNode.text = "???"
+        brawlerLabelNode.fontSize = 15
+        brawlerLabelNode.position = CGPoint(x: panelSize.halfWidth/3, y: size.halfHeight*2/3 - metalLabelNode.frame.height * 2 - popLabelNode.frame.height * 2)
+        
+        let brawlerLabelBackground = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: brawlerLabelNode.frame.size.width + 60, height: brawlerLabelNode.frame.size.height + 10)), cornerRadius: 5)
+        brawlerLabelBackground.name = "brawlerLabelBackground"
+        brawlerLabelBackground.fillColor = UIColor.systemPink
+        brawlerLabelBackground.position = CGPoint(x: -10, y: brawlerLabelNode.frame.height / 2 - 2)
+        brawlerLabelBackground.zPosition = -1
+        brawlerLabelNode.addChild(brawlerLabelBackground)
+        
+        let brawlerIconNode = SKSpriteNode()
+        brawlerIconNode.texture = SKTexture(imageNamed: "Coin")
+        brawlerIconNode.size = CGSize(width: 24, height: 24)
+        brawlerIconNode.position = CGPoint(x: -40, y: brawlerLabelNode.frame.height / 2 - 2)
+        brawlerLabelNode.addChild(brawlerIconNode)
+        descriptionPanel.addChild(brawlerLabelNode)
         
         //========
         
@@ -143,6 +199,10 @@ class PlanetPanel: SKScene {
                 popLabelNode.text = String(Int(Global.gameVars.selectedCity!.resources[.POPULATION]!))
                 creditsLabelNode.text = String(Int(Global.gameVars.selectedCity!.resources[.CREDITS]!))
                 metalLabelNode.text = String(Int(Global.gameVars.selectedCity!.resources[.METAL]!))
+                
+                brawlerLabelNode.text = String(Int(Global.gameVars.selectedCity!.units[.BRAWLER]!))
+                sniperLabelNode.text = String(Int(Global.gameVars.selectedCity!.units[.SNIPER]!))
+                fighterLabelNode.text = String(Int(Global.gameVars.selectedCity!.units[.FIGHTER]!))
             }
         }
     }
