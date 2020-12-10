@@ -89,12 +89,15 @@ public class CityScene: SKTiledScene {
                         if let tappedHudNodeName = tappedHudNode.name {
                             switch tappedHudNodeName {
                             case "BUTTON road":
-                                hudNode.scrollView!.setContentOffset(CGPoint(x: 0 + hudNode.scrollView!.frame.width * 2, y: 0), animated: true)
+                                hudNode.scrollView!.setContentOffset(CGPoint(x: 0 + hudNode.scrollView!.frame.width * 3, y: 0), animated: true)
                                 clickedOnHud = true
                             case "BUTTON residential":
-                                hudNode.scrollView!.setContentOffset(CGPoint(x: 0 + hudNode.scrollView!.frame.width * 1, y: 0), animated: true)
+                                hudNode.scrollView!.setContentOffset(CGPoint(x: 0 + hudNode.scrollView!.frame.width * 2, y: 0), animated: true)
                                 clickedOnHud = true
                             case "BUTTON industrial":
+                                hudNode.scrollView!.setContentOffset(CGPoint(x: 0 + hudNode.scrollView!.frame.width * 1, y: 0), animated: true)
+                                clickedOnHud = true
+                            case "BUTTON military":
                                 hudNode.scrollView!.setContentOffset(CGPoint(x: 0 + hudNode.scrollView!.frame.width * 0, y: 0), animated: true)
                                 clickedOnHud = true
                             default:

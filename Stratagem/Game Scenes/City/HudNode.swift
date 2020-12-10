@@ -195,14 +195,14 @@ class HudNode : SKNode {
     
     private func setupBuildingScrollView(view: UIView, tilemap: SKTilemap) {
         scrollView = SwiftySKScrollView(frame: CGRect(x: 0, y: size.height - 100, width: size.width, height: 100), moveableNode: moveableNode, direction: .horizontal, hudNode: self, size: size)
-        scrollView?.contentSize = CGSize(width: scrollView!.frame.width * 3, height: scrollView!.frame.height) // * 3 makes it three times as wide
+        scrollView?.contentSize = CGSize(width: scrollView!.frame.width * 4, height: scrollView!.frame.height) // * 4 makes it three times as wide
         view.addSubview(scrollView!)
-        scrollView?.setContentOffset(CGPoint(x: 0 + scrollView!.frame.width * 2, y: 0), animated: false)
+        scrollView?.setContentOffset(CGPoint(x: 0 + scrollView!.frame.width * 3, y: 0), animated: false)
         
         //
         guard let scrollView = scrollView else { return } // unwrap  optional
         
-        let buildingTypes = ["road", "residential", "industrial"]
+        let buildingTypes = ["road", "residential", "industrial", "military"]
         
         for (i, buildingType) in buildingTypes.enumerated() {
             let pageScrollView = SKSpriteNode(color: .clear, size: CGSize(width: scrollView.frame.width, height: scrollView.frame.size.height))
@@ -273,14 +273,25 @@ class SelectedBuildingScrollViewPopupNode: SKNode {
         titleLabelNode.fontSize = 20
         titleLabelNode.position = CGPoint(x: 0, y: yPos)
         
-        yPos -= 30
+        yPos -= 15
+        let descString = NSMutableAttributedString(string: tileData.properties["description"]!)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        let range = NSRange(location: 0, length: tileData.properties["description"]!.count)
+        descString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: range)
+        descString.addAttributes([NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.init(name: "Montserrat-Bold", size: 14)!], range: range)
+
         let descLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
         descLabelNode.zPosition = 100000
-        descLabelNode.text = tileData.properties["description"]!
+        descLabelNode.numberOfLines = 0
+        descLabelNode.verticalAlignmentMode = .top
+        descLabelNode.preferredMaxLayoutWidth = 225
+        descLabelNode.lineBreakMode = .byWordWrapping
         descLabelNode.fontSize = 14
+        descLabelNode.attributedText = descString
         descLabelNode.position = CGPoint(x: 0, y: yPos)
         
-        yPos -= 15
+        yPos -= (descLabelNode.frame.height + 5)
         let dividerRect = CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: popupBackgroundNode.frame.width, height: 1))
         let divider1 = SKShapeNode(rect: dividerRect)
         divider1.zPosition = 100000
