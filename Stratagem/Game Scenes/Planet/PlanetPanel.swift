@@ -27,7 +27,7 @@ class PlanetPanel: SKScene {
         
         cityNameNode.position = CGPoint(x: 0, y: panelSize.halfHeight - panelSize.height/10)
         cityNameNode.text = "CityName"
-        cityNameNode.fontSize = panelSize.height/12
+        cityNameNode.fontSize = panelSize.width/12
         cityNameNode.fontColor = UIColor.black
         descriptionPanel.addChild(cityNameNode)
         
