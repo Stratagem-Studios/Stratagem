@@ -5,8 +5,8 @@ class Planet {
     var planetName: String! // Firebase
     var owner: String! // Firebase
     
-    // Later when city count/position is random these will need to be procedurally generated
     var cities: [City] = []
+    var cityTransfers: [CityTransfers] = []
     
     // for map
     var cityLocs: [CGPoint] = []
@@ -29,6 +29,9 @@ class Planet {
     func update(deltaTime: CGFloat) {
         for city in cities.filter({$0.owner == Global.playerVariables.playerName}) {
             city.update(deltaTime: deltaTime)
+        }
+        for transfer in cityTransfers {
+            
         }
     }
     

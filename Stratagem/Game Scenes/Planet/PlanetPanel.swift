@@ -14,7 +14,11 @@ class PlanetPanel: SKScene {
     private let sniperLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
     private let fighterLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
     
+    private var unitsToTransfer: [UnitType : Int] = [.SNIPER:0, .FIGHTER:0, .BRAWLER:0]
+    
     private let descriptionPanel = SKShapeNode(rectOf: CGSize(width: UIScreen.main.bounds.size.width/3, height: UIScreen.main.bounds.size.height), cornerRadius: 50)
+    
+    private let unitTransferNode = SKShapeNode(rectOf: CGSize(width: UIScreen.main.bounds.size.width/3, height: UIScreen.main.bounds.size.height), cornerRadius: 50)
     
     
     
@@ -99,12 +103,13 @@ class PlanetPanel: SKScene {
         enterText.fontSize = panelSize.height/18
         enterText.fontColor = SKColor.yellow
         enterText.verticalAlignmentMode = .center
-        enterText.name = "enterText"
+        enterText.name = "enterButton"
         enterText.text = "Visit City"
         enterButton.addChild(enterText)
         descriptionPanel.addChild(enterButton)
         
         //========
+        
         sniperLabelNode.zPosition = 100
         sniperLabelNode.text = "???"
         sniperLabelNode.fontSize = 15
@@ -171,38 +176,99 @@ class PlanetPanel: SKScene {
         let placeholderText = SKLabelNode(fontNamed: "Montserrat-Bold")
         placeholderText.text = "Please select a city"
         placeholderText.fontSize = 20
+        placeholderText.name = "placeholderPanel"
         placeholderPanel.addChild(placeholderText)
         placeholderPanel.name = "placeholderPanel"
         addChild(placeholderPanel)
         
+        
+        // =========================================
+        // unit transfer nodes
+        
         if Global.gameVars.selectedPlanet!.cities.count > 1 {
-            let unitTransferButton = SKShapeNode(rectOf: CGSize(width: panelSize.width/4, height: panelSize.width/7), cornerRadius: 10)
-            unitTransferButton.position = CGPoint(x: 0, y: -panelSize.height*2/3)
+            let unitTransferButton = SKShapeNode(rectOf: CGSize(width: panelSize.width * 2/3, height: panelSize.width/7), cornerRadius: 10)
+            unitTransferButton.position = CGPoint(x: 0, y: -panelSize.height/5)
             unitTransferButton.fillColor = SKColor.black
             unitTransferButton.name = "transferButton"
             let transferText = SKLabelNode(fontNamed: "Montserrat-Bold")
             transferText.fontSize = panelSize.height/18
             transferText.fontColor = SKColor.yellow
             transferText.verticalAlignmentMode = .center
-            transferText.name = "transferText"
+            transferText.name = "transferButton"
             transferText.text = "Transfer Units"
             unitTransferButton.addChild(transferText)
             descriptionPanel.addChild(unitTransferButton)
         }
+        
+        unitTransferNode.name = "unitTransferNode"
+        unitTransferNode.position = CGPoint(x: panelSize.halfWidth, y: panelSize.halfHeight)
+        unitTransferNode.fillColor = UIColor.white
+        
+        let exitUnitTransfer = SKSpriteNode(imageNamed: "LeftArrow")
+        exitUnitTransfer.name = "exitUnitTransfer"
+        
+        let transferSnipernode = sniperLabelNode.copy() as! SKLabelNode
+        let transferFighterNode = fighterLabelNode.copy() as! SKLabelNode
+        let transferBrawlerNode = brawlerLabelNode.copy() as! SKLabelNode
+        
+        let transferUnitNodes: [SKLabelNode] = [transferSnipernode,transferFighterNode,transferBrawlerNode]
+        for i in 0..<transferUnitNodes.count{
+            let labelNode = transferUnitNodes[i]
+            let labelBackground = labelNode.children.first!
+            labelNode.name = "transferLabel" + String(i)
+            labelNode.position.x = 0
+            labelNode.text = "0"
+            
+            let leftArrow = SKSpriteNode(imageNamed: "LeftArrow")
+            let rightArrow = SKSpriteNode(imageNamed: "RightArrow")
+            
+            leftArrow.size = CGSize(width: labelBackground.frame.width/3, height: labelBackground.frame.height * 4/5)
+            rightArrow.size = CGSize(width: labelBackground.frame.width/3, height: labelBackground.frame.height * 4/5)
+            
+            leftArrow.name = "leftArrow" + String(i)
+            rightArrow.name = "rightArrow" + String(i)
+            
+            labelNode.addChild(leftArrow)
+            labelNode.addChild(rightArrow)
+            
+            leftArrow.position.x = labelBackground.frame.bottomLeft.x - 30
+            rightArrow.position.x = labelBackground.frame.bottomRight.x + 30
+            
+            leftArrow.position.y = labelBackground.frame.midY
+            rightArrow.position.y = labelBackground.frame.midY
+            
+            unitTransferNode.addChild(labelNode)
+        }
+        
+        
     }
     
     func selectCity(city: City){
-        if children.first?.name != "descriptionPanel" {
+        if children.first?.name == "placeholderPanel" {
             removeAllChildren()
             addChild(descriptionPanel)
+        } else if children.first?.name == "unitTransferNode" {
+            
         }
         cityNameNode.text = Global.gameVars.selectedCity!.cityName
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let node = self.atPoint(touches.first!.location(in: self))
-        if (node.name == "enterText" || node.name == "enterButton") && children.first?.name == "descriptionPanel"{
-            Global.playerVariables.currentGameViewLevel = .CITY
+        if children.first?.name == "descriptionPanel" {
+            switch node.name {
+            case "enterButton":
+                Global.playerVariables.currentGameViewLevel = .CITY
+            case "transferButton":
+                removeAllChildren()
+                addChild(unitTransferNode)
+            case "exitUnitTransfer":
+                removeAllChildren()
+                addChild(descriptionPanel)
+                unitsToTransfer = [.SNIPER:0,.FIGHTER:0,.BRAWLER:0]
+            default:
+                print("tapped useless node")
+            }
         }
     }
     
