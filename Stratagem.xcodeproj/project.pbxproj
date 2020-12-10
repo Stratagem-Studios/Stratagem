@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE1004BF256856BC0077941A /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004BE256856BC0077941A /* PlanetView.swift */; };
 		CE1004BF256856BC0077941A /* PlanetSphereView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004BE256856BC0077941A /* PlanetSphereView.swift */; };
 		CE1004E12569E1B70077941A /* GalaxyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004E02569E1B70077941A /* GalaxyView.swift */; };
 		CE2B4E3D257FCDAC00A4A146 /* Pods_Stratagem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500AA38F10AA677CBCF94516 /* Pods_Stratagem.framework */; };
@@ -84,6 +85,7 @@
 		FFE6EE1625746BD000BB677B /* Galaxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE1525746BD000BB677B /* Galaxy.swift */; };
 		FFE6EE1A25746BF800BB677B /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE1925746BF800BB677B /* Planet.swift */; };
 		FFE6EE2225749C3900BB677B /* Collection+choose.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE2125749C3900BB677B /* Collection+choose.swift */; };
+		FFE76E2425809226001525F3 /* robot factory.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE76E2325809225001525F3 /* robot factory.png */; };
 		FFF0358D2579A2200069F5F0 /* iron.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF0358B2579A2200069F5F0 /* iron.png */; };
 		FFF0358E2579A2200069F5F0 /* oil.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF0358C2579A2200069F5F0 /* oil.png */; };
 		FFF03591257A889C0069F5F0 /* iron miner.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF03590257A889C0069F5F0 /* iron miner.png */; };
@@ -182,6 +184,7 @@
 		FFE6EE1525746BD000BB677B /* Galaxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Galaxy.swift; sourceTree = "<group>"; };
 		FFE6EE1925746BF800BB677B /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		FFE6EE2125749C3900BB677B /* Collection+choose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+choose.swift"; sourceTree = "<group>"; };
+		FFE76E2325809225001525F3 /* robot factory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "robot factory.png"; sourceTree = "<group>"; };
 		FFF0358B2579A2200069F5F0 /* iron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iron.png; sourceTree = "<group>"; };
 		FFF0358C2579A2200069F5F0 /* oil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oil.png; sourceTree = "<group>"; };
 		FFF03590257A889C0069F5F0 /* iron miner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iron miner.png"; sourceTree = "<group>"; };
@@ -400,6 +403,7 @@
 		FFA3FFB725662A6800CFA406 /* Tiled */ = {
 			isa = PBXGroup;
 			children = (
+				FFE76E2325809225001525F3 /* robot factory.png */,
 				FFF03590257A889C0069F5F0 /* iron miner.png */,
 				FFF0358B2579A2200069F5F0 /* iron.png */,
 				FFF0358C2579A2200069F5F0 /* oil.png */,
@@ -519,7 +523,6 @@
 			buildPhases = (
 				0676AD30B3BC9A9FFD7E244E /* [CP] Check Pods Manifest.lock */,
 				FF078BC3254F3F8300E9FA7C /* Sources */,
-				FF078BC4254F3F8300E9FA7C /* Frameworks */,
 				FF078BC5254F3F8300E9FA7C /* Resources */,
 				096D843C7868507D5B2BABF3 /* [CP] Embed Pods Frameworks */,
 			);
@@ -588,6 +591,7 @@
 				FF0857762550FC5100F0F220 /* Montserrat-Thin.ttf in Resources */,
 				FFD9693E255B0505005A1BC7 /* Podfile in Resources */,
 				FF08577C2550FC5100F0F220 /* Montserrat-Regular.ttf in Resources */,
+				FFE76E2425809226001525F3 /* robot factory.png in Resources */,
 				FF0857752550FC5100F0F220 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				FFF03591257A889C0069F5F0 /* iron miner.png in Resources */,
 				FFA3FFBC25662C0B00CFA406 /* PrototypePack.tsx in Resources */,
@@ -840,6 +844,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Stratagem/Stratagem.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Stratagem/Preview Content\"";
 				DEVELOPMENT_TEAM = 883DK65VTV;
@@ -866,6 +871,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Stratagem/Stratagem.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Stratagem/Preview Content\"";
 				DEVELOPMENT_TEAM = 883DK65VTV;

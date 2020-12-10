@@ -20,6 +20,11 @@ public class CityTile {
     }
     
     private func tileGetBuilding(prevTile: SKTile, newTileData: SKTilesetData, cityTerrain: [[CityTile]]?) -> String {
+        // Ignore restrictions when initially creating tile map
+        if cityTerrain == nil {
+            return "true"
+        }
+        
         let properties = newTileData.properties
         if properties["type"] != "ground" {
             // Tile is a building, which all have costs

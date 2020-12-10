@@ -3,10 +3,11 @@ import SKTiled
 
 public class City {
     /// Unique city name (no spaces)
-    var cityName: String!
+    var cityName: String! // Firebase
+    var planetName: String!
     
     /// Owner that has power to edit
-    var owner: String?
+    var owner: String? // Firebase
     
     /// City size
     let cityWidth: Int = 20
@@ -15,7 +16,7 @@ public class City {
     /// City terrain, a 2d array of CityTiles
     var cityTerrain: [[CityTile]]!
     /// City terrain as an array of Ints. Should only be used when initting and loading city
-    var cityTerrainInt: [[Int]]!
+    var cityTerrainInt: [[Int]]! // Firebase
     
     /// Tilemap
     weak var tilemap: SKTilemap!
@@ -24,13 +25,13 @@ public class City {
     weak var hudNode: HudNode?
     
     /// Stats
-    var resources: [ResourceTypes: CGFloat] = [.POPULATION: 1000, .CREDITS: 1000, .METAL: 50]
-    var resourcesCap: [ResourceTypes: CGFloat] = [.POPULATION: 3000, .CREDITS: 100000, .METAL: 500]
-    var basePopRate: CGFloat = 0.005 // 0.05% growth every second
+    var resources: [ResourceTypes: CGFloat] = [.POPULATION: 1000, .CREDITS: 1000, .METAL: 50] // Firebase
+    var resourcesCap: [ResourceTypes: CGFloat] = [.POPULATION: 3000, .CREDITS: 100000, .METAL: 500] // Firebase
     
     /// Initializes city variables (required). If not terrain is provided, create a new city
-    func initCity(cityName: String, owner: String? = nil, terrain: [[Int]]? = nil) {
+    func initCity(cityName: String, planetName: String, owner: String? = nil, terrain: [[Int]]? = nil) {
         self.cityName = cityName
+        self.planetName = planetName
         self.owner = owner
         
         if let terrain = terrain {
@@ -40,9 +41,9 @@ public class City {
         }
     }
     
-    func update(deltaTime: Float) {
+    func update(deltaTime: CGFloat) {
         // Residential
-        var totalPopRate = basePopRate
+        var totalPopRate = CGFloat(0)
         var totalPopCap = resourcesCap[.POPULATION]!
         if let cityTerrain = cityTerrain {
             for cityTile in cityTerrain.joined().filter({ $0.tileType == .RESIDENTIAL }) {
@@ -51,15 +52,15 @@ public class City {
             }
             
             let pop = resources[.POPULATION]!
-            resources[.POPULATION] = CGFloat.minimum(pop + pop * totalPopRate * CGFloat(deltaTime), CGFloat(totalPopCap))
+            resources[.POPULATION] = CGFloat.minimum(pop + pop * totalPopRate * deltaTime, CGFloat(totalPopCap))
             resourcesCap[.POPULATION] = totalPopCap
         }
         
         // Industrial
         if let cityTerrain = cityTerrain {
             for cityTile in cityTerrain.joined().filter({ $0.tileType == .INDUSTRIAL }) {
-                _ = tryDeductFunds(costs: (cityTile.building as! IndustrialBuilding).consumes, deltaTime: CGFloat(deltaTime))
-                tryAddFunds(funds: (cityTile.building as! IndustrialBuilding).produces, deltaTime: CGFloat(deltaTime))
+                _ = tryDeductFunds(costs: (cityTile.building as! IndustrialBuilding).consumes, deltaTime: deltaTime)
+                tryAddFunds(funds: (cityTile.building as! IndustrialBuilding).produces, deltaTime: deltaTime)
             }
         }
     }
@@ -115,7 +116,7 @@ public class City {
                                     // Update my cityTerrain array
                                     cityTerrain[x][y] = cityTile
                                     
-                                    Global.hfGamePusher.uploadCityTerrain(cityName: cityName, cityTerrain: cityTerrain)
+                                    Global.hfGamePusher.uploadCityTerrain(cityName: cityName,  cityTerrain: cityTerrain)
                                 } else {
                                     hudNode!.inlineErrorMessage(errorMessage: "Insufficient funds")
                                 }
