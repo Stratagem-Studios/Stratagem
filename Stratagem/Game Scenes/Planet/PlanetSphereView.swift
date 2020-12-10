@@ -11,7 +11,7 @@ struct PlanetSphereView : UIViewRepresentable {
     let planetScene = SCNScene.init()
     var planetView = SCNView()
     
-    init(planet: Planet) {
+    init(planet: Planet, planetPanel: PlanetPanel) {
         planetScene.rootNode.position = SCNVector3(0,0,0)
         self.planet = planet
     }

@@ -11,13 +11,13 @@
 		CE1004E12569E1B70077941A /* GalaxyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004E02569E1B70077941A /* GalaxyView.swift */; };
 		CE2B4E3D257FCDAC00A4A146 /* Pods_Stratagem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500AA38F10AA677CBCF94516 /* Pods_Stratagem.framework */; };
 		CE2B4E6B257FEA1100A4A146 /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B4E6A257FEA1100A4A146 /* PlanetView.swift */; };
+		CE3B15AD2581D3EA00F096D6 /* UnitTransfers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B15AC2581D3EA00F096D6 /* UnitTransfers.swift */; };
 		CE8F1382257488AC0038156C /* GalaxyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1381257488AC0038156C /* GalaxyScene.swift */; };
 		CE8F1394257605D70038156C /* Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1393257605D70038156C /* Updater.swift */; };
 		CEC3A8DE257960840009E3DC /* PlanetMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC3A8DD257960840009E3DC /* PlanetMap.swift */; };
 		CEC77EC525812D4B00CA1446 /* PlanetPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC77EC425812D4B00CA1446 /* PlanetPanel.swift */; };
 		CEC78654256C1B51001E440F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC78653256C1B51001E440F /* GameView.swift */; };
 		CECA7740255E3F1700CE9F69 /* GameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA773F255E3F1700CE9F69 /* GameVariables.swift */; };
-		CECA7755255E469E00CE9F69 /* GameBoards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA7754255E469E00CE9F69 /* GameBoards.swift */; };
 		FF012D3B2551B0420017E288 /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF012D3A2551B0420017E288 /* TitleText.swift */; };
 		FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */; };
 		FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BCC254F3F8300E9FA7C /* ContentView.swift */; };
@@ -105,13 +105,13 @@
 		CE1004BE256856BC0077941A /* PlanetSphereView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetSphereView.swift; sourceTree = "<group>"; };
 		CE1004E02569E1B70077941A /* GalaxyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyView.swift; sourceTree = "<group>"; };
 		CE2B4E6A257FEA1100A4A146 /* PlanetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
+		CE3B15AC2581D3EA00F096D6 /* UnitTransfers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTransfers.swift; sourceTree = "<group>"; };
 		CE8F1381257488AC0038156C /* GalaxyScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyScene.swift; sourceTree = "<group>"; };
 		CE8F1393257605D70038156C /* Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updater.swift; sourceTree = "<group>"; };
 		CEC3A8DD257960840009E3DC /* PlanetMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetMap.swift; sourceTree = "<group>"; };
 		CEC77EC425812D4B00CA1446 /* PlanetPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetPanel.swift; sourceTree = "<group>"; };
 		CEC78653256C1B51001E440F /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		CECA773F255E3F1700CE9F69 /* GameVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVariables.swift; sourceTree = "<group>"; };
-		CECA7754255E469E00CE9F69 /* GameBoards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoards.swift; sourceTree = "<group>"; };
 		E54BF43E273D93EB0EDE54FC /* Pods-Stratagem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stratagem.release.xcconfig"; path = "Target Support Files/Pods-Stratagem/Pods-Stratagem.release.xcconfig"; sourceTree = "<group>"; };
 		FF012D3A2551B0420017E288 /* TitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
 		FF078BC7254F3F8300E9FA7C /* Stratagem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stratagem.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,13 +218,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		CECA7749255E438500CE9F69 /* Instantiatable */ = {
+		CECA7749255E438500CE9F69 /* Units */ = {
 			isa = PBXGroup;
 			children = (
 				FF5AF909255E489F00836F03 /* Units.swift */,
-				CECA7754255E469E00CE9F69 /* GameBoards.swift */,
+				CE3B15AC2581D3EA00F096D6 /* UnitTransfers.swift */,
 			);
-			name = Instantiatable;
+			name = Units;
 			sourceTree = "<group>";
 		};
 		FF078BBE254F3F8300E9FA7C = {
@@ -261,7 +261,7 @@
 				FFFCFAB8255B296400D03284 /* AppDelegate.swift */,
 				FF8C4E4E254FB0A200522756 /* Stratagem.entitlements */,
 				FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */,
-				CECA7749255E438500CE9F69 /* Instantiatable */,
+				CECA7749255E438500CE9F69 /* Units */,
 				FFF85E48255C742900DFDDC2 /* Variables */,
 				FFE1000B2551B7F500DD6608 /* Game Scenes */,
 				FF0857472550D8F200F0F220 /* UI Element Styles */,
@@ -661,7 +661,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CECA7755255E469E00CE9F69 /* GameBoards.swift in Sources */,
 				FF9D7D69256574890076C8DF /* HFGameListener.swift in Sources */,
 				FF1B13D7256B0B81005158C9 /* City.swift in Sources */,
 				FF49D7022577E9EE006A282E /* Road.swift in Sources */,
@@ -689,6 +688,7 @@
 				FF49D7092577EA18006A282E /* IndustrialBuilding.swift in Sources */,
 				CE2B4E6B257FEA1100A4A146 /* PlanetView.swift in Sources */,
 				FFD4AE5B257E8A93000BACEE /* SwiftySKScrollView.swift in Sources */,
+				CE3B15AD2581D3EA00F096D6 /* UnitTransfers.swift in Sources */,
 				CE8F1382257488AC0038156C /* GalaxyScene.swift in Sources */,
 				FF40F4712559CF310036E4C7 /* CityView.swift in Sources */,
 				FFFCFAB9255B296400D03284 /* AppDelegate.swift in Sources */,
