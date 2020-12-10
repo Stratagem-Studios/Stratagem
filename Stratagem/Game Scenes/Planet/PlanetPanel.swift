@@ -32,7 +32,7 @@ class PlanetPanel: SKScene {
         descriptionPanel.addChild(cityNameNode)
         
         metalLabelNode.zPosition = 100
-        metalLabelNode.text = "9"
+        metalLabelNode.text = "???"
         metalLabelNode.fontSize = 15
         metalLabelNode.position = CGPoint(x: -panelSize.halfWidth/3, y: size.halfHeight*2/3)
         
@@ -51,7 +51,7 @@ class PlanetPanel: SKScene {
         descriptionPanel.addChild(metalLabelNode)
         
         popLabelNode.zPosition = 100
-        popLabelNode.text = "3000"
+        popLabelNode.text = "???"
         popLabelNode.fontSize = 15
         popLabelNode.position = CGPoint(x: -panelSize.halfWidth/3, y: size.halfHeight*2/3 - metalLabelNode.frame.height * 2)
         
@@ -70,7 +70,7 @@ class PlanetPanel: SKScene {
         descriptionPanel.addChild(popLabelNode)
         
         creditsLabelNode.zPosition = 100
-        creditsLabelNode.text = "1000"
+        creditsLabelNode.text = "???"
         creditsLabelNode.fontSize = 15
         creditsLabelNode.position = CGPoint(x: -panelSize.halfWidth/3, y: size.halfHeight*2/3 - metalLabelNode.frame.height * 2 - popLabelNode.frame.height * 2)
         
@@ -139,7 +139,11 @@ class PlanetPanel: SKScene {
     // seperate from global update loop. only needs to trigger while seen open
     override func update(_ currentTime: TimeInterval) {
         if children.first?.name == "descriptionPanel"{
-            // Update stats here
+            if Global.gameVars.selectedPlanet?.owner == Global.playerVariables.playerName {
+                popLabelNode.text = String(Int(Global.gameVars.selectedCity!.resources[.POPULATION]!))
+                creditsLabelNode.text = String(Int(Global.gameVars.selectedCity!.resources[.CREDITS]!))
+                metalLabelNode.text = String(Int(Global.gameVars.selectedCity!.resources[.METAL]!))
+            }
         }
     }
     
