@@ -12,6 +12,7 @@ class Units {
     var range: Double = 1
     var moveSpeed: Double = 1
     var attackSpeed: Double = 1
+    var quantity: Int = 0
     
     init() {
     }

@@ -118,7 +118,7 @@ class PlanetPanel: SKScene {
         sniperLabelNode.addChild(sniperLabelBackground)
         
         let sniperIconNode = SKSpriteNode()
-        sniperIconNode.texture = SKTexture(imageNamed: "AlliedBrawler")
+        sniperIconNode.texture = SKTexture(imageNamed: "SniperIcon")
         sniperIconNode.size = CGSize(width: 24, height: 24)
         sniperIconNode.position = CGPoint(x: -40, y: sniperLabelNode.frame.height / 2 - 2)
         sniperLabelNode.addChild(sniperIconNode)
@@ -137,7 +137,7 @@ class PlanetPanel: SKScene {
         fighterLabelNode.addChild(fighterLabelBackground)
         
         let fighterIconNode = SKSpriteNode()
-        fighterIconNode.texture = SKTexture(imageNamed: "AlliedBrawler")
+        fighterIconNode.texture = SKTexture(imageNamed: "FighterIcon")
         fighterIconNode.size = CGSize(width: 24, height: 24)
         fighterIconNode.position = CGPoint(x: -40, y: fighterLabelNode.frame.height / 2 - 2)
         fighterLabelNode.addChild(fighterIconNode)
@@ -156,7 +156,7 @@ class PlanetPanel: SKScene {
         brawlerLabelNode.addChild(brawlerLabelBackground)
         
         let brawlerIconNode = SKSpriteNode()
-        brawlerIconNode.texture = SKTexture(imageNamed: "Coin")
+        brawlerIconNode.texture = SKTexture(imageNamed: "BrawlerIcon")
         brawlerIconNode.size = CGSize(width: 24, height: 24)
         brawlerIconNode.position = CGPoint(x: -40, y: brawlerLabelNode.frame.height / 2 - 2)
         brawlerLabelNode.addChild(brawlerIconNode)
@@ -175,6 +175,20 @@ class PlanetPanel: SKScene {
         placeholderPanel.name = "placeholderPanel"
         addChild(placeholderPanel)
         
+        if Global.gameVars.selectedPlanet!.cities.count > 1 {
+            let unitTransferButton = SKShapeNode(rectOf: CGSize(width: panelSize.width/4, height: panelSize.width/7), cornerRadius: 10)
+            unitTransferButton.position = CGPoint(x: 0, y: -panelSize.height*2/3)
+            unitTransferButton.fillColor = SKColor.black
+            unitTransferButton.name = "transferButton"
+            let transferText = SKLabelNode(fontNamed: "Montserrat-Bold")
+            transferText.fontSize = panelSize.height/18
+            transferText.fontColor = SKColor.yellow
+            transferText.verticalAlignmentMode = .center
+            transferText.name = "transferText"
+            transferText.text = "Transfer Units"
+            unitTransferButton.addChild(transferText)
+            descriptionPanel.addChild(unitTransferButton)
+        }
     }
     
     func selectCity(city: City){
