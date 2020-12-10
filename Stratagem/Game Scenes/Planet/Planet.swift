@@ -42,7 +42,7 @@ class Planet {
             var spawnPoint: CGPoint?
             var isOverlapping = true
             while isOverlapping == true {
-                spawnPoint = CGPoint(x: CGFloat.random(in: 0...1000), y: CGFloat.random(in: 300...700))
+                spawnPoint = CGPoint(x: CGFloat.random(in: 100...900), y: CGFloat.random(in: 400...600))
                 if cityLocs != [] {
                     for loc in cityLocs {
                         if CGPointDistanceSquared(from: loc, to: spawnPoint!) > 22500 // 150^2, faster than doing sqrt, makes cities spawn at least 150 units apart

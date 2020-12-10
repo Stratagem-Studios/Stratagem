@@ -6,14 +6,17 @@ import Foundation
 struct PlanetSphereView : UIViewRepresentable {
     @EnvironmentObject var playerVariables: PlayerVariables
     
-    let planet: Planet!
+    weak var planet: Planet!
     
     let planetScene = SCNScene.init()
     var planetView = SCNView()
     
+    let planetPanel: PlanetPanel
+    
     init(planet: Planet, planetPanel: PlanetPanel) {
         planetScene.rootNode.position = SCNVector3(0,0,0)
         self.planet = planet
+        self.planetPanel = planetPanel
     }
     
     func makeUIView(context: Context) -> SCNView {
@@ -41,7 +44,7 @@ struct PlanetSphereView : UIViewRepresentable {
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(planetView, playerVars: playerVariables, planet: planet, planetNode: planet!.planetNode!, cameraOrbit: planet.cameraOrbit!)
+        Coordinator(planetView, playerVars: playerVariables, planet: planet, planetNode: planet!.planetNode!, cameraOrbit: planet.cameraOrbit!, planetPanel: planetPanel)
     }
     
     class Coordinator: NSObject {
@@ -51,15 +54,16 @@ struct PlanetSphereView : UIViewRepresentable {
         var lastPos: CGFloat?
         var planetNode:  SCNNode
         let cameraOrbit: SCNNode
-        let matrix: SCNMatrix4
+        let planetPanel: PlanetPanel
         
-        init(_ view: SCNView, playerVars: PlayerVariables, planet: Planet, planetNode: SCNNode, cameraOrbit: SCNNode) {
+        
+        init(_ view: SCNView, playerVars: PlayerVariables, planet: Planet, planetNode: SCNNode, cameraOrbit: SCNNode, planetPanel: PlanetPanel) {
             self.view = view
             self.playerVars = playerVars
             self.planet = planet
             self.planetNode = planetNode
             self.cameraOrbit = cameraOrbit
-            matrix = SCNMatrix4MakeRotation(0, 0, 0, 0)
+            self.planetPanel = planetPanel
             super.init()
         }
         
@@ -77,15 +81,15 @@ struct PlanetSphereView : UIViewRepresentable {
                 for i in 0..<planet.cityMapping.count {
                     if planet.cityMapping[i].contains(result.textureCoordinates(withMappingChannel: 0)){
                         Global.gameVars!.selectedCity = planet.cities[i]
-                        playerVars.currentGameViewLevel = GameViewLevel.CITY
+                        planetPanel.selectCity(city: planet.cities[i])
+                        planet.planetMap.selectCitySprite(loc: planet.cityLocs[i])
                     }
                 }
             }
         }
         @objc func handlePan(_ sender: UIPanGestureRecognizer) {
-            cameraOrbit.pivot = matrix
-            let scrollWidthRatio = Float(sender.velocity(in: sender.view!).x) / 70000 * -1
-            let scrollHeightRatio = Float(sender.velocity(in: sender.view!).y) / 70000
+            let scrollWidthRatio = Float(sender.velocity(in: sender.view!).x) / 30000 * -1
+            let scrollHeightRatio = Float(sender.velocity(in: sender.view!).y) / 30000
             planetNode.eulerAngles.y += Float(-2 * Double.pi) * scrollWidthRatio
         }
     }

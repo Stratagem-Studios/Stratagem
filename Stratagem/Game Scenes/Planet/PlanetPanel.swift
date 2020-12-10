@@ -9,6 +9,7 @@ class PlanetPanel: SKScene {
     private let popLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
     private let creditsLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
     private let metalLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
+    private let cityNameNode = SKLabelNode(fontNamed: "Montserrat-Bold")
     
     private let descriptionPanel = SKShapeNode(rectOf: CGSize(width: UIScreen.main.bounds.size.width/3, height: UIScreen.main.bounds.size.height), cornerRadius: 50)
     
@@ -24,21 +25,12 @@ class PlanetPanel: SKScene {
         descriptionPanel.strokeColor = SKColor.black
         descriptionPanel.name = "descriptionPanel"
         
-        
-        
-        addChild(descriptionPanel)
-        
-        
-        
-        
-        let cityNameNode = SKLabelNode(fontNamed: "Montserrat-Bold")
         cityNameNode.position = CGPoint(x: 0, y: panelSize.halfHeight - panelSize.height/10)
         cityNameNode.text = "CityName"
         cityNameNode.fontSize = panelSize.height/12
         cityNameNode.fontColor = UIColor.black
         descriptionPanel.addChild(cityNameNode)
         
-        // =====================
         metalLabelNode.zPosition = 100
         metalLabelNode.text = "9"
         metalLabelNode.fontSize = 15
@@ -96,14 +88,47 @@ class PlanetPanel: SKScene {
         creditsLabelNode.addChild(creditsIconNode)
         descriptionPanel.addChild(creditsLabelNode)
         
+        let enterButton = SKShapeNode(rectOf: CGSize(width: panelSize.width * 2/3, height: panelSize.width/7), cornerRadius: 10)
+        enterButton.position = CGPoint(x: 0, y: -panelSize.height/3)
+        enterButton.fillColor = SKColor.black
+        enterButton.name = "enterButton"
+        let enterText = SKLabelNode(fontNamed: "Montserrat-Bold")
+        enterText.fontSize = panelSize.height/18
+        enterText.fontColor = SKColor.yellow
+        enterText.verticalAlignmentMode = .center
+        enterText.name = "enterText"
+        enterText.text = "Visit City"
+        enterButton.addChild(enterText)
+        descriptionPanel.addChild(enterButton)
+        
+        //=====
+        
+        let placeholderPanel = SKShapeNode(rectOf: CGSize(width: UIScreen.main.bounds.size.width/3, height: UIScreen.main.bounds.size.height), cornerRadius: 50)
+        placeholderPanel.position = CGPoint(x: panelSize.halfWidth, y: panelSize.halfHeight)
+        placeholderPanel.fillColor = SKColor.gray
+        placeholderPanel.strokeColor = SKColor.clear
+        let placeholderText = SKLabelNode(fontNamed: "Montserrat-Bold")
+        placeholderText.text = "Please select a city"
+        placeholderText.fontSize = 20
+        placeholderPanel.addChild(placeholderText)
+        placeholderPanel.name = "placeholderPanel"
+        addChild(placeholderPanel)
+        
     }
     
     func selectCity(city: City){
-        if children.count != 1 {
+        if children.first?.name != "descriptionPanel" {
+            removeAllChildren()
             addChild(descriptionPanel)
         }
-        
-        
+        cityNameNode.text = Global.gameVars.selectedCity!.cityName
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let node = self.atPoint(touches.first!.location(in: self))
+        if (node.name == "enterText" || node.name == "enterButton") && children.first?.name == "descriptionPanel"{
+            Global.playerVariables.currentGameViewLevel = .CITY
+        }
     }
     
     

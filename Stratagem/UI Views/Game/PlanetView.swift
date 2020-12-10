@@ -7,7 +7,6 @@ struct PlanetView: View {
     let screenBounds = UIScreen.main.bounds
     let playerVariables = Global.playerVariables!
     let planetPanelScene: PlanetPanel
-    var planetName = Global.gameVars.selectedPlanet!.planetName
     var body: some View {
         
         ZStack {
@@ -15,7 +14,7 @@ struct PlanetView: View {
                 VStack{
                     Spacer()
                         .frame(height:screenBounds.height/20)
-                    Text(planetName!)
+                    Text(Global.gameVars.selectedPlanet!.planetName)
                         .font(.custom("Montserrat-Bold", size: 40))
                         .frame(width: screenBounds.size.width*3/5, height: 30)
                     PlanetSphereView(planet: Global.gameVars!.selectedPlanet!, planetPanel: planetPanelScene)
@@ -35,7 +34,6 @@ struct PlanetView: View {
         }
     }
     init() {
-        planetName!.removeLast()
         planetPanelScene = PlanetPanel(size: CGSize(width: screenBounds.size.width*2/5, height: screenBounds.size.height))
     }
 }
