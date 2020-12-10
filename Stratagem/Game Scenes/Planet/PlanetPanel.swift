@@ -101,7 +101,12 @@ class PlanetPanel: SKScene {
         enterButton.addChild(enterText)
         descriptionPanel.addChild(enterButton)
         
-        //=====
+        //========
+        
+        
+        
+        
+        //========
         
         let placeholderPanel = SKShapeNode(rectOf: CGSize(width: UIScreen.main.bounds.size.width/3, height: UIScreen.main.bounds.size.height), cornerRadius: 50)
         placeholderPanel.position = CGPoint(x: panelSize.halfWidth, y: panelSize.halfHeight)
@@ -128,6 +133,13 @@ class PlanetPanel: SKScene {
         let node = self.atPoint(touches.first!.location(in: self))
         if (node.name == "enterText" || node.name == "enterButton") && children.first?.name == "descriptionPanel"{
             Global.playerVariables.currentGameViewLevel = .CITY
+        }
+    }
+    
+    // seperate from global update loop. only needs to trigger while seen open
+    override func update(_ currentTime: TimeInterval) {
+        if children.first?.name == "descriptionPanel"{
+            // Update stats here
         }
     }
     
