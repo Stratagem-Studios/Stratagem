@@ -15,8 +15,10 @@ class Galaxy {
             numPlanets = 5
         }
         
-        let potentialPlanetNames = getListOfNames(fileName: "planet_names")!.shuffled()
-        let potentialCityNames = getListOfNames(fileName: "city_names")!.shuffled()
+        var potentialPlanetNames = getListOfNames(fileName: "planet_names")!.shuffled()
+        var potentialCityNames = getListOfNames(fileName: "city_names")!.shuffled()
+        potentialPlanetNames.remove(object: "")
+        potentialCityNames.remove(object: "")
         
         var j = 0
         for i in 0..<numPlanets {

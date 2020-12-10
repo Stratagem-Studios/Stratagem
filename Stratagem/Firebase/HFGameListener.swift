@@ -28,7 +28,10 @@ public struct HFGameListener {
                             cityTerrain[x][y] = cityTerrainFlattened[x * city.cityWidth + y]
                         }
                     }
-                    city.resources = resourceStringToDict(input: cityInfo["resources"] as! String)
+                    
+                    if city.owner != Global.playerVariables.playerName {
+                        city.resources = resourceStringToDict(input: cityInfo["resources"] as! String)
+                    }
                 }
             }
         })
