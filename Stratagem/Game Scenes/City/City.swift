@@ -24,9 +24,12 @@ public class City {
     /// Hudnode ref used for error messages
     weak var hudNode: HudNode?
     
+    /// TIme since last second, used to update firebase
+    var secondDelta: CGFloat = 0
+    
     /// Stats
     var resources: [ResourceTypes: CGFloat] = [.POPULATION: 1000, .CREDITS: 1000, .METAL: 50] // Firebase
-    var resourcesCap: [ResourceTypes: CGFloat] = [.POPULATION: 3000, .CREDITS: 100000, .METAL: 500] // Firebase
+    var resourcesCap: [ResourceTypes: CGFloat] = [.POPULATION: 3000, .CREDITS: 100000, .METAL: 500]
     
     /// Initializes city variables (required). If not terrain is provided, create a new city
     func initCity(cityName: String, planetName: String, owner: String? = nil, terrain: [[Int]]? = nil) {
@@ -62,6 +65,12 @@ public class City {
                 _ = tryDeductFunds(costs: (cityTile.building as! IndustrialBuilding).consumes, deltaTime: deltaTime)
                 tryAddFunds(funds: (cityTile.building as! IndustrialBuilding).produces, deltaTime: deltaTime)
             }
+        }
+        
+        secondDelta += deltaTime
+        if secondDelta >= 1 {
+            Global.hfGamePusher.uploadResources(cityName: cityName!, name: "resources", resources: resources)
+            secondDelta = 0
         }
     }
     

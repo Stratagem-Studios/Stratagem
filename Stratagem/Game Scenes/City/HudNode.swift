@@ -129,19 +129,21 @@ class HudNode : SKNode {
         selectedBuildingScrollViewPopupNode.zPosition = 100000
         
         addChild(cityNameLabelNode)
-        addChild(popLabelNode)
-        addChild(creditsLabelNode)
-        addChild(metalLabelNode)
-        
-        addChild(inlineErrorLabelNode)
+        if city.owner == Global.playerVariables.playerName {
+            addChild(popLabelNode)
+            addChild(creditsLabelNode)
+            addChild(metalLabelNode)
+            
+            addChild(inlineErrorLabelNode)
 
-        addChild(buildButtonNode)
-        addChild(destroyButtonNode)
-        addChild(borderRectNode)
-        
-        addChild(moveableNode)
-        
-        addChild(selectedBuildingScrollViewPopupNode)
+            addChild(buildButtonNode)
+            addChild(destroyButtonNode)
+            addChild(borderRectNode)
+            
+            addChild(moveableNode)
+            
+            addChild(selectedBuildingScrollViewPopupNode)
+        }
     }
     
     public func noneState() {
