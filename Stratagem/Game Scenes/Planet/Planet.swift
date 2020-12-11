@@ -35,6 +35,10 @@ class Planet {
         }
     }
     
+    func drawLineBetweenCites(startInt: Int, endInt: Int){
+        planetMap.lineBetweenPoints(start: cityLocs[startInt], end: cityLocs[endInt])
+    }
+    
     /// Generate all the cities of the planet given random names
     func generateAllCities(cityNames: [String]) {
         for cityName in cityNames {

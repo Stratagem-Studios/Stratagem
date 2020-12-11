@@ -14,9 +14,14 @@ class PlanetPanel: SKScene {
     private let sniperLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
     private let fighterLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
     
+    weak var planet = Global.gameVars.selectedPlanet!
+    
     private var transferSnipernode: SKLabelNode?
     private var transferFighterNode: SKLabelNode?
     private var transferBrawlerNode: SKLabelNode?
+    
+    private var avalibleUnitsLabel: [SKLabelNode] = []
+    private var avalibleUnits: [UnitType : Int] = [.SNIPER:0, .FIGHTER:0, .BRAWLER:0]
     
     private var unitsToTransfer: [UnitType : Int] = [.SNIPER:0, .FIGHTER:0, .BRAWLER:0]
     
@@ -24,7 +29,13 @@ class PlanetPanel: SKScene {
     
     private let unitTransferNode = SKShapeNode(rectOf: CGSize(width: UIScreen.main.bounds.size.width/3, height: UIScreen.main.bounds.size.height), cornerRadius: 50)
     
+    private let pulsedRed = SKAction.sequence([
+        SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.15),
+        SKAction.wait(forDuration: 0.1),
+        SKAction.colorize(withColorBlendFactor: 0.0, duration: 0.15)])
     
+    private var startCityint: Int = -1
+    private var endCityInt: Int = -1
     
     override func sceneDidLoad() {
         let panelSize = CGSize(width: UIScreen.main.bounds.size.width/3, height: UIScreen.main.bounds.size.height)
@@ -210,7 +221,7 @@ class PlanetPanel: SKScene {
         
         let exitUnitTransfer = SKSpriteNode(imageNamed: "Close")
         exitUnitTransfer.name = "exitUnitTransfer"
-        exitUnitTransfer.size = CGSize(width: 30, height: 30)
+        exitUnitTransfer.size = CGSize(width: 50, height: 50)
         exitUnitTransfer.zPosition = 101
         exitUnitTransfer.position = CGPoint(x: -panelSize.halfWidth + 30, y: panelSize.halfHeight - 30)
         exitUnitTransfer.color = UIColor.red
@@ -228,6 +239,10 @@ class PlanetPanel: SKScene {
             labelNode.name = "transferLabel" + String(i)
             labelNode.position.x = 0
             labelNode.text = "0"
+            
+            avalibleUnitsLabel.append(labelNode.copy() as! SKLabelNode)
+            
+            labelNode.position.y -= panelSize.halfHeight * 2/3
             
             let leftArrow = SKSpriteNode(imageNamed: "LeftArrow")
             let rightArrow = SKSpriteNode(imageNamed: "RightArrow")
@@ -250,17 +265,37 @@ class PlanetPanel: SKScene {
             unitTransferNode.addChild(labelNode)
         }
         
+        for labelNode in avalibleUnitsLabel {
+            let labelBackground = labelNode.children.first! as! SKShapeNode
+            labelBackground.fillColor = UIColor.systemGreen
+            unitTransferNode.addChild(labelNode)
+            labelNode.position.y -= 1/10*panelSize.height
+        }
+        
+        let avalibleUnitsLabel = SKLabelNode(fontNamed: "Montserrat-Bold")
+        avalibleUnitsLabel.text = "Avalible Units"
+        avalibleUnitsLabel.position = CGPoint(x: 0, y: exitUnitTransfer.position.y)
+        unitTransferNode.addChild(avalibleUnitsLabel)
         
     }
     
-    func selectCity(city: City){
+    func selectCity(city: City, cityInt: Int){
         if children.first?.name == "placeholderPanel" {
             removeAllChildren()
             addChild(descriptionPanel)
+            cityNameNode.text = city.cityName
+            avalibleUnits = city.units
+            startCityint = cityInt
+            planet?.planetMap.selectCitySprite(loc: (planet?.cityLocs[cityInt])!)
         } else if children.first?.name == "unitTransferNode" {
-            
+            endCityInt = cityInt
+            planet?.drawLineBetweenCites(startInt: startCityint, endInt: endCityInt)
+        } else {
+            cityNameNode.text = city.cityName
+            avalibleUnits = city.units
+            startCityint = cityInt
+            planet?.planetMap.selectCitySprite(loc: (planet?.cityLocs[cityInt])!)
         }
-        cityNameNode.text = Global.gameVars.selectedCity!.cityName
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -273,6 +308,7 @@ class PlanetPanel: SKScene {
                 removeAllChildren()
                 addChild(unitTransferNode)
             case "exitUnitTransfer":
+                planet?.planetMap.lineMaster.removeAllChildren()
                 removeAllChildren()
                 addChild(descriptionPanel)
                 unitsToTransfer = [.SNIPER:0,.FIGHTER:0,.BRAWLER:0]
@@ -285,22 +321,52 @@ class PlanetPanel: SKScene {
                 if arrowName == "rightArrow" {
                     switch arrowInt {
                     case "0":
-                        unitsToTransfer[.SNIPER]! += 1
+                        if avalibleUnits[.SNIPER] != 0 {
+                            unitsToTransfer[.SNIPER]! += 1
+                            avalibleUnits[.SNIPER]! -= 1
+                        } else {
+                            avalibleUnitsLabel[0].run(pulsedRed)
+                        }
                     case "1":
-                        unitsToTransfer[.FIGHTER]! += 1
+                        if avalibleUnits[.FIGHTER] != 0 {
+                            unitsToTransfer[.FIGHTER]! += 1
+                            avalibleUnits[.FIGHTER]! -= 1
+                        } else {
+                            avalibleUnitsLabel[1].run(pulsedRed)
+                        }
                     case "2":
-                        unitsToTransfer[.BRAWLER]! += 1
+                        if avalibleUnits[.BRAWLER] != 0 {
+                            unitsToTransfer[.BRAWLER]! += 1
+                            avalibleUnits[.BRAWLER]! -= 1
+                        } else {
+                            avalibleUnitsLabel[2].run(pulsedRed)
+                        }
                     default:
                         print("Error, arrowInt was not 0,1,2. check PlanetPanel.Swift")
                     }
                 } else if arrowName == "leftArrow" {
                     switch arrowInt {
                     case "0":
-                        unitsToTransfer[.SNIPER]! -= 1
+                        if unitsToTransfer[.SNIPER] != 0 {
+                            avalibleUnits[.SNIPER]! += 1
+                            unitsToTransfer[.SNIPER]! -= 1
+                        } else {
+                            sniperLabelNode.run(pulsedRed)
+                        }
                     case "1":
-                        unitsToTransfer[.FIGHTER]! -= 1
+                        if unitsToTransfer[.FIGHTER] != 0 {
+                            avalibleUnits[.FIGHTER]! += 1
+                            unitsToTransfer[.FIGHTER]! -= 1
+                        } else {
+                            fighterLabelNode.run(pulsedRed)
+                        }
                     case "2":
-                        unitsToTransfer[.BRAWLER]! -= 1
+                        if unitsToTransfer[.BRAWLER] != 0 {
+                            avalibleUnits[.BRAWLER]! += 1
+                            unitsToTransfer[.BRAWLER]! -= 1
+                        } else {
+                            brawlerLabelNode.run(pulsedRed)
+                        }
                     default:
                         print("Error, arrowInt was not 0,1,2. check PlanetPanel.Swift")
                     }
@@ -326,6 +392,9 @@ class PlanetPanel: SKScene {
             transferFighterNode!.text = String(unitsToTransfer[.FIGHTER]!)
             transferBrawlerNode!.text = String(unitsToTransfer[.BRAWLER]!)
             
+            avalibleUnitsLabel[0].text = String(avalibleUnits[.SNIPER]!)
+            avalibleUnitsLabel[1].text = String(avalibleUnits[.FIGHTER]!)
+            avalibleUnitsLabel[2].text = String(avalibleUnits[.BRAWLER]!)
         }
     }
     

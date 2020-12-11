@@ -11,6 +11,7 @@ enum UnitAffiliation {
 class PlanetMap: SKScene {
     var prevCityHash: Int? = nil
     let map = SKSpriteNode(imageNamed: "BasicMap")
+    let lineMaster = SKNode()
     
     override func sceneDidLoad() {
         // sets the map and scene to line up with the sphere properly
@@ -19,6 +20,7 @@ class PlanetMap: SKScene {
         self.anchorPoint = CGPoint(x: 0,y: 0)
         map.anchorPoint = CGPoint(x: 0,y: 0)
         addChild(map)
+        map.addChild(lineMaster)
     }
     
     func generateCitySprite(loc: CGPoint) -> CGRect {
@@ -39,6 +41,16 @@ class PlanetMap: SKScene {
         }
         (map.childNode(withName: String(loc.hashValue)) as! SKSpriteNode).texture = SKTexture(imageNamed: "SelectedCity")
         prevCityHash = loc.hashValue
+    }
+    
+    func lineBetweenPoints(start: CGPoint, end: CGPoint) {
+        lineMaster.removeAllChildren()
+        let newLine = SKShapeNode(); let drawPath = CGMutablePath()
+        drawPath.move(to: start)
+        drawPath.addLine(to: end)
+        newLine.path = drawPath
+        newLine.strokeColor = SKColor.white
+        lineMaster.addChild(newLine)
     }
     
     func generateUnitSprite(unitType: UnitType, unitAffiliation: UnitAffiliation){

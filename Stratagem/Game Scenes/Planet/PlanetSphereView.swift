@@ -80,9 +80,7 @@ struct PlanetSphereView : UIViewRepresentable {
                 
                 for i in 0..<planet.cityMapping.count {
                     if planet.cityMapping[i].contains(result.textureCoordinates(withMappingChannel: 0)){
-                        Global.gameVars!.selectedCity = planet.cities[i]
-                        planetPanel.selectCity(city: planet.cities[i])
-                        planet.planetMap.selectCitySprite(loc: planet.cityLocs[i])
+                        planetPanel.selectCity(city: planet.cities[i], cityInt: i)
                     }
                 }
             }
