@@ -33,4 +33,9 @@ public class CityBuilding {
     }
     
     func update(_ currentTime: TimeInterval) {}
+    
+    /// Displays whenever the user taps on the building
+    func customSKNode() -> SKNode? {
+        return nil
+    }
 }

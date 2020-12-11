@@ -145,7 +145,8 @@ public class CityScene: SKTiledScene {
                     case .NONE:
                         // Show building info popup
                         if tile.tileData.properties["type"] != "ground" {
-                            hudNode.selectedBuildingScrollViewPopupNode.showPopup(size: size, tileData: tile.tileData)
+                            let cityTile = city!.cityTerrain[Int(tile.tileCoord!.x)][Int(tile.tileCoord!.y)]
+                            hudNode.selectedBuildingScrollViewPopupNode.showPopup(size: size, tileData: tile.tileData, cityTile: cityTile)
                         } else {
                             hudNode.selectedBuildingScrollViewPopupNode.hidePopup()
                         }

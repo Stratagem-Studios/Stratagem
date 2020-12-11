@@ -254,7 +254,7 @@ class HudNode : SKNode {
 class SelectedBuildingScrollViewPopupNode: SKNode {
     private var popupNode = SKNode()
     
-    public func setup(size: CGSize, tileData: SKTilesetData) {
+    public func setup(size: CGSize, tileData: SKTilesetData, cityTile: CityTile? = nil) {
         popupNode.removeAllChildren()
         
         let popupBackgroundNode = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: 250, height: size.halfHeight + 100)), cornerRadius: 10)
@@ -291,33 +291,41 @@ class SelectedBuildingScrollViewPopupNode: SKNode {
         descLabelNode.attributedText = descString
         descLabelNode.position = CGPoint(x: 0, y: yPos)
         
-        yPos -= (descLabelNode.frame.height + 5)
         let dividerRect = CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: popupBackgroundNode.frame.width, height: 1))
-        let divider1 = SKShapeNode(rect: dividerRect)
-        divider1.zPosition = 100000
-        divider1.position = CGPoint(x: 0, y: yPos)
-        
-        // Costs
-        yPos -= 30
-        let costsLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
-        costsLabelNode.zPosition = 100000
-        costsLabelNode.text = "COSTS"
-        costsLabelNode.fontSize = 20
-        costsLabelNode.position = CGPoint(x: 0, y: yPos)
-        
-        /// The yPos the next node should be set at
-        yPos -= 30
-        ResourceTypes.allCases.forEach {
-            if let cost = tileData.properties[$0.rawValue] {
-                let costLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
-                costLabelNode.zPosition = 100000
-                costLabelNode.text = "\($0.rawValue): \(cost)"
-                costLabelNode.fontSize = 14
-                costLabelNode.position = CGPoint(x: 0, y: yPos)
-                yPos -= 15
-                
-                popupNode.addChild(costLabelNode)
+
+        // Costs, don't show if they clicked on a tile
+        if cityTile == nil {
+            yPos -= (descLabelNode.frame.height + 5)
+            let divider1 = SKShapeNode(rect: dividerRect)
+            divider1.zPosition = 100000
+            divider1.position = CGPoint(x: 0, y: yPos)
+            
+            yPos -= 30
+            let costsLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
+            costsLabelNode.zPosition = 100000
+            costsLabelNode.text = "COSTS"
+            costsLabelNode.fontSize = 20
+            costsLabelNode.position = CGPoint(x: 0, y: yPos)
+            
+            /// The yPos the next node should be set at
+            yPos -= 30
+            ResourceTypes.allCases.forEach {
+                if let cost = tileData.properties[$0.rawValue] {
+                    let costLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
+                    costLabelNode.zPosition = 100000
+                    costLabelNode.text = "\($0.rawValue): \(cost)"
+                    costLabelNode.fontSize = 14
+                    costLabelNode.position = CGPoint(x: 0, y: yPos)
+                    yPos -= 15
+                    
+                    popupNode.addChild(costLabelNode)
+                }
             }
+            
+            popupNode.addChild(costsLabelNode)
+            popupNode.addChild(divider1)
+        } else {
+            yPos -= (descLabelNode.frame.height + 5)
         }
         
         // Produces
@@ -392,11 +400,20 @@ class SelectedBuildingScrollViewPopupNode: SKNode {
             yPos = yPos + (30 + 30)
         }
         
+        // Show the building's custom SKNode if it has one
+        if let customSKNode = cityTile?.building?.customSKNode() {
+            yPos -= 15
+            let dividerCustom = SKShapeNode(rect: dividerRect)
+            dividerCustom.zPosition = 100000
+            dividerCustom.position = CGPoint(x: 0, y: yPos)
+            
+            yPos -= 30
+            popupNode.addChild(customSKNode)
+        }
+        
         popupNode.addChild(popupBackgroundNode)
         popupNode.addChild(titleLabelNode)
         popupNode.addChild(descLabelNode)
-        popupNode.addChild(divider1)
-        popupNode.addChild(costsLabelNode)
         popupNode.alpha = 0
         
         if popupNode.parent == nil {
@@ -404,8 +421,8 @@ class SelectedBuildingScrollViewPopupNode: SKNode {
         }
     }
     
-    public func showPopup(size: CGSize, tileData: SKTilesetData) {
-        setup(size: size, tileData: tileData)
+    public func showPopup(size: CGSize, tileData: SKTilesetData, cityTile: CityTile? = nil) {
+        setup(size: size, tileData: tileData, cityTile: cityTile)
         let fadeIn = SKAction.fadeIn(withDuration: 0.5)
         popupNode.run(fadeIn)
     }

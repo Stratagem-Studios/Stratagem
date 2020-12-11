@@ -45,7 +45,8 @@ public class CityTile {
                 tileType = .INDUSTRIAL
                 building = IndustrialBuilding(cost: costs, properties: properties)
             case "military":
-                break
+                tileType = .MILITARY
+                building = MilitaryBuilding(cost: costs, properties: properties)
             default:
                 break
             }

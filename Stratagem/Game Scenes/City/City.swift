@@ -67,8 +67,13 @@ public class City {
             }
         }
         
+        // Military
+        
+        // Credits- for now, 5% of population / sec
+        tryAddFunds(funds: [.CREDITS: (0.05 * resources[.POPULATION]!)], deltaTime: deltaTime)
+        
         secondDelta += deltaTime
-        if secondDelta >= 1 {
+        if secondDelta >= 5 {
             Global.hfGamePusher.uploadResources(cityName: cityName!, name: "resources", resources: resources)
             secondDelta = 0
         }
