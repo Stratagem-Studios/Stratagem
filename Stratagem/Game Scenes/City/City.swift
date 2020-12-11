@@ -107,7 +107,7 @@ public class City {
                             cityTerrain[x][y] = cityTile
                             cityTerrainInt[x][y] = secondTileID
                             
-                            Global.hfGamePusher.uploadCityTerrain(cityName: cityName, cityTerrain: cityTerrain)
+                            Global.hfGamePusher.uploadCityTerrain(cityName: cityName, cityTerrainInt: cityTerrainInt)
                         } else {
                             hudNode!.inlineErrorMessage(errorMessage: "Unable to place tile")
                         }
@@ -134,7 +134,7 @@ public class City {
                                     cityTerrain[x][y] = cityTile
                                     cityTerrainInt[x][y] = secondTileID
                                     
-                                    Global.hfGamePusher.uploadCityTerrain(cityName: cityName,  cityTerrain: cityTerrain)
+                                    Global.hfGamePusher.uploadCityTerrain(cityName: cityName, cityTerrainInt: cityTerrainInt)
                                 } else {
                                     hudNode!.inlineErrorMessage(errorMessage: "Insufficient funds")
                                 }
@@ -212,8 +212,8 @@ public class City {
         // Create tmx file
         var layer1 = ""
         var layer2 = ""
-        for row in 0..<cityWidth {
-            for col in 0..<cityHeight {
+        for col in 0..<cityHeight {
+            for row in 0..<cityWidth {
                 layer1 = layer1 + "\(cityTerrainInt[row][col]),"
             }
             layer1 = layer1 + " \n"

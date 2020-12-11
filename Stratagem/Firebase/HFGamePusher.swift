@@ -9,20 +9,12 @@ public struct HFGamePusher {
     var ref: DatabaseReference! = Database.database().reference()
     
     /// Uplaods a 2d array of tile IDs to Firebase
-    public func uploadCityTerrain(cityName: String, cityTerrain: [[CityTile]]? = nil, cityTerrainInt: [[Int]]? = nil) {
+    public func uploadCityTerrain(cityName: String, cityTerrainInt: [[Int]]) {
         var cityTerrainFlattened: [Int] = []
         
-        if let cityTerrain = cityTerrain {
-            for (_, item) in cityTerrain.enumerated() {
-                for cityTile in item {
-                    cityTerrainFlattened.append((cityTile.tile?.tileData.globalID)!)
-                }
-            }
-        } else if let cityTerrainInt = cityTerrainInt {
-            for (_, item) in cityTerrainInt.enumerated() {
-                for cityTile in item {
-                    cityTerrainFlattened.append(cityTile)
-                }
+        for (_, item) in cityTerrainInt.enumerated() {
+            for cityTile in item {
+                cityTerrainFlattened.append(cityTile)
             }
         }
         
