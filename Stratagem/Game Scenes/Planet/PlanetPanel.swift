@@ -24,7 +24,7 @@ class PlanetPanel: SKScene {
     private var avalibleUnits: [UnitType : Int] = [.SNIPER:0, .FIGHTER:0, .BRAWLER:0]
     
     private var unitsToTransfer: [UnitType : Int] = [.SNIPER:0, .FIGHTER:0, .BRAWLER:0]
-    private let transferButton = SKShapeNode(rectOf: CGSize(width: UIScreen.main.bounds.size.width/3 * 2/3, height: UIScreen.main.bounds.size.width/21), cornerRadius: 10)
+    private let transferButton = SKShapeNode(rectOf: CGSize(width: UIScreen.main.bounds.size.width*2/5 * 2/3, height: UIScreen.main.bounds.size.width/21), cornerRadius: 10)
     private let transferText = SKLabelNode(fontNamed: "Montserrat-Bold")
     
     private let descriptionPanel = SKShapeNode(rectOf: CGSize(width: UIScreen.main.bounds.size.width/3, height: UIScreen.main.bounds.size.height), cornerRadius: 50)
@@ -281,12 +281,13 @@ class PlanetPanel: SKScene {
         
         transferButton.position = CGPoint(x: 0, y: -panelSize.height/3)
         transferButton.fillColor = SKColor.gray
-        transferButton.name = ""
+        transferButton.name = "***NIL***"
         transferText.fontSize = panelSize.height/18
-        transferText.fontColor = SKColor.yellow
+        transferText.fontColor = SKColor.darkGray
         transferText.verticalAlignmentMode = .center
-        transferText.name = "startTransfer"
-        transferText.text = "Start Transfer"
+        transferText.name = "***NIL***"
+        transferText.text = "Select Destination"
+        transferButton.addChild(transferText)
         unitTransferNode.addChild(transferButton)
     }
     
@@ -302,9 +303,11 @@ class PlanetPanel: SKScene {
         } else if children.first?.name == "unitTransferNode" {
             endCityInt = cityInt
             planet?.drawLineBetweenCites(startInt: startCityint, endInt: endCityInt)
-            if transferButton.children.count == 0 {
-                transferButton.addChild(transferText)
+            if transferButton.name == "***NIL***" {
                 transferButton.name = "startTransfer"
+                transferText.name = "startTransfer"
+                transferText.text = "Start Transfer"
+                transferText.color = SKColor.yellow
                 transferButton.fillColor = SKColor.black
             }
         } else {
