@@ -24,6 +24,8 @@ class PlanetPanel: SKScene {
     private var avalibleUnits: [UnitType : Int] = [.SNIPER:0, .FIGHTER:0, .BRAWLER:0]
     
     private var unitsToTransfer: [UnitType : Int] = [.SNIPER:0, .FIGHTER:0, .BRAWLER:0]
+    private let transferButton = SKShapeNode(rectOf: CGSize(width: UIScreen.main.bounds.size.width/3 * 2/3, height: UIScreen.main.bounds.size.width/21), cornerRadius: 10)
+    private let transferText = SKLabelNode(fontNamed: "Montserrat-Bold")
     
     private let descriptionPanel = SKShapeNode(rectOf: CGSize(width: UIScreen.main.bounds.size.width/3, height: UIScreen.main.bounds.size.height), cornerRadius: 50)
     
@@ -277,6 +279,15 @@ class PlanetPanel: SKScene {
         avalibleUnitsLabel.position = CGPoint(x: 0, y: exitUnitTransfer.position.y)
         unitTransferNode.addChild(avalibleUnitsLabel)
         
+        transferButton.position = CGPoint(x: 0, y: -panelSize.height/3)
+        transferButton.fillColor = SKColor.gray
+        transferButton.name = ""
+        transferText.fontSize = panelSize.height/18
+        transferText.fontColor = SKColor.yellow
+        transferText.verticalAlignmentMode = .center
+        transferText.name = "startTransfer"
+        transferText.text = "Start Transfer"
+        unitTransferNode.addChild(transferButton)
     }
     
     func selectCity(city: City, cityInt: Int){
@@ -287,14 +298,21 @@ class PlanetPanel: SKScene {
             avalibleUnits = city.units
             startCityint = cityInt
             planet?.planetMap.selectCitySprite(loc: (planet?.cityLocs[cityInt])!)
+            Global.gameVars.selectedCity = city
         } else if children.first?.name == "unitTransferNode" {
             endCityInt = cityInt
             planet?.drawLineBetweenCites(startInt: startCityint, endInt: endCityInt)
+            if transferButton.children.count == 0 {
+                transferButton.addChild(transferText)
+                transferButton.name = "startTransfer"
+                transferButton.fillColor = SKColor.black
+            }
         } else {
             cityNameNode.text = city.cityName
             avalibleUnits = city.units
             startCityint = cityInt
             planet?.planetMap.selectCitySprite(loc: (planet?.cityLocs[cityInt])!)
+            Global.gameVars.selectedCity = city
         }
     }
     
@@ -308,6 +326,17 @@ class PlanetPanel: SKScene {
                 removeAllChildren()
                 addChild(unitTransferNode)
             case "exitUnitTransfer":
+                avalibleUnits[.SNIPER]! += unitsToTransfer[.SNIPER]!
+                avalibleUnits[.FIGHTER]! += unitsToTransfer[.FIGHTER]!
+                avalibleUnits[.BRAWLER]! += unitsToTransfer[.BRAWLER]!
+                
+                unitsToTransfer = [.SNIPER:0,.FIGHTER:0,.BRAWLER:0]
+                planet?.planetMap.lineMaster.removeAllChildren()
+                removeAllChildren()
+                addChild(descriptionPanel)
+            case "startTransfer" :
+                planet?.cities[startCityint].units = avalibleUnits
+                planet?.cityTransfers.append(CityTransfer(startCityInt: startCityint, endCityint: endCityInt, units: unitsToTransfer))
                 planet?.planetMap.lineMaster.removeAllChildren()
                 removeAllChildren()
                 addChild(descriptionPanel)

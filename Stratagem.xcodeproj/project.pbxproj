@@ -213,7 +213,6 @@
 		CECA7749255E438500CE9F69 /* Units */ = {
 			isa = PBXGroup;
 			children = (
-				CEAA0E122582E44300C7512C /* CityTransfer.swift */,
 				FF5AF909255E489F00836F03 /* Units.swift */,
 				CE3B15B125828AFB00F096D6 /* Brawlers.swift */,
 			);
@@ -442,6 +441,7 @@
 		FFE6EE1425746BAE00BB677B /* Planet */ = {
 			isa = PBXGroup;
 			children = (
+				CEAA0E122582E44300C7512C /* CityTransfer.swift */,
 				FFE6EE1925746BF800BB677B /* Planet.swift */,
 				CE1004BE256856BC0077941A /* PlanetSphereView.swift */,
 				CEC3A8DD257960840009E3DC /* PlanetMap.swift */,

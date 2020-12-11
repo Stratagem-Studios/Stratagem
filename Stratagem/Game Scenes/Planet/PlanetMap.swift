@@ -5,10 +5,10 @@ import SpriteKit
 // thses two enums used to easily spawn units
 enum UnitAffiliation {
     case ALLIED, NEUTRAL, ENEMY
-    
 }
 
 class PlanetMap: SKScene {
+    
     var prevCityHash: Int? = nil
     let map = SKSpriteNode(imageNamed: "BasicMap")
     let lineMaster = SKNode()
@@ -53,8 +53,16 @@ class PlanetMap: SKScene {
         lineMaster.addChild(newLine)
     }
     
-    func generateUnitSprite(unitType: UnitType, unitAffiliation: UnitAffiliation){
-        
+    func generateUnitSprite(loc: CGPoint) -> SKSpriteNode{
+        let unit = SKSpriteNode(imageNamed: "AliedBrawler")
+        unit.zPosition = 100
+        unit.name = "Transfer"
+        map.addChild(unit)
+        return unit
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        print (map.childNode(withName: "Transfer")?.position.x)
     }
     
 }
