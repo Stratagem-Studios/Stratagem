@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE1004BF256856BC0077941A /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004BE256856BC0077941A /* PlanetView.swift */; };
 		CE1004BF256856BC0077941A /* PlanetSphereView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004BE256856BC0077941A /* PlanetSphereView.swift */; };
 		CE1004E12569E1B70077941A /* GalaxyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004E02569E1B70077941A /* GalaxyView.swift */; };
-		CE2B4E3D257FCDAC00A4A146 /* Pods_Stratagem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500AA38F10AA677CBCF94516 /* Pods_Stratagem.framework */; };
 		CE2B4E6B257FEA1100A4A146 /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B4E6A257FEA1100A4A146 /* PlanetView.swift */; };
 		CE3B15AD2581D3EA00F096D6 /* UnitTransfers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B15AC2581D3EA00F096D6 /* UnitTransfers.swift */; };
+		CE3B15B225828AFB00F096D6 /* Brawler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B15B125828AFB00F096D6 /* Brawler.swift */; };
 		CE8F1382257488AC0038156C /* GalaxyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1381257488AC0038156C /* GalaxyScene.swift */; };
 		CE8F1394257605D70038156C /* Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1393257605D70038156C /* Updater.swift */; };
 		CEC3A8DE257960840009E3DC /* PlanetMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC3A8DD257960840009E3DC /* PlanetMap.swift */; };
@@ -108,6 +107,7 @@
 		CE1004E02569E1B70077941A /* GalaxyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyView.swift; sourceTree = "<group>"; };
 		CE2B4E6A257FEA1100A4A146 /* PlanetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		CE3B15AC2581D3EA00F096D6 /* UnitTransfers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTransfers.swift; sourceTree = "<group>"; };
+		CE3B15B125828AFB00F096D6 /* Brawler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brawler.swift; sourceTree = "<group>"; };
 		CE8F1381257488AC0038156C /* GalaxyScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyScene.swift; sourceTree = "<group>"; };
 		CE8F1393257605D70038156C /* Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updater.swift; sourceTree = "<group>"; };
 		CEC3A8DD257960840009E3DC /* PlanetMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetMap.swift; sourceTree = "<group>"; };
@@ -200,17 +200,6 @@
 		FFFCFAC2255B62B300D03284 /* LFGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFGameManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFrameworksBuildPhase section */
-		FF078BC4254F3F8300E9FA7C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE2B4E3D257FCDAC00A4A146 /* Pods_Stratagem.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
 /* Begin PBXGroup section */
 		59B0506723D59354ED7DAD04 /* Pods */ = {
 			isa = PBXGroup;
@@ -226,6 +215,7 @@
 			children = (
 				FF5AF909255E489F00836F03 /* Units.swift */,
 				CE3B15AC2581D3EA00F096D6 /* UnitTransfers.swift */,
+				CE3B15B125828AFB00F096D6 /* Brawler.swift */,
 			);
 			name = Units;
 			sourceTree = "<group>";
@@ -668,6 +658,7 @@
 				FF9D7D69256574890076C8DF /* HFGameListener.swift in Sources */,
 				FF1B13D7256B0B81005158C9 /* City.swift in Sources */,
 				FF49D7022577E9EE006A282E /* Road.swift in Sources */,
+				CE3B15B225828AFB00F096D6 /* Brawler.swift in Sources */,
 				FFAD01DE255AE84600BA2907 /* CreateGameView.swift in Sources */,
 				FF8C4E6C254FBCBD00522756 /* (null) in Sources */,
 				FF5AF90A255E489F00836F03 /* Units.swift in Sources */,
@@ -844,7 +835,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Stratagem/Stratagem.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Stratagem/Preview Content\"";
 				DEVELOPMENT_TEAM = 883DK65VTV;
@@ -871,7 +861,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Stratagem/Stratagem.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Stratagem/Preview Content\"";
 				DEVELOPMENT_TEAM = 883DK65VTV;

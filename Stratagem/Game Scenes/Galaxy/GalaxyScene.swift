@@ -55,7 +55,17 @@ class GalaxyScene: SKScene {
         // Adds/organizes planet nodes
         var nodeScreenSize = panelNodes[2].size
         for i in 0..<galaxy!.planets.count{
-            let planet = SKSpriteNode(imageNamed: "Planet")
+            var planetSpriteString = ""
+            switch galaxy!.planets[i].owner {
+            case "***NIL***":
+                planetSpriteString = "NeutralPlanet"
+            case Global.playerVariables.playerName:
+                planetSpriteString = "AlliedPlanet"
+            default:
+                planetSpriteString = "EnemyPlanet"
+            }
+            
+            let planet = SKSpriteNode(imageNamed: planetSpriteString)
             planet.colorBlendFactor = 1
             planet.color = SKColor.white
             planet.name = "planet" + String(i)
@@ -210,9 +220,6 @@ class GalaxyScene: SKScene {
         for i in 0..<planetNodes.count{
             if "planet" + String(i) == node.name {
                 let planet = Global.gameVars.galaxy.planets[i]
-                
-                // If there are no cities generated for the planet, we need to make at least one - this code should be removed later
-                //if (planet.cities.isEmpty){planet.generateNewCity(cityName: "e")}
                 
                 selectPlanet(planetInt: i)
             } else if node.name == "settings" {
