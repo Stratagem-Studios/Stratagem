@@ -105,6 +105,7 @@ public class City {
                             
                             // Update my cityTerrain array
                             cityTerrain[x][y] = cityTile
+                            cityTerrainInt[x][y] = secondTileID
                             
                             Global.hfGamePusher.uploadCityTerrain(cityName: cityName, cityTerrain: cityTerrain)
                         } else {
@@ -131,6 +132,7 @@ public class City {
                                     
                                     // Update my cityTerrain array
                                     cityTerrain[x][y] = cityTile
+                                    cityTerrainInt[x][y] = secondTileID
                                     
                                     Global.hfGamePusher.uploadCityTerrain(cityName: cityName,  cityTerrain: cityTerrain)
                                 } else {
