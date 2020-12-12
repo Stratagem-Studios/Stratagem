@@ -32,7 +32,7 @@ public class CityBuilding {
         return "true"
     }
     
-    func update(_ currentTime: TimeInterval) {}
+    func update(_ deltaTime: CGFloat) {}
     
     /// Displays whenever the user taps on the building
     func customSKNode() -> SKNode? { return nil }

@@ -3,6 +3,8 @@ import SKTiled
 
 /// User selects units and military building creates them
 public class MilitaryBuilding: CityBuilding {
+    var unitCreationQueue = Queue<blah unit>()
+    
     init(cost: [ResourceTypes: CGFloat], properties: Dictionary<String, String>) {
         super.init(cost: cost)
     }
@@ -22,6 +24,10 @@ public class MilitaryBuilding: CityBuilding {
         } else {
             return "Must place building adjacent to a road"
         }
+    }
+    
+    override func update(_ deltaTime: CGFloat) {
+        <#code#>
     }
     
     /// Displays whenever the user taps on the building

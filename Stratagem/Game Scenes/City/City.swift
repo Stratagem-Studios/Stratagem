@@ -70,7 +70,11 @@ public class City {
         }
         
         // Military
-        
+        if let cityTerrain = cityTerrain {
+            for cityTile in cityTerrain.joined().filter({ $0.tileType == .MILITARY }) {
+                cityTile.building?.update(deltaTime)
+            }
+        }
         // Credits- for now, 5% of population / sec
         tryAddFunds(funds: [.CREDITS: (0.05 * resources[.POPULATION]!)], deltaTime: deltaTime)
         
