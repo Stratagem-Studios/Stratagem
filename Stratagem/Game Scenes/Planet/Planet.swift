@@ -5,8 +5,8 @@ class Planet {
     var planetName: String! // Firebase
     var owner: String! // Firebase
     
-    // Later when city count/position is random these will need to be procedurally generated
     var cities: [City] = []
+    var cityTransfers: [CityTransfer] = []
     
     // for map
     var cityLocs: [CGPoint] = []
@@ -30,6 +30,16 @@ class Planet {
         for city in cities.filter({$0.owner == Global.playerVariables.playerName}) {
             city.update(deltaTime: deltaTime)
         }
+        for i in 0..<cityTransfers.count {
+            if cityTransfers.count != 0 {
+                if (cityTransfers[i].timePassed(dt: deltaTime)){cityTransfers.remove(at: i)}
+            }
+        }
+        planetSphere.firstMaterial?.diffuse.contents = planetMap
+    }
+    
+    func drawLineBetweenCites(startInt: Int, endInt: Int){
+        planetMap.lineBetweenPoints(start: cityLocs[startInt], end: cityLocs[endInt])
     }
     
     /// Generate all the cities of the planet given random names
@@ -73,10 +83,6 @@ class Planet {
         planetLight!.light = SCNLight()
         planetLight!.light!.type = .ambient
         planetLight!.light!.color = UIColor.gray
-    }
-    
-    func updatePlanet(){
-        planetSphere.firstMaterial?.diffuse.contents = planetMap
     }
     
     func generateAllCitySprites() {

@@ -5,12 +5,13 @@ import SpriteKit
 // thses two enums used to easily spawn units
 enum UnitAffiliation {
     case ALLIED, NEUTRAL, ENEMY
-    
 }
 
 class PlanetMap: SKScene {
+    
     var prevCityHash: Int? = nil
     let map = SKSpriteNode(imageNamed: "BasicMap")
+    let lineMaster = SKNode()
     
     override func sceneDidLoad() {
         // sets the map and scene to line up with the sphere properly
@@ -19,6 +20,7 @@ class PlanetMap: SKScene {
         self.anchorPoint = CGPoint(x: 0,y: 0)
         map.anchorPoint = CGPoint(x: 0,y: 0)
         addChild(map)
+        map.addChild(lineMaster)
     }
     
     func generateCitySprite(loc: CGPoint) -> CGRect {
@@ -41,8 +43,26 @@ class PlanetMap: SKScene {
         prevCityHash = loc.hashValue
     }
     
-    func generateUnitSprite(unitType: UnitType, unitAffiliation: UnitAffiliation){
-        
+    func lineBetweenPoints(start: CGPoint, end: CGPoint) {
+        lineMaster.removeAllChildren()
+        let newLine = SKShapeNode(); let drawPath = CGMutablePath()
+        drawPath.move(to: start)
+        drawPath.addLine(to: end)
+        newLine.path = drawPath
+        newLine.strokeColor = SKColor.white
+        lineMaster.addChild(newLine)
+    }
+    
+    func generateUnitSprite(loc: CGPoint) -> SKSpriteNode{
+        let unit = SKSpriteNode(imageNamed: "AliedBrawler")
+        unit.zPosition = 100
+        unit.name = "Transfer"
+        map.addChild(unit)
+        return unit
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        print (map.childNode(withName: "Transfer")?.position.x)
     }
     
 }
