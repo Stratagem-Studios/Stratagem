@@ -24,6 +24,10 @@ public struct Queue<T> {
   }
 
   public mutating func dequeue() -> T? {
+    if count == 0 {
+        return nil
+    }
+    
     guard let element = array[guarded: head] else { return nil }
 
     array[head] = nil

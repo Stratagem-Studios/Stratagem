@@ -1,6 +1,7 @@
 import Foundation
+import SpriteKit
 
-public enum UnitType {
+public enum UnitType: String {
     case BRAWLER, SNIPER, FIGHTER
 }
 
@@ -13,6 +14,9 @@ class Units {
     var moveSpeed: Double = 1
     var attackSpeed: Double = 1
     var quantity: Int = 0
+    
+    /// Base amount of time to build the unit
+    var buildTime: CGFloat = 20
     
     init() {
     }

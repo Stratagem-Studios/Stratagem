@@ -35,5 +35,10 @@ public class CityBuilding {
     func update(_ deltaTime: CGFloat) {}
     
     /// Displays whenever the user taps on the building
-    func customSKNode() -> SKNode? { return nil }
+    func customSKNodeSmall() -> SKNode? { return nil }
+    /// Almost full screen node
+    func customSKNodeLarge(size: CGSize) -> SKNode? { return nil }
+    
+    /// Called whenever player presses on a button on custom SKNode
+    func userTouchedButton(button: SKNode) {}
 }
