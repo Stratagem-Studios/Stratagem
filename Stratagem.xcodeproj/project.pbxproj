@@ -11,13 +11,16 @@
 		CE1004E12569E1B70077941A /* GalaxyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004E02569E1B70077941A /* GalaxyView.swift */; };
 		CE2B4E6B257FEA1100A4A146 /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B4E6A257FEA1100A4A146 /* PlanetView.swift */; };
 		CE3B15B225828AFB00F096D6 /* Brawlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B15B125828AFB00F096D6 /* Brawlers.swift */; };
+		CE5EFF312583E9E70096FB39 /* PlanetTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5EFF302583E9E70096FB39 /* PlanetTransfer.swift */; };
 		CE8F1382257488AC0038156C /* GalaxyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1381257488AC0038156C /* GalaxyScene.swift */; };
 		CE8F1394257605D70038156C /* Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1393257605D70038156C /* Updater.swift */; };
+		CEA07C262585B8F2009CBBCD /* CombatHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA07C252585B8F2009CBBCD /* CombatHandler.swift */; };
 		CEAA0E132582E44300C7512C /* CityTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA0E122582E44300C7512C /* CityTransfer.swift */; };
 		CEC3A8DE257960840009E3DC /* PlanetMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC3A8DD257960840009E3DC /* PlanetMap.swift */; };
 		CEC77EC525812D4B00CA1446 /* PlanetPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC77EC425812D4B00CA1446 /* PlanetPanel.swift */; };
 		CEC78654256C1B51001E440F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC78653256C1B51001E440F /* GameView.swift */; };
 		CECA7740255E3F1700CE9F69 /* GameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA773F255E3F1700CE9F69 /* GameVariables.swift */; };
+		CED306E42585FAEF003BC31C /* Spaceship.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED306E32585FAEF003BC31C /* Spaceship.swift */; };
 		FF012D3B2551B0420017E288 /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF012D3A2551B0420017E288 /* TitleText.swift */; };
 		FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BCA254F3F8300E9FA7C /* StratagemApp.swift */; };
 		FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF078BCC254F3F8300E9FA7C /* ContentView.swift */; };
@@ -107,13 +110,16 @@
 		CE1004E02569E1B70077941A /* GalaxyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyView.swift; sourceTree = "<group>"; };
 		CE2B4E6A257FEA1100A4A146 /* PlanetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		CE3B15B125828AFB00F096D6 /* Brawlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brawlers.swift; sourceTree = "<group>"; };
+		CE5EFF302583E9E70096FB39 /* PlanetTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetTransfer.swift; sourceTree = "<group>"; };
 		CE8F1381257488AC0038156C /* GalaxyScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyScene.swift; sourceTree = "<group>"; };
 		CE8F1393257605D70038156C /* Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updater.swift; sourceTree = "<group>"; };
+		CEA07C252585B8F2009CBBCD /* CombatHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatHandler.swift; sourceTree = "<group>"; };
 		CEAA0E122582E44300C7512C /* CityTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTransfer.swift; sourceTree = "<group>"; };
 		CEC3A8DD257960840009E3DC /* PlanetMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetMap.swift; sourceTree = "<group>"; };
 		CEC77EC425812D4B00CA1446 /* PlanetPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetPanel.swift; sourceTree = "<group>"; };
 		CEC78653256C1B51001E440F /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		CECA773F255E3F1700CE9F69 /* GameVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVariables.swift; sourceTree = "<group>"; };
+		CED306E32585FAEF003BC31C /* Spaceship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spaceship.swift; sourceTree = "<group>"; };
 		E54BF43E273D93EB0EDE54FC /* Pods-Stratagem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stratagem.release.xcconfig"; path = "Target Support Files/Pods-Stratagem/Pods-Stratagem.release.xcconfig"; sourceTree = "<group>"; };
 		FF012D3A2551B0420017E288 /* TitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
 		FF078BC7254F3F8300E9FA7C /* Stratagem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stratagem.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				FF5AF909255E489F00836F03 /* Units.swift */,
+				CEA07C252585B8F2009CBBCD /* CombatHandler.swift */,
 				CE3B15B125828AFB00F096D6 /* Brawlers.swift */,
 			);
 			name = Units;
@@ -434,6 +441,8 @@
 			children = (
 				FFE6EE1525746BD000BB677B /* Galaxy.swift */,
 				CE8F1381257488AC0038156C /* GalaxyScene.swift */,
+				CED306E32585FAEF003BC31C /* Spaceship.swift */,
+				CE5EFF302583E9E70096FB39 /* PlanetTransfer.swift */,
 			);
 			path = Galaxy;
 			sourceTree = "<group>";
@@ -657,6 +666,7 @@
 			files = (
 				FF9D7D69256574890076C8DF /* HFGameListener.swift in Sources */,
 				FF1B13D7256B0B81005158C9 /* City.swift in Sources */,
+				CED306E42585FAEF003BC31C /* Spaceship.swift in Sources */,
 				FF49D7022577E9EE006A282E /* Road.swift in Sources */,
 				CE3B15B225828AFB00F096D6 /* Brawlers.swift in Sources */,
 				FFAD01DE255AE84600BA2907 /* CreateGameView.swift in Sources */,
@@ -685,6 +695,7 @@
 				CE2B4E6B257FEA1100A4A146 /* PlanetView.swift in Sources */,
 				FFD4AE5B257E8A93000BACEE /* SwiftySKScrollView.swift in Sources */,
 				CE8F1382257488AC0038156C /* GalaxyScene.swift in Sources */,
+				CE5EFF312583E9E70096FB39 /* PlanetTransfer.swift in Sources */,
 				FF40F4712559CF310036E4C7 /* CityView.swift in Sources */,
 				FFFCFAB9255B296400D03284 /* AppDelegate.swift in Sources */,
 				CEC77EC525812D4B00CA1446 /* PlanetPanel.swift in Sources */,
@@ -692,6 +703,7 @@
 				FF3789AB255F823B00D30F66 /* ErrorPopup.swift in Sources */,
 				CECA7740255E3F1700CE9F69 /* GameVariables.swift in Sources */,
 				FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */,
+				CEA07C262585B8F2009CBBCD /* CombatHandler.swift in Sources */,
 				FF96B533255DCB6E00E5F8D4 /* VisualEffectView.swift in Sources */,
 				FFF85E3E255C73B700DFDDC2 /* LFGameListener.swift in Sources */,
 				FF49D70C2577EA22006A282E /* MilitaryBuilding.swift in Sources */,

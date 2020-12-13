@@ -3,6 +3,7 @@ import SpriteKit
 class Galaxy {
     var planetLocs: [CGPoint] = []
     var planets: [Planet] = []
+    var planetTransfers: [PlanetTransfer] = []
     var galaxyScene: GalaxyScene!
     
     /// Generates all the planets and cities in a galaxy
@@ -34,7 +35,18 @@ class Galaxy {
         }
     }
     
-    init() {
-        
+    
+    
+    func update(dt: CGFloat) {
+        var transfersIntsToRemove: [Int] = []
+        print(planetTransfers.count)
+        for i in 0..<planetTransfers.count {
+            if planetTransfers[i].timePassed(dt: dt) {
+                transfersIntsToRemove.append(i)
+            }
+        }
+        for i in transfersIntsToRemove {
+            planetTransfers.remove(at: i)
+        }
     }
 }
