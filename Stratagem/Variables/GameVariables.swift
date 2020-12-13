@@ -38,6 +38,9 @@ class GameVariables {
     
     
     func update(deltaTime: CGFloat){
+        // Update the galaxy
+        galaxy.update(dt: deltaTime)
+        
         // Update population numbers per city
         for planet in Global.gameVars.galaxy.planets.filter({$0.owner == Global.playerVariables.playerName}) {
             planet.update(deltaTime: deltaTime)

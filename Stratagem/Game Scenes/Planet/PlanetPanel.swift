@@ -283,7 +283,7 @@ class PlanetPanel: SKScene {
         transferButton.fillColor = SKColor.gray
         transferButton.name = "***NIL***"
         transferText.fontSize = panelSize.height/18
-        transferText.fontColor = SKColor.darkGray
+        transferText.fontColor = SKColor.yellow
         transferText.verticalAlignmentMode = .center
         transferText.name = "***NIL***"
         transferText.text = "Select Destination"
@@ -307,7 +307,7 @@ class PlanetPanel: SKScene {
                 transferButton.name = "startTransfer"
                 transferText.name = "startTransfer"
                 transferText.text = "Start Transfer"
-                transferText.color = SKColor.yellow
+                transferText.color = UIColor.yellow
                 transferButton.fillColor = SKColor.black
             }
         } else {
@@ -339,7 +339,7 @@ class PlanetPanel: SKScene {
                 addChild(descriptionPanel)
             case "startTransfer" :
                 planet?.cities[startCityint].units = avalibleUnits
-                planet?.cityTransfers.append(CityTransfer(startCityInt: startCityint, endCityint: endCityInt, units: unitsToTransfer))
+                planet?.cityTransfers.append(CityTransfer(startCityInt: startCityint, endCityint: endCityInt, units: unitsToTransfer, isAttack: true))
                 planet?.planetMap.lineMaster.removeAllChildren()
                 removeAllChildren()
                 addChild(descriptionPanel)

@@ -54,15 +54,12 @@ class PlanetMap: SKScene {
     }
     
     func generateUnitSprite(loc: CGPoint) -> SKSpriteNode{
-        let unit = SKSpriteNode(imageNamed: "AliedBrawler")
+        let unit = SKSpriteNode(imageNamed: "Groups")
         unit.zPosition = 100
+        unit.size = CGSize(width: 25, height: 30)
         unit.name = "Transfer"
         map.addChild(unit)
         return unit
-    }
-    
-    override func update(_ currentTime: TimeInterval) {
-        print (map.childNode(withName: "Transfer")?.position.x)
     }
     
 }
