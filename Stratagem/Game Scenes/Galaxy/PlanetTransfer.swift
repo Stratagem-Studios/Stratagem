@@ -12,13 +12,14 @@ class PlanetTransfer {
     var travelDistance: CGFloat = 0
     var travelGoal: CGFloat = 0
     let unitSprite: SKSpriteNode
-    weak var map: Galaxy?
     
     weak var planet = Global.gameVars.selectedPlanet!
     
     init(startCityInt: Int, endCityint: Int, units: [UnitType : Int]) {
         self.units = units
         self.endCity = planet!.cities[endCityint]
+        
+        unitSprite = SKSpriteNode(imageNamed: "Spaceship")
     }
     
     func timePassed(dt: CGFloat) -> Bool{

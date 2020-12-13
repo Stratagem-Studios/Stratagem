@@ -3,7 +3,7 @@ import SpriteKit
 class Galaxy {
     var planetLocs: [CGPoint] = []
     var planets: [Planet] = []
-    var planetTransfers: [planetTransfer] = []
+    var planetTransfers: [PlanetTransfer] = []
     var galaxyScene: GalaxyScene!
     
     /// Generates all the planets and cities in a galaxy
@@ -35,7 +35,9 @@ class Galaxy {
         }
     }
     
-    init() {
+    
+    
+    func update(dt: CGFloat) {
         
     }
 }

@@ -81,6 +81,10 @@ class GalaxyScene: SKScene {
             galaxy?.planetLocs.append(node.position)
         }
         
+        // Adds any possible spaceship sprites to the scene
+        for transfer in galaxy!.planetTransfers {
+            panelNodes[2].addChild(transfer.unitSprite)
+        }
         
         // Adds/organizes lines
         let linesMaster = SKNode()

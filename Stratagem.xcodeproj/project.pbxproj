@@ -14,6 +14,7 @@
 		CE5EFF312583E9E70096FB39 /* PlanetTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5EFF302583E9E70096FB39 /* PlanetTransfer.swift */; };
 		CE8F1382257488AC0038156C /* GalaxyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1381257488AC0038156C /* GalaxyScene.swift */; };
 		CE8F1394257605D70038156C /* Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1393257605D70038156C /* Updater.swift */; };
+		CEA07C262585B8F2009CBBCD /* CombatHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA07C252585B8F2009CBBCD /* CombatHandler.swift */; };
 		CEAA0E132582E44300C7512C /* CityTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA0E122582E44300C7512C /* CityTransfer.swift */; };
 		CEC3A8DE257960840009E3DC /* PlanetMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC3A8DD257960840009E3DC /* PlanetMap.swift */; };
 		CEC77EC525812D4B00CA1446 /* PlanetPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC77EC425812D4B00CA1446 /* PlanetPanel.swift */; };
@@ -111,6 +112,7 @@
 		CE5EFF302583E9E70096FB39 /* PlanetTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetTransfer.swift; sourceTree = "<group>"; };
 		CE8F1381257488AC0038156C /* GalaxyScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyScene.swift; sourceTree = "<group>"; };
 		CE8F1393257605D70038156C /* Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updater.swift; sourceTree = "<group>"; };
+		CEA07C252585B8F2009CBBCD /* CombatHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatHandler.swift; sourceTree = "<group>"; };
 		CEAA0E122582E44300C7512C /* CityTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTransfer.swift; sourceTree = "<group>"; };
 		CEC3A8DD257960840009E3DC /* PlanetMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetMap.swift; sourceTree = "<group>"; };
 		CEC77EC425812D4B00CA1446 /* PlanetPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetPanel.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				FF5AF909255E489F00836F03 /* Units.swift */,
+				CEA07C252585B8F2009CBBCD /* CombatHandler.swift */,
 				CE3B15B125828AFB00F096D6 /* Brawlers.swift */,
 			);
 			name = Units;
@@ -696,6 +699,7 @@
 				FF3789AB255F823B00D30F66 /* ErrorPopup.swift in Sources */,
 				CECA7740255E3F1700CE9F69 /* GameVariables.swift in Sources */,
 				FF078BCD254F3F8300E9FA7C /* ContentView.swift in Sources */,
+				CEA07C262585B8F2009CBBCD /* CombatHandler.swift in Sources */,
 				FF96B533255DCB6E00E5F8D4 /* VisualEffectView.swift in Sources */,
 				FFF85E3E255C73B700DFDDC2 /* LFGameListener.swift in Sources */,
 				FF49D70C2577EA22006A282E /* MilitaryBuilding.swift in Sources */,

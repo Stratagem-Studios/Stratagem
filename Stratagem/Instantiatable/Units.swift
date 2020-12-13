@@ -1,6 +1,6 @@
 import Foundation
 
-public enum UnitType {
+public enum UnitType : CaseIterable {
     case BRAWLER, SNIPER, FIGHTER
 }
 
