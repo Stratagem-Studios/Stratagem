@@ -117,6 +117,10 @@ public class MilitaryBuilding: CityBuilding {
         }
         
         // Middle is unit selection
+        yPos = popupBackgroundNode.frame.height / 2 - 30
+        unitTypes.allCases.forEach {
+            print($0.rawValue)
+        }
         
         // Right is unit info
         
