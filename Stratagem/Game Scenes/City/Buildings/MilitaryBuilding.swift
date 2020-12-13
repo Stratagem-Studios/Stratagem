@@ -6,6 +6,7 @@ public class MilitaryBuilding: CityBuilding {
     var unitCreationQueue: [Units] = []
     var currentBuildTime: CGFloat = 0
     var currentlyBuildingUnit: Units?
+    var customSKNode = SKNode()
     
     init(cost: [ResourceTypes: CGFloat], properties: Dictionary<String, String>) {
         super.init(cost: cost)
@@ -64,7 +65,7 @@ public class MilitaryBuilding: CityBuilding {
     
     /// Displays whenever the user taps on the building
     override func customSKNodeLarge(size: CGSize) -> SKNode? {
-        let customSKNode = SKNode()
+        customSKNode = SKNode()
         
         let popupBackgroundNode = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: 600, height: 300)), cornerRadius: 10)
         popupBackgroundNode.name = "popLabelBackground"
@@ -118,17 +119,41 @@ public class MilitaryBuilding: CityBuilding {
         
         // Middle is unit selection
         yPos = popupBackgroundNode.frame.height / 2 - 30
-        unitTypes.allCases.forEach {
-            print($0.rawValue)
+        yPos -= 15
+        UnitType.allCases.forEach {
+            yPos -= 60
+            let texture = SKTexture(imageNamed: "\($0.rawValue.capitalized)Icon")
+            let sprite = SKSpriteNode(texture: texture, size: CGSize(width: 50, height: 50))
+            sprite.zPosition = 100000
+            sprite.name = "BUTTON_BUILDING_POPUP \($0.rawValue)"
+            sprite.position = CGPoint(x: 0, y: yPos)
+            customSKNode.addChild(sprite)
         }
         
         // Right is unit info
         
+        //currentCustomSKNode = customSKNode
         return customSKNode
     }
     
     /// Called whenever player presses on a button on custom SKNode
-    override func userTouchedButton(button: SKNode) {
+    override func userTouchedButton(button: SKNode, size: CGSize) {
+        let unitNameStr = button.name!.replacingOccurrences(of: "BUTTON_BUILDING_POPUP ", with: "")
         
+        if let unitType = UnitType(rawValue: unitNameStr) {
+            let unit = Units()
+            unit.unitType = unitType
+            unitCreationQueue.append(unit)
+        }
+        /*
+        var yPos = 121.35
+        yPos -= 15
+        let detailsLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
+        detailsLabelNode.zPosition = 100000
+        detailsLabelNode.text = "Details"
+        detailsLabelNode.fontSize = 20
+        detailsLabelNode.position = CGPoint(x: 200, y: yPos)
+        currentCustomSKNode.addChild(detailsLabelNode)
+         */
     }
 }
