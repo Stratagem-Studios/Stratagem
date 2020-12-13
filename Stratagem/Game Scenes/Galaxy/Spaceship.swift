@@ -9,7 +9,7 @@ class Spaceship {
         self.units = units
     }
     
-    // when a rocket is put in transit
+    // when a rocket is put in transit fom galaxyScene
     func launched() {
         
     }

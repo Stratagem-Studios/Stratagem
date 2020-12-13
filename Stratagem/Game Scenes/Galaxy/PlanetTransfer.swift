@@ -22,7 +22,11 @@ class PlanetTransfer {
         self.endPos = endPos
         travelGoal = sqrt((startPos.x - endPos.x) * (startPos.x - endPos.x) + (startPos.y - endPos.y) * (startPos.y - endPos.y))
         unitSprite = SKSpriteNode(imageNamed: "Spaceship")
-        unitSprite.size = CGSize(width: Global.gameVars.screenSize.width/25, height: Global.gameVars.screenSize.width/20)
+        unitSprite.size = CGSize(width: Global.gameVars.screenSize.width/30, height: Global.gameVars.screenSize.width/30)
+        unitSprite.isUserInteractionEnabled = false
+        let lookAtConstraint = SKConstraint.orient(to: endPos, offset: SKRange(constantValue: -CGFloat.pi / 2))
+        let limitLookAt = SKConstraint.zRotation(SKRange(lowerLimit: -CGFloat.pi / 2, upperLimit: CGFloat.pi / 2))
+        unitSprite.constraints = [lookAtConstraint, limitLookAt]
         spaceship.launched()
     }
     

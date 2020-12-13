@@ -38,12 +38,15 @@ class Galaxy {
     
     
     func update(dt: CGFloat) {
+        var transfersIntsToRemove: [Int] = []
+        print(planetTransfers.count)
         for i in 0..<planetTransfers.count {
-            print(planetTransfers.count)
             if planetTransfers[i].timePassed(dt: dt) {
-                print(planetTransfers.count)
-                planetTransfers.remove(at: i)
+                transfersIntsToRemove.append(i)
             }
+        }
+        for i in transfersIntsToRemove {
+            planetTransfers.remove(at: i)
         }
     }
 }

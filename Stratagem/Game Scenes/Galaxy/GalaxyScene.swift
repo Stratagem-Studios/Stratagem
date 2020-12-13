@@ -30,10 +30,10 @@ class GalaxyScene: SKScene {
     ]
     // Planet positioning
     /*
-        1     4
+     1     4
      0     3     6
-        2     5
-    */
+     2     5
+     */
     
     var planetNodes: [SKSpriteNode] = []
     
@@ -83,6 +83,7 @@ class GalaxyScene: SKScene {
         
         // Adds any possible spaceship sprites to the scene
         for transfer in galaxy!.planetTransfers {
+            transfer.unitSprite.removeFromParent()
             panelNodes[2].addChild(transfer.unitSprite)
         }
         
@@ -223,20 +224,22 @@ class GalaxyScene: SKScene {
         let node = self.atPoint(touches.first!.location(in: self))
         for i in 0..<planetNodes.count{
             if "planet" + String(i) == node.name {
-                let planet = Global.gameVars.galaxy.planets[i]
-                
                 selectPlanet(planetInt: i)
-            } else if node.name == "settings" {
-                /// add settings panel here
-                // just for testing purposes
-                let spaceship = Spaceship(city: galaxy!.planets[0].cities[0], units: galaxy!.planets[0].cities[0].units)
-                let transfer = PlanetTransfer(ship: spaceship, endCityint: 0, startPos: planetNodes[0].position, endPos: planetNodes[1].position)
-                galaxy?.planetTransfers.append(transfer)
-                panelNodes[2].addChild(transfer.unitSprite)
-            } else if (node.name == "enterButton" || node.name == "enterText") && selectedPlanet != nil {
-                Global.playerManager.playerVariables.currentGameViewLevel = .PLANET
+                return
             }
+        }
+        
+        if node.name == "settings" {
+            /// add settings panel here
+            // just for testing purposes
+            let spaceship = Spaceship(city: galaxy!.planets[0].cities[0], units: galaxy!.planets[0].cities[0].units)
+            let transfer = PlanetTransfer(ship: spaceship, endCityint: 0, startPos: planetNodes[0].position, endPos: planetNodes[1].position)
+            galaxy?.planetTransfers.append(transfer)
+            panelNodes[2].addChild(transfer.unitSprite)
+        } else if (node.name == "enterButton" || node.name == "enterText") && selectedPlanet != nil {
+            Global.playerManager.playerVariables.currentGameViewLevel = .PLANET
         }
     }
 }
+
 
