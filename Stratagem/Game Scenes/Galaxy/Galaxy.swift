@@ -3,6 +3,7 @@ import SpriteKit
 class Galaxy {
     var planetLocs: [CGPoint] = []
     var planets: [Planet] = []
+    var planetTransfers: [planetTransfer] = []
     var galaxyScene: GalaxyScene!
     
     /// Generates all the planets and cities in a galaxy

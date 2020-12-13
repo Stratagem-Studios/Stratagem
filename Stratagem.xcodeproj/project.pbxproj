@@ -11,6 +11,7 @@
 		CE1004E12569E1B70077941A /* GalaxyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1004E02569E1B70077941A /* GalaxyView.swift */; };
 		CE2B4E6B257FEA1100A4A146 /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B4E6A257FEA1100A4A146 /* PlanetView.swift */; };
 		CE3B15B225828AFB00F096D6 /* Brawlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B15B125828AFB00F096D6 /* Brawlers.swift */; };
+		CE5EFF312583E9E70096FB39 /* PlanetTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5EFF302583E9E70096FB39 /* PlanetTransfer.swift */; };
 		CE8F1382257488AC0038156C /* GalaxyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1381257488AC0038156C /* GalaxyScene.swift */; };
 		CE8F1394257605D70038156C /* Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F1393257605D70038156C /* Updater.swift */; };
 		CEAA0E132582E44300C7512C /* CityTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA0E122582E44300C7512C /* CityTransfer.swift */; };
@@ -107,6 +108,7 @@
 		CE1004E02569E1B70077941A /* GalaxyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyView.swift; sourceTree = "<group>"; };
 		CE2B4E6A257FEA1100A4A146 /* PlanetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		CE3B15B125828AFB00F096D6 /* Brawlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brawlers.swift; sourceTree = "<group>"; };
+		CE5EFF302583E9E70096FB39 /* PlanetTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetTransfer.swift; sourceTree = "<group>"; };
 		CE8F1381257488AC0038156C /* GalaxyScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyScene.swift; sourceTree = "<group>"; };
 		CE8F1393257605D70038156C /* Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updater.swift; sourceTree = "<group>"; };
 		CEAA0E122582E44300C7512C /* CityTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTransfer.swift; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 			children = (
 				FFE6EE1525746BD000BB677B /* Galaxy.swift */,
 				CE8F1381257488AC0038156C /* GalaxyScene.swift */,
+				CE5EFF302583E9E70096FB39 /* PlanetTransfer.swift */,
 			);
 			path = Galaxy;
 			sourceTree = "<group>";
@@ -685,6 +688,7 @@
 				CE2B4E6B257FEA1100A4A146 /* PlanetView.swift in Sources */,
 				FFD4AE5B257E8A93000BACEE /* SwiftySKScrollView.swift in Sources */,
 				CE8F1382257488AC0038156C /* GalaxyScene.swift in Sources */,
+				CE5EFF312583E9E70096FB39 /* PlanetTransfer.swift in Sources */,
 				FF40F4712559CF310036E4C7 /* CityView.swift in Sources */,
 				FFFCFAB9255B296400D03284 /* AppDelegate.swift in Sources */,
 				CEC77EC525812D4B00CA1446 /* PlanetPanel.swift in Sources */,
