@@ -64,6 +64,23 @@
 		FF5AF90A255E489F00836F03 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AF909255E489F00836F03 /* Units.swift */; };
 		FF64B6C825530268006A9F38 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FF64B6C725530268006A9F38 /* README.md */; };
 		FF65EF1F255DE8D00013C2C4 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF65EF1E255DE8CF0013C2C4 /* UIExtensions.swift */; };
+		FF74189E2587C4C700A4BC42 /* robot factory MKI.png in Resources */ = {isa = PBXBuildFile; fileRef = FF74189D2587C4C700A4BC42 /* robot factory MKI.png */; };
+		FF7418A42587C4E300A4BC42 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418A02587C4E100A4BC42 /* rock.png */; };
+		FF7418A52587C4E300A4BC42 /* sand.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418A12587C4E200A4BC42 /* sand.png */; };
+		FF7418A62587C4E300A4BC42 /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418A22587C4E200A4BC42 /* water.png */; };
+		FF7418A72587C4E300A4BC42 /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418A32587C4E300A4BC42 /* grass.png */; };
+		FF7418AF2587C52900A4BC42 /* roadtile1110.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418A92587C52700A4BC42 /* roadtile1110.png */; };
+		FF7418B02587C52900A4BC42 /* roadtile0101.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418AA2587C52700A4BC42 /* roadtile0101.png */; };
+		FF7418B12587C52900A4BC42 /* roadtile0111.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418AB2587C52800A4BC42 /* roadtile0111.png */; };
+		FF7418B22587C52900A4BC42 /* roadtile1101.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418AC2587C52800A4BC42 /* roadtile1101.png */; };
+		FF7418B32587C52900A4BC42 /* roadtile1011.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418AD2587C52900A4BC42 /* roadtile1011.png */; };
+		FF7418B42587C52900A4BC42 /* roadtile1010.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418AE2587C52900A4BC42 /* roadtile1010.png */; };
+		FF7418BB2587C52F00A4BC42 /* roadtile1000.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418B62587C52E00A4BC42 /* roadtile1000.png */; };
+		FF7418BC2587C52F00A4BC42 /* roadtile0010.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418B72587C52E00A4BC42 /* roadtile0010.png */; };
+		FF7418BD2587C52F00A4BC42 /* roadtile0100.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418B82587C52F00A4BC42 /* roadtile0100.png */; };
+		FF7418BE2587C52F00A4BC42 /* roadtile0001.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418B92587C52F00A4BC42 /* roadtile0001.png */; };
+		FF7418BF2587C52F00A4BC42 /* roadtile0000.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418BA2587C52F00A4BC42 /* roadtile0000.png */; };
+		FF7418C32587C77400A4BC42 /* Tileset.tsx in Resources */ = {isa = PBXBuildFile; fileRef = FF7418C22587C77400A4BC42 /* Tileset.tsx */; };
 		FF8545592584485500D2D51F /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8545582584485500D2D51F /* Queue.swift */; };
 		FF88BDA4256E0B7B00DF0E40 /* CityTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88BDA3256E0B7B00DF0E40 /* CityTile.swift */; };
 		FF88BDA7256E0BC100DF0E40 /* CityBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88BDA6256E0BC100DF0E40 /* CityBuilding.swift */; };
@@ -167,6 +184,23 @@
 		FF5AF909255E489F00836F03 /* Units.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Units.swift; path = Instantiatable/Units.swift; sourceTree = "<group>"; };
 		FF64B6C725530268006A9F38 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FF65EF1E255DE8CF0013C2C4 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		FF74189D2587C4C700A4BC42 /* robot factory MKI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "robot factory MKI.png"; sourceTree = "<group>"; };
+		FF7418A02587C4E100A4BC42 /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
+		FF7418A12587C4E200A4BC42 /* sand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sand.png; sourceTree = "<group>"; };
+		FF7418A22587C4E200A4BC42 /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
+		FF7418A32587C4E300A4BC42 /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
+		FF7418A92587C52700A4BC42 /* roadtile1110.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile1110.png; sourceTree = "<group>"; };
+		FF7418AA2587C52700A4BC42 /* roadtile0101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0101.png; sourceTree = "<group>"; };
+		FF7418AB2587C52800A4BC42 /* roadtile0111.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0111.png; sourceTree = "<group>"; };
+		FF7418AC2587C52800A4BC42 /* roadtile1101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile1101.png; sourceTree = "<group>"; };
+		FF7418AD2587C52900A4BC42 /* roadtile1011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile1011.png; sourceTree = "<group>"; };
+		FF7418AE2587C52900A4BC42 /* roadtile1010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile1010.png; sourceTree = "<group>"; };
+		FF7418B62587C52E00A4BC42 /* roadtile1000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile1000.png; sourceTree = "<group>"; };
+		FF7418B72587C52E00A4BC42 /* roadtile0010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0010.png; sourceTree = "<group>"; };
+		FF7418B82587C52F00A4BC42 /* roadtile0100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0100.png; sourceTree = "<group>"; };
+		FF7418B92587C52F00A4BC42 /* roadtile0001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0001.png; sourceTree = "<group>"; };
+		FF7418BA2587C52F00A4BC42 /* roadtile0000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0000.png; sourceTree = "<group>"; };
+		FF7418C22587C77400A4BC42 /* Tileset.tsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Tileset.tsx; sourceTree = "<group>"; };
 		FF8545582584485500D2D51F /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		FF88BDA3256E0B7B00DF0E40 /* CityTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTile.swift; sourceTree = "<group>"; };
 		FF88BDA6256E0BC100DF0E40 /* CityBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityBuilding.swift; sourceTree = "<group>"; };
@@ -368,6 +402,69 @@
 			path = Buildings;
 			sourceTree = "<group>";
 		};
+		FF7418952587C30D00A4BC42 /* Art */ = {
+			isa = PBXGroup;
+			children = (
+				FF74189C2587C3C300A4BC42 /* ground */,
+				FF74189B2587C3BC00A4BC42 /* industrial */,
+				FF7418962587C32C00A4BC42 /* residential */,
+				FF7418982587C39200A4BC42 /* road */,
+				FF74189A2587C3B200A4BC42 /* military */,
+			);
+			path = Art;
+			sourceTree = "<group>";
+		};
+		FF7418962587C32C00A4BC42 /* residential */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = residential;
+			sourceTree = "<group>";
+		};
+		FF7418982587C39200A4BC42 /* road */ = {
+			isa = PBXGroup;
+			children = (
+				FF7418BA2587C52F00A4BC42 /* roadtile0000.png */,
+				FF7418B62587C52E00A4BC42 /* roadtile1000.png */,
+				FF7418B82587C52F00A4BC42 /* roadtile0100.png */,
+				FF7418B72587C52E00A4BC42 /* roadtile0010.png */,
+				FF7418B92587C52F00A4BC42 /* roadtile0001.png */,
+				FF7418AE2587C52900A4BC42 /* roadtile1010.png */,
+				FF7418AA2587C52700A4BC42 /* roadtile0101.png */,
+				FF7418A92587C52700A4BC42 /* roadtile1110.png */,
+				FF7418AB2587C52800A4BC42 /* roadtile0111.png */,
+				FF7418AD2587C52900A4BC42 /* roadtile1011.png */,
+				FF7418AC2587C52800A4BC42 /* roadtile1101.png */,
+			);
+			path = road;
+			sourceTree = "<group>";
+		};
+		FF74189A2587C3B200A4BC42 /* military */ = {
+			isa = PBXGroup;
+			children = (
+				FF74189D2587C4C700A4BC42 /* robot factory MKI.png */,
+			);
+			path = military;
+			sourceTree = "<group>";
+		};
+		FF74189B2587C3BC00A4BC42 /* industrial */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = industrial;
+			sourceTree = "<group>";
+		};
+		FF74189C2587C3C300A4BC42 /* ground */ = {
+			isa = PBXGroup;
+			children = (
+				FF7418A32587C4E300A4BC42 /* grass.png */,
+				FF7418A02587C4E100A4BC42 /* rock.png */,
+				FF7418A12587C4E200A4BC42 /* sand.png */,
+				FF7418A22587C4E200A4BC42 /* water.png */,
+			);
+			path = ground;
+			sourceTree = "<group>";
+		};
 		FF88BDA2256E0B4B00DF0E40 /* City */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,12 +498,14 @@
 		FFA3FFB725662A6800CFA406 /* Tiled */ = {
 			isa = PBXGroup;
 			children = (
+				FF7418C22587C77400A4BC42 /* Tileset.tsx */,
+				FFDCC4C725769B6E00D880B3 /* building residential.png */,
+				FF7418952587C30D00A4BC42 /* Art */,
 				FFE76E2325809225001525F3 /* robot factory.png */,
 				FFF03590257A889C0069F5F0 /* iron miner.png */,
 				FFF0358B2579A2200069F5F0 /* iron.png */,
 				FFF0358C2579A2200069F5F0 /* oil.png */,
 				FFDCC4C825769B6E00D880B3 /* building industrial.png */,
-				FFDCC4C725769B6E00D880B3 /* building residential.png */,
 				FFDCC4C625769B6E00D880B3 /* road.png */,
 				FF2CF3752571C39E00B71DB8 /* block_grass.png */,
 				FF2CF3742571C39E00B71DB8 /* block_sand.png */,
@@ -579,20 +678,30 @@
 				FF08577B2550FC5100F0F220 /* Montserrat-MediumItalic.ttf in Resources */,
 				FF8C4E67254FBAFB00522756 /* .gitignore in Resources */,
 				FF08576E2550FC5100F0F220 /* Montserrat-ExtraLight.ttf in Resources */,
+				FF7418B42587C52900A4BC42 /* roadtile1010.png in Resources */,
 				FFDCC4C925769B6F00D880B3 /* road.png in Resources */,
+				FF7418B02587C52900A4BC42 /* roadtile0101.png in Resources */,
 				FFF0358E2579A2200069F5F0 /* oil.png in Resources */,
 				FF2CF3772571C39E00B71DB8 /* block_water.png in Resources */,
 				FFF9DA8A25755BD900C18D8D /* planet_names.txt in Resources */,
+				FF7418BC2587C52F00A4BC42 /* roadtile0010.png in Resources */,
 				FFF9DA872575549400C18D8D /* city_names.txt in Resources */,
 				FF57238F2551BFD900872457 /* .gitattributes in Resources */,
+				FF7418AF2587C52900A4BC42 /* roadtile1110.png in Resources */,
+				FF7418A72587C4E300A4BC42 /* grass.png in Resources */,
 				FF078BD2254F3F8800E9FA7C /* Preview Assets.xcassets in Resources */,
 				FF08576D2550FC5100F0F220 /* Montserrat-ExtraLightItalic.ttf in Resources */,
 				FF64B6C825530268006A9F38 /* README.md in Resources */,
 				FF0857702550FC5100F0F220 /* Montserrat-Bold.ttf in Resources */,
 				FF2CF3782571C39E00B71DB8 /* block_sand.png in Resources */,
 				FF0857762550FC5100F0F220 /* Montserrat-Thin.ttf in Resources */,
+				FF7418BF2587C52F00A4BC42 /* roadtile0000.png in Resources */,
 				FFD9693E255B0505005A1BC7 /* Podfile in Resources */,
+				FF7418B32587C52900A4BC42 /* roadtile1011.png in Resources */,
+				FF7418BD2587C52F00A4BC42 /* roadtile0100.png in Resources */,
 				FF08577C2550FC5100F0F220 /* Montserrat-Regular.ttf in Resources */,
+				FF7418B12587C52900A4BC42 /* roadtile0111.png in Resources */,
+				FF7418C32587C77400A4BC42 /* Tileset.tsx in Resources */,
 				FFE76E2425809226001525F3 /* robot factory.png in Resources */,
 				FF0857752550FC5100F0F220 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				FFF03591257A889C0069F5F0 /* iron miner.png in Resources */,
@@ -602,8 +711,12 @@
 				FFDCC4CB25769B6F00D880B3 /* building industrial.png in Resources */,
 				FF0857792550FC5100F0F220 /* Montserrat-ThinItalic.ttf in Resources */,
 				FF0857712550FC5100F0F220 /* Montserrat-SemiBold.ttf in Resources */,
+				FF74189E2587C4C700A4BC42 /* robot factory MKI.png in Resources */,
+				FF7418BB2587C52F00A4BC42 /* roadtile1000.png in Resources */,
 				FF1B13EA256B67DB005158C9 /* Base.tmx in Resources */,
 				FF08577E2550FC5100F0F220 /* Montserrat-Italic.ttf in Resources */,
+				FF7418BE2587C52F00A4BC42 /* roadtile0001.png in Resources */,
+				FF7418A62587C4E300A4BC42 /* water.png in Resources */,
 				FFDCC4CA25769B6F00D880B3 /* building residential.png in Resources */,
 				FF08576F2550FC5100F0F220 /* Montserrat-ExtraBold.ttf in Resources */,
 				FF08577A2550FC5100F0F220 /* Montserrat-Light.ttf in Resources */,
@@ -611,7 +724,10 @@
 				FFF0358D2579A2200069F5F0 /* iron.png in Resources */,
 				FF0857722550FC5100F0F220 /* Montserrat-LightItalic.ttf in Resources */,
 				FF0857772550FC5100F0F220 /* Montserrat-Black.ttf in Resources */,
+				FF7418A42587C4E300A4BC42 /* rock.png in Resources */,
+				FF7418B22587C52900A4BC42 /* roadtile1101.png in Resources */,
 				FF078BCF254F3F8800E9FA7C /* Assets.xcassets in Resources */,
+				FF7418A52587C4E300A4BC42 /* sand.png in Resources */,
 				FF2CF3792571C39E00B71DB8 /* block_grass.png in Resources */,
 				FF0857742550FC5100F0F220 /* Montserrat-Medium.ttf in Resources */,
 				FF0857732550FC5100F0F220 /* Montserrat-ExtraBoldItalic.ttf in Resources */,

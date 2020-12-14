@@ -27,6 +27,8 @@ public class CityScene: SKTiledScene {
         
         if city!.cityTerrain == nil {
             city!.loadTilemap(tilemap)
+        } else {
+            city!.loadExistingTilemap(tilemap)
         }
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sceneTapped(_:)))
