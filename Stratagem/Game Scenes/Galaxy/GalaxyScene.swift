@@ -232,12 +232,13 @@ class GalaxyScene: SKScene {
         if node.name == "settings" {
             /// add settings panel here
             // just for testing purposes
-            let spaceship = Spaceship(city: galaxy!.planets[0].cities[0], units: galaxy!.planets[0].cities[0].units)
-            let transfer = PlanetTransfer(ship: spaceship, endCityint: 0, startPos: planetNodes[0].position, endPos: planetNodes[1].position)
-            galaxy?.planetTransfers.append(transfer)
-            panelNodes[2].addChild(transfer.unitSprite)
-        } else if (node.name == "enterButton" || node.name == "enterText") && selectedPlanet != nil {
-            Global.playerManager.playerVariables.currentGameViewLevel = .PLANET
+//            let spaceship = Spaceship(city: galaxy!.planets[0].cities[0], units: galaxy!.planets[0].cities[0].units)
+//            let transfer = PlanetTransfer(ship: spaceship, endCityint: 0, startPos: planetNodes[0].position, endPos: planetNodes[1].position)
+//            galaxy?.planetTransfers.append(transfer)
+//            panelNodes[2].addChild(transfer.unitSprite)
+//        } else if (node.name == "enterButton" || node.name == "enterText") && selectedPlanet != nil {
+//            Global.playerManager.playerVariables.currentGameViewLevel = .PLANET
+//        }
         }
     }
 }
