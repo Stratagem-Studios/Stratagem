@@ -98,6 +98,6 @@
    <property name="type" value="military"/>
    <property name="description" value="Produces cheap robots for the military"/>
   </properties>
-  <image width="200" height="400" source="robot factory.png"/>
+  <image width="200" height="400" source="robot factory MKI.png"/>
  </tile>
 </tileset>

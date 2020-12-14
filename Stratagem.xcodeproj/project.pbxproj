@@ -64,7 +64,7 @@
 		FF5AF90A255E489F00836F03 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AF909255E489F00836F03 /* Units.swift */; };
 		FF64B6C825530268006A9F38 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FF64B6C725530268006A9F38 /* README.md */; };
 		FF65EF1F255DE8D00013C2C4 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF65EF1E255DE8CF0013C2C4 /* UIExtensions.swift */; };
-		FF74189E2587C4C700A4BC42 /* robot factory.png in Resources */ = {isa = PBXBuildFile; fileRef = FF74189D2587C4C700A4BC42 /* robot factory.png */; };
+		FF74189E2587C4C700A4BC42 /* robot factory MKI.png in Resources */ = {isa = PBXBuildFile; fileRef = FF74189D2587C4C700A4BC42 /* robot factory MKI.png */; };
 		FF7418A42587C4E300A4BC42 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418A02587C4E100A4BC42 /* rock.png */; };
 		FF7418A52587C4E300A4BC42 /* sand.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418A12587C4E200A4BC42 /* sand.png */; };
 		FF7418A62587C4E300A4BC42 /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418A22587C4E200A4BC42 /* water.png */; };
@@ -184,7 +184,7 @@
 		FF5AF909255E489F00836F03 /* Units.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Units.swift; path = Instantiatable/Units.swift; sourceTree = "<group>"; };
 		FF64B6C725530268006A9F38 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FF65EF1E255DE8CF0013C2C4 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
-		FF74189D2587C4C700A4BC42 /* robot factory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "robot factory.png"; sourceTree = "<group>"; };
+		FF74189D2587C4C700A4BC42 /* robot factory MKI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "robot factory MKI.png"; sourceTree = "<group>"; };
 		FF7418A02587C4E100A4BC42 /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
 		FF7418A12587C4E200A4BC42 /* sand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sand.png; sourceTree = "<group>"; };
 		FF7418A22587C4E200A4BC42 /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
@@ -442,7 +442,7 @@
 		FF74189A2587C3B200A4BC42 /* military */ = {
 			isa = PBXGroup;
 			children = (
-				FF74189D2587C4C700A4BC42 /* robot factory.png */,
+				FF74189D2587C4C700A4BC42 /* robot factory MKI.png */,
 			);
 			path = military;
 			sourceTree = "<group>";
@@ -711,7 +711,7 @@
 				FFDCC4CB25769B6F00D880B3 /* building industrial.png in Resources */,
 				FF0857792550FC5100F0F220 /* Montserrat-ThinItalic.ttf in Resources */,
 				FF0857712550FC5100F0F220 /* Montserrat-SemiBold.ttf in Resources */,
-				FF74189E2587C4C700A4BC42 /* robot factory.png in Resources */,
+				FF74189E2587C4C700A4BC42 /* robot factory MKI.png in Resources */,
 				FF7418BB2587C52F00A4BC42 /* roadtile1000.png in Resources */,
 				FF1B13EA256B67DB005158C9 /* Base.tmx in Resources */,
 				FF08577E2550FC5100F0F220 /* Montserrat-Italic.ttf in Resources */,

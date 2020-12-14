@@ -3,7 +3,7 @@ import SKTiled
 
 public class CityTile {
     /// Tile
-    var tile: SKTile?
+    weak var tile: SKTile?
     var tileType: CityTileType = .GROUND
     
     /// Tile is in player modifiable spot
