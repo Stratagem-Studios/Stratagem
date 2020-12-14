@@ -32,7 +32,9 @@ class Planet {
         }
         for i in 0..<cityTransfers.count {
             if cityTransfers.count != 0 {
-                if (cityTransfers[i].timePassed(dt: deltaTime)){cityTransfers.remove(at: i)}
+                if (cityTransfers[i].timePassed(dt: deltaTime)){
+                    cityTransfers.remove(at: i)
+                }
             }
         }
         planetSphere.firstMaterial?.diffuse.contents = planetMap

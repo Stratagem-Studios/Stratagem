@@ -5,11 +5,13 @@ class CombatHandler {
     // accepts the attack units and defending city
     // returns the remaining attacking units after they attack the defending city
     // see bottom for specifics
-    func cityCombat(attackingUnits: [UnitType : Int], defendingCity: City) -> [UnitType : Int]{
-        let defendingUnits = defendingCity.units
-        var eliminatedDefendingUnits: [UnitType : Int] = [.BRAWLER: 0, .SNIPER: 0, .FIGHTER: 0]
-        var eliminatedAttackingUnits: [UnitType : Int] = [.BRAWLER: 0, .SNIPER: 0, .FIGHTER: 0]
+    func cityCombat( attackingUnitList: [UnitType : Int], defendingCity: City) -> [UnitType : Int]{
+        var attackingUnits = attackingUnitList
+        var defendingUnits = defendingCity.units
+        var eliminatedDefendingUnits: [UnitType : Int] = [.SNIPER: 0, .FIGHTER: 0, .BRAWLER: 0]
+        var eliminatedAttackingUnits: [UnitType : Int] = [.SNIPER: 0, .FIGHTER: 0, .BRAWLER: 0]
         
+        print("started")
         // at the moment, combat is just a series of random dice rolls where specific units are better at eliminating others
         // Snipers < Fighters < Brawlers < Snipers...
         /// Checks attacking units * defending units to see if a side has been wiped out
@@ -19,62 +21,91 @@ class CombatHandler {
             for type in UnitType.allCases {
                 if attackingUnits[type]! * defendingUnits[type]! > 0 {
                     for _ in 0..<attackingUnits[type]! {
-                        let hitUnits: (UnitType, Int) = unitAttack(attackingUnitType: type)
+                        let hitUnits: (UnitType, Int) = unitAttack(attackingUnitType: type, enemyArmy: defendingUnits)
                         eliminatedDefendingUnits[hitUnits.0]! += hitUnits.1
                     }
                     for _ in 0..<defendingUnits[type]! {
-                        let hitUnits: (UnitType, Int) = unitAttack(attackingUnitType: type)
+                        let hitUnits: (UnitType, Int) = unitAttack(attackingUnitType: type, enemyArmy: attackingUnits)
                         eliminatedAttackingUnits[hitUnits.0]! += hitUnits.1
                     }
                 }
+                print("finished type: \(type)")
             }
             
             // After we finish calculating one round of combat, we need to apply causualties
+            print("round finished")
             for type in UnitType.allCases {
+                attackingUnits[type]! -= eliminatedAttackingUnits[type]!
+                if attackingUnits[type]! < 0 {
+                    attackingUnits[type] = 0
+                }
+                defendingUnits[type]! -= eliminatedDefendingUnits[type]!
+                if defendingUnits [type]! < 0 {
+                    defendingUnits[type] = 0
+                }
+                eliminatedDefendingUnits[type] = 0
+                eliminatedAttackingUnits[type] = 0
             }
+            print(attackingUnits)
+            print(defendingUnits)
         }
         defendingCity.units = defendingUnits
         return attackingUnits
     }
     
     
-    func unitAttack(attackingUnitType: UnitType) -> (UnitType, Int) {
-        let hitUnits: (UnitType, Int)
-        let sniperWeight: Float
-        let fighterWeight: Float
-        let brawlerWeight: Float
+    func unitAttack(attackingUnitType: UnitType, enemyArmy: [UnitType : Int]) -> (UnitType, Int) {
+        var hitUnits: (UnitType, Int) = (UnitType.SNIPER, 0)
+        var weights: [UnitType : Float] = [.BRAWLER: 0, .SNIPER: 0, .FIGHTER: 0]
         let hitPercent: Float
         
         switch attackingUnitType {
         case .SNIPER:
-            sniperWeight = 10
-            fighterWeight = 50
-            brawlerWeight = 40
-            hitPercent = 0.8
+            weights[.SNIPER] = 10
+            weights[.FIGHTER] = 50
+            weights[.BRAWLER] = 40
+            hitPercent = 80
+            
+            // UNIQUE
+            if Float.random(in: 0..<1) < 0.2 { hitUnits.1 += 1 }
         case .FIGHTER:
-            sniperWeight = 30
-            fighterWeight = 40
-            brawlerWeight = 50
-            hitPercent = 0.7
+            weights[.SNIPER] = 30
+            weights[.FIGHTER] = 40
+            weights[.BRAWLER] = 50
+            hitPercent = 70
         case .BRAWLER:
-            sniperWeight = 25
-            fighterWeight = 45
-            brawlerWeight = 30
-            hitPercent = 0.5
+            weights[.SNIPER] = 25
+            weights[.FIGHTER] = 45
+            weights[.BRAWLER] = 30
+            hitPercent = 50
         }
-        let total = sniperWeight + fighterWeight + brawlerWeight
+        
+
+        for type in UnitType.allCases {
+            if enemyArmy[type] == 0 {
+                weights[type] = 0
+            }
+        }
+        
+        // checks if unit missed
+        if Float(Double.random(in: 1...100)) > hitPercent { return (UnitType.SNIPER, 0) }
+        
+        let total = weights[.SNIPER]! + weights[.FIGHTER]! + weights[.BRAWLER]!
         
         let i = Float.random(in: 0...total)
         switch i {
-        case 0..<sniperWeight:
+        case 0..<weights[.SNIPER]!:
             hitUnits.0 = UnitType.SNIPER
             hitUnits.1 = 1
-        case sniperWeight..<(sniperWeight + fighterWeight):
-            hitUnits.0 = UnitType.SNIPER
+            
+        case weights[.SNIPER]!..<(weights[.SNIPER]! + weights[.FIGHTER]!):
+            hitUnits.0 = UnitType.FIGHTER
             hitUnits.1 = 1
-        case (sniperWeight + fighterWeight)..<total:
-            hitUnits.0 = UnitType.SNIPER
+            
+        case (weights[.SNIPER]! + weights[.FIGHTER]!)..<total:
+            hitUnits.0 = UnitType.BRAWLER
             hitUnits.1 = 1
+            
         default:
             fatalError("00x34gh456")
         }
