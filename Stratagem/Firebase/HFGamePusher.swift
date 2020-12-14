@@ -8,6 +8,11 @@ public struct HFGamePusher {
     var staticGameVariables: StaticGameVariables
     var ref: DatabaseReference! = Database.database().reference()
     
+    /// Changes the owner of a type: "planets" or "cities"
+    public func updateOwnership(type: String, name: String, newOwner: String) {
+        ref.child("games/\(staticGameVariables.gameCode)/\(type)/\(name)/owner").setValue(newOwner)
+    }
+    
     /// Uplaods a 2d array of tile IDs to Firebase
     public func uploadCityTerrain(cityName: String, cityTerrainInt: [[Int]]) {
         var cityTerrainFlattened: [Int] = []
