@@ -30,6 +30,10 @@ public struct HFGameListener {
                     }
                     
                     if city.owner != Global.playerVariables.playerName {
+                        city.cityTerrainInt = cityTerrain
+                    }
+                    
+                    if city.owner != Global.playerVariables.playerName {
                         city.resources = resourceStringToDict(input: cityInfo["resources"] as! String)
                     }
                 }

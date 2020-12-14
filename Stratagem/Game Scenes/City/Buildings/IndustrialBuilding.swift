@@ -3,10 +3,10 @@ import SKTiled
 
 /// Industrial buildings can produce and consume materials
 public class IndustrialBuilding: CityBuilding {
-    // If building is disabled, don't consume/produce
+    /// If building is disabled, don't consume/produce
     var enabled = true
     
-    // resources used / sec
+    /// resources used / sec
     var consumes: [ResourceTypes: CGFloat]
     var produces: [ResourceTypes: CGFloat]
     

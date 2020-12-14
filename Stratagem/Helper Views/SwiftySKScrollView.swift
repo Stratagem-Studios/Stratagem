@@ -99,7 +99,7 @@ public class SwiftySKScrollView: UIScrollView {
         transform = CGAffineTransform(scaleX: -1, y: indicatorPosition == .bottom ? 1 : -1)
         
         // Add boxes around page selector
-        let buildingTypes = ["road", "residential", "industrial"]
+        let buildingTypes = ["road", "residential", "industrial", "military"]
         
         for (i, buildingType) in buildingTypes.enumerated() {
             let selectedBorderRect = SKShapeNode(rect: CGRect(x: -20, y: -20, width: 40, height: 40), cornerRadius: 5)
@@ -113,7 +113,7 @@ public class SwiftySKScrollView: UIScrollView {
     }
     
     deinit {
-        let buildingTypes = ["road", "residential", "industrial"]
+        let buildingTypes = ["road", "residential", "industrial", "military"]
         
         for buildingType in buildingTypes {
             let nodeRect = hudNode.childNode(withName: "RECT \(buildingType)")
@@ -235,12 +235,14 @@ extension SwiftySKScrollView: UIScrollViewDelegate {
             moveableNode.position.y = scrollView.contentOffset.y
         }
 
-        if scrollView.contentOffset.x >= frame.width * 2 {
+        if scrollView.contentOffset.x >= frame.width * 3 {
             activateBorderButton(buildingType: "road")
-        } else if scrollView.contentOffset.x >= frame.width * 1 {
+        } else if scrollView.contentOffset.x >= frame.width * 2 {
             activateBorderButton(buildingType: "residential")
-        } else if scrollView.contentOffset.x >= frame.width * 0 {
+        } else if scrollView.contentOffset.x >= frame.width * 1 {
             activateBorderButton(buildingType: "industrial")
+        } else if scrollView.contentOffset.x >= frame.width * 0 {
+            activateBorderButton(buildingType: "military")
         }
     }
 }
