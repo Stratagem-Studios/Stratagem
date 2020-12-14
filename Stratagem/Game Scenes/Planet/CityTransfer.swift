@@ -21,6 +21,7 @@ class CityTransfer {
     var travelGoal: CGFloat = 0
     let unitSprite: SKSpriteNode
     var isDoneWithCombat = false
+    var isAttack = false
     weak var map: PlanetMap?
     
     weak var planet = Global.gameVars.selectedPlanet!
@@ -39,20 +40,22 @@ class CityTransfer {
             DispatchQueue.global(qos: .background).async {
                 self.startCombat()
             }
+        } else {
+            self.isAttack = false
         }
     }
     
     func timePassed(dt: CGFloat) -> Bool{
         travelDistance += dt * 20
-        if travelDistance > travelGoal && isDoneWithCombat == true {
-            if endCity.owner == Global.playerVariables.playerName {
+        if travelDistance > travelGoal {
+            if isAttack == false {
                 // If friendly city
                 endCity.units[.SNIPER]! += units[.SNIPER]!
                 endCity.units[.FIGHTER]! += units[.FIGHTER]!
                 endCity.units[.BRAWLER]! += units[.BRAWLER]!
-            } else {
+            } else if isDoneWithCombat == true {
                 // check combat result
-                if unitsAfterCombat[UnitType.SNIPER]! + unitsAfterCombat[UnitType.FIGHTER]! + unitsAfterCombat[UnitType.BRAWLER]! > 0 {
+                if unitsAfterCombat[UnitType.SNIPER]! + unitsAfterCombat[UnitType.FIGHTER]! + unitsAfterCombat[UnitType.BRAWLER]! > 0  {
                     endCity.units[.SNIPER]! += unitsAfterCombat[.SNIPER]!
                     endCity.units[.FIGHTER]! += unitsAfterCombat[.FIGHTER]!
                     endCity.units[.BRAWLER]! += unitsAfterCombat[.BRAWLER]!
@@ -61,7 +64,7 @@ class CityTransfer {
                     sprite.color = UIColor.blue
                 }
                 
-            }
+            } else {return false}
             unitSprite.removeFromParent()
             return true
         }
@@ -72,6 +75,7 @@ class CityTransfer {
     }
     
     func startCombat(){
+        isAttack = true
         unitsAfterCombat = Global.combatHandler.cityCombat(attackingUnitList: units, defendingCity: endCity)
         isDoneWithCombat = true
         print("----Done---")
