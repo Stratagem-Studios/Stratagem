@@ -206,7 +206,22 @@ public class City {
                 }
                 
                 let tile = (layer?.tileAt(row, col))!
-                cityTile.initTile(tile: tile, newTileData: tile.tileData, cityTerrain: nil, isEditable: isEditable)
+                _ = cityTile.initTile(tile: tile, newTileData: tile.tileData, cityTerrain: nil, isEditable: isEditable)
+                cityTerrain[row][col] = cityTile
+            }
+        }
+    }
+    
+    // Creates CityTiles from a tilemap and loads it into cityTerrain
+    func loadExistingTilemap(_ tilemap: SKTilemap) {
+        self.tilemap = tilemap
+        
+        let layer = tilemap.getLayers(named: "Tile Layer 1")[0] as? SKTileLayer
+        for row in 0..<cityWidth {
+            for col in 0..<cityHeight {
+                let tile = (layer?.tileAt(row, col))!
+                let cityTile = cityTerrain[row][col]
+                cityTile.tile = tile
                 cityTerrain[row][col] = cityTile
             }
         }
