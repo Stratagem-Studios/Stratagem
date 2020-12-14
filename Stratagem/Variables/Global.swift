@@ -7,6 +7,7 @@ struct Global {
 
     static var playerVariables: PlayerVariables! = nil
     static var staticGameVariables: StaticGameVariables! = nil
+    static var combatHandler = CombatHandler()
 
     static var gameVars: GameVariables! = nil
 

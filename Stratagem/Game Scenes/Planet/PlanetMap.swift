@@ -11,6 +11,7 @@ class PlanetMap: SKScene {
     
     var prevCityHash: Int? = nil
     let map = SKSpriteNode(imageNamed: "BasicMap")
+    let citiesNode = SKNode()
     let lineMaster = SKNode()
     
     override func sceneDidLoad() {
@@ -21,13 +22,16 @@ class PlanetMap: SKScene {
         map.anchorPoint = CGPoint(x: 0,y: 0)
         addChild(map)
         map.addChild(lineMaster)
+        map.addChild(citiesNode)
     }
     
     func generateCitySprite(loc: CGPoint) -> CGRect {
         let city = SKSpriteNode(imageNamed: "NeutralCity")
         city.name = String(loc.hashValue)
-        map.addChild(city)
+        citiesNode.addChild(city)
         city.position = loc
+        city.color = UIColor.white
+        city.colorBlendFactor = 0.7
         let frame = city.frame
         return CGRect(x: frame.minX/1000,
                       y: frame.minY/1000,
@@ -35,11 +39,26 @@ class PlanetMap: SKScene {
                       height: frame.height/1000)
     }
     
+    /// called when the sphere is loaded. ensures that cities show up with the right owner
+    func updateCitySprite(){
+        for i in 0..<(Global.gameVars.selectedPlanet!.cities.count) {
+            if Global.gameVars.selectedPlanet?.cities[i].owner == Global.playerVariables.playerName{
+                let child = (citiesNode.children[i] as! SKSpriteNode)
+                child.color = UIColor.blue
+            }
+        }
+    }
+    
     func selectCitySprite(loc: CGPoint) {
         if prevCityHash != nil {
-            (map.childNode(withName: String(prevCityHash!)) as! SKSpriteNode).texture = SKTexture(imageNamed: "NeutralCity")
+            let child = (citiesNode.childNode(withName: String(prevCityHash!)) as! SKSpriteNode)
+            child.texture = SKTexture(imageNamed: "NeutralCity")
+            child.colorBlendFactor = 0.7
+            
         }
-        (map.childNode(withName: String(loc.hashValue)) as! SKSpriteNode).texture = SKTexture(imageNamed: "SelectedCity")
+        let child = (citiesNode.childNode(withName: String(loc.hashValue)) as! SKSpriteNode)
+        child.texture = SKTexture(imageNamed: "SelectedCity")
+        child.colorBlendFactor = 0
         prevCityHash = loc.hashValue
     }
     

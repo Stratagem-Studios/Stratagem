@@ -108,7 +108,6 @@ public class Perlin2D: NSObject {
             frequency *= 2
         }
         
-        //print(max)
         
         return total/maxValue
     }

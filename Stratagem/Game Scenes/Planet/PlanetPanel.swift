@@ -30,6 +30,7 @@ class PlanetPanel: SKScene {
     private let descriptionPanel = SKShapeNode(rectOf: CGSize(width: UIScreen.main.bounds.size.width/3, height: UIScreen.main.bounds.size.height), cornerRadius: 50)
     
     private let unitTransferNode = SKShapeNode(rectOf: CGSize(width: UIScreen.main.bounds.size.width/3, height: UIScreen.main.bounds.size.height), cornerRadius: 50)
+    private let unitTransferButton = SKShapeNode(rectOf: CGSize(width: UIScreen.main.bounds.size.width/3 * 2/3, height: UIScreen.main.bounds.size.width/3/7), cornerRadius: 10)
     
     private let pulsedRed = SKAction.sequence([
         SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.15),
@@ -203,7 +204,7 @@ class PlanetPanel: SKScene {
         // unit transfer nodes
         
         if Global.gameVars.selectedPlanet!.cities.count > 1 {
-            let unitTransferButton = SKShapeNode(rectOf: CGSize(width: panelSize.width * 2/3, height: panelSize.width/7), cornerRadius: 10)
+
             unitTransferButton.position = CGPoint(x: 0, y: -panelSize.height/5)
             unitTransferButton.fillColor = SKColor.black
             unitTransferButton.name = "transferButton"
@@ -295,11 +296,7 @@ class PlanetPanel: SKScene {
         if children.first?.name == "placeholderPanel" {
             removeAllChildren()
             addChild(descriptionPanel)
-            cityNameNode.text = city.cityName
-            avalibleUnits = city.units
-            startCityint = cityInt
-            planet?.planetMap.selectCitySprite(loc: (planet?.cityLocs[cityInt])!)
-            Global.gameVars.selectedCity = city
+            selectCity(city: city, cityInt: cityInt)
         } else if children.first?.name == "unitTransferNode" {
             endCityInt = cityInt
             planet?.drawLineBetweenCites(startInt: startCityint, endInt: endCityInt)
@@ -316,6 +313,13 @@ class PlanetPanel: SKScene {
             startCityint = cityInt
             planet?.planetMap.selectCitySprite(loc: (planet?.cityLocs[cityInt])!)
             Global.gameVars.selectedCity = city
+            if city.owner == Global.playerVariables.playerName {
+                if descriptionPanel.children.contains(unitTransferButton){} else {
+                    descriptionPanel.addChild(unitTransferButton)
+                }
+            } else {
+                unitTransferButton.removeFromParent()
+            }
         }
     }
     
@@ -407,10 +411,10 @@ class PlanetPanel: SKScene {
         }
     }
     
-    // seperate from global update loop. only needs to trigger while seen open
+    /// seperate from global update loop. only needs to trigger while scene open
     override func update(_ currentTime: TimeInterval) {
         if children.first?.name == "descriptionPanel"{
-            if Global.gameVars.selectedPlanet?.owner == Global.playerVariables.playerName {
+            if Global.gameVars.selectedCity?.owner == Global.playerVariables.playerName {
                 popLabelNode.text = String(Int(Global.gameVars.selectedCity!.resources[.POPULATION]!))
                 creditsLabelNode.text = String(Int(Global.gameVars.selectedCity!.resources[.CREDITS]!))
                 metalLabelNode.text = String(Int(Global.gameVars.selectedCity!.resources[.METAL]!))
@@ -418,6 +422,14 @@ class PlanetPanel: SKScene {
                 brawlerLabelNode.text = String(Int(Global.gameVars.selectedCity!.units[.BRAWLER]!))
                 sniperLabelNode.text = String(Int(Global.gameVars.selectedCity!.units[.SNIPER]!))
                 fighterLabelNode.text = String(Int(Global.gameVars.selectedCity!.units[.FIGHTER]!))
+            } else {
+                popLabelNode.text = "???"
+                creditsLabelNode.text = "???"
+                metalLabelNode.text = "???"
+                
+                brawlerLabelNode.text = "???"
+                sniperLabelNode.text = "???"
+                fighterLabelNode.text = "???"
             }
         } else if children.first?.name == "unitTransferNode" {
             transferSnipernode!.text = String(unitsToTransfer[.SNIPER]!)

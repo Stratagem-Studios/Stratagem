@@ -24,23 +24,28 @@ class PlanetTransfer {
         unitSprite = SKSpriteNode(imageNamed: "Spaceship")
         unitSprite.size = CGSize(width: Global.gameVars.screenSize.width/30, height: Global.gameVars.screenSize.width/30)
         unitSprite.isUserInteractionEnabled = false
-        let lookAtConstraint = SKConstraint.orient(to: endPos, offset: SKRange(constantValue: -CGFloat.pi / 2))
-        let limitLookAt = SKConstraint.zRotation(SKRange(lowerLimit: -CGFloat.pi / 2, upperLimit: CGFloat.pi / 2))
-        unitSprite.constraints = [lookAtConstraint, limitLookAt]
+        unitSprite.zRotation = shipAngle(start: startPos, end: endPos)
         spaceship.launched()
     }
     
     func timePassed(dt: CGFloat) -> Bool{
         travelDistance += dt * 20
         if travelDistance > travelGoal {
-            print("e")
             unitSprite.removeFromParent()
             return true
         }
         unitSprite.position.x = (endPos.x - startPos.x) * travelPercent + startPos.x
         unitSprite.position.y = (endPos.y - startPos.y) * travelPercent + startPos.y
-        print(travelDistance)
         travelPercent = travelDistance/travelGoal
         return false
+    }
+    func shipAngle(start: CGPoint, end: CGPoint) -> CGFloat {
+        let deltaX = Float(end.x - start.x)
+        let deltaY = Float(end.y - start.y)
+        let pi = CGFloat(Double.pi)
+        let angle = CGFloat(atan2f(deltaY, deltaX))
+        var newAngle = angle
+        if angle < (-pi / 2) { newAngle += 2 * pi }
+        return newAngle - pi/2
     }
 }
