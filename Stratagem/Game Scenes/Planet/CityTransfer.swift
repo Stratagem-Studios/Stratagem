@@ -48,7 +48,6 @@ class CityTransfer {
                 endCity.units[.SNIPER]! += units[.SNIPER]!
                 endCity.units[.FIGHTER]! += units[.FIGHTER]!
                 endCity.units[.BRAWLER]! += units[.BRAWLER]!
-                unitSprite.removeFromParent()
             } else {
                 // Initiate combat
                 if unitsAfterCombat[UnitType.SNIPER]! + unitsAfterCombat[UnitType.FIGHTER]! + unitsAfterCombat[UnitType.BRAWLER]! > 0 {
@@ -59,6 +58,7 @@ class CityTransfer {
                 }
                 
             }
+            unitSprite.removeFromParent()
             return true
         }
         travelPercent = travelDistance/travelGoal
