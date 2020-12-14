@@ -343,7 +343,7 @@ class PlanetPanel: SKScene {
                 addChild(descriptionPanel)
             case "startTransfer" :
                 planet?.cities[startCityint].units = avalibleUnits
-                planet?.cityTransfers.append(CityTransfer(startCityInt: startCityint, endCityint: endCityInt, units: unitsToTransfer, isAttack: true))
+                planet?.cityTransfers.append(CityTransfer(startCityInt: startCityint, endCityInt: endCityInt, units: unitsToTransfer, isAttack: true))
                 planet?.planetMap.lineMaster.removeAllChildren()
                 removeAllChildren()
                 addChild(descriptionPanel)
