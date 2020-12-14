@@ -60,6 +60,7 @@ class CityTransfer {
                     endCity.units[.FIGHTER]! += unitsAfterCombat[.FIGHTER]!
                     endCity.units[.BRAWLER]! += unitsAfterCombat[.BRAWLER]!
                     endCity.owner = Global.playerVariables.playerName
+                    Global.hfGamePusher.updateOwnership(type: "cities", name: endCity.cityName, newOwner: Global.playerVariables.playerName)
                     let sprite = planet?.planetMap.citiesNode.children[endCityInt] as! SKSpriteNode
                     sprite.color = UIColor.blue
                 }
