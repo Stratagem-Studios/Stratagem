@@ -64,6 +64,7 @@
 		FF5AF90A255E489F00836F03 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AF909255E489F00836F03 /* Units.swift */; };
 		FF64B6C825530268006A9F38 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FF64B6C725530268006A9F38 /* README.md */; };
 		FF65EF1F255DE8D00013C2C4 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF65EF1E255DE8CF0013C2C4 /* UIExtensions.swift */; };
+		FF8545592584485500D2D51F /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8545582584485500D2D51F /* Queue.swift */; };
 		FF88BDA4256E0B7B00DF0E40 /* CityTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88BDA3256E0B7B00DF0E40 /* CityTile.swift */; };
 		FF88BDA7256E0BC100DF0E40 /* CityBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88BDA6256E0BC100DF0E40 /* CityBuilding.swift */; };
 		FF88BDB8256EB24F00DF0E40 /* HudNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88BDB7256EB24F00DF0E40 /* HudNode.swift */; };
@@ -166,6 +167,7 @@
 		FF5AF909255E489F00836F03 /* Units.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Units.swift; path = Instantiatable/Units.swift; sourceTree = "<group>"; };
 		FF64B6C725530268006A9F38 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FF65EF1E255DE8CF0013C2C4 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		FF8545582584485500D2D51F /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		FF88BDA3256E0B7B00DF0E40 /* CityTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTile.swift; sourceTree = "<group>"; };
 		FF88BDA6256E0BC100DF0E40 /* CityBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityBuilding.swift; sourceTree = "<group>"; };
 		FF88BDB7256EB24F00DF0E40 /* HudNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudNode.swift; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 			children = (
 				FFA55AC4256C6D9700EB12D9 /* Perlin2D.swift */,
 				CE8F1393257605D70038156C /* Updater.swift */,
+				FF8545582584485500D2D51F /* Queue.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -697,6 +700,7 @@
 				CE8F1382257488AC0038156C /* GalaxyScene.swift in Sources */,
 				CE5EFF312583E9E70096FB39 /* PlanetTransfer.swift in Sources */,
 				FF40F4712559CF310036E4C7 /* CityView.swift in Sources */,
+				FF8545592584485500D2D51F /* Queue.swift in Sources */,
 				FFFCFAB9255B296400D03284 /* AppDelegate.swift in Sources */,
 				CEC77EC525812D4B00CA1446 /* PlanetPanel.swift in Sources */,
 				FF0857492550F39300F0F220 /* ButtonStyles.swift in Sources */,

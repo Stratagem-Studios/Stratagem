@@ -95,7 +95,7 @@
    <property name="METAL" value="20"/>
    <property name="onTile" value="[sand, grass, iron, oil]"/>
    <property name="name" value="Robot Factory MK I"/>
-   <property name="type" value="industrial"/>
+   <property name="type" value="military"/>
    <property name="description" value="Produces cheap robots for the military"/>
   </properties>
   <image width="256" height="512" source="robot factory.png"/>
