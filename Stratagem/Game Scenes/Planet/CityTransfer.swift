@@ -7,6 +7,10 @@ class CityTransfer {
         [.SNIPER:0,
          .FIGHTER:0,
          .BRAWLER:0]
+    var unitsAfterCombat: [UnitType : Int] =
+        [.SNIPER:0,
+         .FIGHTER:0,
+         .BRAWLER:0]
     let startCity: City
     let endCity: City
     let startCityLoc: CGPoint
@@ -15,7 +19,7 @@ class CityTransfer {
     var travelDistance: CGFloat = 0
     var travelGoal: CGFloat = 0
     let unitSprite: SKSpriteNode
-    let isAttack: Bool
+    var isDoneWithCombat = false
     weak var map: PlanetMap?
     
     weak var planet = Global.gameVars.selectedPlanet!
@@ -29,21 +33,44 @@ class CityTransfer {
         map = planet!.planetMap
         unitSprite = map!.generateUnitSprite(loc: startCityLoc)
         travelGoal = sqrt((startCityLoc.x - endCityLoc.x) * (startCityLoc.x - endCityLoc.x) + (startCityLoc.y - endCityLoc.y) * (startCityLoc.y - endCityLoc.y))
-        self.isAttack = isAttack
+        if endCity.owner != Global.playerVariables.playerName {
+            DispatchQueue.global(qos: .background).async {
+                self.startCombat()
+            }
+        }
     }
     
     func timePassed(dt: CGFloat) -> Bool{
         travelDistance += dt * 20
-        if travelDistance > travelGoal {
-            endCity.units[.SNIPER]! += units[.SNIPER]!
-            endCity.units[.FIGHTER]! += units[.FIGHTER]!
-            endCity.units[.BRAWLER]! += units[.BRAWLER]!
-            unitSprite.removeFromParent()
+        if travelDistance > travelGoal && isDoneWithCombat == true {
+            if endCity.owner == Global.playerVariables.playerName {
+                // If friendly city
+                endCity.units[.SNIPER]! += units[.SNIPER]!
+                endCity.units[.FIGHTER]! += units[.FIGHTER]!
+                endCity.units[.BRAWLER]! += units[.BRAWLER]!
+                unitSprite.removeFromParent()
+            } else {
+                // Initiate combat
+                if unitsAfterCombat[UnitType.SNIPER]! + unitsAfterCombat[UnitType.FIGHTER]! + unitsAfterCombat[UnitType.BRAWLER]! > 0 {
+                    endCity.units[.SNIPER]! += unitsAfterCombat[.SNIPER]!
+                    endCity.units[.FIGHTER]! += unitsAfterCombat[.FIGHTER]!
+                    endCity.units[.BRAWLER]! += unitsAfterCombat[.BRAWLER]!
+                    endCity.owner = Global.playerVariables.playerName
+                }
+                
+            }
             return true
         }
         travelPercent = travelDistance/travelGoal
         unitSprite.position.x = (endCityLoc.x - startCityLoc.x) * travelPercent + startCityLoc.x
         unitSprite.position.y = (endCityLoc.y - startCityLoc.y) * travelPercent + startCityLoc.y
         return false
+    }
+    
+    func startCombat(){
+        unitsAfterCombat = Global.combatHandler.cityCombat(attackingUnitList: units, defendingCity: endCity)
+        isDoneWithCombat = true
+        print("----Done---")
+        print(unitsAfterCombat)
     }
 }

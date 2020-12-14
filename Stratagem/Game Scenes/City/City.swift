@@ -31,7 +31,7 @@ public class City {
     var resources: [ResourceTypes: CGFloat] = [.POPULATION: 1000, .CREDITS: 1000, .METAL: 50] // Firebase
     var resourcesCap: [ResourceTypes: CGFloat] = [.POPULATION: 3000, .CREDITS: 100000, .METAL: 500]
     var units: [UnitType: Int] =
-        [.BRAWLER: 10, .SNIPER: 5, .FIGHTER: 30]
+        [.BRAWLER: 3, .SNIPER: 1, .FIGHTER: 5]
     
     /// Initializes city variables (required). If not terrain is provided, create a new city
     func initCity(cityName: String, planetName: String, owner: String? = nil, terrain: [[Int]]? = nil) {

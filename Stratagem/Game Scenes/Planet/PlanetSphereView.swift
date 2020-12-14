@@ -17,6 +17,7 @@ struct PlanetSphereView : UIViewRepresentable {
         planetScene.rootNode.position = SCNVector3(0,0,0)
         self.planet = planet
         self.planetPanel = planetPanel
+        planet.planetMap.updateCitySprite()
     }
     
     func makeUIView(context: Context) -> SCNView {
@@ -75,8 +76,6 @@ struct PlanetSphereView : UIViewRepresentable {
             // check that we clicked on at least one object
             if hitResults.count > 0 {
                 let result: SCNHitTestResult = hitResults[0]
-                print(planet.cityMapping)
-                print("---\(result.textureCoordinates(withMappingChannel: 0))---")
                 
                 for i in 0..<planet.cityMapping.count {
                     if planet.cityMapping[i].contains(result.textureCoordinates(withMappingChannel: 0)){
@@ -87,7 +86,6 @@ struct PlanetSphereView : UIViewRepresentable {
         }
         @objc func handlePan(_ sender: UIPanGestureRecognizer) {
             let scrollWidthRatio = Float(sender.velocity(in: sender.view!).x) / 30000 * -1
-            let scrollHeightRatio = Float(sender.velocity(in: sender.view!).y) / 30000
             planetNode.eulerAngles.y += Float(-2 * Double.pi) * scrollWidthRatio
         }
     }
