@@ -13,6 +13,7 @@ class CityTransfer {
          .BRAWLER:0]
     let startCity: City
     let endCity: City
+    let endCityInt: Int
     let startCityLoc: CGPoint
     let endCityLoc: CGPoint
     var travelPercent: CGFloat = 0
@@ -24,12 +25,13 @@ class CityTransfer {
     
     weak var planet = Global.gameVars.selectedPlanet!
     
-    init(startCityInt: Int, endCityint: Int, units: [UnitType : Int], isAttack: Bool) {
+    init(startCityInt: Int, endCityInt: Int, units: [UnitType : Int], isAttack: Bool) {
         self.units = units
+        self.endCityInt = endCityInt
         self.startCity = planet!.cities[startCityInt]
-        self.endCity = planet!.cities[endCityint]
+        self.endCity = planet!.cities[endCityInt]
         startCityLoc = planet!.cityLocs[startCityInt]
-        endCityLoc = planet!.cityLocs[endCityint]
+        endCityLoc = planet!.cityLocs[endCityInt]
         map = planet!.planetMap
         unitSprite = map!.generateUnitSprite(loc: startCityLoc)
         travelGoal = sqrt((startCityLoc.x - endCityLoc.x) * (startCityLoc.x - endCityLoc.x) + (startCityLoc.y - endCityLoc.y) * (startCityLoc.y - endCityLoc.y))
@@ -49,12 +51,14 @@ class CityTransfer {
                 endCity.units[.FIGHTER]! += units[.FIGHTER]!
                 endCity.units[.BRAWLER]! += units[.BRAWLER]!
             } else {
-                // Initiate combat
+                // check combat result
                 if unitsAfterCombat[UnitType.SNIPER]! + unitsAfterCombat[UnitType.FIGHTER]! + unitsAfterCombat[UnitType.BRAWLER]! > 0 {
                     endCity.units[.SNIPER]! += unitsAfterCombat[.SNIPER]!
                     endCity.units[.FIGHTER]! += unitsAfterCombat[.FIGHTER]!
                     endCity.units[.BRAWLER]! += unitsAfterCombat[.BRAWLER]!
                     endCity.owner = Global.playerVariables.playerName
+                    let sprite = planet?.planetMap.citiesNode.children[endCityInt] as! SKSpriteNode
+                    sprite.color = UIColor.blue
                 }
                 
             }

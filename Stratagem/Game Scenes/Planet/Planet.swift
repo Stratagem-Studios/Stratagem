@@ -27,15 +27,19 @@ class Planet {
     }
     
     func update(deltaTime: CGFloat) {
+        var cityTransferIntsToRemove: [Int] = []
         for city in cities.filter({$0.owner == Global.playerVariables.playerName}) {
             city.update(deltaTime: deltaTime)
         }
         for i in 0..<cityTransfers.count {
             if cityTransfers.count != 0 {
                 if (cityTransfers[i].timePassed(dt: deltaTime)){
-                    cityTransfers.remove(at: i)
+                    cityTransferIntsToRemove.append(i)
                 }
             }
+        }
+        for i in cityTransferIntsToRemove{
+            cityTransfers.remove(at: i)
         }
         planetSphere.firstMaterial?.diffuse.contents = planetMap
     }
