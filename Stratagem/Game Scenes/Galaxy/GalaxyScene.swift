@@ -236,9 +236,9 @@ class GalaxyScene: SKScene {
 //            let transfer = PlanetTransfer(ship: spaceship, endCityint: 0, startPos: planetNodes[0].position, endPos: planetNodes[1].position)
 //            galaxy?.planetTransfers.append(transfer)
 //            panelNodes[2].addChild(transfer.unitSprite)
-//        } else if (node.name == "enterButton" || node.name == "enterText") && selectedPlanet != nil {
-//            Global.playerManager.playerVariables.currentGameViewLevel = .PLANET
-//        }
+        } else if (node.name == "enterButton" || node.name == "enterText") && selectedPlanet != nil {
+            Global.playerManager.playerVariables.currentGameViewLevel = .PLANET
+        
         }
     }
 }
