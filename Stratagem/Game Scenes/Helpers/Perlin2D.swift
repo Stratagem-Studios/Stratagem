@@ -6,12 +6,9 @@ public class Perlin2D: NSObject {
     
     
     public override init() {
-        let time = UInt32(NSDate().timeIntervalSinceReferenceDate)
-        srand48(Int(time))
-        
         for _ in 0..<512 {
             //Create the permutations to pick from using a seed so you can recreate the map
-            permutation.append(Int(drand48() * 255))
+            permutation.append(Int.random(in: 0 ..< 255))
         }
     }
     

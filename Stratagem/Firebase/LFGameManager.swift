@@ -64,7 +64,6 @@ public struct LFGameManager {
                 for city in planet.cities {
                     gameRef.child("cities/\(city.cityName!)/owner").setValue("***NIL***")
                     gameRef.child("cities/\(city.cityName!)/planetName").setValue(city.planetName)
-                    
                     Global.hfGamePusher.uploadCityTerrain(cityName: city.cityName!, cityTerrainInt: city.cityTerrainInt!)
                     
                     // Resources
