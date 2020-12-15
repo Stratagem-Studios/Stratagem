@@ -53,7 +53,7 @@ public class SwiftySKScrollView: UIScrollView {
     /// Moveable node
     private let moveableNode: SKNode
     
-    private let hudNode: HudNode
+    private weak var hudNode: HudNode?
     
     /// Scroll direction
     private let direction: ScrollDirection
@@ -116,11 +116,13 @@ public class SwiftySKScrollView: UIScrollView {
         let buildingTypes = ["road", "residential", "industrial", "military"]
         
         for buildingType in buildingTypes {
-            let nodeRect = hudNode.childNode(withName: "RECT \(buildingType)")
-            nodeRect?.removeFromParent()
-            
-            let nodeButton = hudNode.childNode(withName: "BUTTON \(buildingType)")
-            nodeButton?.removeFromParent()
+            if let hudNode = hudNode {
+                let nodeRect = hudNode.childNode(withName: "RECT \(buildingType)")
+                nodeRect?.removeFromParent()
+                
+                let nodeButton = hudNode.childNode(withName: "BUTTON \(buildingType)")
+                nodeButton?.removeFromParent()
+            }
         }
     }
     
@@ -132,21 +134,23 @@ public class SwiftySKScrollView: UIScrollView {
     
     /// Given a buildingType, turns on border for that and turns off border for previous
     public func activateBorderButton(buildingType: String) {
-        if let prevBuildingType = prevBuildingType {
-            if prevBuildingType != buildingType {
+        if let hudNode = hudNode {
+            if let prevBuildingType = prevBuildingType {
+                if prevBuildingType != buildingType {
+                    let fadeIn = SKAction.fadeIn(withDuration: 0.5)
+                    hudNode.childNode(withName: "RECT \(buildingType)")!.run(fadeIn)
+                    
+                    let fadeOut = SKAction.fadeOut(withDuration: 0.5)
+                    hudNode.childNode(withName: "RECT \(prevBuildingType)")!.run(fadeOut)
+                    
+                    self.prevBuildingType = buildingType
+                }
+            } else {
                 let fadeIn = SKAction.fadeIn(withDuration: 0.5)
                 hudNode.childNode(withName: "RECT \(buildingType)")!.run(fadeIn)
                 
-                let fadeOut = SKAction.fadeOut(withDuration: 0.5)
-                hudNode.childNode(withName: "RECT \(prevBuildingType)")!.run(fadeOut)
-                
-                self.prevBuildingType = buildingType
+                prevBuildingType = buildingType
             }
-        } else {
-            let fadeIn = SKAction.fadeIn(withDuration: 0.5)
-            hudNode.childNode(withName: "RECT \(buildingType)")!.run(fadeIn)
-            
-            prevBuildingType = buildingType
         }
     }
 }
