@@ -38,6 +38,7 @@ public struct TitleScreenView: View {
                 .padding(.bottom, 10)
                 
                 Button(action: {
+                    playerVariables.currentView = .LearnGameView
                 }) {
                     Text("LEARN")
                 }.buttonStyle(BasicButtonStyle())
