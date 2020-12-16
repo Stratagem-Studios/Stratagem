@@ -7,6 +7,7 @@ class Planet {
     
     var cities: [City] = []
     var cityTransfers: [CityTransfer] = []
+    var spacesphips: [Spaceship] = []
     
     // for map
     var cityLocs: [CGPoint] = []
@@ -59,12 +60,13 @@ class Planet {
             var isOverlapping = true
             while isOverlapping == true {
                 spawnPoint = CGPoint(x: CGFloat.random(in: 100...900), y: CGFloat.random(in: 400...600))
-                if cityLocs != [] {
+                if cityLocs.isEmpty {isOverlapping = false}
+                else {
                     for loc in cityLocs {
                         if CGPointDistanceSquared(from: loc, to: spawnPoint!) > 22500 // 150^2, faster than doing sqrt, makes cities spawn at least 150 units apart
                         {isOverlapping = false}
                     }
-                } else {isOverlapping = false}
+                }
             }
             
             let citySize = planetMap.generateCitySprite(loc: spawnPoint!)

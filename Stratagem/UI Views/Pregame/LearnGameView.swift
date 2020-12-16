@@ -11,7 +11,7 @@ public struct LearnGameView: View {
             
             ScrollView {
                 VStack {
-                    Text("Stratagem is a game of interplanetary warfare and a struggle to control the galaxy. The main parts of Stratagem are building and warfare. When you start the game, you will be provided one random planet within the galaxy. You start with no resource generation, so it is important to get generators up first. Following that, prioritize residential and military buildings to expand your population and army. As soon as possible, conquer the remaining cities on your planet. Once you have a solid foundation")
+                    Text("Stratagem is a game of interplanetary warfare and a struggle to control the galaxy. The main parts of Stratagem are building and warfare. When you start the game, you will be provided one random planet within the galaxy. You start with no resource generation, so it is important to get generators up first. Following that, prioritize residential and military buildings to expand your population and army. As soon as possible, conquer the remaining cities on your planet. Once you have a solid foundation on you'r home world, build a spaceship to explore and conquer the rest of the galaxy!")
                         .font(.custom("Montserrat-Bold", size: 15))
                         .foregroundColor(.white)
                         .fixedSize(horizontal: false, vertical: true)
