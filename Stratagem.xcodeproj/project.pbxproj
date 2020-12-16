@@ -62,6 +62,7 @@
 		FF49D70C2577EA22006A282E /* MilitaryBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49D70B2577EA22006A282E /* MilitaryBuilding.swift */; };
 		FF57238F2551BFD900872457 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = FF57238E2551BFD900872457 /* .gitattributes */; };
 		FF5AF90A255E489F00836F03 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5AF909255E489F00836F03 /* Units.swift */; };
+		FF5DE0E8258A6C8A00DAB0FE /* LearnGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DE0E7258A6C8A00DAB0FE /* LearnGameView.swift */; };
 		FF64B6C825530268006A9F38 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FF64B6C725530268006A9F38 /* README.md */; };
 		FF65EF1F255DE8D00013C2C4 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF65EF1E255DE8CF0013C2C4 /* UIExtensions.swift */; };
 		FF74189E2587C4C700A4BC42 /* robot factory MKI.png in Resources */ = {isa = PBXBuildFile; fileRef = FF74189D2587C4C700A4BC42 /* robot factory MKI.png */; };
@@ -182,6 +183,7 @@
 		FF49D70B2577EA22006A282E /* MilitaryBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilitaryBuilding.swift; sourceTree = "<group>"; };
 		FF57238E2551BFD900872457 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
 		FF5AF909255E489F00836F03 /* Units.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Units.swift; path = Instantiatable/Units.swift; sourceTree = "<group>"; };
+		FF5DE0E7258A6C8A00DAB0FE /* LearnGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnGameView.swift; sourceTree = "<group>"; };
 		FF64B6C725530268006A9F38 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FF65EF1E255DE8CF0013C2C4 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		FF74189D2587C4C700A4BC42 /* robot factory MKI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "robot factory MKI.png"; sourceTree = "<group>"; };
@@ -573,6 +575,7 @@
 			isa = PBXGroup;
 			children = (
 				FF33849E2559A751000EF945 /* TitleScreenView.swift */,
+				FF5DE0E7258A6C8A00DAB0FE /* LearnGameView.swift */,
 				FFAD01DD255AE84600BA2907 /* CreateGameView.swift */,
 				FF33849225599EB9000EF945 /* JoinGameView.swift */,
 				FFF2D86B255B88F800CE2990 /* GameLobbyView.swift */,
@@ -829,6 +832,7 @@
 				FF49D70C2577EA22006A282E /* MilitaryBuilding.swift in Sources */,
 				FF33849325599EB9000EF945 /* JoinGameView.swift in Sources */,
 				FFB4A2A7255D9EA1003298E2 /* PlayerManager.swift in Sources */,
+				FF5DE0E8258A6C8A00DAB0FE /* LearnGameView.swift in Sources */,
 				FF078BCB254F3F8300E9FA7C /* StratagemApp.swift in Sources */,
 				FFE6EE2225749C3900BB677B /* Collection+choose.swift in Sources */,
 				FF0CAB9A25646250009681C8 /* LoopingVideo.swift in Sources */,

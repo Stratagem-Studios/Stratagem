@@ -84,7 +84,7 @@ public struct PlayerManager {
                                 if gameDict["game_status"] as! String == GameStates.LOBBY.rawValue {
                                     playerStatusRef.setValue(PlayerStates.LOBBY.rawValue)
                                     playerVariables.currentView = .GameLobbyView
-                                } else if  gameDict["game_status"] as! String == GameStates.GAME.rawValue {
+                                } else if gameDict["game_status"] as! String == GameStates.GAME.rawValue {
                                     playerStatusRef.setValue(PlayerStates.GAME.rawValue)
                                     playerVariables.currentView = .GameView
                                 }

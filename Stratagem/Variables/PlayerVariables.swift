@@ -4,7 +4,7 @@ import Combine
 import Firebase
 
 enum ViewStates : String {
-    case TitleScreenView, CreateGameView, JoinGameView, GameLobbyView, GameView
+    case TitleScreenView, LearnGameView, CreateGameView, JoinGameView, GameLobbyView, GameView
 }
 
 enum PlayerStates : String {
