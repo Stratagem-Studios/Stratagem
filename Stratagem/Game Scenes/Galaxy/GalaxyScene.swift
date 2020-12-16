@@ -9,6 +9,9 @@ class GalaxyScene: SKScene {
     var lineNodes: [SKNode] = []
     var selectedPlanet: SKSpriteNode?
     var selectedPlanetColor: SKColor?
+    let spaceshipNodes = SKNode()
+    var hasSelectedSpaceship = false
+    var selectedSpaceshipInt = 0
     
     // Holds the top, right and left panels in that order
     var panelNodes: [SKSpriteNode] = [
@@ -30,9 +33,9 @@ class GalaxyScene: SKScene {
     ]
     // Planet positioning
     /*
-     1     4
+     ...1     4
      0     3     6
-     2     5
+     ...2     5
      */
     
     var planetNodes: [SKSpriteNode] = []
@@ -148,7 +151,7 @@ class GalaxyScene: SKScene {
         settings.anchorPoint = CGPoint(x: 1,y: 1)
         settings.position = CGPoint(x: screenSize!.width, y: 0)
         panelNodes[0].addChild(settings)
-        
+        panelNodes[0].addChild(spaceshipNodes)
         
         // Sets up part of the description
         nodeScreenSize = panelNodes[1].size
@@ -217,10 +220,21 @@ class GalaxyScene: SKScene {
         (panelNodes[1].childNode(withName: "descriptionPanel")?.childNode(withName: "planetName") as! SKLabelNode).text = Global.gameVars.galaxy.planets[planetInt].planetName
         Global.gameVars.selectedPlanet = Global.gameVars.galaxy.planets[planetInt]
         
+        // Handle spaceships
+        spaceshipNodes.removeAllChildren()
+        for i in 0..<(Global.gameVars.selectedPlanet?.spacesphips.count)! {
+            let shipIcon = SKSpriteNode(imageNamed: "SpaceshipIcon")
+            shipIcon.name = "ship" + String(i)
+            shipIcon.size = CGSize(width: screenSize!.height/5, height: screenSize!.height/5)
+            shipIcon.position.x = CGFloat((Int(screenSize!.height)/5 + 15) * i + 100)
+            shipIcon.position.y = -panelNodes[0].frame.size.halfHeight - 15
+            panelNodes[0].addChild(shipIcon)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // We only care about the first touch
+        
+        // checking for planet touches
         let node = self.atPoint(touches.first!.location(in: self))
         for i in 0..<planetNodes.count{
             if "planet" + String(i) == node.name {
@@ -229,13 +243,24 @@ class GalaxyScene: SKScene {
             }
         }
         
+        // checking for spacship touches
+        for i in 0..<spaceshipNodes.children.count{
+            if "ship" + String(i) == node.name {
+                hasSelectedSpaceship = true
+                return
+            }
+        }
+        
+        // checking for settings touches
         if node.name == "settings" {
             /// add settings panel here
-            // just for testing purposes
-//            let spaceship = Spaceship(city: galaxy!.planets[0].cities[0], units: galaxy!.planets[0].cities[0].units)
-//            let transfer = PlanetTransfer(ship: spaceship, endCityint: 0, startPos: planetNodes[0].position, endPos: planetNodes[1].position)
-//            galaxy?.planetTransfers.append(transfer)
-//            panelNodes[2].addChild(transfer.unitSprite)
+//             just for testing purposes
+            let spaceship = Spaceship(city: galaxy!.planets[0].cities[0], units: galaxy!.planets[0].cities[0].units)
+            let transfer = PlanetTransfer(ship: spaceship, endCityint: 0, startPos: planetNodes[0].position, endPos: planetNodes[2].position)
+            galaxy?.planetTransfers.append(transfer)
+            panelNodes[2].addChild(transfer.unitSprite)
+            
+            // checking for visit plant text
         } else if (node.name == "enterButton" || node.name == "enterText") && selectedPlanet != nil {
             Global.playerManager.playerVariables.currentGameViewLevel = .PLANET
         

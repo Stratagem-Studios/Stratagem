@@ -7,6 +7,7 @@ class Spaceship {
     init(city: City, units: [UnitType : Int]) {
         currentCity = city
         self.units = units
+        Global.gameVars.selectedPlanet?.spacesphips.append(self)
     }
     
     // when a rocket is put in transit fom galaxyScene
