@@ -41,7 +41,6 @@ class GalaxyScene: SKScene {
     var planetNodes: [SKSpriteNode] = []
     
     // All the nodes that will be used
-    let planetTemplate = SKSpriteNode(imageNamed: "Planet")
     
     override func sceneDidLoad() {
         // The panels for organization, these can be left hardcoded
