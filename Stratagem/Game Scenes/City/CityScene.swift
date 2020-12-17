@@ -60,6 +60,13 @@ public class CityScene: SKTiledScene {
         self.removeAllActions()
     }
     
+    public override func update(_ currentTime: TimeInterval) {
+        super.update(currentTime)
+        if Global.gameVars.shouldUpdateCityHudNode {
+            hudNode.update()
+            Global.gameVars.shouldUpdateCityHudNode = false
+        }
+    }
     /// Called only when user single taps
     @objc public func sceneTapped(_ recognizer: UITapGestureRecognizer) {
         if recognizer.state == UIGestureRecognizer.State.ended {
@@ -119,7 +126,7 @@ public class CityScene: SKTiledScene {
                                         buildSelectedNode.removeAllChildren()
                                         self.buildSelectedNode = nil
                                         self.buildSelectedTiledata = nil
-                                        hudNode.selectedBuildingScrollViewPopupNode.hidePopup()
+                                        hudNode.selectedBuildingPopupNode.changeStateToNone()
                                         
                                         if buildSelectedNode.name != tappedHudNodeName {
                                             let selectedBorderRect = SKShapeNode(rect: CGRect(x: -25, y: -50, width: 50, height: 100), cornerRadius: 5)
@@ -127,7 +134,7 @@ public class CityScene: SKTiledScene {
                                             self.buildSelectedNode = tappedHudNode
                                             buildSelectedTiledata = tiles[0]
                                             
-                                            hudNode.selectedBuildingScrollViewPopupNode.showPopup(size: size, tileData: buildSelectedTiledata!)
+                                            hudNode.selectedBuildingPopupNode.changeStateToScrollView(tileData: buildSelectedTiledata!)
                                         }
                                     } else {
                                         let selectedBorderRect = SKShapeNode(rect: CGRect(x: -25, y: -50, width: 50, height: 100), cornerRadius: 5)
@@ -135,7 +142,7 @@ public class CityScene: SKTiledScene {
                                         buildSelectedNode = tappedHudNode
                                         buildSelectedTiledata = tiles[0]
                                         
-                                        hudNode.selectedBuildingScrollViewPopupNode.showPopup(size: size, tileData: buildSelectedTiledata!)
+                                        hudNode.selectedBuildingPopupNode.changeStateToScrollView(tileData: buildSelectedTiledata!)
                                     }
                                     clickedOnHud = true
                                 }
@@ -158,10 +165,10 @@ public class CityScene: SKTiledScene {
                         if tile.tileData.properties["type"] != "ground" {
                             let cityTile = city!.cityTerrain[Int(tile.tileCoord!.x)][Int(tile.tileCoord!.y)]
                             
-                            hudNode.selectedBuildingScrollViewPopupNode.showPopup(size: size, tileData: tile.tileData, cityTile: cityTile)
+                            hudNode.selectedBuildingPopupNode.changeStateToPopup(cityTile: cityTile)
                             selectedCityTile = cityTile
                         } else {
-                            hudNode.selectedBuildingScrollViewPopupNode.hidePopup()
+                            hudNode.selectedBuildingPopupNode.changeStateToNone()
                             selectedCityTile = nil
                         }
                     case .BUILD:
