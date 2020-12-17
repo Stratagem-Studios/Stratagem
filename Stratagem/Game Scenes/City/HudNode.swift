@@ -241,6 +241,8 @@ class HudNode : SKNode {
         if metalLabelNode.text != String(Int(city!.resources[.METAL]!)) {
             metalLabelNode.text = String(Int(city!.resources[.METAL]!))
         }
+        
+        selectedBuildingPopupNode.update()
     }
     
     public func changeBorderColor(color: UIColor) {
@@ -258,6 +260,8 @@ class SelectedBuildingPopupNode: SKNode {
     private var popupNode1 = SKNode()
     private var popupNode2 = SKNode()
     private var onPopupNode1 = true
+    
+    private var currentlySelectedBuilding: CityBuilding?
     private var currentState = PopupStates.NONE
     private let size: CGSize
     
@@ -279,6 +283,18 @@ class SelectedBuildingPopupNode: SKNode {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // If it's displaying the large popup, update it
+    public func update() {
+        if currentState == .LARGEPOPUP {
+            var currentPopupNode = popupNode1
+            if !onPopupNode1 {
+                currentPopupNode = popupNode2
+            }
+            
+            createLargePopupNode(popupNode: currentPopupNode, customSKNode: currentlySelectedBuilding!.customSKNodeLarge(size: size)!)
+        }
     }
     
     public func createScrollViewPopup(popupNode: SKNode, tileData: SKTilesetData) {
@@ -578,190 +594,6 @@ class SelectedBuildingPopupNode: SKNode {
         popupNode.setScale(CGFloat.minimum(size.width / 600, size.height / 300) - 0.1)
     }
     
-    
-    public func setup(size: CGSize, tileData: SKTilesetData, cityTile: CityTile? = nil) {
-        popupNode1.removeAllChildren()
-        
-        // If the building has a large sknode, show that instead. Displayed when they tap an existing building
-        if let customSKNode = cityTile?.building?.customSKNodeLarge(size: size) {
-            customSKNode.zPosition = 10000
-            popupNode1.addChild(customSKNode)
-            self.position = CGPoint(x: 0, y: 0)
-            self.setScale(CGFloat.minimum(size.width / 600, size.height / 300) - 0.1)
-        } else {
-            let popupBackgroundNode = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: 250, height: size.halfHeight + 100)), cornerRadius: 10)
-            popupBackgroundNode.name = "popLabelBackground"
-            popupBackgroundNode.fillColor = .black
-            popupBackgroundNode.alpha = 0.5
-            popupBackgroundNode.position = CGPoint(x: 0, y: 0)
-            popupBackgroundNode.zPosition = 10000
-            
-            /// The yPos the next node should be set at
-            var yPos = popupBackgroundNode.frame.height / 2 - 30
-            
-            let titleLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
-            titleLabelNode.zPosition = 100000
-            titleLabelNode.text = tileData.properties["name"]!
-            titleLabelNode.fontSize = 20
-            titleLabelNode.position = CGPoint(x: 0, y: yPos)
-            
-            yPos -= 15
-            let descString = NSMutableAttributedString(string: tileData.properties["description"]!)
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.alignment = .center
-            let range = NSRange(location: 0, length: tileData.properties["description"]!.count)
-            descString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: range)
-            descString.addAttributes([NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.init(name: "Montserrat-Bold", size: 14)!], range: range)
-            
-            let descLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
-            descLabelNode.zPosition = 100000
-            descLabelNode.numberOfLines = 0
-            descLabelNode.verticalAlignmentMode = .top
-            descLabelNode.preferredMaxLayoutWidth = 225
-            descLabelNode.lineBreakMode = .byWordWrapping
-            descLabelNode.fontSize = 14
-            descLabelNode.attributedText = descString
-            descLabelNode.position = CGPoint(x: 0, y: yPos)
-            
-            let dividerRect = CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: popupBackgroundNode.frame.width, height: 1))
-            
-            // Costs, don't show if they clicked on a tile
-            if cityTile == nil {
-                yPos -= (descLabelNode.frame.height + 5)
-                let divider1 = SKShapeNode(rect: dividerRect)
-                divider1.zPosition = 100000
-                divider1.position = CGPoint(x: 0, y: yPos)
-                
-                yPos -= 30
-                let costsLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
-                costsLabelNode.zPosition = 100000
-                costsLabelNode.text = "COSTS"
-                costsLabelNode.fontSize = 20
-                costsLabelNode.position = CGPoint(x: 0, y: yPos)
-                
-                /// The yPos the next node should be set at
-                yPos -= 30
-                ResourceTypes.allCases.forEach {
-                    if let cost = tileData.properties[$0.rawValue] {
-                        let costLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
-                        costLabelNode.zPosition = 100000
-                        costLabelNode.text = "\($0.rawValue): \(cost)"
-                        costLabelNode.fontSize = 14
-                        costLabelNode.position = CGPoint(x: 0, y: yPos)
-                        yPos -= 15
-                        
-                        popupNode1.addChild(costLabelNode)
-                    }
-                }
-                
-                popupNode1.addChild(costsLabelNode)
-                popupNode1.addChild(divider1)
-            } else {
-                yPos -= (descLabelNode.frame.height + 5)
-            }
-            
-            // Produces
-            let divider2 = SKShapeNode(rect: dividerRect)
-            divider2.zPosition = 100000
-            divider2.position = CGPoint(x: 0, y: yPos)
-            
-            yPos -= 30
-            let producesLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
-            producesLabelNode.zPosition = 100000
-            producesLabelNode.text = "PRODUCES"
-            producesLabelNode.fontSize = 20
-            producesLabelNode.position = CGPoint(x: 0, y: yPos)
-            
-            yPos -= 30
-            var doesProduce = false
-            ResourceTypes.allCases.forEach {
-                if let producesValue = tileData.properties["PRODUCES " + $0.rawValue] {
-                    doesProduce = true
-                    
-                    let producesLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
-                    producesLabelNode.zPosition = 100000
-                    producesLabelNode.text = "\($0.rawValue): \(producesValue)"
-                    producesLabelNode.fontSize = 14
-                    producesLabelNode.position = CGPoint(x: 0, y: yPos)
-                    yPos -= 15
-                    
-                    popupNode1.addChild(producesLabelNode)
-                }
-            }
-            
-            if doesProduce {
-                popupNode1.addChild(divider2)
-                popupNode1.addChild(producesLabelNode)
-            } else {
-                yPos = yPos + (30 + 30)
-            }
-            
-            // Consumes
-            let divider3 = SKShapeNode(rect: dividerRect)
-            divider3.zPosition = 100000
-            divider3.position = CGPoint(x: 0, y: yPos)
-            
-            yPos -= 30
-            let consumesLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
-            consumesLabelNode.zPosition = 100000
-            consumesLabelNode.text = "CONSUMES"
-            consumesLabelNode.fontSize = 20
-            consumesLabelNode.position = CGPoint(x: 0, y: yPos)
-            
-            yPos -= 30
-            var doesConsume = false
-            ResourceTypes.allCases.forEach {
-                if let consumesValue = tileData.properties["CONSUMES " + $0.rawValue] {
-                    doesConsume = true
-                    
-                    let consumesLabelNode = SKLabelNode(fontNamed: "Montserrat-Bold")
-                    consumesLabelNode.zPosition = 100000
-                    consumesLabelNode.text = "\($0.rawValue): \(consumesValue)"
-                    consumesLabelNode.fontSize = 14
-                    consumesLabelNode.position = CGPoint(x: 0, y: yPos)
-                    yPos -= 15
-                    
-                    popupNode1.addChild(consumesLabelNode)
-                }
-            }
-            
-            if doesConsume {
-                popupNode1.addChild(divider3)
-                popupNode1.addChild(consumesLabelNode)
-            } else {
-                yPos = yPos + (30 + 30)
-            }
-            
-            // Show the building's custom SKNode if it has one. Fits on this small sknode
-            if let customSKNode = cityTile?.building?.customSKNodeSmall() {
-                yPos -= 15
-                let divider4 = SKShapeNode(rect: dividerRect)
-                divider4.zPosition = 100000
-                divider4.position = CGPoint(x: 0, y: yPos)
-                
-                yPos -= 30
-                let dividerCustom = SKShapeNode(rect: dividerRect)
-                dividerCustom.zPosition = 100000
-                dividerCustom.position = CGPoint(x: 0, y: yPos)
-                
-                popupNode1.addChild(divider4)
-                popupNode1.addChild(customSKNode)
-            }
-            
-            popupNode1.addChild(popupBackgroundNode)
-            popupNode1.addChild(titleLabelNode)
-            popupNode1.addChild(descLabelNode)
-            //self.setScale(1)
-            //self.position = CGPoint(x: size.halfWidth - 175, y: 0)
-        }
-        popupNode1.alpha = 0
-        
-        if popupNode1.parent == nil {
-            addChild(popupNode1)
-        }
-    }
-    
-    
     public func changeStateToNone() {
         currentState = .NONE
         
@@ -799,6 +631,7 @@ class SelectedBuildingPopupNode: SKNode {
     }
     
     public func changeStateToPopup(cityTile: CityTile) {
+        
         // Fades out the currently selected popup node
         let fadeOut = SKAction.fadeOut(withDuration: 0.5)
         if onPopupNode1 {
@@ -817,9 +650,13 @@ class SelectedBuildingPopupNode: SKNode {
         
         if let customSKNode = cityTile.building?.customSKNodeLarge(size: size) {
             currentState = .LARGEPOPUP
+            currentlySelectedBuilding = cityTile.building!
+
             createLargePopupNode(popupNode: currentPopupNode, customSKNode: customSKNode)
         } else {
             currentState = .SMALLPOPUP
+            currentlySelectedBuilding = cityTile.building!
+
             createSmallPopupNode(popupNode: currentPopupNode, cityTile: cityTile)
         }
         currentPopupNode.run(fadeIn)

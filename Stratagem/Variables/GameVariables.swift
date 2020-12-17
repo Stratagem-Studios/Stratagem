@@ -36,6 +36,8 @@ class GameVariables {
     // Updates the game
     var updater = Updater()
     
+    /// Set this to true to update HudNode manually in CityView
+    var shouldUpdateCityHudNode = false
     
     func update(deltaTime: CGFloat){
         // Update the galaxy

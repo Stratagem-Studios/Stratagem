@@ -6,7 +6,6 @@ public class MilitaryBuilding: CityBuilding {
     var unitCreationQueue: [Units] = []
     var currentBuildTime: CGFloat = 0
     var currentlyBuildingUnit: Units?
-    var customSKNode = SKNode()
     
     init(cost: [ResourceTypes: CGFloat], properties: Dictionary<String, String>) {
         super.init(cost: cost)
@@ -65,7 +64,7 @@ public class MilitaryBuilding: CityBuilding {
     
     /// Displays whenever the user taps on the building
     override func customSKNodeLarge(size: CGSize) -> SKNode? {
-        customSKNode = SKNode()
+        let customSKNode = SKNode()
         
         let popupBackgroundNode = SKShapeNode(rect: CGRect(center: CGPoint(x: 0, y: 0), size: CGSize(width: 600, height: 300)), cornerRadius: 10)
         popupBackgroundNode.name = "popLabelBackground"
@@ -145,6 +144,8 @@ public class MilitaryBuilding: CityBuilding {
             unit.unitType = unitType
             unitCreationQueue.append(unit)
         }
+        
+        Global.gameVars.shouldUpdateCityHudNode = true
         /*
         var yPos = 121.35
         yPos -= 15
