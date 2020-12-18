@@ -3,6 +3,7 @@
 import SceneKit
 import SpriteKit
 import Combine
+import SKTiled
 import SwiftUI
 
 enum GameViewLevel: String {
@@ -27,6 +28,8 @@ class GameVariables {
     // Directly determines display
     var selectedPlanet: Planet?
     var selectedCity: City?
+    var currentTilemap: SKTilemap?
+    var cityScene: CityScene! = nil
     
     var galaxy: Galaxy!
     

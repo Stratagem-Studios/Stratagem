@@ -563,10 +563,18 @@ internal class SKTilemapParser: NSObject, XMLParserDelegate {
         if (elementName == "map") {
             
             // create the tilemap
-            guard let tilemap = SKTilemap(attributes: attributeDict) else {
-                self.log("could not create tilemap.", level: .fatal)
-                parser.abortParsing()
-                return
+            var tilemap: SKTilemap!
+            if let sharedTilemap = SKTilemap.sharedTilemap {
+                tilemap = sharedTilemap
+                tilemap.removeAllChildren()
+            } else {
+                guard let tilemap2 = SKTilemap(attributes: attributeDict) else {
+                    self.log("could not create tilemap.", level: .fatal)
+                    parser.abortParsing()
+                    return
+                }
+                tilemap = tilemap2
+                SKTilemap.sharedTilemap = tilemap2
             }
             
             // initialize cache

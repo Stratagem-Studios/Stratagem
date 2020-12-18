@@ -111,7 +111,7 @@ typealias LayerRenderStatistics = (tiles: Int, objects: Int)
 public class SKTiledLayerObject: SKEffectNode, SKTiledObject {
     
     /// Reference to the parent tilemap.
-    public var tilemap: SKTilemap
+    public weak var tilemap: SKTilemap!
     
     /// Unique layer id.
     public var uuid: String = UUID().uuidString

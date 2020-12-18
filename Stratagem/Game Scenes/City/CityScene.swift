@@ -15,6 +15,9 @@ public class CityScene: SKTiledScene {
     private var selectedCityTile: CityTile?
     
     public override func didMove(to view: SKView) {
+        self.removeAllChildren()
+        hudNode = HudNode()
+        
         city = Global.gameVars!.selectedCity!
         city!.createTMXFile()
         

@@ -207,7 +207,14 @@ open class SKTiledScene: SKScene, SKPhysicsContactDelegate, SKTiledSceneDelegate
             backgroundColor = tilemap.backgroundColor ?? SKColor.clear
             
             // add the tilemap to the world container node.
-            worldNode.addChild(tilemap, fadeIn: 0.2)
+            if tilemap.parent == nil {
+                worldNode.addChild(tilemap, fadeIn: 0.2)
+            } else {
+                worldNode.removeAllChildren()
+                tilemap.removeFromParent()
+                worldNode.addChild(tilemap, fadeIn: 0.2)
+            }
+            print(tilemap.children.count)
             self.tilemap = tilemap
             
             // tilemap will be notified of camera changes
