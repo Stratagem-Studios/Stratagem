@@ -214,7 +214,6 @@ open class SKTiledScene: SKScene, SKPhysicsContactDelegate, SKTiledSceneDelegate
                 tilemap.removeFromParent()
                 worldNode.addChild(tilemap, fadeIn: 0.2)
             }
-            print(tilemap.children.count)
             self.tilemap = tilemap
             
             // tilemap will be notified of camera changes
