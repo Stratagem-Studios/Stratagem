@@ -10,7 +10,7 @@ enum UnitAffiliation {
 class PlanetMap: SKScene {
     
     var prevCityHash: Int? = nil
-    let map = SKSpriteNode(imageNamed: "BasicMap")
+    let map = SKSpriteNode(imageNamed: "PlanetMap" + String(Int.random(0...3)))
     let citiesNode = SKNode()
     let lineMaster = SKNode()
     
