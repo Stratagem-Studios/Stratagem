@@ -250,6 +250,7 @@ class GalaxyScene: SKScene {
             }
         }
         
+        
         // checking for settings touches
         if node.name == "settings" {
             /// add settings panel here
