@@ -174,7 +174,6 @@ public class City {
         if sufficientFunds {
             for (type, cost) in costs {
                 resources[type]! -= cost * deltaTime
-                hudNode!.update()
             }
         } else {
             return false

@@ -48,7 +48,7 @@ public class CityScene: SKTiledScene {
         
         changeStateToNone()
         
-        // Updates HUD every 1 sec
+        // Updates HUD every 0.5 sec
         let wait = SKAction.wait(forDuration: 0.5)
         let update = SKAction.run({ [self] in
             hudNode.update()
