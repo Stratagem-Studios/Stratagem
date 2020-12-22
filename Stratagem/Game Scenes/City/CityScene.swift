@@ -177,9 +177,17 @@ public class CityScene: SKTiledScene {
                     case .BUILD:
                         if let buildSelectedTiledata = buildSelectedTiledata {
                             city!.changeTileAtLoc(firstTile: tile, secondTileID: buildSelectedTiledata.globalID)
+                            hudNode.update()
                         }
                     case .DESTROY:
+                        let cityTile = city!.cityTerrain[Int(tile.tileCoord!.x)][Int(tile.tileCoord!.y)]
                         city!.changeTileAtLoc(firstTile: tile, secondTileID: 1)
+                        
+                        // Give 50% of cost back
+                        if let costs = cityTile.building?.costs {
+                            city!.tryAddFunds(funds: costs.mapValues({value in return value / 2}))
+                            hudNode.update()
+                        }
                     }
                 }
             }
