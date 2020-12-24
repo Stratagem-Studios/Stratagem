@@ -1,4 +1,4 @@
-struct Global {
+public struct Global {
     static var playerManager: PlayerManager! = nil
     static var lfGameManager: LFGameManager! = nil
     static var lfGameListener: LFGameListener! = nil

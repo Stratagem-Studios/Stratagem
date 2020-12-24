@@ -91,10 +91,10 @@ internal class SKTiledDebugDrawNode: SKNode {
 
     func updateZPosition() {
         let tilemap = layer.tilemap
-        let zDeltaValue: CGFloat = tilemap.zDeltaForLayers
+        let zDeltaValue: CGFloat = tilemap!.zDeltaForLayers
 
         // z-position values
-        let startZposition = (isDefault == true) ? (tilemap.lastZPosition + zDeltaValue) : layer.zPosition
+        let startZposition = (isDefault == true) ? (tilemap!.lastZPosition + zDeltaValue) : layer.zPosition
 
         graphSprite!.zPosition = startZposition + zDeltaValue
         gridSprite!.zPosition = startZposition + (zDeltaValue + 10)

@@ -39,14 +39,16 @@ struct ContentView: View {
             
             // Verify they're up to date
             Database.database().reference().child("app_version").observeSingleEvent(of: .value, with: { snapshot in
-                let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
-                let build = Bundle.main.infoDictionary?["CFBundleVersion"] as! String
+                let currentVersion = Float(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String)!
+                let currentBuild = Float(Bundle.main.infoDictionary?["CFBundleVersion"] as! String)!
                 
                 #if DEBUG
                 Global.lfGameManager!.detectAndRemoveDeadGames()
                 #else
                 
-                if snapshot.value as! String == (version + " " + build) {
+                let minVersion = Float((snapshot.value as! String).split(separator: " ")[0])!
+                let minBuild = Float((snapshot.value as! String).split(separator: " ")[1])!
+                if currentVersion >= minVersion && currentBuild >= minBuild {
                     // Because we don't have a server, we make new players help remove dead games, then calls fetchName
                     Global.lfGameManager!.detectAndRemoveDeadGames()
                 } else {

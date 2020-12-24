@@ -15,6 +15,9 @@ public class CityScene: SKTiledScene {
     private var selectedCityTile: CityTile?
     
     public override func didMove(to view: SKView) {
+        self.removeAllChildren()
+        hudNode = HudNode()
+        
         city = Global.gameVars!.selectedCity!
         city!.createTMXFile()
         
@@ -45,7 +48,7 @@ public class CityScene: SKTiledScene {
         
         changeStateToNone()
         
-        // Updates HUD every 1 sec
+        // Updates HUD every 0.5 sec
         let wait = SKAction.wait(forDuration: 0.5)
         let update = SKAction.run({ [self] in
             hudNode.update()
@@ -174,9 +177,17 @@ public class CityScene: SKTiledScene {
                     case .BUILD:
                         if let buildSelectedTiledata = buildSelectedTiledata {
                             city!.changeTileAtLoc(firstTile: tile, secondTileID: buildSelectedTiledata.globalID)
+                            hudNode.update()
                         }
                     case .DESTROY:
+                        let cityTile = city!.cityTerrain[Int(tile.tileCoord!.x)][Int(tile.tileCoord!.y)]
                         city!.changeTileAtLoc(firstTile: tile, secondTileID: 1)
+                        
+                        // Give 50% of cost back
+                        if let costs = cityTile.building?.costs {
+                            city!.tryAddFunds(funds: costs.mapValues({value in return value / 2}))
+                            hudNode.update()
+                        }
                     }
                 }
             }
