@@ -28,14 +28,14 @@
    <property name="name" value="oil"/>
    <property name="type" value="ground"/>
   </properties>
-  <image width="200" height="400" source="oil.png"/>
+  <image width="200" height="400" source="oil tile.png"/>
  </tile>
  <tile id="4">
   <properties>
    <property name="name" value="iron"/>
    <property name="type" value="ground"/>
   </properties>
-  <image width="200" height="400" source="iron.png"/>
+  <image width="200" height="400" source="iron tile.png"/>
  </tile>
  <!-- Industrial tiles -->
  <tile id="30">
@@ -77,17 +77,6 @@
   <image width="200" height="400" source="building residential.png"/>
  </tile>
  <!-- Road tiles -->
- <tile id="90">
-  <properties>
-   <property name="CREDITS" value="50"/>
-   <property name="METAL" value="5"/>
-   <property name="onTile" value="[sand, grass, iron, oil]"/>
-   <property name="name" value="Simple road"/>
-   <property name="type" value="road"/>
-   <property name="description" value="A basic road"/>
-  </properties>
-  <image width="200" height="400" source="road.png"/>
- </tile>
  <tile id="90">
   <properties>
    <property name="CREDITS" value="50"/>

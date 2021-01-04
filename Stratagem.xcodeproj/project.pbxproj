@@ -49,9 +49,6 @@
 		FF0CABA1256464BF009681C8 /* starfield.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FF0CABA0256464BE009681C8 /* starfield.mp4 */; };
 		FF1B13D7256B0B81005158C9 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1B13D6256B0B81005158C9 /* City.swift */; };
 		FF1B13EA256B67DB005158C9 /* Base.tmx in Resources */ = {isa = PBXBuildFile; fileRef = FF1B13E9256B67DB005158C9 /* Base.tmx */; };
-		FF2CF3772571C39E00B71DB8 /* block_water.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2CF3732571C39E00B71DB8 /* block_water.png */; };
-		FF2CF3782571C39E00B71DB8 /* block_sand.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2CF3742571C39E00B71DB8 /* block_sand.png */; };
-		FF2CF3792571C39E00B71DB8 /* block_grass.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2CF3752571C39E00B71DB8 /* block_grass.png */; };
 		FF33849325599EB9000EF945 /* JoinGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33849225599EB9000EF945 /* JoinGameView.swift */; };
 		FF33849F2559A751000EF945 /* TitleScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33849E2559A751000EF945 /* TitleScreenView.swift */; };
 		FF3789AB255F823B00D30F66 /* ErrorPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3789AA255F823B00D30F66 /* ErrorPopup.swift */; };
@@ -65,6 +62,11 @@
 		FF5DE0E8258A6C8A00DAB0FE /* LearnGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DE0E7258A6C8A00DAB0FE /* LearnGameView.swift */; };
 		FF64B6C825530268006A9F38 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FF64B6C725530268006A9F38 /* README.md */; };
 		FF65EF1F255DE8D00013C2C4 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF65EF1E255DE8CF0013C2C4 /* UIExtensions.swift */; };
+		FF71C03E25A3713300D352E1 /* iron tile.png in Resources */ = {isa = PBXBuildFile; fileRef = FF71C03D25A3713300D352E1 /* iron tile.png */; };
+		FF71C04525A3767400D352E1 /* iron miner.png in Resources */ = {isa = PBXBuildFile; fileRef = FF71C04325A3767400D352E1 /* iron miner.png */; };
+		FF71C04625A3767400D352E1 /* building industrial.png in Resources */ = {isa = PBXBuildFile; fileRef = FF71C04425A3767400D352E1 /* building industrial.png */; };
+		FF71C04C25A376EB00D352E1 /* building residential.png in Resources */ = {isa = PBXBuildFile; fileRef = FF71C04B25A376EB00D352E1 /* building residential.png */; };
+		FF71C04F25A3772200D352E1 /* oil tile.png in Resources */ = {isa = PBXBuildFile; fileRef = FF71C04E25A3772100D352E1 /* oil tile.png */; };
 		FF74189E2587C4C700A4BC42 /* robot factory MKI.png in Resources */ = {isa = PBXBuildFile; fileRef = FF74189D2587C4C700A4BC42 /* robot factory MKI.png */; };
 		FF7418A42587C4E300A4BC42 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418A02587C4E100A4BC42 /* rock.png */; };
 		FF7418A52587C4E300A4BC42 /* sand.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418A12587C4E200A4BC42 /* sand.png */; };
@@ -91,25 +93,18 @@
 		FF96B533255DCB6E00E5F8D4 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF96B532255DCB6E00E5F8D4 /* VisualEffectView.swift */; };
 		FF9D7D69256574890076C8DF /* HFGameListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9D7D68256574890076C8DF /* HFGameListener.swift */; };
 		FFA3FFB925662A9500CFA406 /* Prototype.tmx in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFB825662A9500CFA406 /* Prototype.tmx */; };
-		FFA3FFBC25662C0B00CFA406 /* PrototypePack.tsx in Resources */ = {isa = PBXBuildFile; fileRef = FFA3FFBB25662C0B00CFA406 /* PrototypePack.tsx */; };
 		FFA55AC5256C6D9700EB12D9 /* Perlin2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA55AC4256C6D9700EB12D9 /* Perlin2D.swift */; };
 		FFAD01DE255AE84600BA2907 /* CreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD01DD255AE84600BA2907 /* CreateGameView.swift */; };
 		FFB4A299255CE6A7003298E2 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB4A298255CE6A7003298E2 /* FirebaseHelper.swift */; };
 		FFB4A2A7255D9EA1003298E2 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB4A2A6255D9EA1003298E2 /* PlayerManager.swift */; };
 		FFD4AE5B257E8A93000BACEE /* SwiftySKScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4AE5A257E8A93000BACEE /* SwiftySKScrollView.swift */; };
 		FFD9693E255B0505005A1BC7 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = FFD9693D255B0505005A1BC7 /* Podfile */; };
-		FFDCC4C925769B6F00D880B3 /* road.png in Resources */ = {isa = PBXBuildFile; fileRef = FFDCC4C625769B6E00D880B3 /* road.png */; };
-		FFDCC4CA25769B6F00D880B3 /* building residential.png in Resources */ = {isa = PBXBuildFile; fileRef = FFDCC4C725769B6E00D880B3 /* building residential.png */; };
-		FFDCC4CB25769B6F00D880B3 /* building industrial.png in Resources */ = {isa = PBXBuildFile; fileRef = FFDCC4C825769B6E00D880B3 /* building industrial.png */; };
 		FFE69956257409FC00CD8517 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE69955257409FC00CD8517 /* Global.swift */; };
 		FFE6EE1125746BA300BB677B /* CityScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE1025746BA300BB677B /* CityScene.swift */; };
 		FFE6EE1625746BD000BB677B /* Galaxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE1525746BD000BB677B /* Galaxy.swift */; };
 		FFE6EE1A25746BF800BB677B /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE1925746BF800BB677B /* Planet.swift */; };
 		FFE6EE2225749C3900BB677B /* Collection+choose.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE6EE2125749C3900BB677B /* Collection+choose.swift */; };
 		FFE76E2425809226001525F3 /* robot factory.png in Resources */ = {isa = PBXBuildFile; fileRef = FFE76E2325809225001525F3 /* robot factory.png */; };
-		FFF0358D2579A2200069F5F0 /* iron.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF0358B2579A2200069F5F0 /* iron.png */; };
-		FFF0358E2579A2200069F5F0 /* oil.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF0358C2579A2200069F5F0 /* oil.png */; };
-		FFF03591257A889C0069F5F0 /* iron miner.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF03590257A889C0069F5F0 /* iron miner.png */; };
 		FFF2D86C255B88F800CE2990 /* GameLobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2D86B255B88F800CE2990 /* GameLobbyView.swift */; };
 		FFF85E3E255C73B700DFDDC2 /* LFGameListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E3D255C73B700DFDDC2 /* LFGameListener.swift */; };
 		FFF85E41255C73C100DFDDC2 /* HFGamePusher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF85E40255C73C100DFDDC2 /* HFGamePusher.swift */; };
@@ -170,9 +165,6 @@
 		FF0CABA0256464BE009681C8 /* starfield.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = starfield.mp4; sourceTree = "<group>"; };
 		FF1B13D6256B0B81005158C9 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		FF1B13E9256B67DB005158C9 /* Base.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Base.tmx; sourceTree = "<group>"; };
-		FF2CF3732571C39E00B71DB8 /* block_water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_water.png; sourceTree = "<group>"; };
-		FF2CF3742571C39E00B71DB8 /* block_sand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_sand.png; sourceTree = "<group>"; };
-		FF2CF3752571C39E00B71DB8 /* block_grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_grass.png; sourceTree = "<group>"; };
 		FF33849225599EB9000EF945 /* JoinGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameView.swift; sourceTree = "<group>"; };
 		FF33849E2559A751000EF945 /* TitleScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScreenView.swift; sourceTree = "<group>"; };
 		FF3789AA255F823B00D30F66 /* ErrorPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPopup.swift; sourceTree = "<group>"; };
@@ -186,6 +178,11 @@
 		FF5DE0E7258A6C8A00DAB0FE /* LearnGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnGameView.swift; sourceTree = "<group>"; };
 		FF64B6C725530268006A9F38 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FF65EF1E255DE8CF0013C2C4 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		FF71C03D25A3713300D352E1 /* iron tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iron tile.png"; sourceTree = "<group>"; };
+		FF71C04325A3767400D352E1 /* iron miner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iron miner.png"; sourceTree = "<group>"; };
+		FF71C04425A3767400D352E1 /* building industrial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "building industrial.png"; sourceTree = "<group>"; };
+		FF71C04B25A376EB00D352E1 /* building residential.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "building residential.png"; sourceTree = "<group>"; };
+		FF71C04E25A3772100D352E1 /* oil tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oil tile.png"; sourceTree = "<group>"; };
 		FF74189D2587C4C700A4BC42 /* robot factory MKI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "robot factory MKI.png"; sourceTree = "<group>"; };
 		FF7418A02587C4E100A4BC42 /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
 		FF7418A12587C4E200A4BC42 /* sand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sand.png; sourceTree = "<group>"; };
@@ -213,25 +210,18 @@
 		FF96B532255DCB6E00E5F8D4 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		FF9D7D68256574890076C8DF /* HFGameListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFGameListener.swift; sourceTree = "<group>"; };
 		FFA3FFB825662A9500CFA406 /* Prototype.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Prototype.tmx; sourceTree = "<group>"; };
-		FFA3FFBB25662C0B00CFA406 /* PrototypePack.tsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrototypePack.tsx; sourceTree = "<group>"; };
 		FFA55AC4256C6D9700EB12D9 /* Perlin2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perlin2D.swift; sourceTree = "<group>"; };
 		FFAD01DD255AE84600BA2907 /* CreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameView.swift; sourceTree = "<group>"; };
 		FFB4A298255CE6A7003298E2 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		FFB4A2A6255D9EA1003298E2 /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
 		FFD4AE5A257E8A93000BACEE /* SwiftySKScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftySKScrollView.swift; sourceTree = "<group>"; };
 		FFD9693D255B0505005A1BC7 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		FFDCC4C625769B6E00D880B3 /* road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = road.png; sourceTree = "<group>"; };
-		FFDCC4C725769B6E00D880B3 /* building residential.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "building residential.png"; sourceTree = "<group>"; };
-		FFDCC4C825769B6E00D880B3 /* building industrial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "building industrial.png"; sourceTree = "<group>"; };
 		FFE69955257409FC00CD8517 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		FFE6EE1025746BA300BB677B /* CityScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityScene.swift; sourceTree = "<group>"; };
 		FFE6EE1525746BD000BB677B /* Galaxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Galaxy.swift; sourceTree = "<group>"; };
 		FFE6EE1925746BF800BB677B /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		FFE6EE2125749C3900BB677B /* Collection+choose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+choose.swift"; sourceTree = "<group>"; };
 		FFE76E2325809225001525F3 /* robot factory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "robot factory.png"; sourceTree = "<group>"; };
-		FFF0358B2579A2200069F5F0 /* iron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iron.png; sourceTree = "<group>"; };
-		FFF0358C2579A2200069F5F0 /* oil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oil.png; sourceTree = "<group>"; };
-		FFF03590257A889C0069F5F0 /* iron miner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iron miner.png"; sourceTree = "<group>"; };
 		FFF2D86B255B88F800CE2990 /* GameLobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLobbyView.swift; sourceTree = "<group>"; };
 		FFF85E3D255C73B700DFDDC2 /* LFGameListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFGameListener.swift; sourceTree = "<group>"; };
 		FFF85E40255C73C100DFDDC2 /* HFGamePusher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFGamePusher.swift; sourceTree = "<group>"; };
@@ -419,6 +409,7 @@
 		FF7418962587C32C00A4BC42 /* residential */ = {
 			isa = PBXGroup;
 			children = (
+				FF71C04B25A376EB00D352E1 /* building residential.png */,
 			);
 			path = residential;
 			sourceTree = "<group>";
@@ -452,6 +443,8 @@
 		FF74189B2587C3BC00A4BC42 /* industrial */ = {
 			isa = PBXGroup;
 			children = (
+				FF71C04425A3767400D352E1 /* building industrial.png */,
+				FF71C04325A3767400D352E1 /* iron miner.png */,
 			);
 			path = industrial;
 			sourceTree = "<group>";
@@ -459,10 +452,12 @@
 		FF74189C2587C3C300A4BC42 /* ground */ = {
 			isa = PBXGroup;
 			children = (
+				FF71C04E25A3772100D352E1 /* oil tile.png */,
 				FF7418A32587C4E300A4BC42 /* grass.png */,
 				FF7418A02587C4E100A4BC42 /* rock.png */,
 				FF7418A12587C4E200A4BC42 /* sand.png */,
 				FF7418A22587C4E200A4BC42 /* water.png */,
+				FF71C03D25A3713300D352E1 /* iron tile.png */,
 			);
 			path = ground;
 			sourceTree = "<group>";
@@ -501,19 +496,9 @@
 			isa = PBXGroup;
 			children = (
 				FF7418C22587C77400A4BC42 /* Tileset.tsx */,
-				FFDCC4C725769B6E00D880B3 /* building residential.png */,
 				FF7418952587C30D00A4BC42 /* Art */,
 				FFE76E2325809225001525F3 /* robot factory.png */,
-				FFF03590257A889C0069F5F0 /* iron miner.png */,
-				FFF0358B2579A2200069F5F0 /* iron.png */,
-				FFF0358C2579A2200069F5F0 /* oil.png */,
-				FFDCC4C825769B6E00D880B3 /* building industrial.png */,
-				FFDCC4C625769B6E00D880B3 /* road.png */,
-				FF2CF3752571C39E00B71DB8 /* block_grass.png */,
-				FF2CF3742571C39E00B71DB8 /* block_sand.png */,
-				FF2CF3732571C39E00B71DB8 /* block_water.png */,
 				FF1B13E9256B67DB005158C9 /* Base.tmx */,
-				FFA3FFBB25662C0B00CFA406 /* PrototypePack.tsx */,
 				FFA3FFB825662A9500CFA406 /* Prototype.tmx */,
 			);
 			path = Tiled;
@@ -677,15 +662,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFA3FFB925662A9500CFA406 /* Prototype.tmx in Resources */,
+				FF71C04F25A3772200D352E1 /* oil tile.png in Resources */,
 				FF0CABA1256464BF009681C8 /* starfield.mp4 in Resources */,
 				FF08577B2550FC5100F0F220 /* Montserrat-MediumItalic.ttf in Resources */,
 				FF8C4E67254FBAFB00522756 /* .gitignore in Resources */,
 				FF08576E2550FC5100F0F220 /* Montserrat-ExtraLight.ttf in Resources */,
 				FF7418B42587C52900A4BC42 /* roadtile1010.png in Resources */,
-				FFDCC4C925769B6F00D880B3 /* road.png in Resources */,
 				FF7418B02587C52900A4BC42 /* roadtile0101.png in Resources */,
-				FFF0358E2579A2200069F5F0 /* oil.png in Resources */,
-				FF2CF3772571C39E00B71DB8 /* block_water.png in Resources */,
 				FFF9DA8A25755BD900C18D8D /* planet_names.txt in Resources */,
 				FF7418BC2587C52F00A4BC42 /* roadtile0010.png in Resources */,
 				FFF9DA872575549400C18D8D /* city_names.txt in Resources */,
@@ -696,10 +679,10 @@
 				FF08576D2550FC5100F0F220 /* Montserrat-ExtraLightItalic.ttf in Resources */,
 				FF64B6C825530268006A9F38 /* README.md in Resources */,
 				FF0857702550FC5100F0F220 /* Montserrat-Bold.ttf in Resources */,
-				FF2CF3782571C39E00B71DB8 /* block_sand.png in Resources */,
 				FF0857762550FC5100F0F220 /* Montserrat-Thin.ttf in Resources */,
 				FF7418BF2587C52F00A4BC42 /* roadtile0000.png in Resources */,
 				FFD9693E255B0505005A1BC7 /* Podfile in Resources */,
+				FF71C04525A3767400D352E1 /* iron miner.png in Resources */,
 				FF7418B32587C52900A4BC42 /* roadtile1011.png in Resources */,
 				FF7418BD2587C52F00A4BC42 /* roadtile0100.png in Resources */,
 				FF08577C2550FC5100F0F220 /* Montserrat-Regular.ttf in Resources */,
@@ -707,33 +690,30 @@
 				FF7418C32587C77400A4BC42 /* Tileset.tsx in Resources */,
 				FFE76E2425809226001525F3 /* robot factory.png in Resources */,
 				FF0857752550FC5100F0F220 /* Montserrat-SemiBoldItalic.ttf in Resources */,
-				FFF03591257A889C0069F5F0 /* iron miner.png in Resources */,
-				FFA3FFBC25662C0B00CFA406 /* PrototypePack.tsx in Resources */,
 				FFFCFABE255B366700D03284 /* GoogleService-Info.plist in Resources */,
 				FF0857782550FC5100F0F220 /* Montserrat-BoldItalic.ttf in Resources */,
-				FFDCC4CB25769B6F00D880B3 /* building industrial.png in Resources */,
 				FF0857792550FC5100F0F220 /* Montserrat-ThinItalic.ttf in Resources */,
 				FF0857712550FC5100F0F220 /* Montserrat-SemiBold.ttf in Resources */,
 				FF74189E2587C4C700A4BC42 /* robot factory MKI.png in Resources */,
+				FF71C04C25A376EB00D352E1 /* building residential.png in Resources */,
 				FF7418BB2587C52F00A4BC42 /* roadtile1000.png in Resources */,
 				FF1B13EA256B67DB005158C9 /* Base.tmx in Resources */,
 				FF08577E2550FC5100F0F220 /* Montserrat-Italic.ttf in Resources */,
 				FF7418BE2587C52F00A4BC42 /* roadtile0001.png in Resources */,
 				FF7418A62587C4E300A4BC42 /* water.png in Resources */,
-				FFDCC4CA25769B6F00D880B3 /* building residential.png in Resources */,
 				FF08576F2550FC5100F0F220 /* Montserrat-ExtraBold.ttf in Resources */,
 				FF08577A2550FC5100F0F220 /* Montserrat-Light.ttf in Resources */,
 				FF08577D2550FC5100F0F220 /* Montserrat-BlackItalic.ttf in Resources */,
-				FFF0358D2579A2200069F5F0 /* iron.png in Resources */,
+				FF71C04625A3767400D352E1 /* building industrial.png in Resources */,
 				FF0857722550FC5100F0F220 /* Montserrat-LightItalic.ttf in Resources */,
 				FF0857772550FC5100F0F220 /* Montserrat-Black.ttf in Resources */,
 				FF7418A42587C4E300A4BC42 /* rock.png in Resources */,
 				FF7418B22587C52900A4BC42 /* roadtile1101.png in Resources */,
 				FF078BCF254F3F8800E9FA7C /* Assets.xcassets in Resources */,
 				FF7418A52587C4E300A4BC42 /* sand.png in Resources */,
-				FF2CF3792571C39E00B71DB8 /* block_grass.png in Resources */,
 				FF0857742550FC5100F0F220 /* Montserrat-Medium.ttf in Resources */,
 				FF0857732550FC5100F0F220 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
+				FF71C03E25A3713300D352E1 /* iron tile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
