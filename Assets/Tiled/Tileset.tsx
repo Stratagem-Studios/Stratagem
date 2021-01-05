@@ -88,6 +88,138 @@
   </properties>
   <image width="200" height="400" source="road.png"/>
  </tile>
+ <tile id="90">
+  <properties>
+   <property name="CREDITS" value="50"/>
+   <property name="METAL" value="5"/>
+   <property name="onTile" value="[sand, grass, iron, oil]"/>
+   <property name="name" value="Simple road"/>
+   <property name="type" value="road"/>
+   <property name="description" value="A basic road"/>
+  </properties>
+  <image width="200" height="400" source="roadtile0000.png"/>
+ </tile>
+ <tile id="91">
+  <properties>
+   <property name="CREDITS" value="50"/>
+   <property name="METAL" value="5"/>
+   <property name="onTile" value="[sand, grass, iron, oil]"/>
+   <property name="name" value="Simple road"/>
+   <property name="type" value="road"/>
+   <property name="description" value="A basic road"/>
+  </properties>
+  <image width="200" height="400" source="roadtile1000.png"/>
+ </tile>
+ <tile id="92">
+  <properties>
+   <property name="CREDITS" value="50"/>
+   <property name="METAL" value="5"/>
+   <property name="onTile" value="[sand, grass, iron, oil]"/>
+   <property name="name" value="Simple road"/>
+   <property name="type" value="road"/>
+   <property name="description" value="A basic road"/>
+  </properties>
+  <image width="200" height="400" source="roadtile0100.png"/>
+ </tile>
+ <tile id="93">
+  <properties>
+   <property name="CREDITS" value="50"/>
+   <property name="METAL" value="5"/>
+   <property name="onTile" value="[sand, grass, iron, oil]"/>
+   <property name="name" value="Simple road"/>
+   <property name="type" value="road"/>
+   <property name="description" value="A basic road"/>
+  </properties>
+  <image width="200" height="400" source="roadtile0010.png"/>
+ </tile>
+ <tile id="94">
+  <properties>
+   <property name="CREDITS" value="50"/>
+   <property name="METAL" value="5"/>
+   <property name="onTile" value="[sand, grass, iron, oil]"/>
+   <property name="name" value="Simple road"/>
+   <property name="type" value="road"/>
+   <property name="description" value="A basic road"/>
+  </properties>
+  <image width="200" height="400" source="roadtile0001.png"/>
+ </tile>
+ <tile id="95">
+  <properties>
+   <property name="CREDITS" value="50"/>
+   <property name="METAL" value="5"/>
+   <property name="onTile" value="[sand, grass, iron, oil]"/>
+   <property name="name" value="Simple road"/>
+   <property name="type" value="road"/>
+   <property name="description" value="A basic road"/>
+  </properties>
+  <image width="200" height="400" source="roadtile1010.png"/>
+ </tile>
+ <tile id="96">
+  <properties>
+   <property name="CREDITS" value="50"/>
+   <property name="METAL" value="5"/>
+   <property name="onTile" value="[sand, grass, iron, oil]"/>
+   <property name="name" value="Simple road"/>
+   <property name="type" value="road"/>
+   <property name="description" value="A basic road"/>
+  </properties>
+  <image width="200" height="400" source="roadtile0101.png"/>
+ </tile>
+ <tile id="97">
+  <properties>
+   <property name="CREDITS" value="50"/>
+   <property name="METAL" value="5"/>
+   <property name="onTile" value="[sand, grass, iron, oil]"/>
+   <property name="name" value="Simple road"/>
+   <property name="type" value="road"/>
+   <property name="description" value="A basic road"/>
+  </properties>
+  <image width="200" height="400" source="roadtile1110.png"/>
+ </tile>
+ <tile id="98">
+  <properties>
+   <property name="CREDITS" value="50"/>
+   <property name="METAL" value="5"/>
+   <property name="onTile" value="[sand, grass, iron, oil]"/>
+   <property name="name" value="Simple road"/>
+   <property name="type" value="road"/>
+   <property name="description" value="A basic road"/>
+  </properties>
+  <image width="200" height="400" source="roadtile0111.png"/>
+ </tile>
+ <tile id="99">
+  <properties>
+   <property name="CREDITS" value="50"/>
+   <property name="METAL" value="5"/>
+   <property name="onTile" value="[sand, grass, iron, oil]"/>
+   <property name="name" value="Simple road"/>
+   <property name="type" value="road"/>
+   <property name="description" value="A basic road"/>
+  </properties>
+  <image width="200" height="400" source="roadtile1011.png"/>
+ </tile>
+ <tile id="100">
+  <properties>
+   <property name="CREDITS" value="50"/>
+   <property name="METAL" value="5"/>
+   <property name="onTile" value="[sand, grass, iron, oil]"/>
+   <property name="name" value="Simple road"/>
+   <property name="type" value="road"/>
+   <property name="description" value="A basic road"/>
+  </properties>
+  <image width="200" height="400" source="roadtile1101.png"/>
+ </tile>
+ <tile id="101">
+  <properties>
+   <property name="CREDITS" value="50"/>
+   <property name="METAL" value="5"/>
+   <property name="onTile" value="[sand, grass, iron, oil]"/>
+   <property name="name" value="Simple road"/>
+   <property name="type" value="road"/>
+   <property name="description" value="A basic road"/>
+  </properties>
+  <image width="200" height="400" source="roadtile1111.png"/>
+ </tile>
  <!-- Military tiles -->
  <tile id="120">
   <properties>

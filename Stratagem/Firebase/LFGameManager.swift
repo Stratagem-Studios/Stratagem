@@ -64,7 +64,6 @@ public struct LFGameManager {
                 for city in planet.cities {
                     gameRef.child("cities/\(city.cityName!)/owner").setValue("***NIL***")
                     gameRef.child("cities/\(city.cityName!)/planetName").setValue(city.planetName)
-                    
                     Global.hfGamePusher.uploadCityTerrain(cityName: city.cityName!, cityTerrainInt: city.cityTerrainInt!)
                     
                     // Resources
@@ -100,6 +99,7 @@ public struct LFGameManager {
                         
                         staticGameVariables.gameCode = code
                         
+                        Global.setGames(gameVars: GameVariables())
                         Global.lfGameListener!.listenToAll()
                         playerVariables.currentView = .GameLobbyView
                     }
@@ -256,6 +256,7 @@ public struct LFGameManager {
                 Global.gameVars.galaxy = galaxy
                 Global.gameVars.selectedPlanet = ownedPlanet!
                 Global.gameVars.selectedCity = ownedCity!
+                Global.gameVars.cityScene = CityScene(size: CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
                 
                 playerVariables.currentView = .GameView
                 Global.hfGameListener.listenToAll()

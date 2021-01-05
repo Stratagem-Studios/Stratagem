@@ -167,6 +167,9 @@ public class SKTilemap: SKEffectNode, SKTiledObject {
      | staggered   | Staggered isometric tile map.                 |
      
      */
+    
+    static var sharedTilemap: SKTilemap?
+    
     public enum TilemapOrientation: String {
         case orthogonal
         case isometric

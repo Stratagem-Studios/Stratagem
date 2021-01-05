@@ -3,6 +3,7 @@
 import SceneKit
 import SpriteKit
 import Combine
+import SKTiled
 import SwiftUI
 
 enum GameViewLevel: String {
@@ -27,6 +28,8 @@ class GameVariables {
     // Directly determines display
     var selectedPlanet: Planet?
     var selectedCity: City?
+    var currentTilemap: SKTilemap?
+    var cityScene: CityScene! = nil
     
     var galaxy: Galaxy!
     
@@ -38,6 +41,8 @@ class GameVariables {
     // Holds the alert box
     var alertBox = AlertBoxView()
     
+    /// Set this to true to update HudNode manually in CityView
+    var shouldUpdateCityHudNode = false
     
     func update(deltaTime: CGFloat){
         // Update the galaxy
