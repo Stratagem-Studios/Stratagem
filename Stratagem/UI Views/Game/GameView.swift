@@ -24,6 +24,12 @@ struct GameView: View {
             case .CITY:
                 CityView()
             }
+            
+            // An alert box to inform the player as to what is happenening
+            Global.gameVars.alertBox
+                .frame(width: screenSize.width/4, height: screenSize.height/4, alignment: Alignment(horizontal: .leading, vertical: .bottom))
+                .position(x: 0, y: screenSize.height - screenSize.height/8)
+            
         }.onAppear {
             //VideoBackground.shared.pause()
         }
