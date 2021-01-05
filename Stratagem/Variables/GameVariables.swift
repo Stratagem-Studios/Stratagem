@@ -30,11 +30,13 @@ class GameVariables {
     
     var galaxy: Galaxy!
     
-    // only here for now, should be migrated
     var screenSize = UIScreen.main.bounds
     
     // Updates the game
     var updater = Updater()
+    
+    // Holds the alert box
+    var alertBox = AlertBoxView()
     
     
     func update(deltaTime: CGFloat){

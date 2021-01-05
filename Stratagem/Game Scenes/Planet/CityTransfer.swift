@@ -63,6 +63,9 @@ class CityTransfer {
                     Global.hfGamePusher.updateOwnership(type: "cities", name: endCity.cityName, newOwner: Global.playerVariables.playerName)
                     let sprite = planet?.planetMap.citiesNode.children[endCityInt] as! SKSpriteNode
                     sprite.color = UIColor.blue
+                    Global.gameVars.alertBox.addAlert(msg: "Successfully captured " + endCity.cityName + " on planet " + (planet?.planetName)! , rectColor: Color.blue)
+                } else {
+                    Global.gameVars.alertBox.addAlert(msg: "Failed to capture " + endCity.cityName + " on planet " + (planet?.planetName)! , rectColor: Color.red)
                 }
                 
             } else {return false}

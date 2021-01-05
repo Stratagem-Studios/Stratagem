@@ -2,7 +2,7 @@ import Foundation
 import SpriteKit
 
 public enum UnitType: String, CaseIterable {
-    case BRAWLER, SNIPER, FIGHTER
+    case SNIPER, FIGHTER, BRAWLER
 }
 
 class Units {
