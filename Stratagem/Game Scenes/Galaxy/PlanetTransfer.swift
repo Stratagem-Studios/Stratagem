@@ -15,9 +15,10 @@ class PlanetTransfer {
     
     weak var planet = Global.gameVars.selectedPlanet!
     
-    init(ship: Spaceship, endCityint: Int, startPos: CGPoint, endPos: CGPoint) {
+    init(ship: Spaceship, endPlanetint: Int, endCityint: Int, startPos: CGPoint, endPos: CGPoint) {
         spaceship = ship
-        self.endCity = planet!.cities[endCityint]
+        self.endCity = Global.gameVars.galaxy.planets[endPlanetint].cities[endCityint]
+        spaceship.currentPlanet = Global.gameVars.galaxy.planets[endPlanetint]
         self.startPos = startPos
         self.endPos = endPos
         travelGoal = sqrt((startPos.x - endPos.x) * (startPos.x - endPos.x) + (startPos.y - endPos.y) * (startPos.y - endPos.y))
@@ -32,6 +33,8 @@ class PlanetTransfer {
         travelDistance += dt * 20
         if travelDistance > travelGoal {
             unitSprite.removeFromParent()
+            spaceship.currentCity = endCity
+            spaceship.landed()
             return true
         }
         unitSprite.position.x = (endPos.x - startPos.x) * travelPercent + startPos.x

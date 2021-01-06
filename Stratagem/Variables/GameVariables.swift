@@ -33,11 +33,13 @@ class GameVariables {
     
     var galaxy: Galaxy!
     
-    // only here for now, should be migrated
     var screenSize = UIScreen.main.bounds
     
     // Updates the game
     var updater = Updater()
+    
+    // Holds the alert box
+    var alertBox = AlertBoxView()
     
     /// Set this to true to update HudNode manually in CityView
     var shouldUpdateCityHudNode = false

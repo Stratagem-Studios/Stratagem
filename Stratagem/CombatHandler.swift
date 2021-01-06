@@ -19,7 +19,7 @@ class CombatHandler {
                 (defendingUnits[.SNIPER]! + defendingUnits[.FIGHTER]! + defendingUnits[.BRAWLER]!) > 0) {
             
             for type in UnitType.allCases {
-                if attackingUnits[type]! * defendingUnits[type]! > 0 {
+                if attackingUnits[type]! + defendingUnits[type]! > 0 {
                     for _ in 0..<attackingUnits[type]! {
                         let hitUnits: (UnitType, Int) = unitAttack(attackingUnitType: type, enemyArmy: defendingUnits)
                         eliminatedDefendingUnits[hitUnits.0]! += hitUnits.1
@@ -29,11 +29,12 @@ class CombatHandler {
                         eliminatedAttackingUnits[hitUnits.0]! += hitUnits.1
                     }
                 }
-                print("finished type: \(type)")
             }
             
             // After we finish calculating one round of combat, we need to apply causualties
             print("round finished")
+            print( "eliminated attackers: \(eliminatedAttackingUnits)")
+            print( "eliminated defenders: \(eliminatedDefendingUnits)")
             for type in UnitType.allCases {
                 attackingUnits[type]! -= eliminatedAttackingUnits[type]!
                 if attackingUnits[type]! < 0 {
@@ -68,11 +69,13 @@ class CombatHandler {
             
             // UNIQUE
             if Float.random(in: 0..<1) < 0.2 { hitUnits.1 += 1 }
+            
         case .FIGHTER:
             weights[.SNIPER] = 30
             weights[.FIGHTER] = 40
             weights[.BRAWLER] = 50
             hitPercent = 70
+            
         case .BRAWLER:
             weights[.SNIPER] = 25
             weights[.FIGHTER] = 45
