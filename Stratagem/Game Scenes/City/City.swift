@@ -90,7 +90,9 @@ public class City {
     }
     
     /// Try to replace firstTile with secondTile given its global ID
-    func changeTileAtLoc(firstTile: SKTile, secondTileID: Int) {
+    func changeTileAtLoc(firstTile: SKTile, secondTileID: Int, isFree: Bool = false, recusive: Bool = true) {
+        var secondTileID = secondTileID
+        
         if let tileLayer = firstTile.layer {
             if tileLayer.name! == "Tile Layer 1" {
                 let x = Int(firstTile.tileCoord!.x)
@@ -98,64 +100,63 @@ public class City {
                 
                 // Constraints that ALL tiles have to respect
                 if cityTerrain[x][y].isEditable == true {
-                    // Destroy a building
-                    if firstTile.tileData.properties["type"]! != "ground" {
-                        let newTileData = tileLayer.getTileData(globalID: secondTileID)!
-                        
-                        let cityTile = CityTile()
-                        let message = cityTile.initTile(tile: firstTile, newTileData: newTileData, cityTerrain: cityTerrain, isEditable: true)
-                        if message == "true" {
-                            let newTexture = newTileData.texture!
-                            
-                            newTexture.filteringMode = .nearest
-                            firstTile.texture = newTileData.texture
-                            firstTile.tileData = newTileData
-                            
-                            // Update my cityTerrain array
-                            cityTerrain[x][y] = cityTile
-                            cityTerrainInt[x][y] = secondTileID
-                            
-                            Global.hfGamePusher.uploadCityTerrain(cityName: cityName, cityTerrainInt: cityTerrainInt)
-                        } else {
-                            hudNode!.inlineErrorMessage(errorMessage: "Unable to place tile")
-                        }
-                    } else if firstTile.tileData.properties["type"]! == "ground" {
-                        // Build a building, satisfying the building's constraints
-                        let cityTile = CityTile()
-                        let newTileData = tileLayer.getTileData(globalID: secondTileID)!
-                        
-                        let message = cityTile.initTile(tile: firstTile, newTileData: newTileData, cityTerrain: cityTerrain, isEditable: true)
-                        
-                        if message == "true" {
-                            // If it's a building, check if player has the resources and then subtract it
-                            if let building = cityTile.building {
+                    // Build a building, satisfying the building's constraints
+                    let cityTile = CityTile()
+                    var newTileData = tileLayer.getTileData(globalID: secondTileID)!
+                    
+                    let message = cityTile.initTile(tile: firstTile, newTileData: newTileData, cityTerrain: cityTerrain, isEditable: true)
+                    
+                    if message == "true" {
+                        // If it's a building, check if player has the resources and then subtract it
+                        if let building = cityTile.building {
+                            if !isFree {
                                 let deductedFunds = tryDeductFunds(costs: building.costs)
-                                
-                                if deductedFunds {
-                                    let newTexture = newTileData.texture!
-                                    
-                                    newTexture.filteringMode = .nearest
-                                    firstTile.texture = newTileData.texture
-                                    firstTile.tileData = newTileData
-                                    
-                                    // Update my cityTerrain array
-                                    cityTerrain[x][y] = cityTile
-                                    cityTerrainInt[x][y] = secondTileID
-                                    
-                                    Global.hfGamePusher.uploadCityTerrain(cityName: cityName, cityTerrainInt: cityTerrainInt)
-                                } else {
+                                if !deductedFunds {
                                     hudNode!.inlineErrorMessage(errorMessage: "Insufficient funds")
+                                    return
                                 }
-                            } else {
-                                hudNode!.inlineErrorMessage(errorMessage: "Not a building")
                             }
-                        } else {
-                            hudNode!.inlineErrorMessage(errorMessage: message)
+                            
+                            if let road = building as? Road {
+                                road.updateRoadGID(city: self, currentCoords: firstTile.tileCoord!)
+                                secondTileID = road.globalID
+                                newTileData = tileLayer.getTileData(globalID: secondTileID)!
+                            }
                         }
+                        
+                        let newTexture = newTileData.texture!
+                        
+                        newTexture.filteringMode = .nearest
+                        firstTile.texture = newTileData.texture
+                        firstTile.tileData = newTileData
+                        
+                        // Update my cityTerrain array
+                        cityTerrain[x][y] = cityTile
+                        cityTerrainInt[x][y] = secondTileID
+                        
+                        // Update the adjacent tiles if they're road
+                        if recusive && cityTile.building is Road {
+                            let coordUpperLeft = CGPoint(x: x - 1, y: y)
+                            let coordUpperRight = CGPoint(x: x, y: y - 1)
+                            let coordLowerRight = CGPoint(x: x + 1, y: y)
+                            let coordLowerLeft = CGPoint(x: x, y: y + 1)
+                            let coordsAdjacent = [coordUpperLeft, coordUpperRight, coordLowerRight, coordLowerLeft]
+                            
+                            for coordAdjacent in coordsAdjacent {
+                                let cityTile = cityTerrain[Int(coordAdjacent.x)][Int(coordAdjacent.y)]
+                                if cityTile.building is Road {
+                                    changeTileAtLoc(firstTile: cityTile.tile!, secondTileID: 96, isFree: true, recusive: false)
+                                }
+                            }
+                        }
+                        
+                        Global.hfGamePusher.uploadCityTerrain(cityName: cityName, cityTerrainInt: cityTerrainInt)
+                    } else {
+                        hudNode!.inlineErrorMessage(errorMessage: message)
                     }
-                } else {
-                    hudNode!.inlineErrorMessage(errorMessage: "Tile is outside of editable map")
                 }
+            } else {
+                hudNode!.inlineErrorMessage(errorMessage: "Tile is outside of editable map")
             }
         }
     }
