@@ -135,7 +135,7 @@ public class City {
                         cityTerrainInt[x][y] = secondTileID
                         
                         // Update the adjacent tiles if they're road
-                        if recusive && cityTile.building is Road {
+                        if recusive {
                             let coordUpperLeft = CGPoint(x: x - 1, y: y)
                             let coordUpperRight = CGPoint(x: x, y: y - 1)
                             let coordLowerRight = CGPoint(x: x + 1, y: y)
