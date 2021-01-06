@@ -37,7 +37,7 @@ public class CityTile {
             switch properties["type"] {
             case "road":
                 tileType = .ROAD
-                building = Road(cost: costs)
+                building = Road(cost: costs, properties: properties)
             case "residential":
                 tileType = .RESIDENTIAL
                 building = ResidentialBuilding(cost: costs, properties: properties)

@@ -212,11 +212,19 @@ class HudNode : SKNode {
             moveableNode.addChild(pageScrollView)
             
             // Texture nodes
-            for (j, tile) in tilemap.tilesets.first!.getTileData(withProperty: "type", buildingType).enumerated() {
+            if buildingType == "road" {
+                let tile = tilemap.tilesets.first!.getTileData(localID: 95)!
                 let sprite = SKSpriteNode(texture: tile.texture, size: CGSize(width: 50, height: 100))
                 sprite.name = tile.name
-                sprite.position = CGPoint(x: j * 100, y: 0)
+                sprite.position = CGPoint(x: 0 * 100, y: 0)
                 pageScrollView.addChild(sprite)
+            } else {
+                for (j, tile) in tilemap.tilesets.first!.getTileData(withProperty: "type", buildingType).enumerated() {
+                    let sprite = SKSpriteNode(texture: tile.texture, size: CGSize(width: 50, height: 100))
+                    sprite.name = tile.name
+                    sprite.position = CGPoint(x: j * 100, y: 0)
+                    pageScrollView.addChild(sprite)
+                }
             }
             
             // Button to switch pages nodes
