@@ -33,10 +33,19 @@ public struct HFGamePusher {
     }
     
     public func uploadResources(cityName: String, name: String, resources: [ResourceTypes: CGFloat]) {
-        
         let encoder = JSONEncoder()
         do {
             let string = String(data: try encoder.encode(resources), encoding: .utf8)!
+            ref.child("games/\(staticGameVariables.gameCode)/cities/\(cityName)/\(name)").setValue(string)
+        } catch {
+            print("Unable to encode resources")
+        }
+    }
+    
+    public func uploadUnits(cityName: String, name: String, units: [UnitType: Int]) {
+        let encoder = JSONEncoder()
+        do {
+            let string = String(data: try encoder.encode(units), encoding: .utf8)!
             ref.child("games/\(staticGameVariables.gameCode)/cities/\(cityName)/\(name)").setValue(string)
         } catch {
             print("Unable to encode resources")

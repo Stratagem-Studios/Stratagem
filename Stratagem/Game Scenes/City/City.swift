@@ -76,6 +76,7 @@ public class City {
                 
                 if let newUnit = newUnit {
                     units[newUnit.unitType!]! += 1
+                    Global.hfGamePusher.uploadUnits(cityName: cityName!, name: "units", units: units)
                 }
             }
         }
@@ -85,6 +86,7 @@ public class City {
         secondDelta += deltaTime
         if secondDelta >= 5 {
             Global.hfGamePusher.uploadResources(cityName: cityName!, name: "resources", resources: resources)
+
             secondDelta = 0
         }
     }
