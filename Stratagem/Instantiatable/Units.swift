@@ -1,7 +1,7 @@
 import Foundation
 import SpriteKit
 
-public enum UnitType: String, CaseIterable {
+public enum UnitType: String, CaseIterable, Codable {
     case SNIPER, FIGHTER, BRAWLER
 }
 
