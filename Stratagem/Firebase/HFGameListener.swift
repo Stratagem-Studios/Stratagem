@@ -31,19 +31,16 @@ public struct HFGameListener {
                     
                     if city.owner != Global.playerVariables.playerName {
                         city.cityTerrainInt = cityTerrain
-                    }
-                    
-                    if city.owner != Global.playerVariables.playerName {
                         city.resources = resourceStringToDict(input: cityInfo["resources"] as! String)
                     }
+                    city.units = unitsStringToDict(input: cityInfo["units"] as! String)
                 }
             }
         })
         playerVariables.observerRefs.append(citiesRef)
     }
     
-    
-    func resourceStringToDict(input: String) -> [ResourceTypes: CGFloat] {
+    func resourceStringToString(input: String) -> ([String], [CGFloat]) {
         let text = input.replacingOccurrences(of: "]", with: ",")
         let regex = try! NSRegularExpression(pattern:"\"(.*?)\"", options: [])
         var resourceNames = [String]()
@@ -62,13 +59,31 @@ public struct HFGameListener {
                 resourceValues.append(CGFloat(Float(text[range])!))
             }
         }
+        return (resourceNames, resourceValues)
+    }
+
+    
+    
+    func resourceStringToDict(input: String) -> [ResourceTypes: CGFloat] {
+        let resourceInfo = resourceStringToString(input: input)
         
         var resources: [ResourceTypes: CGFloat] = [:]
-        for (i, resourceName) in resourceNames.enumerated() {
-            resources[ResourceTypes(rawValue: resourceName)!] = resourceValues[i]
+        for (i, resourceName) in resourceInfo.0.enumerated() {
+            resources[ResourceTypes(rawValue: resourceName)!] = resourceInfo.1[i]
         }
 
         return resources
+    }
+    
+    func unitsStringToDict(input: String) -> [UnitType: Int] {
+        let unitInfo = resourceStringToString(input: input)
+        
+        var units: [UnitType: Int] = [:]
+        for (i, unitName) in unitInfo.0.enumerated() {
+            units[UnitType(rawValue: unitName)!] = Int(unitInfo.1[i])
+        }
+
+        return units
     }
  
 
