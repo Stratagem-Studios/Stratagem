@@ -67,7 +67,7 @@ class CityTransfer {
                 } else {
                     Global.gameVars.alertBox.addAlert(msg: "Failed to capture " + endCity.cityName + " on planet " + (planet?.planetName)! , rectColor: Color.red)
                 }
-                
+                Global.hfGamePusher.uploadUnits(cityName: endCity.cityName, name: endCity.owner!, units: endCity.units)
             } else {return false}
             unitSprite.removeFromParent()
             return true

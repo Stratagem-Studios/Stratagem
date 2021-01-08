@@ -11,11 +11,6 @@ class Spaceship {
         self.units = units
     }
     
-    // when a rocket is put in transit fom galaxyScene
-    func launched() {
-        
-    }
-    
     // when a spaceship lands on a new city, assume that currentCity is up to date
     func landed() {
         if (currentCity!.owner == owner){
@@ -34,5 +29,6 @@ class Spaceship {
                 } else { Global.gameVars.alertBox.addAlert(msg: "Failed to Capture City  " + String(self.currentCity!.cityName), rectColor: .red) }
             }
         }
+        Global.hfGamePusher.uploadUnits(cityName: currentCity!.cityName, name: currentCity!.owner!, units: currentCity!.units)
     }
 }
