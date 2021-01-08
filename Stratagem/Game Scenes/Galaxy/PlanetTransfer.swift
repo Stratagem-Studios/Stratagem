@@ -26,7 +26,6 @@ class PlanetTransfer {
         unitSprite.size = CGSize(width: Global.gameVars.screenSize.width/30, height: Global.gameVars.screenSize.width/30)
         unitSprite.isUserInteractionEnabled = false
         unitSprite.zRotation = shipAngle(start: startPos, end: endPos)
-        spaceship.launched()
     }
     
     func timePassed(dt: CGFloat) -> Bool{

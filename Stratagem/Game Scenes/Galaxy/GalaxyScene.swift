@@ -162,7 +162,7 @@ class GalaxyScene: SKScene {
         enterButton.fillColor = SKColor.gray
         enterButton.name = "enterButton"
         let enterText = SKLabelNode(fontNamed: "Montserrat-Bold")
-        enterText.fontSize = screenSize!.height/18
+        enterText.fontSize = screenSize!.width/40
         enterText.fontColor = SKColor.darkGray
         enterText.verticalAlignmentMode = .center
         enterText.name = "enterText"
@@ -173,7 +173,7 @@ class GalaxyScene: SKScene {
         
         /// The planet, listed at the top of the description panel
         let planetName = SKLabelNode(fontNamed: "Montserrat-Bold")
-        planetName.fontSize = screenSize!.height/18
+        planetName.fontSize = screenSize!.width/40
         planetName.fontColor = SKColor.clear
         planetName.verticalAlignmentMode = .top
         planetName.position.y = descriptionPanel.frame.height/2 - 10
@@ -198,7 +198,7 @@ class GalaxyScene: SKScene {
         startTransferButton.fillColor = SKColor.gray
         startTransferButton.name = "startTransferButton"
         let startTransferText = SKLabelNode(fontNamed: "Montserrat-Bold")
-        startTransferText.fontSize = screenSize!.height/18
+        startTransferText.fontSize = screenSize!.width/40
         startTransferText.fontColor = SKColor.darkGray
         startTransferText.verticalAlignmentMode = .center
         startTransferText.name = "startTransferText"
@@ -212,7 +212,7 @@ class GalaxyScene: SKScene {
         selectUnitsButton.fillColor = SKColor.black
         selectUnitsButton.name = "selectUnitsButton"
         let selectUnitsText = SKLabelNode(fontNamed: "Montserrat-Bold")
-        selectUnitsText.fontSize = screenSize!.height/18
+        selectUnitsText.fontSize = screenSize!.width/40
         selectUnitsText.fontColor = SKColor.yellow
         selectUnitsText.verticalAlignmentMode = .center
         selectUnitsText.name = "selectUnitsText"
@@ -225,7 +225,7 @@ class GalaxyScene: SKScene {
         selectDestinationButton.fillColor = SKColor.black
         selectDestinationButton.name = "selectDestinationButton"
         let selectDestinationText = SKLabelNode(fontNamed: "Montserrat-Bold")
-        selectDestinationText.fontSize = screenSize!.height/18
+        selectDestinationText.fontSize = screenSize!.width/40
         selectDestinationText.fontColor = SKColor.yellow
         selectDestinationText.verticalAlignmentMode = .center
         selectDestinationText.name = "selectDestinationText"
