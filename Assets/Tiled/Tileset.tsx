@@ -43,7 +43,7 @@
       <property name="CREDITS" value="300"/>
       <property name="METAL" value="10"/>
       <property name="CONSUMES METAL" value="2"/>
-    <property name="onTileName" value="[sand, grass, iron, oil]"/>
+    <property name="onTileName" value="[grass, iron, oil]"/>
    <property name="name" value="Simple building"/>
    <property name="type" value="industrial"/>
    <property name="description" value="Consumes iron"/>
@@ -67,7 +67,7 @@
   <properties>
   <property name="CREDITS" value="100"/>
   <property name="METAL" value="10"/>
-  <property name="onTileName" value="[sand, grass, iron, oil]"/>
+  <property name="onTileName" value="[grass, iron, oil]"/>
   <property name="popRate" value="0.001"/>
   <property name="popCap" value="5000"/>
    <property name="name" value="Simple residential"/>
@@ -81,7 +81,7 @@
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
-   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="onTileName" value="[grass, iron, oil]"/>
    <property name="name" value="roadtile0000"/>
    <property name="type" value="road"/>
    <property name="description" value="A basic road"/>
@@ -92,7 +92,7 @@
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
-   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="onTileName" value="[grass, iron, oil]"/>
    <property name="name" value="roadtile1000"/>
    <property name="type" value="road"/>
    <property name="description" value="A basic road"/>
@@ -103,7 +103,7 @@
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
-   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="onTileName" value="[grass, iron, oil]"/>
    <property name="name" value="roadtile0100"/>
    <property name="type" value="road"/>
    <property name="description" value="A basic road"/>
@@ -114,7 +114,7 @@
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
-   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="onTileName" value="[grass, iron, oil]"/>
    <property name="name" value="roadtile0010"/>
    <property name="type" value="road"/>
    <property name="description" value="A basic road"/>
@@ -125,7 +125,7 @@
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
-   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="onTileName" value="[grass, iron, oil]"/>
    <property name="name" value="roadtile0001"/>
    <property name="type" value="road"/>
    <property name="description" value="A basic road"/>
@@ -136,7 +136,7 @@
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
-   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="onTileName" value="[grass, iron, oil]"/>
    <property name="name" value="roadtile1010"/>
    <property name="type" value="road"/>
    <property name="description" value="A basic road"/>
@@ -147,7 +147,7 @@
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
-   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="onTileName" value="[grass, iron, oil]"/>
    <property name="name" value="roadtile0101"/>
    <property name="type" value="road"/>
    <property name="description" value="A basic road"/>
@@ -158,7 +158,7 @@
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
-   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="onTileName" value="[grass, iron, oil]"/>
    <property name="name" value="roadtile1100"/>
    <property name="type" value="road"/>
    <property name="description" value="A basic road"/>
@@ -169,7 +169,7 @@
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
-   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="onTileName" value="[grass, iron, oil]"/>
    <property name="name" value="roadtile0110"/>
    <property name="type" value="road"/>
    <property name="description" value="A basic road"/>
@@ -180,7 +180,7 @@
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
-   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="onTileName" value="[grass, iron, oil]"/>
    <property name="name" value="roadtile0011"/>
    <property name="type" value="road"/>
    <property name="description" value="A basic road"/>
@@ -191,7 +191,7 @@
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
-   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="onTileName" value="[grass, iron, oil]"/>
    <property name="name" value="roadtile1001"/>
    <property name="type" value="road"/>
    <property name="description" value="A basic road"/>
@@ -202,7 +202,7 @@
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
-   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="onTileName" value="[grass, iron, oil]"/>
    <property name="name" value="roadtile1110"/>
    <property name="type" value="road"/>
    <property name="description" value="A basic road"/>
@@ -213,7 +213,7 @@
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
-   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="onTileName" value="[grass, iron, oil]"/>
    <property name="name" value="roadtile0111"/>
    <property name="type" value="road"/>
    <property name="description" value="A basic road"/>
@@ -224,7 +224,7 @@
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
-   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="onTileName" value="[grass, iron, oil]"/>
    <property name="name" value="roadtile1011"/>
    <property name="type" value="road"/>
    <property name="description" value="A basic road"/>
@@ -235,7 +235,7 @@
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
-   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="onTileName" value="[grass, iron, oil]"/>
    <property name="name" value="roadtile1101"/>
    <property name="type" value="road"/>
    <property name="description" value="A basic road"/>
@@ -246,7 +246,7 @@
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
-   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="onTileName" value="[grass, iron, oil]"/>
    <property name="name" value="roadtile1111"/>
    <property name="type" value="road"/>
    <property name="description" value="A basic road"/>
@@ -258,7 +258,7 @@
   <properties>
    <property name="CREDITS" value="100"/>
    <property name="METAL" value="20"/>
-   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="onTileName" value="[grass, iron, oil]"/>
    <property name="name" value="Robot Factory MK I"/>
    <property name="type" value="military"/>
    <property name="description" value="Produces cheap robots for the military"/>

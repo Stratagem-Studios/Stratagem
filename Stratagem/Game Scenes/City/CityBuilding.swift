@@ -16,7 +16,7 @@ public class CityBuilding {
         let x = Int(coords.x)
         let y = Int(coords.y)
         
-        if let onTileStr = newTileData.properties["onTile"] {
+        if let onTileStr = newTileData.properties["onTileName"] {
             let currentTileName = cityTerrain[x][y].tile!.tileData.properties["name"]!
             
             let onTileArr = onTileStr.trimmingCharacters(in: CharacterSet(charactersIn: "[]")).components(separatedBy:", ")
