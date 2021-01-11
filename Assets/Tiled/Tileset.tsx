@@ -159,13 +159,57 @@
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
    <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="name" value="roadtile1100"/>
+   <property name="type" value="road"/>
+   <property name="description" value="A basic road"/>
+  </properties>
+  <image width="200" height="400" source="roadtile1100.png"/>
+ </tile>
+ <tile id="98">
+  <properties>
+   <property name="CREDITS" value="50"/>
+   <property name="METAL" value="5"/>
+   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="name" value="roadtile0110"/>
+   <property name="type" value="road"/>
+   <property name="description" value="A basic road"/>
+  </properties>
+  <image width="200" height="400" source="roadtile0110.png"/>
+ </tile>
+ <tile id="99">
+  <properties>
+   <property name="CREDITS" value="50"/>
+   <property name="METAL" value="5"/>
+   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="name" value="roadtile0011"/>
+   <property name="type" value="road"/>
+   <property name="description" value="A basic road"/>
+  </properties>
+  <image width="200" height="400" source="roadtile0011.png"/>
+ </tile>
+ <tile id="100">
+  <properties>
+   <property name="CREDITS" value="50"/>
+   <property name="METAL" value="5"/>
+   <property name="onTileName" value="[sand, grass, iron, oil]"/>
+   <property name="name" value="roadtile1001"/>
+   <property name="type" value="road"/>
+   <property name="description" value="A basic road"/>
+  </properties>
+  <image width="200" height="400" source="roadtile1001.png"/>
+ </tile>
+ <tile id="101">
+  <properties>
+   <property name="CREDITS" value="50"/>
+   <property name="METAL" value="5"/>
+   <property name="onTileName" value="[sand, grass, iron, oil]"/>
    <property name="name" value="roadtile1110"/>
    <property name="type" value="road"/>
    <property name="description" value="A basic road"/>
   </properties>
   <image width="200" height="400" source="roadtile1110.png"/>
  </tile>
- <tile id="98">
+ <tile id="102">
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
@@ -176,7 +220,7 @@
   </properties>
   <image width="200" height="400" source="roadtile0111.png"/>
  </tile>
- <tile id="99">
+ <tile id="103">
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
@@ -187,7 +231,7 @@
   </properties>
   <image width="200" height="400" source="roadtile1011.png"/>
  </tile>
- <tile id="100">
+ <tile id="104">
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>
@@ -198,7 +242,7 @@
   </properties>
   <image width="200" height="400" source="roadtile1101.png"/>
  </tile>
- <tile id="101">
+ <tile id="105">
   <properties>
    <property name="CREDITS" value="50"/>
    <property name="METAL" value="5"/>

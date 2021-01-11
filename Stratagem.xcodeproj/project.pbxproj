@@ -68,22 +68,26 @@
 		FF71C04625A3767400D352E1 /* building industrial.png in Resources */ = {isa = PBXBuildFile; fileRef = FF71C04425A3767400D352E1 /* building industrial.png */; };
 		FF71C04C25A376EB00D352E1 /* building residential.png in Resources */ = {isa = PBXBuildFile; fileRef = FF71C04B25A376EB00D352E1 /* building residential.png */; };
 		FF71C04F25A3772200D352E1 /* oil tile.png in Resources */ = {isa = PBXBuildFile; fileRef = FF71C04E25A3772100D352E1 /* oil tile.png */; };
+		FF7213FF25ACA93900934761 /* roadtile1000.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7213F025ACA93600934761 /* roadtile1000.png */; };
+		FF72140025ACA93900934761 /* roadtile0000.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7213F125ACA93600934761 /* roadtile0000.png */; };
+		FF72140125ACA93900934761 /* roadtile1010.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7213F225ACA93700934761 /* roadtile1010.png */; };
+		FF72140225ACA93900934761 /* roadtile1110.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7213F325ACA93700934761 /* roadtile1110.png */; };
+		FF72140325ACA93900934761 /* roadtile0010.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7213F425ACA93700934761 /* roadtile0010.png */; };
+		FF72140425ACA93900934761 /* roadtile1100.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7213F525ACA93700934761 /* roadtile1100.png */; };
+		FF72140525ACA93900934761 /* roadtile1001.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7213F625ACA93800934761 /* roadtile1001.png */; };
+		FF72140625ACA93900934761 /* roadtile0001.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7213F725ACA93800934761 /* roadtile0001.png */; };
+		FF72140725ACA93900934761 /* roadtile0110.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7213F825ACA93800934761 /* roadtile0110.png */; };
+		FF72140825ACA93900934761 /* roadtile0101.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7213F925ACA93800934761 /* roadtile0101.png */; };
+		FF72140925ACA93900934761 /* roadtile1101.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7213FA25ACA93800934761 /* roadtile1101.png */; };
+		FF72140A25ACA93900934761 /* roadtile0100.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7213FB25ACA93800934761 /* roadtile0100.png */; };
+		FF72140B25ACA93900934761 /* roadtile0011.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7213FC25ACA93900934761 /* roadtile0011.png */; };
+		FF72140C25ACA93900934761 /* roadtile0111.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7213FD25ACA93900934761 /* roadtile0111.png */; };
+		FF72140D25ACA93900934761 /* roadtile1011.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7213FE25ACA93900934761 /* roadtile1011.png */; };
 		FF74189E2587C4C700A4BC42 /* robot factory MKI.png in Resources */ = {isa = PBXBuildFile; fileRef = FF74189D2587C4C700A4BC42 /* robot factory MKI.png */; };
 		FF7418A42587C4E300A4BC42 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418A02587C4E100A4BC42 /* rock.png */; };
 		FF7418A52587C4E300A4BC42 /* sand.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418A12587C4E200A4BC42 /* sand.png */; };
 		FF7418A62587C4E300A4BC42 /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418A22587C4E200A4BC42 /* water.png */; };
 		FF7418A72587C4E300A4BC42 /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418A32587C4E300A4BC42 /* grass.png */; };
-		FF7418AF2587C52900A4BC42 /* roadtile1110.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418A92587C52700A4BC42 /* roadtile1110.png */; };
-		FF7418B02587C52900A4BC42 /* roadtile0101.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418AA2587C52700A4BC42 /* roadtile0101.png */; };
-		FF7418B12587C52900A4BC42 /* roadtile0111.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418AB2587C52800A4BC42 /* roadtile0111.png */; };
-		FF7418B22587C52900A4BC42 /* roadtile1101.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418AC2587C52800A4BC42 /* roadtile1101.png */; };
-		FF7418B32587C52900A4BC42 /* roadtile1011.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418AD2587C52900A4BC42 /* roadtile1011.png */; };
-		FF7418B42587C52900A4BC42 /* roadtile1010.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418AE2587C52900A4BC42 /* roadtile1010.png */; };
-		FF7418BB2587C52F00A4BC42 /* roadtile1000.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418B62587C52E00A4BC42 /* roadtile1000.png */; };
-		FF7418BC2587C52F00A4BC42 /* roadtile0010.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418B72587C52E00A4BC42 /* roadtile0010.png */; };
-		FF7418BD2587C52F00A4BC42 /* roadtile0100.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418B82587C52F00A4BC42 /* roadtile0100.png */; };
-		FF7418BE2587C52F00A4BC42 /* roadtile0001.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418B92587C52F00A4BC42 /* roadtile0001.png */; };
-		FF7418BF2587C52F00A4BC42 /* roadtile0000.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7418BA2587C52F00A4BC42 /* roadtile0000.png */; };
 		FF7418C32587C77400A4BC42 /* Tileset.tsx in Resources */ = {isa = PBXBuildFile; fileRef = FF7418C22587C77400A4BC42 /* Tileset.tsx */; };
 		FF8545592584485500D2D51F /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8545582584485500D2D51F /* Queue.swift */; };
 		FF88BDA4256E0B7B00DF0E40 /* CityTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88BDA3256E0B7B00DF0E40 /* CityTile.swift */; };
@@ -185,22 +189,26 @@
 		FF71C04425A3767400D352E1 /* building industrial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "building industrial.png"; sourceTree = "<group>"; };
 		FF71C04B25A376EB00D352E1 /* building residential.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "building residential.png"; sourceTree = "<group>"; };
 		FF71C04E25A3772100D352E1 /* oil tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oil tile.png"; sourceTree = "<group>"; };
+		FF7213F025ACA93600934761 /* roadtile1000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile1000.png; sourceTree = "<group>"; };
+		FF7213F125ACA93600934761 /* roadtile0000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0000.png; sourceTree = "<group>"; };
+		FF7213F225ACA93700934761 /* roadtile1010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile1010.png; sourceTree = "<group>"; };
+		FF7213F325ACA93700934761 /* roadtile1110.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile1110.png; sourceTree = "<group>"; };
+		FF7213F425ACA93700934761 /* roadtile0010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0010.png; sourceTree = "<group>"; };
+		FF7213F525ACA93700934761 /* roadtile1100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile1100.png; sourceTree = "<group>"; };
+		FF7213F625ACA93800934761 /* roadtile1001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile1001.png; sourceTree = "<group>"; };
+		FF7213F725ACA93800934761 /* roadtile0001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0001.png; sourceTree = "<group>"; };
+		FF7213F825ACA93800934761 /* roadtile0110.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0110.png; sourceTree = "<group>"; };
+		FF7213F925ACA93800934761 /* roadtile0101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0101.png; sourceTree = "<group>"; };
+		FF7213FA25ACA93800934761 /* roadtile1101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile1101.png; sourceTree = "<group>"; };
+		FF7213FB25ACA93800934761 /* roadtile0100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0100.png; sourceTree = "<group>"; };
+		FF7213FC25ACA93900934761 /* roadtile0011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0011.png; sourceTree = "<group>"; };
+		FF7213FD25ACA93900934761 /* roadtile0111.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0111.png; sourceTree = "<group>"; };
+		FF7213FE25ACA93900934761 /* roadtile1011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile1011.png; sourceTree = "<group>"; };
 		FF74189D2587C4C700A4BC42 /* robot factory MKI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "robot factory MKI.png"; sourceTree = "<group>"; };
 		FF7418A02587C4E100A4BC42 /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
 		FF7418A12587C4E200A4BC42 /* sand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sand.png; sourceTree = "<group>"; };
 		FF7418A22587C4E200A4BC42 /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
 		FF7418A32587C4E300A4BC42 /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
-		FF7418A92587C52700A4BC42 /* roadtile1110.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile1110.png; sourceTree = "<group>"; };
-		FF7418AA2587C52700A4BC42 /* roadtile0101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0101.png; sourceTree = "<group>"; };
-		FF7418AB2587C52800A4BC42 /* roadtile0111.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0111.png; sourceTree = "<group>"; };
-		FF7418AC2587C52800A4BC42 /* roadtile1101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile1101.png; sourceTree = "<group>"; };
-		FF7418AD2587C52900A4BC42 /* roadtile1011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile1011.png; sourceTree = "<group>"; };
-		FF7418AE2587C52900A4BC42 /* roadtile1010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile1010.png; sourceTree = "<group>"; };
-		FF7418B62587C52E00A4BC42 /* roadtile1000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile1000.png; sourceTree = "<group>"; };
-		FF7418B72587C52E00A4BC42 /* roadtile0010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0010.png; sourceTree = "<group>"; };
-		FF7418B82587C52F00A4BC42 /* roadtile0100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0100.png; sourceTree = "<group>"; };
-		FF7418B92587C52F00A4BC42 /* roadtile0001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0001.png; sourceTree = "<group>"; };
-		FF7418BA2587C52F00A4BC42 /* roadtile0000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0000.png; sourceTree = "<group>"; };
 		FF7418C22587C77400A4BC42 /* Tileset.tsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Tileset.tsx; sourceTree = "<group>"; };
 		FF8545582584485500D2D51F /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		FF88BDA3256E0B7B00DF0E40 /* CityTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTile.swift; sourceTree = "<group>"; };
@@ -419,17 +427,21 @@
 		FF7418982587C39200A4BC42 /* road */ = {
 			isa = PBXGroup;
 			children = (
-				FF7418BA2587C52F00A4BC42 /* roadtile0000.png */,
-				FF7418B62587C52E00A4BC42 /* roadtile1000.png */,
-				FF7418B82587C52F00A4BC42 /* roadtile0100.png */,
-				FF7418B72587C52E00A4BC42 /* roadtile0010.png */,
-				FF7418B92587C52F00A4BC42 /* roadtile0001.png */,
-				FF7418AE2587C52900A4BC42 /* roadtile1010.png */,
-				FF7418AA2587C52700A4BC42 /* roadtile0101.png */,
-				FF7418A92587C52700A4BC42 /* roadtile1110.png */,
-				FF7418AB2587C52800A4BC42 /* roadtile0111.png */,
-				FF7418AD2587C52900A4BC42 /* roadtile1011.png */,
-				FF7418AC2587C52800A4BC42 /* roadtile1101.png */,
+				FF7213F125ACA93600934761 /* roadtile0000.png */,
+				FF7213F725ACA93800934761 /* roadtile0001.png */,
+				FF7213F425ACA93700934761 /* roadtile0010.png */,
+				FF7213FC25ACA93900934761 /* roadtile0011.png */,
+				FF7213FB25ACA93800934761 /* roadtile0100.png */,
+				FF7213F925ACA93800934761 /* roadtile0101.png */,
+				FF7213F825ACA93800934761 /* roadtile0110.png */,
+				FF7213FD25ACA93900934761 /* roadtile0111.png */,
+				FF7213F025ACA93600934761 /* roadtile1000.png */,
+				FF7213F625ACA93800934761 /* roadtile1001.png */,
+				FF7213F225ACA93700934761 /* roadtile1010.png */,
+				FF7213FE25ACA93900934761 /* roadtile1011.png */,
+				FF7213F525ACA93700934761 /* roadtile1100.png */,
+				FF7213FA25ACA93800934761 /* roadtile1101.png */,
+				FF7213F325ACA93700934761 /* roadtile1110.png */,
 			);
 			path = road;
 			sourceTree = "<group>";
@@ -668,42 +680,47 @@
 				FF71C04F25A3772200D352E1 /* oil tile.png in Resources */,
 				FF0CABA1256464BF009681C8 /* starfield.mp4 in Resources */,
 				FF08577B2550FC5100F0F220 /* Montserrat-MediumItalic.ttf in Resources */,
+				FF72140225ACA93900934761 /* roadtile1110.png in Resources */,
+				FF7213FF25ACA93900934761 /* roadtile1000.png in Resources */,
 				FF8C4E67254FBAFB00522756 /* .gitignore in Resources */,
 				FF08576E2550FC5100F0F220 /* Montserrat-ExtraLight.ttf in Resources */,
-				FF7418B42587C52900A4BC42 /* roadtile1010.png in Resources */,
-				FF7418B02587C52900A4BC42 /* roadtile0101.png in Resources */,
 				FFF9DA8A25755BD900C18D8D /* planet_names.txt in Resources */,
-				FF7418BC2587C52F00A4BC42 /* roadtile0010.png in Resources */,
+				FF72140525ACA93900934761 /* roadtile1001.png in Resources */,
+				FF72140325ACA93900934761 /* roadtile0010.png in Resources */,
 				FFF9DA872575549400C18D8D /* city_names.txt in Resources */,
 				FF57238F2551BFD900872457 /* .gitattributes in Resources */,
-				FF7418AF2587C52900A4BC42 /* roadtile1110.png in Resources */,
 				FF7418A72587C4E300A4BC42 /* grass.png in Resources */,
 				FF078BD2254F3F8800E9FA7C /* Preview Assets.xcassets in Resources */,
 				FF08576D2550FC5100F0F220 /* Montserrat-ExtraLightItalic.ttf in Resources */,
 				FF64B6C825530268006A9F38 /* README.md in Resources */,
 				FF0857702550FC5100F0F220 /* Montserrat-Bold.ttf in Resources */,
 				FF0857762550FC5100F0F220 /* Montserrat-Thin.ttf in Resources */,
-				FF7418BF2587C52F00A4BC42 /* roadtile0000.png in Resources */,
+				FF72140125ACA93900934761 /* roadtile1010.png in Resources */,
 				FFD9693E255B0505005A1BC7 /* Podfile in Resources */,
 				FF71C04525A3767400D352E1 /* iron miner.png in Resources */,
-				FF7418B32587C52900A4BC42 /* roadtile1011.png in Resources */,
-				FF7418BD2587C52F00A4BC42 /* roadtile0100.png in Resources */,
 				FF08577C2550FC5100F0F220 /* Montserrat-Regular.ttf in Resources */,
-				FF7418B12587C52900A4BC42 /* roadtile0111.png in Resources */,
 				FF7418C32587C77400A4BC42 /* Tileset.tsx in Resources */,
 				FFE76E2425809226001525F3 /* robot factory.png in Resources */,
+				FF72140B25ACA93900934761 /* roadtile0011.png in Resources */,
 				FF0857752550FC5100F0F220 /* Montserrat-SemiBoldItalic.ttf in Resources */,
+				FF72140A25ACA93900934761 /* roadtile0100.png in Resources */,
+				FF72140D25ACA93900934761 /* roadtile1011.png in Resources */,
+				FF72140425ACA93900934761 /* roadtile1100.png in Resources */,
 				FFFCFABE255B366700D03284 /* GoogleService-Info.plist in Resources */,
 				FF0857782550FC5100F0F220 /* Montserrat-BoldItalic.ttf in Resources */,
+				FF72140725ACA93900934761 /* roadtile0110.png in Resources */,
 				FF0857792550FC5100F0F220 /* Montserrat-ThinItalic.ttf in Resources */,
+				FF72140925ACA93900934761 /* roadtile1101.png in Resources */,
+				FF72140C25ACA93900934761 /* roadtile0111.png in Resources */,
+				FF72140625ACA93900934761 /* roadtile0001.png in Resources */,
 				FF0857712550FC5100F0F220 /* Montserrat-SemiBold.ttf in Resources */,
 				FF74189E2587C4C700A4BC42 /* robot factory MKI.png in Resources */,
 				FF71C04C25A376EB00D352E1 /* building residential.png in Resources */,
-				FF7418BB2587C52F00A4BC42 /* roadtile1000.png in Resources */,
 				FF1B13EA256B67DB005158C9 /* Base.tmx in Resources */,
 				FF08577E2550FC5100F0F220 /* Montserrat-Italic.ttf in Resources */,
-				FF7418BE2587C52F00A4BC42 /* roadtile0001.png in Resources */,
+				FF72140825ACA93900934761 /* roadtile0101.png in Resources */,
 				FF7418A62587C4E300A4BC42 /* water.png in Resources */,
+				FF72140025ACA93900934761 /* roadtile0000.png in Resources */,
 				FF08576F2550FC5100F0F220 /* Montserrat-ExtraBold.ttf in Resources */,
 				FF08577A2550FC5100F0F220 /* Montserrat-Light.ttf in Resources */,
 				FF08577D2550FC5100F0F220 /* Montserrat-BlackItalic.ttf in Resources */,
@@ -711,7 +728,6 @@
 				FF0857722550FC5100F0F220 /* Montserrat-LightItalic.ttf in Resources */,
 				FF0857772550FC5100F0F220 /* Montserrat-Black.ttf in Resources */,
 				FF7418A42587C4E300A4BC42 /* rock.png in Resources */,
-				FF7418B22587C52900A4BC42 /* roadtile1101.png in Resources */,
 				FF078BCF254F3F8800E9FA7C /* Assets.xcassets in Resources */,
 				FF7418A52587C4E300A4BC42 /* sand.png in Resources */,
 				FF0857742550FC5100F0F220 /* Montserrat-Medium.ttf in Resources */,
@@ -955,7 +971,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Stratagem/Stratagem.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"Stratagem/Preview Content\"";
 				DEVELOPMENT_TEAM = 883DK65VTV;
 				ENABLE_PREVIEWS = YES;
@@ -965,7 +981,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stratagem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -981,7 +997,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Stratagem/Stratagem.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"Stratagem/Preview Content\"";
 				DEVELOPMENT_TEAM = 883DK65VTV;
 				ENABLE_PREVIEWS = YES;
@@ -991,7 +1007,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stratagem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
