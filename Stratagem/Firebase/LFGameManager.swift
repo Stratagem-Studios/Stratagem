@@ -259,7 +259,11 @@ public struct LFGameManager {
                 Global.gameVars.galaxy = galaxy
                 Global.gameVars.selectedPlanet = ownedPlanet!
                 Global.gameVars.selectedCity = ownedCity!
-                Global.gameVars.cityScene = CityScene(size: CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
+                if UIScreen.main.bounds.size.width >= 896 {
+                    Global.gameVars.cityScene = CityScene(size: CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
+                } else {
+                    Global.gameVars.cityScene = CityScene(size: CGSize(width: 896, height: 414))
+                }
                 
                 playerVariables.currentView = .GameView
                 Global.hfGameListener.listenToAll()
