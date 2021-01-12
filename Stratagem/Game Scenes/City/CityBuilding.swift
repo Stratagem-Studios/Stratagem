@@ -16,7 +16,7 @@ public class CityBuilding {
         let x = Int(coords.x)
         let y = Int(coords.y)
         
-        if let onTileStr = newTileData.properties["onTile"] {
+        if let onTileStr = newTileData.properties["onTileName"] {
             let currentTileName = cityTerrain[x][y].tile!.tileData.properties["name"]!
             
             let onTileArr = onTileStr.trimmingCharacters(in: CharacterSet(charactersIn: "[]")).components(separatedBy:", ")
@@ -40,5 +40,5 @@ public class CityBuilding {
     func customSKNodeLarge(size: CGSize) -> SKNode? { return nil }
     
     /// Called whenever player presses on a button on custom SKNode
-    func userTouchedButton(button: SKNode, size: CGSize) {}
+    func userTouchedButton(hudNode: HudNode, button: SKNode, size: CGSize) {}
 }

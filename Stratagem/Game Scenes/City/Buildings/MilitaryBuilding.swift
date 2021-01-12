@@ -136,16 +136,20 @@ public class MilitaryBuilding: CityBuilding {
     }
     
     /// Called whenever player presses on a button on custom SKNode
-    override func userTouchedButton(button: SKNode, size: CGSize) {
+    override func userTouchedButton(hudNode: HudNode, button: SKNode, size: CGSize) {
         let unitNameStr = button.name!.replacingOccurrences(of: "BUTTON_BUILDING_POPUP ", with: "")
         
-        if let unitType = UnitType(rawValue: unitNameStr) {
-            let unit = Units()
-            unit.unitType = unitType
-            unitCreationQueue.append(unit)
+        if unitCreationQueue.count <= 10 {
+            if let unitType = UnitType(rawValue: unitNameStr) {
+                let unit = Units()
+                unit.unitType = unitType
+                unitCreationQueue.append(unit)
+                Global.gameVars.shouldUpdateCityHudNode = true
+            }
+        } else {
+            hudNode.inlineErrorMessage(errorMessage: "Maximum of 10 units in the queue")
         }
         
-        Global.gameVars.shouldUpdateCityHudNode = true
         /*
         var yPos = 121.35
         yPos -= 15

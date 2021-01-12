@@ -39,8 +39,10 @@ public class CityScene: SKTiledScene {
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(scenePan(_:)))
         self.view!.addGestureRecognizer(panGestureRecognizer)
         
+        #if DEBUG
         view.showsFPS = true
         view.showsDrawCount = true
+        #endif
         
         hudNode.setup(city: city!, size: size, view: view, tilemap: tilemap)
         cameraNode.addToOverlay(hudNode)
@@ -102,7 +104,7 @@ public class CityScene: SKTiledScene {
                 default:
                     if let tappedHudNodeName = tappedHudNode.name {
                         if tappedHudNodeName.contains("BUTTON_BUILDING_POPUP") {
-                            selectedCityTile?.building?.userTouchedButton(button: tappedHudNode, size: size)
+                            selectedCityTile?.building?.userTouchedButton(hudNode: hudNode, button: tappedHudNode, size: size)
                             clickedOnHud = true
                             break
                         }
