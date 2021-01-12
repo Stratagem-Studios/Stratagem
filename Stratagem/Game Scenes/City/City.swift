@@ -28,7 +28,7 @@ public class City {
     var secondDelta: CGFloat = 0
     
     /// Stats
-    var resources: [ResourceTypes: CGFloat] = [.POPULATION: 1000, .CREDITS: 1000, .METAL: 50] // Firebase
+    var resources: [ResourceTypes: CGFloat] = [.POPULATION: 300, .CREDITS: 1000, .METAL: 50] // Firebase
     var resourcesCap: [ResourceTypes: CGFloat] = [.POPULATION: 3000, .CREDITS: 100000, .METAL: 500]
     var units: [UnitType: Int] =
         [.BRAWLER: 3, .SNIPER: 1, .FIGHTER: 5]
@@ -82,6 +82,9 @@ public class City {
         }
         // Credits- for now, 5% of population / sec
         tryAddFunds(funds: [.CREDITS: (0.05 * resources[.POPULATION]!)], deltaTime: deltaTime)
+        
+        // Metal- 1/sec so player doesn't get softlocked
+        tryAddFunds(funds: [.METAL: 1], deltaTime: deltaTime)
         
         secondDelta += deltaTime
         if secondDelta >= 5 {
