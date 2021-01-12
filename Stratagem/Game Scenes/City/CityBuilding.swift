@@ -40,5 +40,5 @@ public class CityBuilding {
     func customSKNodeLarge(size: CGSize) -> SKNode? { return nil }
     
     /// Called whenever player presses on a button on custom SKNode
-    func userTouchedButton(button: SKNode, size: CGSize) {}
+    func userTouchedButton(hudNode: HudNode, button: SKNode, size: CGSize) {}
 }

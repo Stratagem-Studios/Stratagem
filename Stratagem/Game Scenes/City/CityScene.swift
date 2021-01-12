@@ -104,7 +104,7 @@ public class CityScene: SKTiledScene {
                 default:
                     if let tappedHudNodeName = tappedHudNode.name {
                         if tappedHudNodeName.contains("BUTTON_BUILDING_POPUP") {
-                            selectedCityTile?.building?.userTouchedButton(button: tappedHudNode, size: size)
+                            selectedCityTile?.building?.userTouchedButton(hudNode: hudNode, button: tappedHudNode, size: size)
                             clickedOnHud = true
                             break
                         }
