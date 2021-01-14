@@ -32,9 +32,6 @@ class CombatHandler {
             }
             
             // After we finish calculating one round of combat, we need to apply causualties
-            print("round finished")
-            print( "eliminated attackers: \(eliminatedAttackingUnits)")
-            print( "eliminated defenders: \(eliminatedDefendingUnits)")
             for type in UnitType.allCases {
                 attackingUnits[type]! -= eliminatedAttackingUnits[type]!
                 if attackingUnits[type]! < 0 {

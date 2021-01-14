@@ -70,7 +70,7 @@ public struct LFGameManager {
                     Global.hfGamePusher.uploadResources(cityName: city.cityName!, name: "resources", resources: city.resources)
                     
                     // Units
-                    Global.hfGamePusher.uploadUnits(cityName: city.cityName!, name: "units", units: city.units)
+                    Global.hfGamePusher.uploadUnits(cityName: city.cityName!, units: city.units)
                 }
             }
             

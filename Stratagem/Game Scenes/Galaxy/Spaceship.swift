@@ -29,6 +29,6 @@ class Spaceship {
                 } else { Global.gameVars.alertBox.addAlert(msg: "Failed to Capture City  " + String(self.currentCity!.cityName), rectColor: .red) }
             }
         }
-        Global.hfGamePusher.uploadUnits(cityName: currentCity!.cityName, name: currentCity!.owner!, units: currentCity!.units)
+        Global.hfGamePusher.uploadUnits(cityName: currentCity!.cityName, units: currentCity!.units)
     }
 }

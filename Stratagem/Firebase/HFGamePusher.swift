@@ -42,11 +42,11 @@ public struct HFGamePusher {
         }
     }
     
-    public func uploadUnits(cityName: String, name: String, units: [UnitType: Int]) {
+    public func uploadUnits(cityName: String, units: [UnitType: Int]) {
         let encoder = JSONEncoder()
         do {
             let string = String(data: try encoder.encode(units), encoding: .utf8)!
-            ref.child("games/\(staticGameVariables.gameCode)/cities/\(cityName)/\(name)").setValue(string)
+            ref.child("games/\(staticGameVariables.gameCode)/cities/\(cityName)/units").setValue(string)
         } catch {
             print("Unable to encode resources")
         }

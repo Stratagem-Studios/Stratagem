@@ -76,7 +76,7 @@ public class City {
                 
                 if let newUnit = newUnit {
                     units[newUnit.unitType!]! += 1
-                    Global.hfGamePusher.uploadUnits(cityName: cityName!, name: "units", units: units)
+                    Global.hfGamePusher.uploadUnits(cityName: cityName!, units: units)
                 }
             }
         }
