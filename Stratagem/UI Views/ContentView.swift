@@ -28,6 +28,12 @@ struct ContentView: View {
             case .GameView:
                 GameView()
                     .ignoresSafeArea()
+            case .WinScreenView:
+                WinScreenView()
+                    .transition(.slide)
+            case .LoseScreenView:
+                LoseScreenView()
+                    .transition(.slide)
             }
             
             if playerVariables.errorMessage != "" {
