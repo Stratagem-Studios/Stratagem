@@ -50,6 +50,7 @@ public struct HFGameListener {
                 }
         })
         playerVariables.observerRefs.append(planetsRef)
+        Global.gameVars.checkGameOver()
     }
     
     
