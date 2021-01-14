@@ -94,6 +94,7 @@ class GalaxyScene: SKScene {
                 planetSpriteString = "NeutralPlanet"
             case Global.playerVariables.playerName:
                 planetSpriteString = "AlliedPlanet"
+                print(galaxy!.planets[i].planetName)
             default:
                 planetSpriteString = "EnemyPlanet"
             }
@@ -430,6 +431,12 @@ class GalaxyScene: SKScene {
                     return
                 }
                 
+                if hasSelectedSpaceship {
+                    let oldShip = spaceshipNodes.children[selectedSpaceshipInt] as! SKSpriteNode
+                    oldShip.texture = SKTexture(imageNamed: "SpaceshipIcon")
+                    targetPlanetSprite.removeFromParent()
+                }
+                
                 // Selects target spaceship
                 transferPanel.zPosition = 100
                 borderRectNode.strokeColor = .yellow
@@ -448,6 +455,7 @@ class GalaxyScene: SKScene {
             Global.gameVars.selectedPlanet?.spacesphips.append(
                 Spaceship(city: Global.gameVars.selectedPlanet!.cities[0], units: [.BRAWLER: 0, .SNIPER: 0, .FIGHTER: 0])
             )
+            renameSpaceships()
             
             // checking for visit plant text
         } else if (node.name == "enterButton" || node.name == "enterText") && selectedPlanet != nil {
@@ -461,6 +469,8 @@ class GalaxyScene: SKScene {
         } else if node.name == "selectDestinationText" {
         } else if node.name == "startTransferButton" || node.name == "startTransferText" {
             launchSpaceship(spaceshipInt: selectedSpaceshipInt);
+            targetPlanetSprite.removeFromParent()
+            renameSpaceships()
         } else {
             for i in 0..<3 {
                 if node.name == "leftArrow" + String(i) {
@@ -506,6 +516,12 @@ class GalaxyScene: SKScene {
             return [3,4,5]
         default:
             fatalError()
+        }
+    }
+    
+    func renameSpaceships(){
+        for i in 0..<spaceshipNodes.children.count{
+            spaceshipNodes.children[i].name = "ship" + String(i)
         }
     }
     
