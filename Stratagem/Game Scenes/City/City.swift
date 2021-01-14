@@ -109,6 +109,12 @@ public class City {
                     let cityTile = CityTile()
                     var newTileData = tileLayer.getTileData(globalID: secondTileID)!
                     
+                    // If second tile is ground (destroying), make sure first tile isn't ground
+                    if newTileData.properties["type"] == "ground" && firstTile.tileData.properties["type"] == "ground" {
+                        hudNode!.inlineErrorMessage(errorMessage: "Can't destroy ground")
+                        return
+                    }
+                    
                     let message = cityTile.initTile(tile: firstTile, newTileData: newTileData, cityTerrain: cityTerrain, isEditable: true)
                     
                     if message == "true" {
