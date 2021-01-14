@@ -348,6 +348,7 @@ class PlanetPanel: SKScene {
                 removeAllChildren()
                 addChild(descriptionPanel)
                 unitsToTransfer = [.SNIPER:0,.FIGHTER:0,.BRAWLER:0]
+                Global.hfGamePusher.uploadUnits(cityName: planet!.cities[startCityint].cityName, units: planet!.cities[startCityint].units)
             default:
                 // chack to see if it is an arrow
                 var arrowName = node.name

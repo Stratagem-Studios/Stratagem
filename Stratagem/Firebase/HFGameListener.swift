@@ -9,6 +9,7 @@ public struct HFGameListener {
     
     public func listenToAll() {
         listenForCityChanges()
+        listenForPlanetChanges()
     }
     
     public func listenForCityChanges() {
@@ -39,6 +40,18 @@ public struct HFGameListener {
         })
         playerVariables.observerRefs.append(citiesRef)
     }
+    
+    public func listenForPlanetChanges() {
+        let planetsRef = ref.child("games").child(staticGameVariables.gameCode).child("planets")
+        planetsRef.observe(.value, with: { snapshot in
+                for planet in Global.gameVars.galaxy.planets{
+                    print(planet.planetName + "/owner")
+                    planet.owner = snapshot.childSnapshot(forPath: planet.planetName + "/owner").value as? String
+                }
+        })
+        playerVariables.observerRefs.append(planetsRef)
+    }
+    
     
     func resourceStringToString(input: String) -> ([String], [CGFloat]) {
         let text = input.replacingOccurrences(of: "]", with: ",")
