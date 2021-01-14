@@ -391,13 +391,15 @@ class GalaxyScene: SKScene {
         
         // Handle spaceship icons
         spaceshipNodes.removeAllChildren()
-        for i in 0..<(Global.gameVars.selectedPlanet?.spacesphips.count)! {
-            let shipIcon = SKSpriteNode(imageNamed: "SpaceshipIcon")
-            shipIcon.name = "ship" + String(i)
-            shipIcon.size = CGSize(width: screenSize!.height/5, height: screenSize!.height/5)
-            shipIcon.position.x = CGFloat((Int(screenSize!.height)/5 + 15) * i + 100)
-            shipIcon.position.y = -panelNodes[0].frame.size.halfHeight - 15
-            spaceshipNodes.addChild(shipIcon)
+        if Global.gameVars.selectedPlanet?.owner == Global.playerVariables.playerName{
+            for i in 0..<(Global.gameVars.selectedPlanet?.spacesphips.count)! {
+                let shipIcon = SKSpriteNode(imageNamed: "SpaceshipIcon")
+                shipIcon.name = "ship" + String(i)
+                shipIcon.size = CGSize(width: screenSize!.height/5, height: screenSize!.height/5)
+                shipIcon.position.x = CGFloat((Int(screenSize!.height)/5 + 15) * i + 100)
+                shipIcon.position.y = -panelNodes[0].frame.size.halfHeight - 15
+                spaceshipNodes.addChild(shipIcon)
+            }
         }
     }
     
@@ -427,7 +429,6 @@ class GalaxyScene: SKScene {
                     targetPlanetSprite.removeFromParent()
                     transferPanel.zPosition = -100
                     selectUnitsPanel.zPosition = -1000
-                    Global.gameVars.galaxy.planets[selectedPlanetInt].spacesphips[selectedSpaceshipInt].units = unitsToTransfer
                     return
                 }
                 
@@ -451,26 +452,29 @@ class GalaxyScene: SKScene {
         // checking for settings touches
         if node.name == "settings" {
             //            Global.gameVars.alertBox.addAlert(msg: "No settings yet bro", rectColor: Color.red)
-            
-            Global.gameVars.selectedPlanet?.spacesphips.append(
-                Spaceship(city: Global.gameVars.selectedPlanet!.cities[0], units: [.BRAWLER: 0, .SNIPER: 0, .FIGHTER: 0])
-            )
-            renameSpaceships()
+            if Global.gameVars.selectedPlanet?.owner == Global.playerVariables.playerName{
+                Global.gameVars.selectedPlanet?.spacesphips.append(
+                    Spaceship(city: Global.gameVars.selectedPlanet!.cities[0], units: [.BRAWLER: 0, .SNIPER: 0, .FIGHTER: 0])
+                )
+                renameSpaceships()
+            }
             
             // checking for visit plant text
         } else if (node.name == "enterButton" || node.name == "enterText") && selectedPlanet != nil {
             Global.playerManager.playerVariables.currentGameViewLevel = .PLANET
             
         } else if node.name == "selectUnitsText" {
-            print("e")
             selectUnitsPanel.zPosition = 99999
         } else if node.name == "confirmUnits" {
             selectUnitsPanel.zPosition = -1000
         } else if node.name == "selectDestinationText" {
         } else if node.name == "startTransferButton" || node.name == "startTransferText" {
+            Global.gameVars.galaxy.planets[selectedPlanetInt].spacesphips[selectedSpaceshipInt].units = unitsToTransfer
+            Global.hfGamePusher.uploadUnits(cityName: Global.gameVars.galaxy.planets[selectedPlanetInt].spacesphips[selectedSpaceshipInt].currentCity!.cityName, units: Global.gameVars.galaxy.planets[selectedPlanetInt].spacesphips[selectedSpaceshipInt].currentCity!.units)
             launchSpaceship(spaceshipInt: selectedSpaceshipInt);
             targetPlanetSprite.removeFromParent()
             renameSpaceships()
+            unitsToTransfer = [.SNIPER:0, .FIGHTER:0, .BRAWLER:0]
         } else {
             for i in 0..<3 {
                 if node.name == "leftArrow" + String(i) {
@@ -483,10 +487,8 @@ class GalaxyScene: SKScene {
                         transferUnitNodes![i].run(pulsedRed)
                     }
                 } else if node.name == "rightArrow" + String(i) {
-                    print(i)
                     var cityUnits = Global.gameVars.selectedPlanet?.spacesphips[selectedSpaceshipInt].currentCity?.units
                     if cityUnits![UnitType.allCases[i]]! > 0 {
-                        print("e");
                         Global.gameVars.selectedPlanet!.spacesphips[selectedSpaceshipInt].currentCity?.units[UnitType.allCases[i]]! -= 1
                         unitsToTransfer[UnitType.allCases[i]]! += 1
                         transferUnitNodes![i].text = String(unitsToTransfer[UnitType.allCases[i]]!)

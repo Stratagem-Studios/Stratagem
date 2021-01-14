@@ -54,5 +54,34 @@ class GameVariables {
         }
     }
     
+    func checkGameOver(){
+        if isWinner(){
+            Global.playerVariables.currentView = .WinScreenView
+        }
+        
+        if isLoser(){
+            Global.playerVariables.currentView = .LoseScreenView
+        }
+    }
+    
+    func isWinner() -> Bool {
+        for planet in galaxy.planets{
+            if planet.owner != Global.playerVariables.playerName{
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    func isLoser() -> Bool{
+        let otherPlayername = galaxy.planets.first?.owner
+        for planet in galaxy.planets{
+            if planet.owner != otherPlayername{
+                return false;
+            }
+        }
+        return true;
+    }
+    
 }
 
