@@ -7,7 +7,7 @@ Menu screen. Click **play** to create a lobby (which gives you a code), click **
 
 
 ![Menu screen](Stratagem%20screenshots/galaxy.png)
-Galaxy view, where you can view planets. Owned planets are blue and enemy planets are red.
+Galaxy view, where you can view planets. Owned planets are blue, enemy planets are red, and the currently selected planet is green.
 
 
 ![Menu screen](Stratagem%20screenshots/planet.png)
@@ -15,7 +15,7 @@ Planet view, where you can drag the planet around and view your cities. You can 
 
 
 ![Menu screen](Stratagem%20screenshots/city.png)
-City view, where you can view your city and build/destroy special buildings. We used the [SKTiled](https://github.com/mfessenden/SKTiled) framework to handle the tilemap. Click the **build** button to place various buildings and the **destroy** button to bulldoze them. Certain buildings do certain things, and you can click on the buildings to learn more about them. 
+City view, where you can view your city and build/destroy special buildings. We used the [SKTiled](https://github.com/mfessenden/SKTiled) framework to handle the tilemap. Click the **build** button to place various buildings, and click on the **destroy** button to bulldoze them. Certain buildings do certain things, and you can click on the buildings to learn more about them. 
 
 
 ![Menu screen](Stratagem%20screenshots/queue.png)
