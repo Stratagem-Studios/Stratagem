@@ -48,9 +48,9 @@ public struct HFGameListener {
                     print(planet.planetName + "/owner")
                     planet.owner = snapshot.childSnapshot(forPath: planet.planetName + "/owner").value as? String
                 }
+            Global.gameVars.checkGameOver()
         })
         playerVariables.observerRefs.append(planetsRef)
-        Global.gameVars.checkGameOver()
     }
     
     

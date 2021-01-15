@@ -70,12 +70,20 @@ public struct PlayerManager {
                     let gameRef = ref.child("games")
                     gameRef.observeSingleEvent(of: .value, with: { snapshot2 in
                         if snapshot2.hasChild(snapshot.value as! String) {
+                            
                             // Game still exists
                             let gameCodeRef = ref.child("games").child(snapshot.value as! String)
                             gameCodeRef.observeSingleEvent(of: .value, with: { snapshot3 in
                                 let gameDict = (snapshot3.value as! Dictionary<String, Any>)
                                 staticGameVariables.gameCode = snapshot.value as! String
                                 
+                                // Remove from game
+                                Global.lfGameManager!.removePlayerFromGame(username: Global.playerVariables.playerName)
+                                
+                                playerStatusRef.setValue(PlayerStates.TITLESCREEN.rawValue)
+                                ref.child("all_users").child(playerVariables.playerName).child("game_id").removeValue()
+                                resetPlayer()
+                                /*
                                 if playerVariables.observerRefs.count == 0 {
                                     // Reattach listeners
                                     Global.lfGameListener!.listenToAll()
@@ -88,6 +96,7 @@ public struct PlayerManager {
                                     playerStatusRef.setValue(PlayerStates.GAME.rawValue)
                                     playerVariables.currentView = .GameView
                                 }
+ */
                             })
                         } else {
                             // Game removed
