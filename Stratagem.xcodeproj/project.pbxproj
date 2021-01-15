@@ -67,9 +67,6 @@
 		FF64B6C825530268006A9F38 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FF64B6C725530268006A9F38 /* README.md */; };
 		FF65EF1F255DE8D00013C2C4 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF65EF1E255DE8CF0013C2C4 /* UIExtensions.swift */; };
 		FF71C03E25A3713300D352E1 /* iron tile.png in Resources */ = {isa = PBXBuildFile; fileRef = FF71C03D25A3713300D352E1 /* iron tile.png */; };
-		FF71C04525A3767400D352E1 /* iron miner.png in Resources */ = {isa = PBXBuildFile; fileRef = FF71C04325A3767400D352E1 /* iron miner.png */; };
-		FF71C04625A3767400D352E1 /* building industrial.png in Resources */ = {isa = PBXBuildFile; fileRef = FF71C04425A3767400D352E1 /* building industrial.png */; };
-		FF71C04C25A376EB00D352E1 /* building residential.png in Resources */ = {isa = PBXBuildFile; fileRef = FF71C04B25A376EB00D352E1 /* building residential.png */; };
 		FF71C04F25A3772200D352E1 /* oil tile.png in Resources */ = {isa = PBXBuildFile; fileRef = FF71C04E25A3772100D352E1 /* oil tile.png */; };
 		FF7213FF25ACA93900934761 /* roadtile1000.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7213F025ACA93600934761 /* roadtile1000.png */; };
 		FF72140025ACA93900934761 /* roadtile0000.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7213F125ACA93600934761 /* roadtile0000.png */; };
@@ -105,6 +102,9 @@
 		FFAD01DE255AE84600BA2907 /* CreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD01DD255AE84600BA2907 /* CreateGameView.swift */; };
 		FFB4A299255CE6A7003298E2 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB4A298255CE6A7003298E2 /* FirebaseHelper.swift */; };
 		FFB4A2A7255D9EA1003298E2 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB4A2A6255D9EA1003298E2 /* PlayerManager.swift */; };
+		FFC22D7B25B1E7B600F6320E /* building industrial.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC22D7A25B1E7B500F6320E /* building industrial.png */; };
+		FFC22D8025B1E7D700F6320E /* iron miner.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC22D7F25B1E7D700F6320E /* iron miner.png */; };
+		FFC22D8325B1E7DF00F6320E /* building residential.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC22D8225B1E7DF00F6320E /* building residential.png */; };
 		FFD4AE5B257E8A93000BACEE /* SwiftySKScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4AE5A257E8A93000BACEE /* SwiftySKScrollView.swift */; };
 		FFD9693E255B0505005A1BC7 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = FFD9693D255B0505005A1BC7 /* Podfile */; };
 		FFE69956257409FC00CD8517 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE69955257409FC00CD8517 /* Global.swift */; };
@@ -191,9 +191,6 @@
 		FF64B6C725530268006A9F38 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FF65EF1E255DE8CF0013C2C4 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		FF71C03D25A3713300D352E1 /* iron tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iron tile.png"; sourceTree = "<group>"; };
-		FF71C04325A3767400D352E1 /* iron miner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iron miner.png"; sourceTree = "<group>"; };
-		FF71C04425A3767400D352E1 /* building industrial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "building industrial.png"; sourceTree = "<group>"; };
-		FF71C04B25A376EB00D352E1 /* building residential.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "building residential.png"; sourceTree = "<group>"; };
 		FF71C04E25A3772100D352E1 /* oil tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oil tile.png"; sourceTree = "<group>"; };
 		FF7213F025ACA93600934761 /* roadtile1000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile1000.png; sourceTree = "<group>"; };
 		FF7213F125ACA93600934761 /* roadtile0000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadtile0000.png; sourceTree = "<group>"; };
@@ -230,6 +227,9 @@
 		FFAD01DD255AE84600BA2907 /* CreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameView.swift; sourceTree = "<group>"; };
 		FFB4A298255CE6A7003298E2 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		FFB4A2A6255D9EA1003298E2 /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
+		FFC22D7A25B1E7B500F6320E /* building industrial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "building industrial.png"; path = "../../../../../../../Downloads/building industrial.png"; sourceTree = "<group>"; };
+		FFC22D7F25B1E7D700F6320E /* iron miner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iron miner.png"; sourceTree = "<group>"; };
+		FFC22D8225B1E7DF00F6320E /* building residential.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "building residential.png"; sourceTree = "<group>"; };
 		FFD4AE5A257E8A93000BACEE /* SwiftySKScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftySKScrollView.swift; sourceTree = "<group>"; };
 		FFD9693D255B0505005A1BC7 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		FFE69955257409FC00CD8517 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
@@ -427,7 +427,7 @@
 		FF7418962587C32C00A4BC42 /* residential */ = {
 			isa = PBXGroup;
 			children = (
-				FF71C04B25A376EB00D352E1 /* building residential.png */,
+				FFC22D8225B1E7DF00F6320E /* building residential.png */,
 			);
 			path = residential;
 			sourceTree = "<group>";
@@ -466,8 +466,8 @@
 		FF74189B2587C3BC00A4BC42 /* industrial */ = {
 			isa = PBXGroup;
 			children = (
-				FF71C04425A3767400D352E1 /* building industrial.png */,
-				FF71C04325A3767400D352E1 /* iron miner.png */,
+				FFC22D7F25B1E7D700F6320E /* iron miner.png */,
+				FFC22D7A25B1E7B500F6320E /* building industrial.png */,
 			);
 			path = industrial;
 			sourceTree = "<group>";
@@ -690,6 +690,7 @@
 				FF0CABA1256464BF009681C8 /* starfield.mp4 in Resources */,
 				FF08577B2550FC5100F0F220 /* Montserrat-MediumItalic.ttf in Resources */,
 				FF72140225ACA93900934761 /* roadtile1110.png in Resources */,
+				FFC22D8325B1E7DF00F6320E /* building residential.png in Resources */,
 				FF7213FF25ACA93900934761 /* roadtile1000.png in Resources */,
 				FF8C4E67254FBAFB00522756 /* .gitignore in Resources */,
 				FF08576E2550FC5100F0F220 /* Montserrat-ExtraLight.ttf in Resources */,
@@ -706,7 +707,6 @@
 				FF0857762550FC5100F0F220 /* Montserrat-Thin.ttf in Resources */,
 				FF72140125ACA93900934761 /* roadtile1010.png in Resources */,
 				FFD9693E255B0505005A1BC7 /* Podfile in Resources */,
-				FF71C04525A3767400D352E1 /* iron miner.png in Resources */,
 				FF08577C2550FC5100F0F220 /* Montserrat-Regular.ttf in Resources */,
 				FF7418C32587C77400A4BC42 /* Tileset.tsx in Resources */,
 				FFE76E2425809226001525F3 /* robot factory.png in Resources */,
@@ -718,6 +718,7 @@
 				FF72140425ACA93900934761 /* roadtile1100.png in Resources */,
 				FFFCFABE255B366700D03284 /* GoogleService-Info.plist in Resources */,
 				FF0857782550FC5100F0F220 /* Montserrat-BoldItalic.ttf in Resources */,
+				FFC22D7B25B1E7B600F6320E /* building industrial.png in Resources */,
 				FF72140725ACA93900934761 /* roadtile0110.png in Resources */,
 				FF0857792550FC5100F0F220 /* Montserrat-ThinItalic.ttf in Resources */,
 				FF72140925ACA93900934761 /* roadtile1101.png in Resources */,
@@ -725,16 +726,15 @@
 				FF72140625ACA93900934761 /* roadtile0001.png in Resources */,
 				FF0857712550FC5100F0F220 /* Montserrat-SemiBold.ttf in Resources */,
 				FF74189E2587C4C700A4BC42 /* robot factory MKI.png in Resources */,
-				FF71C04C25A376EB00D352E1 /* building residential.png in Resources */,
 				FF1B13EA256B67DB005158C9 /* Base.tmx in Resources */,
 				FF08577E2550FC5100F0F220 /* Montserrat-Italic.ttf in Resources */,
 				FF72140825ACA93900934761 /* roadtile0101.png in Resources */,
 				FF7418A62587C4E300A4BC42 /* water.png in Resources */,
+				FFC22D8025B1E7D700F6320E /* iron miner.png in Resources */,
 				FF72140025ACA93900934761 /* roadtile0000.png in Resources */,
 				FF08576F2550FC5100F0F220 /* Montserrat-ExtraBold.ttf in Resources */,
 				FF08577A2550FC5100F0F220 /* Montserrat-Light.ttf in Resources */,
 				FF08577D2550FC5100F0F220 /* Montserrat-BlackItalic.ttf in Resources */,
-				FF71C04625A3767400D352E1 /* building industrial.png in Resources */,
 				FF0857722550FC5100F0F220 /* Montserrat-LightItalic.ttf in Resources */,
 				FF0857772550FC5100F0F220 /* Montserrat-Black.ttf in Resources */,
 				FF7418A42587C4E300A4BC42 /* rock.png in Resources */,
@@ -983,7 +983,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Stratagem/Stratagem.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"Stratagem/Preview Content\"";
 				DEVELOPMENT_TEAM = 883DK65VTV;
 				ENABLE_PREVIEWS = YES;
@@ -993,7 +993,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stratagem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1009,7 +1009,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Stratagem/Stratagem.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"Stratagem/Preview Content\"";
 				DEVELOPMENT_TEAM = 883DK65VTV;
 				ENABLE_PREVIEWS = YES;
@@ -1019,7 +1019,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stratagem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
